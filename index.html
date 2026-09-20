@@ -12,7 +12,7 @@
           content="AssurIntellec™ - Pharmaceutical & Life Sciences Solutions, GMP Engineering, Regulatory Compliance, Advisory, Technology, Research and Manufacturing Support.">
 
     <meta name="keywords"
-          content="AssurIntellec, pharmaceutical consulting, GMP, pharmaceutical plant design, regulatory compliance, cleanroom, HVAC, qualification, validation, pharma machinery, laboratory technology, life sciences">
+          content="AssurIntellec, pharmaceutical consulting, GMP, GMP compliance, pharmaceutical plant design, regulatory compliance, cleanroom, HVAC, validation, pharmaceutical machinery, laboratory equipment, life sciences">
 
     <meta name="author"
           content="AssurIntellec">
@@ -22,16 +22,19 @@
     </title>
 
 
-    <!-- FONT AWESOME -->
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 
     <style>
 
-        /* =========================================================
+        /* =====================================================
            ROOT
-        ========================================================= */
+        ====================================================== */
 
         :root {
 
@@ -57,15 +60,12 @@
             --shadow:
                 0 18px 55px rgba(3, 38, 83, 0.12);
 
-            --radius:
-                18px;
-
         }
 
 
-        /* =========================================================
+        /* =====================================================
            RESET
-        ========================================================= */
+        ====================================================== */
 
         * {
 
@@ -94,7 +94,7 @@
                 var(--text);
 
             background:
-                var(--white);
+                white;
 
             line-height:
                 1.6;
@@ -116,7 +116,8 @@
         }
 
 
-        img {
+        img,
+        video {
 
             max-width:
                 100%;
@@ -149,9 +150,10 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
            HEADER
-        ========================================================= */
+        ====================================================== */
 
         header {
 
@@ -179,7 +181,7 @@
         .header-top {
 
             min-height:
-                67px;
+                92px;
 
             display:
                 flex;
@@ -196,6 +198,8 @@
         }
 
 
+        /* LARGER LOGO */
+
         .brand {
 
             display:
@@ -205,7 +209,7 @@
                 center;
 
             min-width:
-                270px;
+                300px;
 
         }
 
@@ -216,7 +220,10 @@
                 auto;
 
             height:
-                58px;
+                78px;
+
+            max-width:
+                320px;
 
             object-fit:
                 contain;
@@ -233,7 +240,7 @@
                 center;
 
             gap:
-                10px;
+                12px;
 
         }
 
@@ -241,13 +248,13 @@
         .brand-fallback-mark {
 
             width:
-                48px;
+                58px;
 
             height:
-                48px;
+                58px;
 
             border-radius:
-                12px;
+                14px;
 
             display:
                 grid;
@@ -259,7 +266,7 @@
                 white;
 
             font-size:
-                23px;
+                26px;
 
             font-weight:
                 800;
@@ -283,7 +290,7 @@
                 var(--navy);
 
             font-size:
-                23px;
+                25px;
 
         }
 
@@ -311,6 +318,10 @@
         }
 
 
+        /* =====================================================
+           SOCIAL MEDIA - ONLY ONE LOCATION
+        ====================================================== */
+
         .top-socials {
 
             display:
@@ -323,7 +334,7 @@
                 center;
 
             gap:
-                8px;
+                6px;
 
         }
 
@@ -331,10 +342,10 @@
         .top-socials a {
 
             width:
-                34px;
+                35px;
 
             height:
-                34px;
+                35px;
 
             border-radius:
                 8px;
@@ -374,6 +385,10 @@
         }
 
 
+        /* =====================================================
+           CONTACT AT HEADER
+        ====================================================== */
+
         .top-contact {
 
             display:
@@ -386,7 +401,7 @@
                 flex-end;
 
             gap:
-                3px;
+                4px;
 
         }
 
@@ -422,6 +437,11 @@
         }
 
 
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
         .header-nav {
 
             border-top:
@@ -433,7 +453,7 @@
         .nav-inner {
 
             min-height:
-                51px;
+                53px;
 
             display:
                 flex;
@@ -495,11 +515,11 @@
             position:
                 absolute;
 
-            bottom:
-                6px;
-
             left:
                 0;
+
+            bottom:
+                6px;
 
             width:
                 0;
@@ -533,7 +553,7 @@
                 white !important;
 
             padding:
-                10px 17px !important;
+                10px 18px !important;
 
             border-radius:
                 8px;
@@ -555,10 +575,10 @@
                 none;
 
             width:
-                42px;
+                43px;
 
             height:
-                42px;
+                43px;
 
             border:
                 0;
@@ -581,9 +601,10 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
            HERO
-        ========================================================= */
+        ====================================================== */
 
         .hero {
 
@@ -591,7 +612,7 @@
                 relative;
 
             min-height:
-                540px;
+                550px;
 
             display:
                 flex;
@@ -603,15 +624,16 @@
                 hidden;
 
             background:
+
                 linear-gradient(
                     90deg,
                     rgba(2,36,75,0.97) 0%,
-                    rgba(2,36,75,0.90) 40%,
-                    rgba(2,36,75,0.42) 65%,
-                    rgba(2,36,75,0.10) 100%
+                    rgba(2,36,75,0.90) 38%,
+                    rgba(2,36,75,0.45) 65%,
+                    rgba(2,36,75,0.08) 100%
                 ),
 
-                url("images/hero.jpg")
+                url("./images/uploads/hero.jpg")
                 center center /
                 cover
                 no-repeat,
@@ -723,7 +745,7 @@
                 -1.8px;
 
             margin-bottom:
-                24px;
+                20px;
 
         }
 
@@ -743,9 +765,6 @@
 
             font-weight:
                 700;
-
-            color:
-                white;
 
             margin-bottom:
                 15px;
@@ -795,6 +814,9 @@
             align-items:
                 center;
 
+            justify-content:
+                center;
+
             gap:
                 10px;
 
@@ -816,6 +838,28 @@
         }
 
 
+        .btn-primary {
+
+            background:
+                var(--navy);
+
+            color:
+                white;
+
+        }
+
+
+        .btn-primary:hover {
+
+            background:
+                var(--blue);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
         .btn-gold {
 
             background:
@@ -831,9 +875,6 @@
 
             transform:
                 translateY(-2px);
-
-            box-shadow:
-                0 12px 30px rgba(0,0,0,0.18);
 
         }
 
@@ -910,9 +951,6 @@
             margin-bottom:
                 8px;
 
-            color:
-                white;
-
         }
 
 
@@ -941,9 +979,10 @@
         }
 
 
-        /* =========================================================
-           SERVICES INTRO
-        ========================================================= */
+
+        /* =====================================================
+           SERVICES
+        ====================================================== */
 
         .services {
 
@@ -962,16 +1001,13 @@
                 grid;
 
             grid-template-columns:
-                0.88fr 1.7fr;
+                0.9fr 1.4fr;
 
             gap:
                 55px;
 
-            align-items:
-                start;
-
             margin-bottom:
-                30px;
+                32px;
 
         }
 
@@ -1041,22 +1077,25 @@
         .services-note {
 
             padding:
-                15px 18px;
+                24px;
 
             background:
                 var(--light-blue);
 
-            border-left:
-                4px solid var(--gold);
+            border:
+                1px solid var(--border);
 
             border-radius:
-                8px;
+                15px;
+
+            align-self:
+                center;
 
             color:
                 var(--text);
 
             font-size:
-                13px;
+                14px;
 
         }
 
@@ -1078,7 +1117,7 @@
         .service-card {
 
             min-height:
-                145px;
+                150px;
 
             padding:
                 19px;
@@ -1119,10 +1158,10 @@
         .service-icon {
 
             width:
-                42px;
+                43px;
 
             height:
-                42px;
+                43px;
 
             display:
                 grid;
@@ -1134,7 +1173,7 @@
                 10px;
 
             margin-bottom:
-                12px;
+                10px;
 
             background:
                 var(--light-blue);
@@ -1153,14 +1192,11 @@
             font-size:
                 10px;
 
-            font-weight:
-                800;
-
             color:
                 var(--gold);
 
-            margin-bottom:
-                3px;
+            font-weight:
+                900;
 
         }
 
@@ -1176,8 +1212,8 @@
             color:
                 var(--navy);
 
-            margin-bottom:
-                7px;
+            margin:
+                4px 0 7px;
 
         }
 
@@ -1196,9 +1232,251 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
+           REELS / VIDEO SECTION
+        ====================================================== */
+
+        .reels {
+
+            padding:
+                82px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f1f8ff,
+                    #ffffff
+                );
+
+        }
+
+
+        .reels-heading {
+
+            text-align:
+                center;
+
+            max-width:
+                760px;
+
+            margin:
+                0 auto 40px;
+
+        }
+
+
+        .reels-heading h2 {
+
+            color:
+                var(--navy);
+
+            font-size:
+                clamp(32px,4vw,44px);
+
+            line-height:
+                1.1;
+
+            margin-bottom:
+                10px;
+
+        }
+
+
+        .reels-heading h2 span {
+
+            color:
+                var(--gold);
+
+        }
+
+
+        .reels-heading p {
+
+            color:
+                var(--muted);
+
+            font-size:
+                15px;
+
+        }
+
+
+        .reel-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(5,1fr);
+
+            gap:
+                18px;
+
+        }
+
+
+        .reel-card {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                16px;
+
+            background:
+                var(--navy);
+
+            box-shadow:
+                0 12px 35px
+                rgba(3,38,83,0.10);
+
+            aspect-ratio:
+                9 / 16;
+
+        }
+
+
+        .reel-card video {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            background:
+                #031a3b;
+
+        }
+
+
+        .reel-label {
+
+            position:
+                absolute;
+
+            left:
+                10px;
+
+            top:
+                10px;
+
+            z-index:
+                2;
+
+            padding:
+                5px 9px;
+
+            border-radius:
+                6px;
+
+            background:
+                rgba(3,38,83,0.80);
+
+            color:
+                white;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.5px;
+
+        }
+
+
+        .reel-fallback {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                22px;
+
+            color:
+                white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--navy),
+                    var(--blue)
+                );
+
+        }
+
+
+        .reel-fallback i {
+
+            font-size:
+                32px;
+
+            color:
+                var(--gold-2);
+
+            margin-bottom:
+                12px;
+
+        }
+
+
+        .reel-fallback strong {
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                6px;
+
+        }
+
+
+        .reel-fallback span {
+
+            font-size:
+                11px;
+
+            color:
+                rgba(255,255,255,0.70);
+
+        }
+
+
+
+        /* =====================================================
            ABOUT
-        ========================================================= */
+        ====================================================== */
 
         .about {
 
@@ -1206,11 +1484,7 @@
                 80px 0;
 
             background:
-                linear-gradient(
-                    135deg,
-                    #f2f9ff,
-                    #ffffff
-                );
+                white;
 
         }
 
@@ -1327,17 +1601,6 @@
             background:
                 var(--gold-2);
 
-            opacity:
-                0.9;
-
-        }
-
-
-        .about-content .section-eyebrow {
-
-            margin-bottom:
-                8px;
-
         }
 
 
@@ -1366,13 +1629,14 @@
         }
 
 
-        .about-content > p {
+        .about-content > p,
+        .about-content #aboutText p {
 
             color:
                 var(--muted);
 
             margin-bottom:
-                25px;
+                17px;
 
             font-size:
                 15px;
@@ -1388,8 +1652,8 @@
             gap:
                 10px;
 
-            margin-bottom:
-                25px;
+            margin:
+                20px 0 25px;
 
         }
 
@@ -1471,14 +1735,12 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
            TRUST STRIP
-        ========================================================= */
+        ====================================================== */
 
         .trust-strip {
-
-            position:
-                relative;
 
             background:
                 linear-gradient(
@@ -1496,39 +1758,10 @@
         }
 
 
-        .trust-strip::after {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            right:
-                -60px;
-
-            top:
-                -100px;
-
-            width:
-                290px;
-
-            height:
-                290px;
-
-            border:
-                1px solid rgba(255,255,255,0.10);
-
-            transform:
-                rotate(45deg);
-
-        }
-
-
         .trust-inner {
 
             min-height:
-                170px;
+                175px;
 
             display:
                 grid;
@@ -1538,9 +1771,6 @@
 
             align-items:
                 center;
-
-            gap:
-                0;
 
         }
 
@@ -1567,9 +1797,6 @@
             font-size:
                 30px;
 
-            color:
-                white;
-
             margin-bottom:
                 9px;
 
@@ -1583,9 +1810,6 @@
 
             font-size:
                 14px;
-
-            color:
-                white;
 
         }
 
@@ -1646,9 +1870,10 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
            WHY US
-        ========================================================= */
+        ====================================================== */
 
         .why {
 
@@ -1795,9 +2020,10 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
            INDUSTRIES
-        ========================================================= */
+        ====================================================== */
 
         .industries {
 
@@ -1872,15 +2098,7 @@
                 hidden;
 
             background:
-                linear-gradient(
-                    135deg,
-                    var(--navy),
-                    var(--blue)
-                );
-
-            box-shadow:
-                0 10px 25px
-                rgba(3,38,83,0.08);
+                var(--navy);
 
         }
 
@@ -1952,9 +2170,10 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
            PROCESS
-        ========================================================= */
+        ====================================================== */
 
         .process {
 
@@ -2000,16 +2219,10 @@
             gap:
                 15px;
 
-            position:
-                relative;
-
         }
 
 
         .process-card {
-
-            position:
-                relative;
 
             padding:
                 28px 20px;
@@ -2089,14 +2302,15 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
            CTA
-        ========================================================= */
+        ====================================================== */
 
         .cta {
 
             padding:
-                40px 0;
+                42px 0;
 
             background:
                 linear-gradient(
@@ -2145,9 +2359,6 @@
             text-transform:
                 uppercase;
 
-            margin-bottom:
-                4px;
-
         }
 
 
@@ -2158,6 +2369,9 @@
 
             line-height:
                 1.1;
+
+            margin-top:
+                4px;
 
         }
 
@@ -2174,9 +2388,9 @@
 
 
 
-        /* =========================================================
+        /* =====================================================
            CONTACT
-        ========================================================= */
+        ====================================================== */
 
         .contact {
 
@@ -2269,7 +2483,7 @@
                 30px;
 
             margin-bottom:
-                7px;
+                8px;
 
         }
 
@@ -2347,97 +2561,6 @@
 
             flex-shrink:
                 0;
-
-        }
-
-
-        .contact-link:hover {
-
-            color:
-                var(--blue);
-
-        }
-
-
-        .social-title {
-
-            color:
-                var(--navy);
-
-            font-weight:
-                800;
-
-            font-size:
-                14px;
-
-            margin:
-                27px 0 12px;
-
-        }
-
-
-        .social-icons {
-
-            display:
-                flex;
-
-            flex-wrap:
-                wrap;
-
-            gap:
-                9px;
-
-        }
-
-
-        .social-icon {
-
-            width:
-                43px;
-
-            height:
-                43px;
-
-            display:
-                grid;
-
-            place-items:
-                center;
-
-            border-radius:
-                50%;
-
-            color:
-                var(--navy);
-
-            background:
-                white;
-
-            border:
-                1px solid var(--border);
-
-            font-size:
-                17px;
-
-            transition:
-                0.25s;
-
-        }
-
-
-        .social-icon:hover {
-
-            background:
-                var(--navy);
-
-            color:
-                white;
-
-            border-color:
-                var(--navy);
-
-            transform:
-                translateY(-3px);
 
         }
 
@@ -2562,9 +2685,10 @@
         }
 
 
-        /* =========================================================
+
+        /* =====================================================
            FOOTER
-        ========================================================= */
+        ====================================================== */
 
         footer {
 
@@ -2600,10 +2724,10 @@
         .footer-brand-logo {
 
             width:
-                235px;
+                260px;
 
             max-height:
-                62px;
+                75px;
 
             object-fit:
                 contain;
@@ -2732,84 +2856,6 @@
         }
 
 
-        .footer-social-title {
-
-            font-size:
-                14px;
-
-            font-weight:
-                800;
-
-            margin-bottom:
-                12px;
-
-        }
-
-
-        .footer-social {
-
-            display:
-                flex;
-
-            gap:
-                8px;
-
-            flex-wrap:
-                wrap;
-
-        }
-
-
-        .footer-social a {
-
-            width:
-                37px;
-
-            height:
-                37px;
-
-            border-radius:
-                50%;
-
-            display:
-                grid;
-
-            place-items:
-                center;
-
-            color:
-                white;
-
-            background:
-                rgba(255,255,255,0.08);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.14);
-
-            margin:
-                0;
-
-            font-size:
-                15px;
-
-        }
-
-
-        .footer-social a:hover {
-
-            color:
-                var(--navy);
-
-            background:
-                var(--gold-2);
-
-            border-color:
-                var(--gold-2);
-
-        }
-
-
         .footer-bottom {
 
             border-top:
@@ -2834,17 +2880,7 @@
         }
 
 
-        .copyright {
-
-            font-size:
-                11px;
-
-            color:
-                rgba(255,255,255,0.48);
-
-        }
-
-
+        .copyright,
         .footer-right {
 
             font-size:
@@ -2856,44 +2892,26 @@
         }
 
 
-        /* =========================================================
-           LOADING
-        ========================================================= */
 
-        .loading {
-
-            grid-column:
-                1 / -1;
-
-            text-align:
-                center;
-
-            padding:
-                50px;
-
-            color:
-                var(--muted);
-
-        }
-
-
-        /* =========================================================
+        /* =====================================================
            RESPONSIVE
-        ========================================================= */
+        ====================================================== */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1100px) {
 
             .top-socials {
-                display: none;
-            }
-
-            .nav-menu {
-                gap: 22px;
+                display:
+                    none;
             }
 
             .service-grid {
                 grid-template-columns:
                     repeat(2,1fr);
+            }
+
+            .reel-grid {
+                grid-template-columns:
+                    repeat(4,1fr);
             }
 
             .industry-grid {
@@ -2912,34 +2930,47 @@
         @media (max-width: 850px) {
 
             .header-top {
-                min-height: 72px;
-            }
-
-            .top-contact {
-                display: none;
+                min-height:
+                    78px;
             }
 
             .brand {
-                min-width: auto;
+                min-width:
+                    auto;
             }
 
             .brand-logo {
-                height: 53px;
+                height:
+                    65px;
+                max-width:
+                    270px;
+            }
+
+            .top-contact {
+                display:
+                    none;
             }
 
             .nav-inner {
-                justify-content: flex-end;
+                justify-content:
+                    flex-end;
             }
 
             .nav-menu {
-                display: none;
+                display:
+                    none;
 
                 position:
                     absolute;
 
-                left: 4%;
-                right: 4%;
-                top: 122px;
+                left:
+                    4%;
+
+                right:
+                    4%;
+
+                top:
+                    126px;
 
                 background:
                     white;
@@ -2964,41 +2995,35 @@
 
                 gap:
                     4px;
+
             }
 
             .nav-menu.active {
-                display: flex;
+                display:
+                    flex;
             }
 
             .nav-menu a {
-                padding: 11px;
+                padding:
+                    11px;
             }
 
             .menu-btn {
-                display: grid;
-                place-items: center;
+                display:
+                    grid;
+
+                place-items:
+                    center;
             }
 
-            .hero {
-                min-height: 620px;
-            }
-
-            .hero-content {
-                padding:
-                    70px 0 105px;
+            .hero-grid {
+                grid-template-columns:
+                    1fr;
             }
 
             .hero-features {
                 grid-template-columns:
                     repeat(2,1fr);
-
-                row-gap:
-                    15px;
-            }
-
-            .hero-feature:nth-child(2) {
-                border-right:
-                    0;
             }
 
             .services-intro,
@@ -3009,8 +3034,8 @@
             }
 
             .about-visual {
-                min-height: 350px;
-                max-width: 600px;
+                min-height:
+                    350px;
             }
 
             .trust-inner {
@@ -3040,6 +3065,11 @@
                     repeat(2,1fr);
             }
 
+            .reel-grid {
+                grid-template-columns:
+                    repeat(3,1fr);
+            }
+
             .cta-inner {
                 flex-direction:
                     column;
@@ -3055,35 +3085,38 @@
 
             .container {
                 width:
-                    min(94%,1180px);
-            }
-
-            .header-top {
-                min-height:
-                    68px;
+                    94%;
             }
 
             .brand-logo {
                 height:
-                    48px;
+                    57px;
+
+                max-width:
+                    245px;
+            }
+
+            .header-top {
+                min-height:
+                    70px;
             }
 
             .nav-menu {
                 top:
-                    118px;
+                    116px;
             }
 
             .hero {
                 min-height:
-                    680px;
+                    690px;
 
                 background-position:
-                    65% center;
+                    68% center;
             }
 
             .hero h1 {
                 font-size:
-                    43px;
+                    42px;
             }
 
             .hero-tagline {
@@ -3106,14 +3139,12 @@
                     1fr;
             }
 
-            .services-intro h2,
-            .about-content h2,
-            .why-heading h2,
-            .industries-heading h2,
-            .process-title h2,
-            .contact-heading h2 {
-                font-size:
-                    32px;
+            .reel-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+
+                gap:
+                    12px;
             }
 
             .about-visual {
@@ -3122,8 +3153,6 @@
             }
 
             .about-image-main {
-                width:
-                    74%;
                 height:
                     225px;
             }
@@ -3179,15 +3208,17 @@
 <body>
 
 
-<!-- =========================================================
+<!-- =====================================================
      HEADER
-========================================================= -->
+====================================================== -->
 
 <header>
 
 
     <div class="container header-top">
 
+
+        <!-- LARGER LOGO -->
 
         <a href="#home"
            class="brand"
@@ -3197,10 +3228,13 @@
 
 
 
-        <!-- SOCIAL ICONS -->
+        <!-- SOCIAL MEDIA
+             APPEARS ONLY ONCE ON WEBSITE -->
 
         <div class="top-socials">
 
+
+            <!-- Facebook -->
 
             <a href="https://www.facebook.com/Intellegentsolution"
                target="_blank"
@@ -3213,6 +3247,9 @@
             </a>
 
 
+
+            <!-- Instagram -->
+
             <a href="https://www.instagram.com/assurintellec?utm_source=qr&igsi=MW43Z3M2anZpbHo1"
                target="_blank"
                rel="noopener noreferrer"
@@ -3223,6 +3260,9 @@
 
             </a>
 
+
+
+            <!-- WhatsApp -->
 
             <a href="https://wa.me/message/BFANWJ2N3FWOP1"
                target="_blank"
@@ -3235,6 +3275,9 @@
             </a>
 
 
+
+            <!-- X -->
+
             <a href="https://x.com/AssurIntellec"
                target="_blank"
                rel="noopener noreferrer"
@@ -3245,6 +3288,9 @@
 
             </a>
 
+
+
+            <!-- LinkedIn -->
 
             <a href="https://www.linkedin.com/in/assurintellec"
                target="_blank"
@@ -3257,6 +3303,9 @@
             </a>
 
 
+
+            <!-- Threads -->
+
             <a href="https://www.threads.com/@assurintellec"
                target="_blank"
                rel="noopener noreferrer"
@@ -3267,6 +3316,9 @@
 
             </a>
 
+
+
+            <!-- YouTube -->
 
             <a href="https://www.youtube.com/@AssurIntellec"
                target="_blank"
@@ -3283,7 +3335,7 @@
 
 
 
-        <!-- CONTACT -->
+        <!-- PHONE + EMAIL -->
 
         <div class="top-contact">
 
@@ -3312,6 +3364,8 @@
     </div>
 
 
+
+    <!-- NAVIGATION -->
 
     <div class="header-nav">
 
@@ -3347,6 +3401,13 @@
 
 
                     <li>
+                        <a href="#reels">
+                            Reels
+                        </a>
+                    </li>
+
+
+                    <li>
                         <a href="#why">
                             Why Us
                         </a>
@@ -3355,7 +3416,7 @@
 
                     <li>
                         <a href="#industries">
-                            Resources
+                            Industries
                         </a>
                     </li>
 
@@ -3391,9 +3452,12 @@
 
 
 
-<!-- =========================================================
+<main>
+
+
+<!-- =====================================================
      HERO
-========================================================= -->
+====================================================== -->
 
 <section class="hero"
          id="home">
@@ -3540,9 +3604,9 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      SERVICES
-========================================================= -->
+====================================================== -->
 
 <section class="services"
          id="services">
@@ -3558,9 +3622,7 @@
 
 
                 <div class="section-eyebrow">
-
                     Our Services
-
                 </div>
 
 
@@ -3585,7 +3647,7 @@
                 <a href="#contact"
                    class="btn btn-primary">
 
-                    View All Services
+                    Discuss Your Requirement
 
                     <i class="fa-solid fa-arrow-right"></i>
 
@@ -3612,14 +3674,325 @@
         </div>
 
 
-
         <div class="service-grid"
              id="serviceGrid">
 
 
             <div class="loading">
-
                 Loading services...
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     REELS
+====================================================== -->
+
+<section class="reels"
+         id="reels">
+
+
+    <div class="container">
+
+
+        <div class="reels-heading">
+
+
+            <div class="section-eyebrow">
+
+                AssurIntellec Reels
+
+            </div>
+
+
+            <h2>
+
+                Pharmaceutical Insights &
+                <span>Industry Reels</span>
+
+            </h2>
+
+
+            <p>
+
+                Explore short-form pharmaceutical,
+                GMP, laboratory, technology and
+                life-sciences content.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="reel-grid">
+
+
+            <!-- REEL 01 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 01
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/hero.jpg">
+
+                    <source
+                        src="./videos/reel-01.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 02 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 02
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/pharmaceutical.jpg">
+
+                    <source
+                        src="./videos/reel-02.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 03 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 03
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/biotechnology.jpg">
+
+                    <source
+                        src="./videos/reel-03.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 04 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 04
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/life-sciences.jpg">
+
+                    <source
+                        src="./videos/reel-04.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 05 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 05
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/contract-manufacturing.jpg">
+
+                    <source
+                        src="./videos/reel-05.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 06 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 06
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/research.jpg">
+
+                    <source
+                        src="./videos/reel-06.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 07 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 07
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/healthcare.jpg">
+
+                    <source
+                        src="./videos/reel-07.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 08 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 08
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/about-lab.jpg">
+
+                    <source
+                        src="./videos/reel-08.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 09 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 09
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/about-research.jpg">
+
+                    <source
+                        src="./videos/reel-09.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+
+
+            <!-- REEL 10 -->
+
+            <div class="reel-card">
+
+                <div class="reel-label">
+                    REEL 10
+                </div>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="./images/uploads/hero.jpg">
+
+                    <source
+                        src="./videos/reel-10.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video playback.
+
+                </video>
 
             </div>
 
@@ -3634,9 +4007,9 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      ABOUT
-========================================================= -->
+====================================================== -->
 
 <section class="about"
          id="about">
@@ -3648,16 +4021,16 @@
         <div class="about-visual">
 
 
-            <img src="images/about-lab.jpg"
-                 class="about-image-main"
-                 alt="Pharmaceutical manufacturing facility"
-                 onerror="this.style.display='none'">
+            <img
+                src="./images/uploads/about-lab.jpg"
+                class="about-image-main"
+                alt="Pharmaceutical manufacturing facility">
 
 
-            <img src="images/about-research.jpg"
-                 class="about-image-small"
-                 alt="Pharmaceutical research laboratory"
-                 onerror="this.style.display='none'">
+            <img
+                src="./images/uploads/about-research.jpg"
+                class="about-image-small"
+                alt="Pharmaceutical research laboratory">
 
 
             <div class="about-gold-shape"></div>
@@ -3775,8 +4148,8 @@
                         </strong>
 
                         <span>
-                            Practical focus on evolving regulatory
-                            and GMP requirements.
+                            Practical focus on evolving
+                            regulatory and GMP requirements.
                         </span>
 
                     </div>
@@ -3803,8 +4176,8 @@
                         </strong>
 
                         <span>
-                            Your requirement, objectives and
-                            practical outcomes remain central.
+                            Your objectives and practical
+                            outcomes remain central.
                         </span>
 
                     </div>
@@ -3836,9 +4209,9 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      TRUST STRIP
-========================================================= -->
+====================================================== -->
 
 <section class="trust-strip">
 
@@ -3863,7 +4236,7 @@
 
         <div class="trust-item">
 
-            <i class="fa-solid fa-gear"></i>
+            <i class="fa-solid fa-gears"></i>
 
             <strong>
                 End-to-End Support
@@ -3900,7 +4273,7 @@
             </strong>
 
             <span>
-                Practical and trusted collaboration
+                Practical collaboration
             </span>
 
         </div>
@@ -3938,9 +4311,9 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      WHY US
-========================================================= -->
+====================================================== -->
 
 <section class="why"
          id="why">
@@ -3958,14 +4331,16 @@
 
 
             <h2>
-                Built on trust. Driven by expertise.
+                Built on Trust. Driven by Expertise.
             </h2>
 
 
             <p>
+
                 A multidisciplinary approach combining
                 technical knowledge, compliance awareness
                 and practical industry understanding.
+
             </p>
 
 
@@ -3980,9 +4355,7 @@
 
 
                 <div class="why-icon">
-
                     <i class="fa-solid fa-shield-halved"></i>
-
                 </div>
 
 
@@ -4005,9 +4378,7 @@
 
 
                 <div class="why-icon">
-
                     <i class="fa-solid fa-lightbulb"></i>
-
                 </div>
 
 
@@ -4030,9 +4401,7 @@
 
 
                 <div class="why-icon">
-
                     <i class="fa-solid fa-handshake"></i>
-
                 </div>
 
 
@@ -4055,9 +4424,7 @@
 
 
                 <div class="why-icon">
-
                     <i class="fa-solid fa-globe"></i>
-
                 </div>
 
 
@@ -4085,9 +4452,9 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      INDUSTRIES
-========================================================= -->
+====================================================== -->
 
 <section class="industries"
          id="industries">
@@ -4100,24 +4467,18 @@
 
 
             <div class="section-eyebrow">
-
                 Industries We Serve
-
             </div>
 
 
             <h2>
-
                 Supporting the Life-Sciences Ecosystem
-
             </h2>
 
 
             <p>
-
                 Technical, regulatory and business support
                 across multiple pharmaceutical segments.
-
             </p>
 
 
@@ -4130,9 +4491,9 @@
 
             <div class="industry-card">
 
-                <img src="images/pharmaceutical.jpg"
-                     alt="Pharmaceuticals"
-                     onerror="this.style.display='none'">
+                <img
+                    src="./images/uploads/pharmaceutical.jpg"
+                    alt="Pharmaceuticals">
 
                 <div class="industry-name">
                     Pharmaceuticals
@@ -4144,9 +4505,9 @@
 
             <div class="industry-card">
 
-                <img src="images/biotechnology.jpg"
-                     alt="Biotechnology"
-                     onerror="this.style.display='none'">
+                <img
+                    src="./images/uploads/biotechnology.jpg"
+                    alt="Biotechnology">
 
                 <div class="industry-name">
                     Biotechnology
@@ -4158,9 +4519,9 @@
 
             <div class="industry-card">
 
-                <img src="images/life-sciences.jpg"
-                     alt="Life Sciences"
-                     onerror="this.style.display='none'">
+                <img
+                    src="./images/uploads/life-sciences.jpg"
+                    alt="Life Sciences">
 
                 <div class="industry-name">
                     Life Sciences
@@ -4172,9 +4533,9 @@
 
             <div class="industry-card">
 
-                <img src="images/contract-manufacturing.jpg"
-                     alt="Contract Manufacturing"
-                     onerror="this.style.display='none'">
+                <img
+                    src="./images/uploads/contract-manufacturing.jpg"
+                    alt="Contract Manufacturing">
 
                 <div class="industry-name">
                     Contract Manufacturing
@@ -4186,9 +4547,9 @@
 
             <div class="industry-card">
 
-                <img src="images/research.jpg"
-                     alt="Research and Academic"
-                     onerror="this.style.display='none'">
+                <img
+                    src="./images/uploads/research.jpg"
+                    alt="Research and Academic">
 
                 <div class="industry-name">
                     Research & Academic
@@ -4200,9 +4561,9 @@
 
             <div class="industry-card">
 
-                <img src="images/healthcare.jpg"
-                     alt="Healthcare"
-                     onerror="this.style.display='none'">
+                <img
+                    src="./images/uploads/healthcare.jpg"
+                    alt="Healthcare">
 
                 <div class="industry-name">
                     Healthcare
@@ -4221,9 +4582,9 @@
 
 
 
-<!-- =========================================================
-     HOW WE WORK
-========================================================= -->
+<!-- =====================================================
+     PROCESS
+====================================================== -->
 
 <section class="process">
 
@@ -4352,9 +4713,9 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      CTA
-========================================================= -->
+====================================================== -->
 
 <section class="cta">
 
@@ -4376,8 +4737,8 @@
 
 
             <p>
-                Let's discuss your requirement and identify
-                a practical path forward.
+                Let's discuss your requirement and
+                identify a practical path forward.
             </p>
 
 
@@ -4401,9 +4762,9 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      CONTACT
-========================================================= -->
+====================================================== -->
 
 <section class="contact"
          id="contact">
@@ -4421,14 +4782,17 @@
 
 
             <h2>
-                Let's discuss your requirement
+                Let's Discuss Your Requirement
             </h2>
 
 
             <p>
-                Connect with AssurIntellec for pharmaceutical,
-                regulatory, engineering, technology, research
+
+                Connect with AssurIntellec for
+                pharmaceutical, regulatory,
+                engineering, technology, research
                 and business requirements.
+
             </p>
 
 
@@ -4439,7 +4803,7 @@
         <div class="contact-grid">
 
 
-            <!-- CONTACT INFO -->
+            <!-- CONTACT DETAILS -->
 
             <div class="contact-info">
 
@@ -4458,8 +4822,6 @@
                 <div class="contact-list">
 
 
-                    <!-- PHONE -->
-
                     <a class="contact-link"
                        href="tel:+917600666436">
 
@@ -4473,42 +4835,6 @@
 
 
 
-                    <!-- WHATSAPP -->
-
-                    <a class="contact-link"
-                       href="https://wa.me/message/BFANWJ2N3FWOP1"
-                       target="_blank"
-                       rel="noopener noreferrer">
-
-                        <i class="fa-brands fa-whatsapp"></i>
-
-                        <span>
-                            WhatsApp
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- WEBSITE -->
-
-                    <a class="contact-link"
-                       href="https://www.assurintellec.com"
-                       target="_blank"
-                       rel="noopener noreferrer">
-
-                        <i class="fa-solid fa-globe"></i>
-
-                        <span>
-                            www.assurintellec.com
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- EMAIL -->
-
                     <a class="contact-link"
                        href="mailto:info@assurintellec.com">
 
@@ -4521,100 +4847,17 @@
                     </a>
 
 
-                </div>
 
-
-
-                <!-- SOCIAL ICONS -->
-
-                <div class="social-title">
-                    Connect With Us
-                </div>
-
-
-                <div class="social-icons">
-
-
-                    <a class="social-icon"
-                       href="https://wa.me/message/BFANWJ2N3FWOP1"
+                    <a class="contact-link"
+                       href="https://www.assurintellec.com"
                        target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="WhatsApp"
-                       title="WhatsApp">
+                       rel="noopener noreferrer">
 
-                        <i class="fa-brands fa-whatsapp"></i>
+                        <i class="fa-solid fa-globe"></i>
 
-                    </a>
-
-
-                    <a class="social-icon"
-                       href="https://www.instagram.com/assurintellec?utm_source=qr&igsi=MW43Z3M2anZpbHo1"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Instagram"
-                       title="Instagram">
-
-                        <i class="fa-brands fa-instagram"></i>
-
-                    </a>
-
-
-                    <a class="social-icon"
-                       href="https://www.facebook.com/Intellegentsolution"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Facebook"
-                       title="Facebook">
-
-                        <i class="fa-brands fa-facebook-f"></i>
-
-                    </a>
-
-
-                    <a class="social-icon"
-                       href="https://www.linkedin.com/in/assurintellec"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="LinkedIn"
-                       title="LinkedIn">
-
-                        <i class="fa-brands fa-linkedin-in"></i>
-
-                    </a>
-
-
-                    <a class="social-icon"
-                       href="https://www.youtube.com/@AssurIntellec"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="YouTube"
-                       title="YouTube">
-
-                        <i class="fa-brands fa-youtube"></i>
-
-                    </a>
-
-
-                    <a class="social-icon"
-                       href="https://x.com/AssurIntellec"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="X"
-                       title="X">
-
-                        <i class="fa-brands fa-x-twitter"></i>
-
-                    </a>
-
-
-                    <a class="social-icon"
-                       href="https://www.threads.com/@assurintellec"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Threads"
-                       title="Threads">
-
-                        <i class="fa-brands fa-threads"></i>
+                        <span>
+                            www.assurintellec.com
+                        </span>
 
                     </a>
 
@@ -4643,11 +4886,12 @@
                             Name
                         </label>
 
-                        <input type="text"
-                               id="name"
-                               name="Name"
-                               placeholder="Your name"
-                               required>
+                        <input
+                            type="text"
+                            id="name"
+                            name="Name"
+                            placeholder="Your name"
+                            required>
 
                     </div>
 
@@ -4659,10 +4903,11 @@
                             Company / Organization
                         </label>
 
-                        <input type="text"
-                               id="company"
-                               name="Company"
-                               placeholder="Company name">
+                        <input
+                            type="text"
+                            id="company"
+                            name="Company"
+                            placeholder="Company name">
 
                     </div>
 
@@ -4674,11 +4919,12 @@
                             Email
                         </label>
 
-                        <input type="email"
-                               id="email"
-                               name="Email"
-                               placeholder="you@example.com"
-                               required>
+                        <input
+                            type="email"
+                            id="email"
+                            name="Email"
+                            placeholder="you@example.com"
+                            required>
 
                     </div>
 
@@ -4690,10 +4936,11 @@
                             Phone
                         </label>
 
-                        <input type="tel"
-                               id="phone"
-                               name="Phone"
-                               placeholder="Phone number">
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="Phone"
+                            placeholder="Phone number">
 
                     </div>
 
@@ -4705,8 +4952,9 @@
                             Service Required
                         </label>
 
-                        <select id="service"
-                                name="Service">
+                        <select
+                            id="service"
+                            name="Service">
 
 
                             <option value="">
@@ -4766,10 +5014,11 @@
                             Message
                         </label>
 
-                        <textarea id="message"
-                                  name="Message"
-                                  placeholder="Briefly describe your requirement..."
-                                  required></textarea>
+                        <textarea
+                            id="message"
+                            name="Message"
+                            placeholder="Briefly describe your requirement..."
+                            required></textarea>
 
                     </div>
 
@@ -4777,8 +5026,9 @@
 
                     <div class="form-group full">
 
-                        <button type="submit"
-                                class="btn btn-primary">
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
 
                             Send Enquiry
 
@@ -4804,10 +5054,13 @@
 </section>
 
 
+</main>
 
-<!-- =========================================================
+
+
+<!-- =====================================================
      FOOTER
-========================================================= -->
+====================================================== -->
 
 <footer>
 
@@ -4871,13 +5124,18 @@
                 </a>
 
 
+                <a href="#reels">
+                    Reels
+                </a>
+
+
                 <a href="#why">
                     Why Us
                 </a>
 
 
                 <a href="#industries">
-                    Resources
+                    Industries
                 </a>
 
 
@@ -4934,13 +5192,13 @@
 
 
 
-            <!-- CONNECT -->
+            <!-- CONTACT -->
 
             <div class="footer-column">
 
 
                 <h4>
-                    Connect With Us
+                    Contact
                 </h4>
 
 
@@ -4985,96 +5243,6 @@
                 </div>
 
 
-                <div class="footer-social-title">
-
-                    Follow Us
-
-                </div>
-
-
-                <div class="footer-social">
-
-
-                    <a href="https://www.facebook.com/Intellegentsolution"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Facebook"
-                       title="Facebook">
-
-                        <i class="fa-brands fa-facebook-f"></i>
-
-                    </a>
-
-
-                    <a href="https://www.instagram.com/assurintellec?utm_source=qr&igsi=MW43Z3M2anZpbHo1"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Instagram"
-                       title="Instagram">
-
-                        <i class="fa-brands fa-instagram"></i>
-
-                    </a>
-
-
-                    <a href="https://wa.me/message/BFANWJ2N3FWOP1"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="WhatsApp"
-                       title="WhatsApp">
-
-                        <i class="fa-brands fa-whatsapp"></i>
-
-                    </a>
-
-
-                    <a href="https://x.com/AssurIntellec"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="X"
-                       title="X">
-
-                        <i class="fa-brands fa-x-twitter"></i>
-
-                    </a>
-
-
-                    <a href="https://www.linkedin.com/in/assurintellec"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="LinkedIn"
-                       title="LinkedIn">
-
-                        <i class="fa-brands fa-linkedin-in"></i>
-
-                    </a>
-
-
-                    <a href="https://www.youtube.com/@AssurIntellec"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="YouTube"
-                       title="YouTube">
-
-                        <i class="fa-brands fa-youtube"></i>
-
-                    </a>
-
-
-                    <a href="https://www.threads.com/@assurintellec"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Threads"
-                       title="Threads">
-
-                        <i class="fa-brands fa-threads"></i>
-
-                    </a>
-
-
-                </div>
-
-
             </div>
 
 
@@ -5088,7 +5256,8 @@
             <div class="copyright">
 
                 © <span id="year"></span>
-                AssurIntellec™. All rights reserved.
+                AssurIntellec™.
+                All rights reserved.
 
             </div>
 
@@ -5110,16 +5279,16 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      JAVASCRIPT
-========================================================= -->
+====================================================== -->
 
 <script>
 
 
-    /* =========================================================
+    /* =====================================================
        MOBILE MENU
-    ========================================================= */
+    ====================================================== */
 
     function toggleMenu() {
 
@@ -5151,9 +5320,9 @@
 
 
 
-    /* =========================================================
-       SAFE HTML
-    ========================================================= */
+    /* =====================================================
+       ESCAPE HTML
+    ====================================================== */
 
     function escapeHTML(value) {
 
@@ -5198,9 +5367,9 @@
 
 
 
-    /* =========================================================
-       SIMPLE TEXT
-    ========================================================= */
+    /* =====================================================
+       RENDER SIMPLE TEXT
+    ====================================================== */
 
     function renderSimpleText(value) {
 
@@ -5222,10 +5391,11 @@
 
                     return (
                         "<p>" +
-                        paragraph.replace(
-                            /\n/g,
-                            "<br>"
-                        ) +
+                        paragraph
+                            .replace(
+                                /\n/g,
+                                "<br>"
+                            ) +
                         "</p>"
                     );
 
@@ -5238,15 +5408,13 @@
 
 
 
-    /* =========================================================
-       LOAD CMS SITE SETTINGS
-    ========================================================= */
+    /* =====================================================
+       LOAD SITE SETTINGS FROM CMS
+    ====================================================== */
 
     async function loadSiteSettings() {
 
-
         try {
-
 
             const response =
                 await fetch(
@@ -5325,7 +5493,6 @@
                     tagline;
 
 
-
             document
                 .querySelector(
                     ".footer-tagline"
@@ -5335,7 +5502,7 @@
 
 
 
-            /* HERO DESCRIPTION */
+            /* DESCRIPTION */
 
             document
                 .getElementById(
@@ -5386,7 +5553,6 @@
                 words.length >= 3
             ) {
 
-
                 const firstPart =
                     words
                         .slice(
@@ -5418,9 +5584,9 @@
 
                     "</span>";
 
+            }
 
-            } else {
-
+            else {
 
                 heroHeading.textContent =
                     heading;
@@ -5429,7 +5595,7 @@
 
 
 
-            /* HEADER LOGO */
+            /* LOGO */
 
             const brandArea =
                 document
@@ -5469,8 +5635,9 @@
                     '" ' +
                     'class="footer-brand-logo">';
 
+            }
 
-            } else {
+            else {
 
 
                 brandArea.innerHTML =
@@ -5513,9 +5680,7 @@
 
         }
 
-
         catch (error) {
-
 
             console.error(
                 "Site settings error:",
@@ -5528,9 +5693,9 @@
 
 
 
-    /* =========================================================
+    /* =====================================================
        LOAD SERVICES FROM CMS
-    ========================================================= */
+    ====================================================== */
 
     async function loadServices() {
 
@@ -5577,13 +5742,11 @@
                 services.length === 0
             ) {
 
-
                 serviceGrid.innerHTML =
 
                     '<div class="loading">' +
                     'No services available.' +
                     '</div>';
-
 
                 return;
 
@@ -5609,7 +5772,7 @@
 
 
             services.forEach(
-                function(service, index) {
+                function(service,index) {
 
 
                     const number =
@@ -5693,7 +5856,6 @@
 
         }
 
-
         catch (error) {
 
 
@@ -5717,9 +5879,69 @@
 
 
 
-    /* =========================================================
+    /* =====================================================
+       VIDEO ERROR HANDLING
+    ====================================================== */
+
+    document
+        .querySelectorAll(
+            ".reel-card video"
+        )
+        .forEach(function(video) {
+
+
+            video.addEventListener(
+                "error",
+                function() {
+
+
+                    const card =
+                        video.closest(
+                            ".reel-card"
+                        );
+
+
+                    if (!card) {
+                        return;
+                    }
+
+
+                    const label =
+                        card.querySelector(
+                            ".reel-label"
+                        );
+
+
+                    card.innerHTML =
+
+                        (label
+                            ? label.outerHTML
+                            : "") +
+
+                        '<div class="reel-fallback">' +
+
+                            '<i class="fa-solid fa-film"></i>' +
+
+                            '<strong>' +
+                                'Reel video not uploaded yet' +
+                            '</strong>' +
+
+                            '<span>' +
+                                'Upload the corresponding MP4 file to the videos folder.' +
+                            '</span>' +
+
+                        '</div>';
+
+                }
+            );
+
+        });
+
+
+
+    /* =====================================================
        YEAR
-    ========================================================= */
+    ====================================================== */
 
     document
         .getElementById(
@@ -5730,9 +5952,9 @@
 
 
 
-    /* =========================================================
+    /* =====================================================
        START
-    ========================================================= */
+    ====================================================== */
 
     loadSiteSettings();
 
