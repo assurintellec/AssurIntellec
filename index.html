@@ -12,7 +12,7 @@
           content="AssurIntellec™ - Pharmaceutical & Life Sciences Solutions, GMP Engineering, Regulatory Compliance, Advisory, Technology, Research and Manufacturing Support.">
 
     <meta name="keywords"
-          content="AssurIntellec, pharmaceutical consulting, GMP, GMP compliance, pharmaceutical plant design, regulatory compliance, cleanroom, HVAC, validation, pharmaceutical machinery, laboratory equipment, life sciences">
+          content="AssurIntellec, pharmaceutical consulting, GMP, pharmaceutical plant design, regulatory compliance, cleanroom, HVAC, validation, pharmaceutical machinery, laboratory equipment, life sciences">
 
     <meta name="author"
           content="AssurIntellec">
@@ -22,9 +22,7 @@
     </title>
 
 
-    <!-- =====================================================
-         FONT AWESOME
-    ====================================================== -->
+    <!-- FONT AWESOME -->
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -71,6 +69,7 @@
 
             margin: 0;
             padding: 0;
+
             box-sizing: border-box;
 
         }
@@ -78,7 +77,8 @@
 
         html {
 
-            scroll-behavior: smooth;
+            scroll-behavior:
+                smooth;
 
         }
 
@@ -94,7 +94,7 @@
                 var(--text);
 
             background:
-                white;
+                var(--white);
 
             line-height:
                 1.6;
@@ -181,7 +181,7 @@
         .header-top {
 
             min-height:
-                92px;
+                120px;
 
             display:
                 flex;
@@ -193,12 +193,14 @@
                 space-between;
 
             gap:
-                20px;
+                22px;
 
         }
 
 
-        /* LARGER LOGO */
+        /* =====================================================
+           LARGE COMPANY LOGO
+        ====================================================== */
 
         .brand {
 
@@ -209,7 +211,10 @@
                 center;
 
             min-width:
-                300px;
+                420px;
+
+            flex-shrink:
+                0;
 
         }
 
@@ -217,16 +222,22 @@
         .brand-logo {
 
             width:
-                auto;
+                420px;
 
             height:
-                78px;
+                105px;
 
             max-width:
-                320px;
+                none;
 
             object-fit:
                 contain;
+
+            object-position:
+                left center;
+
+            display:
+                block;
 
         }
 
@@ -240,7 +251,7 @@
                 center;
 
             gap:
-                12px;
+                13px;
 
         }
 
@@ -248,10 +259,10 @@
         .brand-fallback-mark {
 
             width:
-                58px;
+                60px;
 
             height:
-                58px;
+                60px;
 
             border-radius:
                 14px;
@@ -266,7 +277,7 @@
                 white;
 
             font-size:
-                26px;
+                27px;
 
             font-weight:
                 800;
@@ -318,6 +329,7 @@
         }
 
 
+
         /* =====================================================
            SOCIAL MEDIA - ONLY ONE LOCATION
         ====================================================== */
@@ -342,13 +354,13 @@
         .top-socials a {
 
             width:
-                35px;
+                38px;
 
             height:
-                35px;
+                38px;
 
             border-radius:
-                8px;
+                9px;
 
             display:
                 grid;
@@ -359,11 +371,17 @@
             color:
                 var(--navy);
 
+            background:
+                white;
+
             border:
                 1px solid transparent;
 
             transition:
                 0.25s;
+
+            font-size:
+                17px;
 
         }
 
@@ -385,8 +403,9 @@
         }
 
 
+
         /* =====================================================
-           CONTACT AT HEADER
+           TOP CONTACT
         ====================================================== */
 
         .top-contact {
@@ -401,7 +420,7 @@
                 flex-end;
 
             gap:
-                4px;
+                5px;
 
         }
 
@@ -425,6 +444,9 @@
 
             color:
                 var(--navy);
+
+            white-space:
+                nowrap;
 
         }
 
@@ -476,7 +498,7 @@
                 center;
 
             gap:
-                34px;
+                32px;
 
             list-style:
                 none;
@@ -612,7 +634,7 @@
                 relative;
 
             min-height:
-                550px;
+                570px;
 
             display:
                 flex;
@@ -702,7 +724,7 @@
                 min(650px,100%);
 
             padding:
-                85px 0 105px;
+                90px 0 110px;
 
             color:
                 white;
@@ -736,7 +758,7 @@
         .hero h1 {
 
             font-size:
-                clamp(42px,5vw,67px);
+                clamp(42px,5vw,68px);
 
             line-height:
                 1.03;
@@ -775,7 +797,7 @@
         .hero-description {
 
             max-width:
-                620px;
+                630px;
 
             color:
                 rgba(255,255,255,0.86);
@@ -876,13 +898,18 @@
             transform:
                 translateY(-2px);
 
+            box-shadow:
+                0 10px 28px
+                rgba(0,0,0,0.15);
+
         }
 
 
         .btn-outline-light {
 
             border:
-                1px solid rgba(255,255,255,0.6);
+                1px solid
+                rgba(255,255,255,0.60);
 
             color:
                 white;
@@ -927,7 +954,8 @@
                 0 16px;
 
             border-right:
-                1px solid rgba(255,255,255,0.30);
+                1px solid
+                rgba(255,255,255,0.30);
 
         }
 
@@ -1077,7 +1105,7 @@
         .services-note {
 
             padding:
-                24px;
+                25px;
 
             background:
                 var(--light-blue);
@@ -1234,13 +1262,13 @@
 
 
         /* =====================================================
-           REELS / VIDEO SECTION
+           REELS
         ====================================================== */
 
         .reels {
 
             padding:
-                82px 0;
+                55px 0;
 
             background:
                 linear-gradient(
@@ -1258,10 +1286,10 @@
                 center;
 
             max-width:
-                760px;
+                720px;
 
             margin:
-                0 auto 40px;
+                0 auto 28px;
 
         }
 
@@ -1272,13 +1300,13 @@
                 var(--navy);
 
             font-size:
-                clamp(32px,4vw,44px);
+                clamp(30px,4vw,42px);
 
             line-height:
                 1.1;
 
             margin-bottom:
-                10px;
+                8px;
 
         }
 
@@ -1297,53 +1325,67 @@
                 var(--muted);
 
             font-size:
-                15px;
+                14px;
 
         }
 
 
-        .reel-grid {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(5,1fr);
-
-            gap:
-                18px;
-
-        }
-
-
-        .reel-card {
+        .reel-carousel {
 
             position:
                 relative;
 
-            overflow:
-                hidden;
+            width:
+                100%;
 
-            border:
-                1px solid var(--border);
+            display:
+                flex;
 
-            border-radius:
-                16px;
+            align-items:
+                center;
 
-            background:
-                var(--navy);
-
-            box-shadow:
-                0 12px 35px
-                rgba(3,38,83,0.10);
-
-            aspect-ratio:
-                9 / 16;
+            justify-content:
+                center;
 
         }
 
 
-        .reel-card video {
+        /* ONE REEL ONLY */
+
+        .reel-stage {
+
+            position:
+                relative;
+
+            width:
+                270px;
+
+            max-width:
+                68vw;
+
+            aspect-ratio:
+                9 / 16;
+
+            border-radius:
+                16px;
+
+            overflow:
+                hidden;
+
+            background:
+                #031a3b;
+
+            border:
+                1px solid var(--border);
+
+            box-shadow:
+                0 15px 40px
+                rgba(3,38,83,0.18);
+
+        }
+
+
+        .reel-stage video {
 
             width:
                 100%;
@@ -1372,7 +1414,7 @@
                 10px;
 
             z-index:
-                2;
+                5;
 
             padding:
                 5px 9px;
@@ -1381,7 +1423,7 @@
                 6px;
 
             background:
-                rgba(3,38,83,0.80);
+                rgba(3,38,83,0.82);
 
             color:
                 white;
@@ -1392,83 +1434,132 @@
             font-weight:
                 800;
 
-            letter-spacing:
-                0.5px;
-
         }
 
 
-        .reel-fallback {
+        .reel-arrow {
 
             position:
                 absolute;
 
-            inset:
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            width:
+                47px;
+
+            height:
+                47px;
+
+            border:
                 0;
 
-            display:
-                flex;
+            border-radius:
+                50%;
 
-            flex-direction:
-                column;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            text-align:
-                center;
-
-            padding:
-                22px;
+            background:
+                var(--navy);
 
             color:
                 white;
 
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            cursor:
+                pointer;
+
+            z-index:
+                10;
+
+            font-size:
+                17px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(3,38,83,0.18);
+
+            transition:
+                0.25s;
+
+        }
+
+
+        .reel-arrow:hover {
+
             background:
-                linear-gradient(
-                    145deg,
-                    var(--navy),
-                    var(--blue)
-                );
+                var(--blue);
+
+            transform:
+                translateY(-50%)
+                scale(1.06);
 
         }
 
 
-        .reel-fallback i {
+        .reel-arrow.left {
 
-            font-size:
-                32px;
-
-            color:
-                var(--gold-2);
-
-            margin-bottom:
-                12px;
+            left:
+                calc(50% - 230px);
 
         }
 
 
-        .reel-fallback strong {
+        .reel-arrow.right {
 
-            font-size:
+            right:
+                calc(50% - 230px);
+
+        }
+
+
+        .reel-counter {
+
+            text-align:
+                center;
+
+            margin-top:
                 14px;
 
-            margin-bottom:
-                6px;
+            color:
+                var(--navy);
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
 
         }
 
 
-        .reel-fallback span {
+        .reel-counter span {
+
+            color:
+                var(--gold);
+
+        }
+
+
+        .reel-audio-note {
+
+            text-align:
+                center;
+
+            margin-top:
+                6px;
+
+            color:
+                var(--muted);
 
             font-size:
                 11px;
-
-            color:
-                rgba(255,255,255,0.70);
 
         }
 
@@ -1629,7 +1720,6 @@
         }
 
 
-        .about-content > p,
         .about-content #aboutText p {
 
             color:
@@ -1752,9 +1842,6 @@
             color:
                 white;
 
-            overflow:
-                hidden;
-
         }
 
 
@@ -1784,7 +1871,8 @@
                 20px 25px;
 
             border-right:
-                1px solid rgba(255,255,255,0.20);
+                1px solid
+                rgba(255,255,255,0.20);
 
         }
 
@@ -2688,6 +2776,7 @@
 
         /* =====================================================
            FOOTER
+           No social icons here.
         ====================================================== */
 
         footer {
@@ -2710,7 +2799,7 @@
                 grid;
 
             grid-template-columns:
-                1.3fr 0.85fr 1fr 1.15fr;
+                1.35fr 0.85fr 1fr 1.15fr;
 
             gap:
                 40px;
@@ -2724,10 +2813,13 @@
         .footer-brand-logo {
 
             width:
-                260px;
+                300px;
 
-            max-height:
-                75px;
+            height:
+                82px;
+
+            max-width:
+                100%;
 
             object-fit:
                 contain;
@@ -2899,29 +2991,62 @@
 
         @media (max-width: 1100px) {
 
+            .brand {
+
+                min-width:
+                    350px;
+
+            }
+
+
+            .brand-logo {
+
+                width:
+                    350px;
+
+                height:
+                    92px;
+
+            }
+
+
             .top-socials {
+
                 display:
                     none;
+
             }
+
 
             .service-grid {
+
                 grid-template-columns:
                     repeat(2,1fr);
+
             }
+
 
             .reel-grid {
+
                 grid-template-columns:
                     repeat(4,1fr);
+
             }
+
 
             .industry-grid {
+
                 grid-template-columns:
                     repeat(3,1fr);
+
             }
 
+
             .footer-grid {
+
                 grid-template-columns:
                     repeat(2,1fr);
+
             }
 
         }
@@ -2930,33 +3055,53 @@
         @media (max-width: 850px) {
 
             .header-top {
+
                 min-height:
-                    78px;
+                    94px;
+
             }
+
 
             .brand {
+
                 min-width:
                     auto;
+
             }
+
 
             .brand-logo {
+
+                width:
+                    315px;
+
                 height:
-                    65px;
+                    80px;
+
                 max-width:
-                    270px;
+                    73vw;
+
             }
+
 
             .top-contact {
+
                 display:
                     none;
+
             }
+
 
             .nav-inner {
+
                 justify-content:
                     flex-end;
+
             }
 
+
             .nav-menu {
+
                 display:
                     none;
 
@@ -2970,7 +3115,7 @@
                     4%;
 
                 top:
-                    126px;
+                    147px;
 
                 background:
                     white;
@@ -2998,52 +3143,86 @@
 
             }
 
+
             .nav-menu.active {
+
                 display:
                     flex;
+
             }
+
 
             .nav-menu a {
+
                 padding:
                     11px;
+
             }
 
+
             .menu-btn {
+
                 display:
                     grid;
 
                 place-items:
                     center;
+
             }
 
-            .hero-grid {
-                grid-template-columns:
-                    1fr;
+
+            .hero {
+
+                min-height:
+                    650px;
+
             }
+
+
+            .hero-content {
+
+                padding:
+                    70px 0 105px;
+
+            }
+
 
             .hero-features {
+
                 grid-template-columns:
                     repeat(2,1fr);
+
             }
+
 
             .services-intro,
             .about-grid,
             .contact-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
+
 
             .about-visual {
+
                 min-height:
                     350px;
+
             }
+
 
             .trust-inner {
+
                 grid-template-columns:
                     repeat(2,1fr);
+
             }
 
+
             .trust-cta {
+
                 grid-column:
                     1 / -1;
 
@@ -3053,29 +3232,50 @@
 
                 text-align:
                     center;
+
             }
+
 
             .why-grid {
+
                 grid-template-columns:
                     repeat(2,1fr);
+
             }
+
 
             .process-grid {
+
                 grid-template-columns:
                     repeat(2,1fr);
+
             }
 
-            .reel-grid {
-                grid-template-columns:
-                    repeat(3,1fr);
+
+            .reel-arrow.left {
+
+                left:
+                    18px;
+
             }
+
+
+            .reel-arrow.right {
+
+                right:
+                    18px;
+
+            }
+
 
             .cta-inner {
+
                 flex-direction:
                     column;
 
                 align-items:
                     flex-start;
+
             }
 
         }
@@ -3084,118 +3284,234 @@
         @media (max-width: 600px) {
 
             .container {
+
                 width:
                     94%;
+
             }
 
-            .brand-logo {
-                height:
-                    57px;
-
-                max-width:
-                    245px;
-            }
 
             .header-top {
+
                 min-height:
-                    70px;
+                    80px;
+
             }
+
+
+            .brand-logo {
+
+                width:
+                    280px;
+
+                height:
+                    70px;
+
+                max-width:
+                    78vw;
+
+            }
+
 
             .nav-menu {
+
                 top:
-                    116px;
+                    133px;
+
             }
 
+
             .hero {
+
                 min-height:
                     690px;
 
                 background-position:
                     68% center;
+
             }
+
 
             .hero h1 {
+
                 font-size:
                     42px;
+
             }
+
 
             .hero-tagline {
+
                 font-size:
                     18px;
+
             }
+
 
             .hero-description {
+
                 font-size:
                     15px;
+
             }
+
 
             .hero-features {
+
                 grid-template-columns:
                     1fr 1fr;
+
             }
+
 
             .service-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
 
-            .reel-grid {
-                grid-template-columns:
-                    repeat(2,1fr);
 
-                gap:
-                    12px;
+            .reels {
+
+                padding:
+                    45px 0;
+
             }
+
+
+            .reel-stage {
+
+                width:
+                    235px;
+
+                max-width:
+                    62vw;
+
+            }
+
+
+            .reel-arrow {
+
+                width:
+                    40px;
+
+                height:
+                    40px;
+
+                font-size:
+                    15px;
+
+            }
+
+
+            .reel-arrow.left {
+
+                left:
+                    5px;
+
+            }
+
+
+            .reel-arrow.right {
+
+                right:
+                    5px;
+
+            }
+
+
+            .services-intro h2,
+            .about-content h2,
+            .why-heading h2,
+            .industries-heading h2,
+            .process-title h2,
+            .contact-heading h2 {
+
+                font-size:
+                    32px;
+
+            }
+
 
             .about-visual {
+
                 min-height:
                     300px;
+
             }
+
 
             .about-image-main {
+
+                width:
+                    74%;
+
                 height:
                     225px;
+
             }
+
 
             .about-image-small {
+
                 height:
                     155px;
+
             }
+
 
             .industry-grid {
+
                 grid-template-columns:
                     repeat(2,1fr);
+
             }
+
 
             .industry-card {
+
                 height:
                     150px;
+
             }
 
+
             .trust-inner {
+
                 grid-template-columns:
                     1fr 1fr;
+
             }
+
 
             .why-grid,
             .process-grid,
             .form-grid,
             .footer-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
+
 
             .form-group.full {
+
                 grid-column:
                     auto;
+
             }
 
+
             .footer-bottom {
+
                 flex-direction:
                     column;
 
                 align-items:
                     flex-start;
+
             }
 
         }
@@ -3218,7 +3534,7 @@
     <div class="container header-top">
 
 
-        <!-- LARGER LOGO -->
+        <!-- LARGE LOGO -->
 
         <a href="#home"
            class="brand"
@@ -3229,12 +3545,10 @@
 
 
         <!-- SOCIAL MEDIA
-             APPEARS ONLY ONCE ON WEBSITE -->
+             ONLY ONE LOCATION -->
 
         <div class="top-socials">
 
-
-            <!-- Facebook -->
 
             <a href="https://www.facebook.com/Intellegentsolution"
                target="_blank"
@@ -3247,9 +3561,6 @@
             </a>
 
 
-
-            <!-- Instagram -->
-
             <a href="https://www.instagram.com/assurintellec?utm_source=qr&igsi=MW43Z3M2anZpbHo1"
                target="_blank"
                rel="noopener noreferrer"
@@ -3260,9 +3571,6 @@
 
             </a>
 
-
-
-            <!-- WhatsApp -->
 
             <a href="https://wa.me/message/BFANWJ2N3FWOP1"
                target="_blank"
@@ -3275,9 +3583,6 @@
             </a>
 
 
-
-            <!-- X -->
-
             <a href="https://x.com/AssurIntellec"
                target="_blank"
                rel="noopener noreferrer"
@@ -3288,9 +3593,6 @@
 
             </a>
 
-
-
-            <!-- LinkedIn -->
 
             <a href="https://www.linkedin.com/in/assurintellec"
                target="_blank"
@@ -3303,8 +3605,16 @@
             </a>
 
 
+            <a href="https://www.youtube.com/@AssurIntellec"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="YouTube"
+               title="YouTube">
 
-            <!-- Threads -->
+                <i class="fa-brands fa-youtube"></i>
+
+            </a>
+
 
             <a href="https://www.threads.com/@assurintellec"
                target="_blank"
@@ -3317,25 +3627,11 @@
             </a>
 
 
-
-            <!-- YouTube -->
-
-            <a href="https://www.youtube.com/@AssurIntellec"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="YouTube"
-               title="YouTube">
-
-                <i class="fa-brands fa-youtube"></i>
-
-            </a>
-
-
         </div>
 
 
 
-        <!-- PHONE + EMAIL -->
+        <!-- CONTACT -->
 
         <div class="top-contact">
 
@@ -3674,6 +3970,7 @@
         </div>
 
 
+
         <div class="service-grid"
              id="serviceGrid">
 
@@ -3708,9 +4005,7 @@
 
 
             <div class="section-eyebrow">
-
                 AssurIntellec Reels
-
             </div>
 
 
@@ -3724,9 +4019,8 @@
 
             <p>
 
-                Explore short-form pharmaceutical,
-                GMP, laboratory, technology and
-                life-sciences content.
+                Explore pharmaceutical, GMP, laboratory,
+                technology and life-sciences content.
 
             </p>
 
@@ -3735,267 +4029,93 @@
 
 
 
-        <div class="reel-grid">
+        <div class="reel-carousel">
 
 
-            <!-- REEL 01 -->
+            <!-- PREVIOUS -->
 
-            <div class="reel-card">
+            <button
+                class="reel-arrow left"
+                id="prevReel"
+                type="button"
+                aria-label="Previous reel">
 
-                <div class="reel-label">
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+
+
+            <!-- SINGLE VIDEO -->
+
+            <div class="reel-stage">
+
+
+                <div class="reel-label"
+                     id="reelLabel">
+
                     REEL 01
+
                 </div>
 
+
                 <video
+                    id="reelVideo"
                     controls
                     playsinline
-                    preload="metadata"
-                    poster="./images/uploads/hero.jpg">
+                    preload="metadata">
 
                     <source
+                        id="reelSource"
                         src="./videos/reel-01.mp4"
                         type="video/mp4">
 
-                    Your browser does not support video playback.
+                    Your browser does not support HTML5 video.
 
                 </video>
+
 
             </div>
 
 
 
-            <!-- REEL 02 -->
+            <!-- NEXT -->
 
-            <div class="reel-card">
+            <button
+                class="reel-arrow right"
+                id="nextReel"
+                type="button"
+                aria-label="Next reel">
 
-                <div class="reel-label">
-                    REEL 02
-                </div>
+                <i class="fa-solid fa-chevron-right"></i>
 
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/pharmaceutical.jpg">
+            </button>
 
-                    <source
-                        src="./videos/reel-02.mp4"
-                        type="video/mp4">
 
-                    Your browser does not support video playback.
+        </div>
 
-                </video>
 
-            </div>
 
+        <div class="reel-counter">
 
+            Reel
 
-            <!-- REEL 03 -->
+            <span id="currentReelNumber">
+                1
+            </span>
 
-            <div class="reel-card">
+            of
 
-                <div class="reel-label">
-                    REEL 03
-                </div>
+            <span>
+                10
+            </span>
 
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/biotechnology.jpg">
+        </div>
 
-                    <source
-                        src="./videos/reel-03.mp4"
-                        type="video/mp4">
 
-                    Your browser does not support video playback.
+        <div class="reel-audio-note">
 
-                </video>
-
-            </div>
-
-
-
-            <!-- REEL 04 -->
-
-            <div class="reel-card">
-
-                <div class="reel-label">
-                    REEL 04
-                </div>
-
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/life-sciences.jpg">
-
-                    <source
-                        src="./videos/reel-04.mp4"
-                        type="video/mp4">
-
-                    Your browser does not support video playback.
-
-                </video>
-
-            </div>
-
-
-
-            <!-- REEL 05 -->
-
-            <div class="reel-card">
-
-                <div class="reel-label">
-                    REEL 05
-                </div>
-
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/contract-manufacturing.jpg">
-
-                    <source
-                        src="./videos/reel-05.mp4"
-                        type="video/mp4">
-
-                    Your browser does not support video playback.
-
-                </video>
-
-            </div>
-
-
-
-            <!-- REEL 06 -->
-
-            <div class="reel-card">
-
-                <div class="reel-label">
-                    REEL 06
-                </div>
-
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/research.jpg">
-
-                    <source
-                        src="./videos/reel-06.mp4"
-                        type="video/mp4">
-
-                    Your browser does not support video playback.
-
-                </video>
-
-            </div>
-
-
-
-            <!-- REEL 07 -->
-
-            <div class="reel-card">
-
-                <div class="reel-label">
-                    REEL 07
-                </div>
-
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/healthcare.jpg">
-
-                    <source
-                        src="./videos/reel-07.mp4"
-                        type="video/mp4">
-
-                    Your browser does not support video playback.
-
-                </video>
-
-            </div>
-
-
-
-            <!-- REEL 08 -->
-
-            <div class="reel-card">
-
-                <div class="reel-label">
-                    REEL 08
-                </div>
-
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/about-lab.jpg">
-
-                    <source
-                        src="./videos/reel-08.mp4"
-                        type="video/mp4">
-
-                    Your browser does not support video playback.
-
-                </video>
-
-            </div>
-
-
-
-            <!-- REEL 09 -->
-
-            <div class="reel-card">
-
-                <div class="reel-label">
-                    REEL 09
-                </div>
-
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/about-research.jpg">
-
-                    <source
-                        src="./videos/reel-09.mp4"
-                        type="video/mp4">
-
-                    Your browser does not support video playback.
-
-                </video>
-
-            </div>
-
-
-
-            <!-- REEL 10 -->
-
-            <div class="reel-card">
-
-                <div class="reel-label">
-                    REEL 10
-                </div>
-
-                <video
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="./images/uploads/hero.jpg">
-
-                    <source
-                        src="./videos/reel-10.mp4"
-                        type="video/mp4">
-
-                    Your browser does not support video playback.
-
-                </video>
-
-            </div>
-
+            ▶ Press Play to hear the original reel voice/audio.
 
         </div>
 
@@ -4024,13 +4144,13 @@
             <img
                 src="./images/uploads/about-lab.jpg"
                 class="about-image-main"
-                alt="Pharmaceutical manufacturing facility">
+                alt="Pharmaceutical laboratory">
 
 
             <img
                 src="./images/uploads/about-research.jpg"
                 class="about-image-small"
-                alt="Pharmaceutical research laboratory">
+                alt="Pharmaceutical research">
 
 
             <div class="about-gold-shape"></div>
@@ -4044,9 +4164,7 @@
 
 
             <div class="section-eyebrow">
-
                 About AssurIntellec
-
             </div>
 
 
@@ -4210,7 +4328,7 @@
 
 
 <!-- =====================================================
-     TRUST STRIP
+     TRUST
 ====================================================== -->
 
 <section class="trust-strip">
@@ -4285,6 +4403,7 @@
                 Let's Build Together
             </small>
 
+
             <h3>
                 Your Trusted Partner
                 in Pharma Success
@@ -4355,7 +4474,9 @@
 
 
                 <div class="why-icon">
+
                     <i class="fa-solid fa-shield-halved"></i>
+
                 </div>
 
 
@@ -4378,7 +4499,9 @@
 
 
                 <div class="why-icon">
+
                     <i class="fa-solid fa-lightbulb"></i>
+
                 </div>
 
 
@@ -4401,7 +4524,9 @@
 
 
                 <div class="why-icon">
+
                     <i class="fa-solid fa-handshake"></i>
+
                 </div>
 
 
@@ -4424,7 +4549,9 @@
 
 
                 <div class="why-icon">
+
                     <i class="fa-solid fa-globe"></i>
+
                 </div>
 
 
@@ -4549,7 +4676,7 @@
 
                 <img
                     src="./images/uploads/research.jpg"
-                    alt="Research and Academic">
+                    alt="Research">
 
                 <div class="industry-name">
                     Research & Academic
@@ -4803,8 +4930,6 @@
         <div class="contact-grid">
 
 
-            <!-- CONTACT DETAILS -->
-
             <div class="contact-info">
 
 
@@ -4816,7 +4941,6 @@
                 <div class="contact-subtitle">
                     Pharmaceutical & Life Sciences Solutions
                 </div>
-
 
 
                 <div class="contact-list">
@@ -4834,7 +4958,6 @@
                     </a>
 
 
-
                     <a class="contact-link"
                        href="mailto:info@assurintellec.com">
 
@@ -4845,7 +4968,6 @@
                         </span>
 
                     </a>
-
 
 
                     <a class="contact-link"
@@ -4869,12 +4991,11 @@
 
 
 
-            <!-- CONTACT FORM -->
-
-            <form class="contact-form"
-                  action="mailto:info@assurintellec.com"
-                  method="post"
-                  enctype="text/plain">
+            <form
+                class="contact-form"
+                action="mailto:info@assurintellec.com"
+                method="post"
+                enctype="text/plain">
 
 
                 <div class="form-grid">
@@ -4882,9 +5003,11 @@
 
                     <div class="form-group">
 
+
                         <label for="name">
                             Name
                         </label>
+
 
                         <input
                             type="text"
@@ -4893,15 +5016,18 @@
                             placeholder="Your name"
                             required>
 
+
                     </div>
 
 
 
                     <div class="form-group">
 
+
                         <label for="company">
                             Company / Organization
                         </label>
+
 
                         <input
                             type="text"
@@ -4909,15 +5035,18 @@
                             name="Company"
                             placeholder="Company name">
 
+
                     </div>
 
 
 
                     <div class="form-group">
 
+
                         <label for="email">
                             Email
                         </label>
+
 
                         <input
                             type="email"
@@ -4926,15 +5055,18 @@
                             placeholder="you@example.com"
                             required>
 
+
                     </div>
 
 
 
                     <div class="form-group">
 
+
                         <label for="phone">
                             Phone
                         </label>
+
 
                         <input
                             type="tel"
@@ -4942,15 +5074,18 @@
                             name="Phone"
                             placeholder="Phone number">
 
+
                     </div>
 
 
 
                     <div class="form-group full">
 
+
                         <label for="service">
                             Service Required
                         </label>
+
 
                         <select
                             id="service"
@@ -5004,15 +5139,18 @@
 
                         </select>
 
+
                     </div>
 
 
 
                     <div class="form-group full">
 
+
                         <label for="message">
                             Message
                         </label>
+
 
                         <textarea
                             id="message"
@@ -5020,11 +5158,13 @@
                             placeholder="Briefly describe your requirement..."
                             required></textarea>
 
+
                     </div>
 
 
 
                     <div class="form-group full">
+
 
                         <button
                             type="submit"
@@ -5035,6 +5175,7 @@
                             <i class="fa-solid fa-paper-plane"></i>
 
                         </button>
+
 
                     </div>
 
@@ -5060,6 +5201,7 @@
 
 <!-- =====================================================
      FOOTER
+     NO SOCIAL MEDIA ICONS HERE
 ====================================================== -->
 
 <footer>
@@ -5070,8 +5212,6 @@
 
         <div class="footer-grid">
 
-
-            <!-- BRAND -->
 
             <div class="footer-brand">
 
@@ -5098,8 +5238,6 @@
             </div>
 
 
-
-            <!-- QUICK LINKS -->
 
             <div class="footer-column">
 
@@ -5148,8 +5286,6 @@
 
 
 
-            <!-- SERVICES -->
-
             <div class="footer-column">
 
 
@@ -5191,8 +5327,6 @@
             </div>
 
 
-
-            <!-- CONTACT -->
 
             <div class="footer-column">
 
@@ -5302,26 +5436,28 @@
 
     document
         .querySelectorAll("#navMenu a")
-        .forEach(function(link) {
+        .forEach(
+            function(link) {
 
-            link.addEventListener(
-                "click",
-                function() {
+                link.addEventListener(
+                    "click",
+                    function() {
 
-                    document
-                        .getElementById("navMenu")
-                        .classList
-                        .remove("active");
+                        document
+                            .getElementById("navMenu")
+                            .classList
+                            .remove("active");
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 
 
     /* =====================================================
-       ESCAPE HTML
+       SAFE HTML
     ====================================================== */
 
     function escapeHTML(value) {
@@ -5368,7 +5504,7 @@
 
 
     /* =====================================================
-       RENDER SIMPLE TEXT
+       SIMPLE TEXT
     ====================================================== */
 
     function renderSimpleText(value) {
@@ -5409,12 +5545,13 @@
 
 
     /* =====================================================
-       LOAD SITE SETTINGS FROM CMS
+       LOAD CMS SITE SETTINGS
     ====================================================== */
 
     async function loadSiteSettings() {
 
         try {
+
 
             const response =
                 await fetch(
@@ -5502,7 +5639,7 @@
 
 
 
-            /* DESCRIPTION */
+            /* HERO DESCRIPTION */
 
             document
                 .getElementById(
@@ -5553,6 +5690,7 @@
                 words.length >= 3
             ) {
 
+
                 const firstPart =
                     words
                         .slice(
@@ -5595,7 +5733,7 @@
 
 
 
-            /* LOGO */
+            /* HEADER + FOOTER LOGO */
 
             const brandArea =
                 document
@@ -5694,7 +5832,7 @@
 
 
     /* =====================================================
-       LOAD SERVICES FROM CMS
+       LOAD CMS SERVICES
     ====================================================== */
 
     async function loadServices() {
@@ -5742,11 +5880,13 @@
                 services.length === 0
             ) {
 
+
                 serviceGrid.innerHTML =
 
                     '<div class="loading">' +
                     'No services available.' +
                     '</div>';
+
 
                 return;
 
@@ -5800,10 +5940,9 @@
 
 
                     const article =
-                        document
-                            .createElement(
-                                "article"
-                            );
+                        document.createElement(
+                            "article"
+                        );
 
 
                     article.className =
@@ -5880,62 +6019,214 @@
 
 
     /* =====================================================
-       VIDEO ERROR HANDLING
+       SINGLE REEL CAROUSEL
     ====================================================== */
 
-    document
-        .querySelectorAll(
-            ".reel-card video"
-        )
-        .forEach(function(video) {
+    const reelVideo =
+        document.getElementById(
+            "reelVideo"
+        );
 
 
-            video.addEventListener(
-                "error",
-                function() {
+    const reelSource =
+        document.getElementById(
+            "reelSource"
+        );
 
 
-                    const card =
-                        video.closest(
-                            ".reel-card"
-                        );
+    const reelLabel =
+        document.getElementById(
+            "reelLabel"
+        );
 
 
-                    if (!card) {
-                        return;
-                    }
+    const currentReelNumber =
+        document.getElementById(
+            "currentReelNumber"
+        );
 
 
-                    const label =
-                        card.querySelector(
-                            ".reel-label"
-                        );
+    const prevReel =
+        document.getElementById(
+            "prevReel"
+        );
 
 
-                    card.innerHTML =
+    const nextReel =
+        document.getElementById(
+            "nextReel"
+        );
 
-                        (label
-                            ? label.outerHTML
-                            : "") +
 
-                        '<div class="reel-fallback">' +
+    const reelFiles = [
 
-                            '<i class="fa-solid fa-film"></i>' +
+        "reel-01.mp4",
+        "reel-02.mp4",
+        "reel-03.mp4",
+        "reel-04.mp4",
+        "reel-05.mp4",
+        "reel-06.mp4",
+        "reel-07.mp4",
+        "reel-08.mp4",
+        "reel-09.mp4",
+        "reel-10.mp4"
 
-                            '<strong>' +
-                                'Reel video not uploaded yet' +
-                            '</strong>' +
+    ];
 
-                            '<span>' +
-                                'Upload the corresponding MP4 file to the videos folder.' +
-                            '</span>' +
 
-                        '</div>';
+    let currentReel =
+        0;
 
-                }
-            );
 
-        });
+
+    function loadReel(index) {
+
+
+        if (
+            !reelVideo ||
+            !reelSource
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            index < 0
+        ) {
+
+            index =
+                reelFiles.length - 1;
+
+        }
+
+
+        if (
+            index >= reelFiles.length
+        ) {
+
+            index =
+                0;
+
+        }
+
+
+        currentReel =
+            index;
+
+
+        /* STOP CURRENT VIDEO */
+
+        reelVideo.pause();
+
+
+        /* REMOVE CURRENT SOURCE */
+
+        reelSource.removeAttribute(
+            "src"
+        );
+
+
+        /* ADD NEW SOURCE */
+
+        reelSource.src =
+            "./videos/" +
+            reelFiles[currentReel];
+
+
+        /* LOAD NEW VIDEO */
+
+        reelVideo.load();
+
+
+        /* UPDATE LABEL */
+
+        if (reelLabel) {
+
+            reelLabel.textContent =
+
+                "REEL " +
+
+                String(
+                    currentReel + 1
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+        }
+
+
+        /* UPDATE COUNTER */
+
+        if (currentReelNumber) {
+
+            currentReelNumber.textContent =
+                currentReel + 1;
+
+        }
+
+    }
+
+
+
+    if (prevReel) {
+
+        prevReel.addEventListener(
+            "click",
+            function() {
+
+                loadReel(
+                    currentReel - 1
+                );
+
+            }
+        );
+
+    }
+
+
+
+    if (nextReel) {
+
+        nextReel.addEventListener(
+            "click",
+            function() {
+
+                loadReel(
+                    currentReel + 1
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* AUTO PREPARE NEXT REEL AFTER END */
+
+    if (reelVideo) {
+
+        reelVideo.addEventListener(
+            "ended",
+            function() {
+
+                loadReel(
+                    currentReel + 1
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* FIRST REEL */
+
+    loadReel(0);
 
 
 
@@ -5953,7 +6244,7 @@
 
 
     /* =====================================================
-       START
+       START CMS
     ====================================================== */
 
     loadSiteSettings();
