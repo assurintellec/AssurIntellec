@@ -1,0 +1,84 @@
+backend:
+  name: turbo-github
+  turbo_site_id: 970e4e24-dfda-4ae1-beec-118e1dc52488
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+
+  - name: "site"
+    label: "Site Settings"
+    files:
+
+      - file: "content/site.json"
+        name: "site_settings"
+        label: "Website Settings"
+
+        fields:
+
+          - label: "Company Name"
+            name: "company_name"
+            widget: "string"
+
+          - label: "Tagline"
+            name: "tagline"
+            widget: "string"
+
+          - label: "Hero Heading"
+            name: "hero_heading"
+            widget: "string"
+
+          - label: "Hero Description"
+            name: "hero_description"
+            widget: "text"
+
+          - label: "About Title"
+            name: "about_title"
+            widget: "string"
+
+          - label: "About Text"
+            name: "about_text"
+            widget: "markdown"
+
+          - label: "Logo"
+            name: "logo"
+            widget: "image"
+            required: false
+
+  - name: "services"
+    label: "Services"
+    files:
+
+      - file: "content/services.json"
+        name: "service_settings"
+        label: "Service Verticals"
+
+        fields:
+
+          - label: "Services"
+            name: "services"
+            widget: "list"
+
+            fields:
+
+              - label: "Number"
+                name: "number"
+                widget: "string"
+
+              - label: "Title"
+                name: "title"
+                widget: "string"
+
+              - label: "Description"
+                name: "description"
+                widget: "text"
+
+              - label: "Service Items"
+                name: "items"
+                widget: "list"
+                field:
+                  label: "Item"
+                  name: "item"
+                  widget: "string"
