@@ -1,0 +1,95 @@
+{
+  "services": [
+    {
+      "number": "01",
+      "title": "GMP Engineering & Compliance",
+      "description": "Practical support for pharmaceutical facilities, systems and compliance requirements.",
+      "items": [
+        "GMP Plant Design",
+        "Facility Planning",
+        "Cleanrooms",
+        "HVAC & Utilities",
+        "GMP Compliance",
+        "Qualification & Validation",
+        "Project Solutions"
+      ]
+    },
+    {
+      "number": "02",
+      "title": "Advisory & Transactions",
+      "description": "Technical and strategic support for pharmaceutical business decisions and opportunities.",
+      "items": [
+        "Pharma Company Buy/Sell",
+        "Medical Store Buy/Sell",
+        "Acquisition & Divestment Advisory",
+        "Technical Due Diligence",
+        "Strategic Advisory"
+      ]
+    },
+    {
+      "number": "03",
+      "title": "Talent & Recruitment",
+      "description": "Connecting pharmaceutical organizations, students and professionals.",
+      "items": [
+        "Student Placement",
+        "Internships",
+        "Pharma Recruitment",
+        "Company Hiring",
+        "Pharmacists & Medical Store Staff",
+        "Manpower Solutions",
+        "Career Guidance"
+      ]
+    },
+    {
+      "number": "04",
+      "title": "Life Sciences Trade",
+      "description": "Sourcing and commercial support for pharmaceutical and life-science materials.",
+      "items": [
+        "APIs",
+        "Excipients",
+        "Pharmaceutical Chemicals",
+        "Raw Materials",
+        "Sourcing",
+        "Trading",
+        "Import & Export"
+      ]
+    },
+    {
+      "number": "05",
+      "title": "Pharma & Laboratory Technologies",
+      "description": "Equipment and procurement support for pharmaceutical manufacturing and laboratory operations.",
+      "items": [
+        "Pharma Machinery",
+        "Production Equipment",
+        "Analytical Instruments",
+        "Laboratory Equipment",
+        "Procurement",
+        "New & Used Equipment",
+        "Buying & Selling"
+      ]
+    },
+    {
+      "number": "06",
+      "title": "Research & Scientific Services",
+      "description": "Scientific support for research, formulation, academic projects and technical communication.",
+      "items": [
+        "Research Guidance",
+        "Formulation Research",
+        "Thesis Guidance",
+        "Scientific Writing",
+        "Manuscript & Publication Support"
+      ]
+    },
+    {
+      "number": "07",
+      "title": "Pharma Solutions & Manufacturing",
+      "description": "Support for manufacturer identification, product development and manufacturing coordination.",
+      "items": [
+        "Third-Party Manufacturing",
+        "Manufacturer Selection",
+        "Product Development Support",
+        "Manufacturing Coordination"
+      ]
+    }
+  ]
+}
