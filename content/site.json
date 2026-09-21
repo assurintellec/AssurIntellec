@@ -385,7 +385,7 @@
     "button_primary": "Explore Services",
     "video_audio_default_enabled": true,
     "button_secondary_url": "./contact.html",
-    "video": "/videos/hero.mp4",
+    "video": "",
     "description": "Comprehensive solutions across pharmaceutical engineering, GMP compliance, advisory, talent, life sciences trade, technology, research and manufacturing support."
   },
   "footer": {
