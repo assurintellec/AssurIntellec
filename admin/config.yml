@@ -1,0 +1,319 @@
+backend:
+  name: turbo-github
+  turbo_site_id: 970e4e24-dfda-4ae1-beec-118e1dc52488
+  branch: main
+  deploy_status: false
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "https://assurintellec.assurintellec.workers.dev"
+display_url: "https://assurintellec.assurintellec.workers.dev"
+
+collections:
+  - label: "Site Settings"
+    name: "site_settings"
+    description: "Edit almost all text, links, images, video settings, theme settings and homepage content from one place."
+    files:
+      - label: "Website Content & Configuration"
+        name: "website"
+        file: "content/site.json"
+        format: json
+        fields:
+          - { label: "Company Name", name: "company_name", widget: "string" }
+          - { label: "Brand Subtitle", name: "brand_subtitle", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Page Title", name: "title", widget: "string" }
+              - { label: "Meta Description", name: "description", widget: "text" }
+
+          - label: "Navigation"
+            name: "navigation"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Home Label", name: "home", widget: "string" }
+              - { label: "About Label", name: "about", widget: "string" }
+              - { label: "Services Label", name: "services", widget: "string" }
+              - { label: "Why Us Label", name: "why_us", widget: "string" }
+              - { label: "Contact Label", name: "contact", widget: "string" }
+
+          - label: "Social Media"
+            name: "social"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Instagram URL", name: "instagram", widget: "string" }
+              - { label: "Facebook URL", name: "facebook", widget: "string" }
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+              - { label: "YouTube URL", name: "youtube", widget: "string" }
+              - { label: "Threads URL", name: "threads", widget: "string" }
+              - { label: "X URL", name: "x", widget: "string" }
+
+          - label: "Contact Details"
+            name: "contact"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Website", name: "website", widget: "string" }
+              - { label: "WhatsApp Direct Message URL", name: "whatsapp", widget: "string" }
+              - { label: "Page Eyebrow", name: "page_eyebrow", widget: "string" }
+              - { label: "Page Title", name: "page_title", widget: "string" }
+              - { label: "Page Description", name: "page_description", widget: "text" }
+              - { label: "Section Heading", name: "heading", widget: "string" }
+              - { label: "Section Description", name: "description", widget: "text" }
+              - { label: "Form Title", name: "form_title", widget: "string" }
+              - { label: "Name Label", name: "form_name_label", widget: "string" }
+              - { label: "Company Label", name: "form_company_label", widget: "string" }
+              - { label: "Email Label", name: "form_email_label", widget: "string" }
+              - { label: "Phone Label", name: "form_phone_label", widget: "string" }
+              - { label: "Requirement Label", name: "form_service_label", widget: "string" }
+              - { label: "Message Label", name: "form_message_label", widget: "string" }
+              - { label: "Name Placeholder", name: "form_name_placeholder", widget: "string" }
+              - { label: "Company Placeholder", name: "form_company_placeholder", widget: "string" }
+              - { label: "Email Placeholder", name: "form_email_placeholder", widget: "string" }
+              - { label: "Phone Placeholder", name: "form_phone_placeholder", widget: "string" }
+              - { label: "Message Placeholder", name: "form_message_placeholder", widget: "string" }
+              - { label: "Form Button", name: "form_button", widget: "string" }
+              - { label: "Website Label", name: "website_label", widget: "string" }
+              - { label: "Phone Label", name: "phone_label", widget: "string" }
+              - { label: "Email Label", name: "email_label", widget: "string" }
+              - { label: "WhatsApp Label", name: "whatsapp_label", widget: "string" }
+              - { label: "WhatsApp Link Text", name: "whatsapp_text", widget: "string" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Company Name in Hero", name: "company_name", widget: "string" }
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Hero Video"
+                name: "video"
+                widget: "file"
+                required: false
+                media_folder: "videos"
+                public_folder: "/videos"
+                hint: "Upload your 60-second MP4 hero video. If blank or unavailable, the poster image is used."
+              - label: "Hero Poster / Fallback Image"
+                name: "poster"
+                widget: "image"
+                required: false
+              - { label: "Primary Button", name: "button_primary", widget: "string" }
+              - { label: "Secondary Button", name: "button_secondary", widget: "string" }
+              - { label: "Sound Toggle Label", name: "video_sound_label", widget: "string" }
+
+          - label: "Homepage"
+            name: "home"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Trust Strip"
+                name: "trust_items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Icon Class", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Supporting Text", name: "text", widget: "string" }
+              - label: "Pharma Visual / Instagram Section"
+                name: "instagram_section"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small Heading", name: "eyebrow", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Instagram Profile Button", name: "view_profile_label", widget: "string" }
+                  - { label: "Previous Arrow Label", name: "prev_label", widget: "string" }
+                  - { label: "Next Arrow Label", name: "next_label", widget: "string" }
+              - label: "About Preview"
+                name: "about_preview"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+                  - label: "Points"
+                    name: "points"
+                    widget: "list"
+                    field: { label: "Point", name: "point", widget: "string" }
+                  - { label: "Left Image", name: "image_1", widget: "image", required: false }
+                  - { label: "Right Image", name: "image_2", widget: "image", required: false }
+                  - { label: "Button", name: "button", widget: "string" }
+              - label: "Services Preview"
+                name: "services_preview"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Button", name: "button", widget: "string" }
+              - label: "Why Us Preview"
+                name: "why_preview"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Button", name: "button", widget: "string" }
+              - label: "Homepage Call To Action"
+                name: "cta"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Button", name: "button", widget: "string" }
+
+          - label: "About Us"
+            name: "about"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Page Title", name: "page_title", widget: "string" }
+              - { label: "Page Description", name: "page_description", widget: "text" }
+              - { label: "Passport / Profile Photo", name: "profile_photo", widget: "image", required: false }
+              - { label: "Name Below Photo", name: "profile_name", widget: "string" }
+              - { label: "Position Below Photo", name: "profile_position", widget: "string" }
+              - label: "Main About Text"
+                name: "main_paragraphs"
+                widget: "list"
+              - { label: "Approach Heading", name: "approach_title", widget: "string" }
+              - { label: "Approach Flow", name: "approach_flow", widget: "string" }
+              - { label: "Closing Statement", name: "closing", widget: "text" }
+
+          - label: "Why Us"
+            name: "why_us"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Page Title", name: "page_title", widget: "string" }
+              - { label: "Page Description", name: "page_description", widget: "text" }
+              - label: "Why Us Cards"
+                name: "cards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Icon Class", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+              - label: "Process"
+                name: "process"
+                widget: "list"
+                summary: "{{fields.number}} - {{fields.title}}"
+                fields:
+                  - { label: "Number", name: "number", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Quick Links Title", name: "quick_links_title", widget: "string" }
+              - { label: "Services Title", name: "services_title", widget: "string" }
+              - { label: "Contact Title", name: "contact_title", widget: "string" }
+              - { label: "Social Title", name: "social_title", widget: "string" }
+              - { label: "Copyright Text", name: "copyright", widget: "string" }
+
+          - label: "Theme & Layout"
+            name: "theme"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Navy", name: "navy", widget: "string" }
+              - { label: "Blue", name: "blue", widget: "string" }
+              - { label: "Secondary Blue", name: "blue2", widget: "string" }
+              - { label: "Gold", name: "gold", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Muted Text", name: "muted", widget: "string" }
+              - { label: "Light Background", name: "light", widget: "string" }
+              - { label: "Light 2 Background", name: "light2", widget: "string" }
+              - { label: "Border", name: "border", widget: "string" }
+              - { label: "Container Max Width", name: "container_max", widget: "number", value_type: "int", min: 900, max: 1600, step: 10 }
+              - { label: "Header Logo Width", name: "header_logo_width", widget: "number", value_type: "int", min: 220, max: 700, step: 5 }
+              - { label: "Hero Minimum Height", name: "hero_min_height", widget: "number", value_type: "int", min: 500, max: 1000, step: 10 }
+              - { label: "Hero Overlay Opacity", name: "hero_overlay_opacity", widget: "number", value_type: "float", min: 0.1, max: 1, step: 0.05 }
+              - { label: "Instagram Width", name: "instagram_width", widget: "number", value_type: "int", min: 240, max: 420, step: 10 }
+              - { label: "Base Font Size", name: "base_font_size", widget: "number", value_type: "int", min: 14, max: 20, step: 1 }
+
+          - label: "Media Assets"
+            name: "media_assets"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "Hero Video", name: "hero_video", widget: "file", required: false, media_folder: "videos", public_folder: "/videos" }
+              - { label: "Hero Poster", name: "hero_poster", widget: "image", required: false }
+              - { label: "Passport / Profile Photo", name: "profile_photo", widget: "image", required: false }
+              - { label: "About Lab Photo", name: "about_lab", widget: "image", required: false }
+              - { label: "About Research Photo", name: "about_research", widget: "image", required: false }
+              - { label: "Pharmaceutical Photo", name: "pharmaceutical", widget: "image", required: false }
+              - { label: "Biotechnology Photo", name: "biotechnology", widget: "image", required: false }
+              - { label: "Life Sciences Photo", name: "life_sciences", widget: "image", required: false }
+              - { label: "Contract Manufacturing Photo", name: "contract_manufacturing", widget: "image", required: false }
+              - { label: "Research Photo", name: "research", widget: "image", required: false }
+              - { label: "Healthcare Photo", name: "healthcare", widget: "image", required: false }
+
+          - label: "Instagram Reels"
+            name: "instagram_reels"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Display Title", name: "title", widget: "string" }
+              - { label: "Public Instagram Reel URL", name: "url", widget: "string", required: false, hint: "Paste the full public Reel URL, e.g. https://www.instagram.com/reel/ABC123/" }
+
+  - label: "Services"
+    name: "services"
+    files:
+      - label: "All 7 Services"
+        name: "all_services"
+        file: "content/services.json"
+        format: json
+        fields:
+          - label: "Service List"
+            name: "services"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Slug", name: "slug", widget: "string", hint: "Keep the existing slug unless you also rename the matching service-*.html page." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Icon Class", name: "icon", widget: "string" }
+              - { label: "Short Description", name: "description", widget: "text" }
+              - label: "Card Bullet Points"
+                name: "card_bullets"
+                widget: "list"
+              - { label: "Page Eyebrow", name: "page_eyebrow", widget: "string" }
+              - { label: "Page Title", name: "page_title", widget: "string" }
+              - { label: "Page Description", name: "page_description", widget: "text" }
+              - { label: "Intro Heading", name: "intro_title", widget: "string" }
+              - { label: "Intro Text", name: "intro", widget: "text" }
+              - { label: "Optional Service Image", name: "image", widget: "image", required: false }
+              - label: "Detail Sections"
+                name: "sections"
+                widget: "list"
+                summary: "{{fields.heading}}"
+                fields:
+                  - { label: "Section Heading", name: "heading", widget: "string" }
+                  - label: "Paragraphs"
+                    name: "paragraphs"
+                    widget: "list"
+                  - label: "Bullet Points"
+                    name: "bullets"
+                    widget: "list"
+              - { label: "Contact Button Text", name: "cta", widget: "string" }
