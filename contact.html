@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AssurIntellec™</title>
+  <meta name="description" content="AssurIntellec™">
+  <meta name="theme-color" content="#0b1f3a">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="./assets/site.css">
+</head>
+<body data-page="contact">
+<div id="site-header"></div>
+<main>
+  <section class="page-hero"><div class="container"><div class="eyebrow" id="contactEyebrow"></div><h1 id="contactPageTitle"></h1><p id="contactPageDescription"></p></div></section>
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-info"><h2 id="contactHeading"></h2><p id="contactDescription"></p><div class="contact-items" id="contactItems"></div></div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <h3 id="contactFormTitle"></h3>
+        <div class="form-grid">
+          <div class="form-group"><label for="name" id="labelName"></label><input id="name" name="name" type="text" required></div>
+          <div class="form-group"><label for="company" id="labelCompany"></label><input id="company" name="company" type="text"></div>
+          <div class="form-group"><label for="email" id="labelEmail"></label><input id="email" name="email" type="email" required></div>
+          <div class="form-group"><label for="phone" id="labelPhone"></label><input id="phone" name="phone" type="tel"></div>
+          <div class="form-group full"><label for="service" id="labelService"></label><select id="service" name="service" required></select></div>
+          <div class="form-group full"><label for="message" id="labelMessage"></label><textarea id="message" name="message" required></textarea></div>
+          <div class="form-group full"><button type="submit" class="btn btn-primary dark-btn" id="contactSubmitButton"></button></div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<div id="whatsappFloat"></div>
+<div id="siteToast" class="site-toast" role="status" aria-live="polite"></div>
+<script src="./assets/site.js"></script>
+</body>
+</html>
