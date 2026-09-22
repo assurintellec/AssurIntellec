@@ -8,14 +8,18 @@ const FALLBACK_SITE = {
   company_name: 'AssurIntellec™',
   tagline: 'Intelligent Solutions. Assured Compliance.',
   social: { items: [] },
+
   contact: {
     whatsapp: 'https://wa.me/message/BFANWJ2N3FWOP1',
-    email: 'info@assurintellec.in'
+    email: 'info@assurintellec.in',
+    phone: '+91 7600 666 436'
   },
+
   hero: {
     video: '/videos/hero-60sec.mp4',
     poster: '/images/uploads/hero.jpg'
   },
+
   home: {},
   about: {},
   why_us: {},
@@ -24,6 +28,11 @@ const FALLBACK_SITE = {
 };
 
 const FALLBACK_SERVICES = [];
+
+
+/* =========================================================
+   BASIC HELPERS
+========================================================= */
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -36,13 +45,17 @@ function escapeHtml(value) {
 
 function normalizeAsset(value) {
   if (!value) return '';
+
   const s = String(value).trim();
+
   if (!s) return '';
+
   return s.startsWith('/') ? '.' + s : s;
 }
 
 function setText(id, value) {
   const el = document.getElementById(id);
+
   if (el && value !== undefined && value !== null) {
     el.textContent = String(value);
   }
@@ -50,6 +63,7 @@ function setText(id, value) {
 
 function setHref(id, value) {
   const el = document.getElementById(id);
+
   if (el && value) {
     el.href = value;
   }
@@ -70,6 +84,7 @@ function setImg(img, value, alt = 'Image') {
   img.style.display = 'block';
   img.style.opacity = '1';
   img.src = src;
+
   img.onerror = () => showImageFallback(img);
 }
 
@@ -79,12 +94,21 @@ function showImageFallback(img) {
 }
 
 function iconHtml(icon) {
-  return `<i class="fas ${escapeHtml(icon || 'fa-circle-nodes')}"></i>`;
+  return `<i class="fas ${escapeHtml(
+    icon || 'fa-circle-nodes'
+  )}"></i>`;
 }
+
+
+/* =========================================================
+   JSON / CONTENT
+========================================================= */
 
 async function readJson(path, fallback) {
   try {
-    const response = await fetch(path, { cache: 'no-store' });
+    const response = await fetch(path, {
+      cache: 'no-store'
+    });
 
     if (!response.ok) {
       throw new Error(`${path} ${response.status}`);
@@ -106,6 +130,11 @@ function firstFamily(value) {
 
   return first;
 }
+
+
+/* =========================================================
+   GOOGLE FONTS
+========================================================= */
 
 function loadGoogleFonts(theme) {
   const families = [
@@ -140,12 +169,17 @@ function loadGoogleFonts(theme) {
 
   if (!selected.length) return;
 
-  let link = document.getElementById('dynamicGoogleFonts');
+  let link =
+    document.getElementById(
+      'dynamicGoogleFonts'
+    );
 
   if (!link) {
     link = document.createElement('link');
+
     link.id = 'dynamicGoogleFonts';
     link.rel = 'stylesheet';
+
     document.head.appendChild(link);
   }
 
@@ -154,7 +188,10 @@ function loadGoogleFonts(theme) {
     selected
       .map(
         f =>
-          encodeURIComponent(f).replace(/%20/g, '+') +
+          encodeURIComponent(f).replace(
+            /%20/g,
+            '+'
+          ) +
           ':wght@300;400;500;600;700;800'
       )
       .join('&family=') +
@@ -162,6 +199,11 @@ function loadGoogleFonts(theme) {
 
   link.href = href;
 }
+
+
+/* =========================================================
+   THEME
+========================================================= */
 
 function applyTheme(site) {
   const t = site.theme || {};
@@ -184,144 +226,458 @@ function applyTheme(site) {
     header_background: ['--header-bg', 'value'],
 
     container_max: ['--max', 'px'],
-    header_logo_width: ['--logo-width', 'px'],
-    header_logo_height: ['--logo-height', 'px'],
 
-    hero_min_height: ['--hero-height', 'px'],
-    hero_overlay_opacity: ['--hero-overlay', 'value'],
-    instagram_width: ['--instagram-width', 'px'],
+    header_logo_width: [
+      '--logo-width',
+      'px'
+    ],
+
+    header_logo_height: [
+      '--logo-height',
+      'px'
+    ],
+
+    hero_min_height: [
+      '--hero-height',
+      'px'
+    ],
+
+    hero_overlay_opacity: [
+      '--hero-overlay',
+      'value'
+    ],
+
+    instagram_width: [
+      '--instagram-width',
+      'px'
+    ],
 
     base_font_size: ['--base', 'px'],
-    section_spacing: ['--section-spacing', 'px'],
-    card_radius: ['--card-radius', 'px'],
-    social_icon_size: ['--social-icon-size', 'px'],
 
-    header_min_height: ['--header-height', 'px'],
-    nav_gap: ['--nav-gap', 'px'],
-    social_gap: ['--social-gap', 'px'],
-    footer_social_gap: ['--footer-social-gap', 'px'],
+    section_spacing: [
+      '--section-spacing',
+      'px'
+    ],
 
-    hero_content_max: ['--hero-content-max', 'px'],
-    hero_content_padding: ['--hero-content-padding', 'px'],
-    hero_company_size: ['--hero-company-size', 'px'],
-    hero_company_line_height: ['--hero-company-line-height', 'value'],
+    card_radius: [
+      '--card-radius',
+      'px'
+    ],
 
-    hero_heading_size: ['--hero-heading-size', 'px'],
-    hero_heading_line_height: ['--hero-heading-line-height', 'value'],
-    hero_description_size: ['--hero-description-size', 'px'],
-    hero_kicker_size: ['--hero-kicker-size', 'px'],
+    social_icon_size: [
+      '--social-icon-size',
+      'px'
+    ],
 
-    hero_border_width: ['--hero-border-width', 'px'],
-    hero_border_color: ['--hero-border-color', 'value'],
-    hero_sound_size: ['--hero-sound-size', 'px'],
+    header_min_height: [
+      '--header-height',
+      'px'
+    ],
 
-    section_heading_margin: ['--section-heading-margin', 'px'],
-    section_title_size: ['--section-title-size', 'px'],
-    section_description_size: ['--section-description-size', 'px'],
+    nav_gap: [
+      '--nav-gap',
+      'px'
+    ],
 
-    card_title_size: ['--card-title-size', 'px'],
-    card_text_size: ['--card-text-size', 'px'],
+    social_gap: [
+      '--social-gap',
+      'px'
+    ],
 
-    button_font_size: ['--button-font-size', 'px'],
-    button_padding_y: ['--button-padding-y', 'px'],
-    button_padding_x: ['--button-padding-x', 'px'],
-    button_radius: ['--button-radius', 'px'],
+    footer_social_gap: [
+      '--footer-social-gap',
+      'px'
+    ],
 
-    page_hero_padding: ['--page-hero-padding', 'px'],
-    page_hero_title_size: ['--page-hero-title-size', 'px'],
-    page_hero_description_size: ['--page-hero-description-size', 'px'],
+    hero_content_max: [
+      '--hero-content-max',
+      'px'
+    ],
 
-    about_title_size: ['--about-title-size', 'px'],
-    about_text_size: ['--about-text-size', 'px'],
-    about_reel_gap: ['--about-reel-gap', 'px'],
-    instagram_radius: ['--instagram-radius', 'px'],
+    hero_content_padding: [
+      '--hero-content-padding',
+      'px'
+    ],
 
-    instagram_arrow_size: ['--instagram-arrow-size', 'px'],
-    instagram_arrow_button_size: ['--instagram-arrow-button-size', 'px'],
+    hero_company_size: [
+      '--hero-company-size',
+      'px'
+    ],
 
-    profile_card_width: ['--profile-card-width', 'px'],
+    hero_company_line_height: [
+      '--hero-company-line-height',
+      'value'
+    ],
 
-    service_detail_title_size: ['--service-detail-title-size', 'px'],
-    service_detail_text_size: ['--service-detail-text-size', 'px'],
-    service_image_height: ['--service-image-height', 'px'],
+    hero_heading_size: [
+      '--hero-heading-size',
+      'px'
+    ],
 
-    detail_heading_size: ['--detail-heading-size', 'px'],
-    detail_text_size: ['--detail-text-size', 'px'],
+    hero_heading_line_height: [
+      '--hero-heading-line-height',
+      'value'
+    ],
 
-    why_image_height: ['--why-image-height', 'px'],
-    process_image_height: ['--process-image-height', 'px'],
+    hero_description_size: [
+      '--hero-description-size',
+      'px'
+    ],
 
-    process_title_size: ['--process-title-size', 'px'],
-    process_text_size: ['--process-text-size', 'px'],
+    hero_kicker_size: [
+      '--hero-kicker-size',
+      'px'
+    ],
 
-    contact_heading_size: ['--contact-heading-size', 'px'],
-    contact_text_size: ['--contact-text-size', 'px'],
+    hero_border_width: [
+      '--hero-border-width',
+      'px'
+    ],
 
-    form_label_size: ['--form-label-size', 'px'],
+    hero_border_color: [
+      '--hero-border-color',
+      'value'
+    ],
 
-    footer_heading_size: ['--footer-heading-size', 'px'],
-    footer_text_size: ['--footer-text-size', 'px'],
-    footer_bottom_size: ['--footer-bottom-size', 'px'],
+    hero_sound_size: [
+      '--hero-sound-size',
+      'px'
+    ],
 
-    footer_logo_width: ['--footer-logo-width', 'px'],
-    footer_logo_height: ['--footer-logo-height', 'px'],
+    section_heading_margin: [
+      '--section-heading-margin',
+      'px'
+    ],
 
-    whatsapp_size: ['--whatsapp-size', 'px'],
-    whatsapp_right: ['--whatsapp-right', 'px'],
-    whatsapp_bottom: ['--whatsapp-bottom', 'px'],
+    section_title_size: [
+      '--section-title-size',
+      'px'
+    ],
 
-    service_grid_gap: ['--service-grid-gap', 'px'],
-    why_grid_gap: ['--why-grid-gap', 'px'],
-    process_grid_gap: ['--process-grid-gap', 'px'],
+    section_description_size: [
+      '--section-description-size',
+      'px'
+    ],
 
-    card_padding: ['--card-padding', 'px'],
+    card_title_size: [
+      '--card-title-size',
+      'px'
+    ],
 
-    font_body_family: ['--font-body', 'value'],
-    font_heading_family: ['--font-heading', 'value'],
-    font_nav_family: ['--font-nav', 'value'],
-    font_button_family: ['--font-button', 'value'],
+    card_text_size: [
+      '--card-text-size',
+      'px'
+    ],
 
-    font_body_style: ['--body-font-style', 'value'],
-    font_heading_style: ['--font-heading-style', 'value'],
-    font_nav_style: ['--font-nav-style', 'value'],
-    font_button_style: ['--font-button-style', 'value'],
+    button_font_size: [
+      '--button-font-size',
+      'px'
+    ],
 
-    font_body_weight: ['--font-body-weight', 'value'],
-    font_heading_weight: ['--font-heading-weight', 'value'],
-    font_nav_weight: ['--font-nav-weight', 'value'],
-    font_button_weight: ['--font-button-weight', 'value']
+    button_padding_y: [
+      '--button-padding-y',
+      'px'
+    ],
+
+    button_padding_x: [
+      '--button-padding-x',
+      'px'
+    ],
+
+    button_radius: [
+      '--button-radius',
+      'px'
+    ],
+
+    page_hero_padding: [
+      '--page-hero-padding',
+      'px'
+    ],
+
+    page_hero_title_size: [
+      '--page-hero-title-size',
+      'px'
+    ],
+
+    page_hero_description_size: [
+      '--page-hero-description-size',
+      'px'
+    ],
+
+    about_title_size: [
+      '--about-title-size',
+      'px'
+    ],
+
+    about_text_size: [
+      '--about-text-size',
+      'px'
+    ],
+
+    about_reel_gap: [
+      '--about-reel-gap',
+      'px'
+    ],
+
+    instagram_radius: [
+      '--instagram-radius',
+      'px'
+    ],
+
+    instagram_arrow_size: [
+      '--instagram-arrow-size',
+      'px'
+    ],
+
+    instagram_arrow_button_size: [
+      '--instagram-arrow-button-size',
+      'px'
+    ],
+
+    profile_card_width: [
+      '--profile-card-width',
+      'px'
+    ],
+
+    service_detail_title_size: [
+      '--service-detail-title-size',
+      'px'
+    ],
+
+    service_detail_text_size: [
+      '--service-detail-text-size',
+      'px'
+    ],
+
+    service_image_height: [
+      '--service-image-height',
+      'px'
+    ],
+
+    detail_heading_size: [
+      '--detail-heading-size',
+      'px'
+    ],
+
+    detail_text_size: [
+      '--detail-text-size',
+      'px'
+    ],
+
+    why_image_height: [
+      '--why-image-height',
+      'px'
+    ],
+
+    process_image_height: [
+      '--process-image-height',
+      'px'
+    ],
+
+    process_title_size: [
+      '--process-title-size',
+      'px'
+    ],
+
+    process_text_size: [
+      '--process-text-size',
+      'px'
+    ],
+
+    contact_heading_size: [
+      '--contact-heading-size',
+      'px'
+    ],
+
+    contact_text_size: [
+      '--contact-text-size',
+      'px'
+    ],
+
+    form_label_size: [
+      '--form-label-size',
+      'px'
+    ],
+
+    footer_heading_size: [
+      '--footer-heading-size',
+      'px'
+    ],
+
+    footer_text_size: [
+      '--footer-text-size',
+      'px'
+    ],
+
+    footer_bottom_size: [
+      '--footer-bottom-size',
+      'px'
+    ],
+
+    footer_logo_width: [
+      '--footer-logo-width',
+      'px'
+    ],
+
+    footer_logo_height: [
+      '--footer-logo-height',
+      'px'
+    ],
+
+    whatsapp_size: [
+      '--whatsapp-size',
+      'px'
+    ],
+
+    whatsapp_right: [
+      '--whatsapp-right',
+      'px'
+    ],
+
+    whatsapp_bottom: [
+      '--whatsapp-bottom',
+      'px'
+    ],
+
+    service_grid_gap: [
+      '--service-grid-gap',
+      'px'
+    ],
+
+    why_grid_gap: [
+      '--why-grid-gap',
+      'px'
+    ],
+
+    process_grid_gap: [
+      '--process-grid-gap',
+      'px'
+    ],
+
+    card_padding: [
+      '--card-padding',
+      'px'
+    ],
+
+    font_body_family: [
+      '--font-body',
+      'value'
+    ],
+
+    font_heading_family: [
+      '--font-heading',
+      'value'
+    ],
+
+    font_nav_family: [
+      '--font-nav',
+      'value'
+    ],
+
+    font_button_family: [
+      '--font-button',
+      'value'
+    ],
+
+    font_body_style: [
+      '--body-font-style',
+      'value'
+    ],
+
+    font_heading_style: [
+      '--font-heading-style',
+      'value'
+    ],
+
+    font_nav_style: [
+      '--font-nav-style',
+      'value'
+    ],
+
+    font_button_style: [
+      '--font-button-style',
+      'value'
+    ],
+
+    font_body_weight: [
+      '--font-body-weight',
+      'value'
+    ],
+
+    font_heading_weight: [
+      '--font-heading-weight',
+      'value'
+    ],
+
+    font_nav_weight: [
+      '--font-nav-weight',
+      'value'
+    ],
+
+    font_button_weight: [
+      '--font-button-weight',
+      'value'
+    ]
   };
 
-  Object.entries(map).forEach(([key, [cssVar, unit]]) => {
-    const value = t[key];
+  Object.entries(map).forEach(
+    ([key, [cssVar, unit]]) => {
 
-    if (value === undefined || value === null || value === '') {
-      return;
+      const value = t[key];
+
+      if (
+        value === undefined ||
+        value === null ||
+        value === ''
+      ) {
+        return;
+      }
+
+      root.style.setProperty(
+        cssVar,
+        unit === 'value'
+          ? String(value)
+          : `${value}${unit}`
+      );
     }
-
-    root.style.setProperty(
-      cssVar,
-      unit === 'value' ? String(value) : `${value}${unit}`
-    );
-  });
+  );
 
   loadGoogleFonts(t);
 
-  const customCss = String(site.custom_css || '').trim();
+  const customCss =
+    String(site.custom_css || '').trim();
 
-  let customStyle = document.getElementById('customCmsCss');
+  let customStyle =
+    document.getElementById(
+      'customCmsCss'
+    );
 
   if (!customStyle) {
-    customStyle = document.createElement('style');
-    customStyle.id = 'customCmsCss';
-    document.head.appendChild(customStyle);
+
+    customStyle =
+      document.createElement('style');
+
+    customStyle.id =
+      'customCmsCss';
+
+    document.head.appendChild(
+      customStyle
+    );
   }
 
-  customStyle.textContent = customCss;
+  customStyle.textContent =
+    customCss;
 }
 
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
 function socialItems(site) {
-  return Array.isArray(site.social?.items)
+  return Array.isArray(
+    site.social?.items
+  )
     ? site.social.items
         .filter(
           x =>
@@ -333,262 +689,556 @@ function socialItems(site) {
     : [];
 }
 
-function socialHtml(site, location) {
+function socialHtml(
+  site,
+  location
+) {
   return socialItems(site)
     .map(item => {
+
       const color =
         location === 'footer'
-          ? item.footer_color || item.color || '#ffffff'
-          : item.header_color || item.color || '#111111';
+          ? item.footer_color ||
+            item.color ||
+            '#ffffff'
+          : item.header_color ||
+            item.color ||
+            '#111111';
 
-      return `<a
-        class="${escapeHtml(item.class_name || '')}"
-        href="${escapeHtml(item.url)}"
-        target="_blank"
-        rel="noopener"
-        aria-label="${escapeHtml(item.label || item.key || 'Social')}"
-        style="--social-color:${escapeHtml(color)}"
-      >
-        <i class="${escapeHtml(item.icon || 'fa-solid fa-link')}"></i>
-      </a>`;
+      return `
+        <a
+          class="${escapeHtml(
+            item.class_name || ''
+          )}"
+          href="${escapeHtml(
+            item.url
+          )}"
+          target="_blank"
+          rel="noopener"
+          aria-label="${escapeHtml(
+            item.label ||
+            item.key ||
+            'Social'
+          )}"
+          style="--social-color:${escapeHtml(
+            color
+          )}"
+        >
+          <i class="${escapeHtml(
+            item.icon ||
+            'fa-solid fa-link'
+          )}"></i>
+        </a>
+      `;
     })
     .join('');
 }
 
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 function renderHeader(site) {
+
   const n = site.navigation || {};
   const ui = site.ui || {};
-  const visibility = site.section_visibility || {};
+  const visibility =
+    site.section_visibility || {};
 
-  const logo = normalizeAsset(
-    site.media_assets?.logo ||
-    '/images/uploads/logo_transparent_png_tm.png'
-  );
+  const logo =
+    normalizeAsset(
+      site.media_assets?.logo ||
+      '/images/uploads/logo_transparent_png_tm.png'
+    );
 
   const social =
     visibility.header_social === false
       ? ''
-      : `<div class="social-top">${socialHtml(site, 'header')}</div>`;
+      : `
+        <div class="social-top">
+          ${socialHtml(
+            site,
+            'header'
+          )}
+        </div>
+      `;
 
   const html = `
     <header>
+
       <div class="container navbar">
 
         <a
           href="./index.html"
           class="brand"
-          aria-label="${escapeHtml(site.company_name || 'AssurIntellec™')}"
+          aria-label="${escapeHtml(
+            site.company_name ||
+            'AssurIntellec™'
+          )}"
         >
+
           <img
             class="brand-logo"
-            src="${escapeHtml(logo)}"
-            alt="${escapeHtml(site.company_name || 'AssurIntellec™')}"
+            src="${escapeHtml(
+              logo
+            )}"
+            alt="${escapeHtml(
+              site.company_name ||
+              'AssurIntellec™'
+            )}"
             onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
           >
+
           <div class="brand-fallback">
-            ${escapeHtml(site.company_name || 'AssurIntellec™')}
+            ${escapeHtml(
+              site.company_name ||
+              'AssurIntellec™'
+            )}
           </div>
+
         </a>
 
         <nav id="mainNav">
-          <a href="./index.html">${escapeHtml(n.home || 'Home')}</a>
-          <a href="./about.html">${escapeHtml(n.about || 'About Us')}</a>
-          <a href="./services.html">${escapeHtml(n.services || 'Services')}</a>
-          <a href="./why-us.html">${escapeHtml(n.why_us || 'Why Us')}</a>
-          <a href="./contact.html">${escapeHtml(n.contact || 'Contact Us')}</a>
+
+          <a href="./index.html">
+            ${escapeHtml(
+              n.home || 'Home'
+            )}
+          </a>
+
+          <a href="./about.html">
+            ${escapeHtml(
+              n.about || 'About Us'
+            )}
+          </a>
+
+          <a href="./services.html">
+            ${escapeHtml(
+              n.services || 'Services'
+            )}
+          </a>
+
+          <a href="./why-us.html">
+            ${escapeHtml(
+              n.why_us || 'Why Us'
+            )}
+          </a>
+
+          <a href="./contact.html">
+            ${escapeHtml(
+              n.contact || 'Contact Us'
+            )}
+          </a>
+
           ${social}
+
         </nav>
 
         <button
           class="menu-toggle"
           id="menuToggle"
           type="button"
-          aria-label="${escapeHtml(ui.menu_open_label || 'Open navigation')}"
-          title="${escapeHtml(ui.menu_open_label || 'Open navigation')}"
+          aria-label="${escapeHtml(
+            ui.menu_open_label ||
+            'Open navigation'
+          )}"
+          title="${escapeHtml(
+            ui.menu_open_label ||
+            'Open navigation'
+          )}"
         >
           <i class="fas fa-bars"></i>
         </button>
 
       </div>
+
     </header>
   `;
 
-  const holder = document.getElementById('site-header');
+  const holder =
+    document.getElementById(
+      'site-header'
+    );
 
   if (holder) {
     holder.innerHTML = html;
   }
 
-  const toggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('mainNav');
+  const toggle =
+    document.getElementById(
+      'menuToggle'
+    );
 
-  toggle?.addEventListener('click', () => {
-    nav.classList.toggle('active');
+  const nav =
+    document.getElementById(
+      'mainNav'
+    );
 
-    const open = nav.classList.contains('active');
-    const icon = toggle.querySelector('i');
+  toggle?.addEventListener(
+    'click',
+    () => {
 
-    if (icon) {
-      icon.className = open
-        ? 'fas fa-xmark'
-        : 'fas fa-bars';
+      nav.classList.toggle(
+        'active'
+      );
+
+      const open =
+        nav.classList.contains(
+          'active'
+        );
+
+      const icon =
+        toggle.querySelector(
+          'i'
+        );
+
+      if (icon) {
+
+        icon.className =
+          open
+            ? 'fas fa-xmark'
+            : 'fas fa-bars';
+      }
+
+      toggle.setAttribute(
+        'aria-label',
+        open
+          ? (
+              ui.menu_close_label ||
+              'Close navigation'
+            )
+          : (
+              ui.menu_open_label ||
+              'Open navigation'
+            )
+      );
+
+      toggle.setAttribute(
+        'title',
+        open
+          ? (
+              ui.menu_close_label ||
+              'Close navigation'
+            )
+          : (
+              ui.menu_open_label ||
+              'Open navigation'
+            )
+      );
     }
-
-    toggle.setAttribute(
-      'aria-label',
-      open
-        ? (ui.menu_close_label || 'Close navigation')
-        : (ui.menu_open_label || 'Open navigation')
-    );
-
-    toggle.setAttribute(
-      'title',
-      open
-        ? (ui.menu_close_label || 'Close navigation')
-        : (ui.menu_open_label || 'Open navigation')
-    );
-  });
+  );
 
   document
-    .querySelectorAll('#mainNav a')
-    .forEach(a =>
-      a.addEventListener(
-        'click',
-        () => nav.classList.remove('active')
-      )
+    .querySelectorAll(
+      '#mainNav a'
+    )
+    .forEach(
+      a =>
+        a.addEventListener(
+          'click',
+          () =>
+            nav.classList.remove(
+              'active'
+            )
+        )
     );
 }
 
-function renderFooter(site, services) {
-  const f = site.footer || {};
-  const n = site.navigation || {};
-  const visibility = site.section_visibility || {};
 
-  const logo = normalizeAsset(
-    site.media_assets?.logo ||
-    '/images/uploads/logo_transparent_png_tm.png'
-  );
+/* =========================================================
+   FOOTER
+========================================================= */
 
-  const serviceLinks = services
-    .slice(0, 7)
-    .map(
-      s =>
-        `<li>
-          <a href="./${escapeHtml(
-            s.page_file || `service-${s.slug}.html`
-          )}">
-            ${escapeHtml(s.title || '')}
-          </a>
-        </li>`
-    )
-    .join('');
+function renderFooter(
+  site,
+  services
+) {
+
+  const f =
+    site.footer || {};
+
+  const n =
+    site.navigation || {};
+
+  const visibility =
+    site.section_visibility || {};
+
+  const logo =
+    normalizeAsset(
+      site.media_assets?.logo ||
+      '/images/uploads/logo_transparent_png_tm.png'
+    );
+
+  const serviceLinks =
+    services
+      .slice(0, 7)
+      .map(
+        s =>
+          `
+            <li>
+              <a
+                href="./${escapeHtml(
+                  s.page_file ||
+                  `service-${s.slug}.html`
+                )}"
+              >
+                ${escapeHtml(
+                  s.title || ''
+                )}
+              </a>
+            </li>
+          `
+      )
+      .join('');
 
   const footerSocial =
     visibility.footer_social === false
       ? ''
-      : `<div class="footer-social">${socialHtml(site, 'footer')}</div>`;
+      : `
+        <div class="footer-social">
+          ${socialHtml(
+            site,
+            'footer'
+          )}
+        </div>
+      `;
 
-  const holder = document.getElementById('site-footer');
+  const holder =
+    document.getElementById(
+      'site-footer'
+    );
 
   if (!holder) return;
 
   holder.innerHTML = `
     <footer>
+
       <div class="container">
 
         <div class="footer-grid">
 
           <div class="footer-brand">
+
             <img
               class="footer-logo"
-              src="${escapeHtml(logo)}"
-              alt="${escapeHtml(site.company_name || 'AssurIntellec™')}"
+              src="${escapeHtml(
+                logo
+              )}"
+              alt="${escapeHtml(
+                site.company_name ||
+                'AssurIntellec™'
+              )}"
             >
-            <p>${escapeHtml(f.description || '')}</p>
+
+            <p>
+              ${escapeHtml(
+                f.description || ''
+              )}
+            </p>
+
           </div>
 
           <div>
-            <h4>${escapeHtml(f.quick_links_title || 'Quick Links')}</h4>
+
+            <h4>
+              ${escapeHtml(
+                f.quick_links_title ||
+                'Quick Links'
+              )}
+            </h4>
 
             <ul class="footer-links">
-              <li><a href="./index.html">${escapeHtml(n.home || 'Home')}</a></li>
-              <li><a href="./about.html">${escapeHtml(n.about || 'About Us')}</a></li>
-              <li><a href="./services.html">${escapeHtml(n.services || 'Services')}</a></li>
-              <li><a href="./why-us.html">${escapeHtml(n.why_us || 'Why Us')}</a></li>
-              <li><a href="./contact.html">${escapeHtml(n.contact || 'Contact Us')}</a></li>
+
+              <li>
+                <a href="./index.html">
+                  ${escapeHtml(
+                    n.home || 'Home'
+                  )}
+                </a>
+              </li>
+
+              <li>
+                <a href="./about.html">
+                  ${escapeHtml(
+                    n.about ||
+                    'About Us'
+                  )}
+                </a>
+              </li>
+
+              <li>
+                <a href="./services.html">
+                  ${escapeHtml(
+                    n.services ||
+                    'Services'
+                  )}
+                </a>
+              </li>
+
+              <li>
+                <a href="./why-us.html">
+                  ${escapeHtml(
+                    n.why_us ||
+                    'Why Us'
+                  )}
+                </a>
+              </li>
+
+              <li>
+                <a href="./contact.html">
+                  ${escapeHtml(
+                    n.contact ||
+                    'Contact Us'
+                  )}
+                </a>
+              </li>
+
             </ul>
+
           </div>
 
           <div>
-            <h4>${escapeHtml(f.services_title || 'Services')}</h4>
-            <ul class="footer-links">${serviceLinks}</ul>
+
+            <h4>
+              ${escapeHtml(
+                f.services_title ||
+                'Services'
+              )}
+            </h4>
+
+            <ul class="footer-links">
+              ${serviceLinks}
+            </ul>
+
           </div>
 
           <div>
-            <h4>${escapeHtml(f.social_title || 'Connect')}</h4>
+
+            <h4>
+              ${escapeHtml(
+                f.social_title ||
+                'Connect'
+              )}
+            </h4>
+
             ${footerSocial}
 
             <h4 style="margin-top:20px">
-              ${escapeHtml(f.contact_title || 'Contact')}
+
+              ${escapeHtml(
+                f.contact_title ||
+                'Contact'
+              )}
+
             </h4>
 
             <div class="footer-contact">
 
               <a
                 href="tel:${escapeHtml(
-                  String(site.contact?.phone || '').replace(/\s+/g, '')
+                  String(
+                    site.contact?.phone ||
+                    ''
+                  ).replace(
+                    /\s+/g,
+                    ''
+                  )
                 )}"
               >
-                ${escapeHtml(site.contact?.phone || '')}
+                ${escapeHtml(
+                  site.contact?.phone ||
+                  ''
+                )}
               </a>
 
               <a
-                href="mailto:${escapeHtml(site.contact?.email || '')}"
+                href="mailto:${escapeHtml(
+                  site.contact?.email ||
+                  ''
+                )}"
               >
-                ${escapeHtml(site.contact?.email || '')}
+                ${escapeHtml(
+                  site.contact?.email ||
+                  ''
+                )}
               </a>
 
               <a
-                href="${escapeHtml(site.contact?.website || '#')}"
+                href="${escapeHtml(
+                  site.contact?.website ||
+                  '#'
+                )}"
                 target="_blank"
                 rel="noopener"
               >
-                ${escapeHtml(site.contact?.website || '')}
+                ${escapeHtml(
+                  site.contact?.website ||
+                  ''
+                )}
               </a>
 
             </div>
+
           </div>
 
         </div>
 
         <div class="footer-bottom">
+
           <p>
             © ${new Date().getFullYear()}
-            ${escapeHtml(site.company_name || 'AssurIntellec™')}.
-            ${escapeHtml(f.copyright || '')}
+            ${escapeHtml(
+              site.company_name ||
+              'AssurIntellec™'
+            )}.
+            ${escapeHtml(
+              f.copyright || ''
+            )}
           </p>
 
-          <p>${escapeHtml(site.tagline || '')}</p>
+          <p>
+            ${escapeHtml(
+              site.tagline || ''
+            )}
+          </p>
+
         </div>
 
       </div>
+
     </footer>
   `;
 }
 
+
+/* =========================================================
+   FLOATING WHATSAPP
+========================================================= */
+
 function renderWhatsApp(site) {
-  const holder = document.getElementById('whatsappFloat');
+
+  const holder =
+    document.getElementById(
+      'whatsappFloat'
+    );
 
   if (!holder) return;
 
-  if (site.section_visibility?.floating_whatsapp === false) {
+  if (
+    site.section_visibility
+      ?.floating_whatsapp === false
+  ) {
+
     holder.innerHTML = '';
     return;
   }
 
-  const c = site.contact || {};
+  const c =
+    site.contact || {};
 
   if (!c.whatsapp) {
+
     holder.innerHTML = '';
     return;
   }
@@ -596,46 +1246,75 @@ function renderWhatsApp(site) {
   holder.innerHTML = `
     <a
       class="whatsapp-float"
-      href="${escapeHtml(c.whatsapp)}"
+      href="${escapeHtml(
+        c.whatsapp
+      )}"
       target="_blank"
       rel="noopener"
       aria-label="${escapeHtml(
-        c.whatsapp_label || 'WhatsApp'
+        c.whatsapp_label ||
+        'WhatsApp'
       )}"
       title="${escapeHtml(
-        c.whatsapp_text || 'Start WhatsApp conversation'
+        c.whatsapp_text ||
+        'Start WhatsApp conversation'
       )}"
     >
+
       <i class="fab fa-whatsapp"></i>
+
     </a>
   `;
 }
 
+
+/* =========================================================
+   SEO / META
+========================================================= */
+
 function updateMeta(site) {
+
   document.title =
     site.seo?.title ||
     site.company_name ||
     'AssurIntellec™';
 
   const meta =
-    document.querySelector('meta[name="description"]');
+    document.querySelector(
+      'meta[name="description"]'
+    );
 
   if (meta) {
-    meta.content = site.seo?.description || '';
+
+    meta.content =
+      site.seo?.description || '';
   }
 }
 
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
 function normalizeServices(data) {
-  return Array.isArray(data?.services)
+
+  return Array.isArray(
+    data?.services
+  )
     ? data.services
     : Array.isArray(data)
       ? data
       : [];
 }
 
-function renderServiceCards(services) {
+function renderServiceCards(
+  services
+) {
+
   const grid =
-    document.getElementById('servicesGrid');
+    document.getElementById(
+      'servicesGrid'
+    );
 
   if (!grid) return;
 
@@ -643,106 +1322,162 @@ function renderServiceCards(services) {
     SITE?.ui?.service_read_aria ||
     'Open service details';
 
-  grid.innerHTML = services
-    .map((service, index) => {
-
-      const file =
-        service.page_file ||
-        `service-${service.slug}.html`;
-
-      return `
-        <a
-          class="service-card"
-          href="./${escapeHtml(file)}"
-          aria-label="${escapeHtml(
-            `${aria}: ${service.title || ''}`
-          )}"
-        >
-
-          <div class="service-title-content">
-
-            <span class="service-number">
-              ${String(index + 1).padStart(2, '0')}.
-            </span>
-
-            <span class="service-icon">
-              ${iconHtml(service.icon)}
-            </span>
-
-            <h3>${escapeHtml(service.title)}</h3>
-
-          </div>
-
-          <span class="service-read" aria-hidden="true">
-            <i class="fas fa-arrow-right"></i>
-          </span>
-
-        </a>
-      `;
-    })
-    .join('');
-}
-
-function renderWhyPreview(site) {
-  const grid =
-    document.getElementById('whyPreviewGrid');
-
-  if (!grid) return;
-
   grid.innerHTML =
-    (site.why_us?.cards || [])
-      .slice(0, 4)
+    services
       .map(
-        card => `
-          <article class="why-card">
+        (service, index) => {
 
-            <img
-              class="why-card-image"
-              src="${escapeHtml(
-                normalizeAsset(card.image)
+          const file =
+            service.page_file ||
+            `service-${service.slug}.html`;
+
+          return `
+            <a
+              class="service-card"
+              href="./${escapeHtml(
+                file
               )}"
-              alt="${escapeHtml(
-                card.image_alt ||
-                card.title ||
-                ''
+              aria-label="${escapeHtml(
+                `${aria}: ${
+                  service.title || ''
+                }`
               )}"
             >
 
-            <div class="why-card-body">
+              <div class="service-title-content">
 
-              <i class="fas ${escapeHtml(
-                card.icon ||
-                'fa-circle-nodes'
-              )}"></i>
+                <span class="service-number">
+                  ${String(
+                    index + 1
+                  ).padStart(2, '0')}.
+                </span>
 
-              <h3>${escapeHtml(
-                card.title || ''
-              )}</h3>
+                <span class="service-icon">
+                  ${iconHtml(
+                    service.icon
+                  )}
+                </span>
 
-              <p>${escapeHtml(
-                card.text || ''
-              )}</p>
+                <h3>
+                  ${escapeHtml(
+                    service.title
+                  )}
+                </h3>
 
-            </div>
+              </div>
 
-          </article>
-        `
+              <span
+                class="service-read"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-right"></i>
+              </span>
+
+            </a>
+          `;
+        }
       )
       .join('');
 }
 
-function renderHome(site, services) {
-  const h = site.hero || {};
-  const home = site.home || {};
+function renderWhyPreview(
+  site
+) {
+
+  const grid =
+    document.getElementById(
+      'whyPreviewGrid'
+    );
+
+  if (!grid) return;
+
+  grid.innerHTML =
+    (
+      site.why_us?.cards || []
+    )
+      .slice(0, 4)
+      .map(
+        card =>
+          `
+            <article class="why-card">
+
+              <img
+                class="why-card-image"
+                src="${escapeHtml(
+                  normalizeAsset(
+                    card.image
+                  )
+                )}"
+                alt="${escapeHtml(
+                  card.image_alt ||
+                  card.title ||
+                  ''
+                )}"
+              >
+
+              <div class="why-card-body">
+
+                <i class="fas ${escapeHtml(
+                  card.icon ||
+                  'fa-circle-nodes'
+                )}"></i>
+
+                <h3>
+                  ${escapeHtml(
+                    card.title || ''
+                  )}
+                </h3>
+
+                <p>
+                  ${escapeHtml(
+                    card.text || ''
+                  )}
+                </p>
+
+              </div>
+
+            </article>
+          `
+      )
+      .join('');
+}
+
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+function renderHome(
+  site,
+  services
+) {
+
+  const h =
+    site.hero || {};
+
+  const home =
+    site.home || {};
 
   setText(
     'heroCompany',
-    h.company_name || site.company_name
+    h.company_name ||
+    site.company_name
   );
 
-  setText('heroKicker', h.kicker);
-  setText('heroHeading', h.heading);
-  setText('heroDescription', h.description);
+  setText(
+    'heroKicker',
+    h.kicker
+  );
+
+  setText(
+    'heroHeading',
+    h.heading
+  );
+
+  setText(
+    'heroDescription',
+    h.description
+  );
 
   setText(
     'heroPrimaryButton',
@@ -766,11 +1501,18 @@ function renderHome(site, services) {
     './contact.html'
   );
 
+
+  /* HERO VIDEO */
+
   const video =
-    document.getElementById('heroVideo');
+    document.getElementById(
+      'heroVideo'
+    );
 
   const poster =
-    document.getElementById('heroImage');
+    document.getElementById(
+      'heroImage'
+    );
 
   if (video) {
 
@@ -793,7 +1535,8 @@ function renderHome(site, services) {
         src="${escapeHtml(
           normalizeAsset(
             h.video ||
-            site.media_assets?.hero_video ||
+            site.media_assets
+              ?.hero_video ||
             '/videos/hero-60sec.mp4'
           )
         )}"
@@ -813,7 +1556,8 @@ function renderHome(site, services) {
   setImg(
     poster,
     h.poster ||
-      site.media_assets?.hero_poster ||
+      site.media_assets
+        ?.hero_poster ||
       '/images/uploads/hero.jpg',
     h.poster_alt ||
       'Pharmaceutical facility'
@@ -823,38 +1567,47 @@ function renderHome(site, services) {
     poster.style.display = 'none';
   }
 
+
+  /* HERO SOUND BUTTON */
+
   const sound =
-    document.getElementById('heroSound');
-
-  const updateHeroSoundButton = () => {
-
-    if (!sound || !video) return;
-
-    const muted = !!video.muted;
-
-    sound.innerHTML =
-      muted
-        ? '<i class="fas fa-volume-xmark"></i>'
-        : '<i class="fas fa-volume-high"></i>';
-
-    sound.setAttribute(
-      'aria-label',
-      muted
-        ? (
-            h.video_sound_label ||
-            'Enable hero video sound'
-          )
-        : (
-            h.video_mute_label ||
-            'Mute hero video'
-          )
+    document.getElementById(
+      'heroSound'
     );
 
-    sound.setAttribute(
-      'title',
-      sound.getAttribute('aria-label')
-    );
-  };
+  const updateHeroSoundButton =
+    () => {
+
+      if (!sound || !video) return;
+
+      const muted =
+        !!video.muted;
+
+      sound.innerHTML =
+        muted
+          ? '<i class="fas fa-volume-xmark"></i>'
+          : '<i class="fas fa-volume-high"></i>';
+
+      sound.setAttribute(
+        'aria-label',
+        muted
+          ? (
+              h.video_sound_label ||
+              'Enable hero video sound'
+            )
+          : (
+              h.video_mute_label ||
+              'Mute hero video'
+            )
+      );
+
+      sound.setAttribute(
+        'title',
+        sound.getAttribute(
+          'aria-label'
+        )
+      );
+    };
 
   if (sound && video) {
 
@@ -868,19 +1621,24 @@ function renderHome(site, services) {
         'click',
         () => {
 
-          video.muted = !video.muted;
+          video.muted =
+            !video.muted;
+
           video.volume = 1;
 
           updateHeroSoundButton();
 
-          video.play().catch(() => {});
+          video.play().catch(
+            () => {}
+          );
         }
       );
     }
 
     if (video.autoplay) {
 
-      video.play()
+      video
+        .play()
         .then(() => {
           updateHeroSoundButton();
         })
@@ -901,41 +1659,56 @@ function renderHome(site, services) {
     () => {
 
       if (poster) {
-        poster.style.display = 'block';
+        poster.style.display =
+          'block';
       }
-
     }
   );
 
+
+  /* TRUST STRIP */
+
   const trust =
-    document.getElementById('trustGrid');
+    document.getElementById(
+      'trustGrid'
+    );
 
   if (trust) {
 
     trust.innerHTML =
-      (home.trust_items || [])
+      (
+        home.trust_items || []
+      )
         .map(
-          item => `
-            <div class="trust-item">
+          item =>
+            `
+              <div class="trust-item">
 
-              <i class="fas ${escapeHtml(
-                item.icon ||
-                'fa-circle'
-              )}"></i>
+                <i class="fas ${escapeHtml(
+                  item.icon ||
+                  'fa-circle'
+                )}"></i>
 
-              <strong>${escapeHtml(
-                item.title || ''
-              )}</strong>
+                <strong>
+                  ${escapeHtml(
+                    item.title || ''
+                  )}
+                </strong>
 
-              <span>${escapeHtml(
-                item.text || ''
-              )}</span>
+                <span>
+                  ${escapeHtml(
+                    item.text || ''
+                  )}
+                </span>
 
-            </div>
-          `
+              </div>
+            `
         )
         .join('');
   }
+
+
+  /* ABOUT PREVIEW */
 
   const about =
     home.about_preview || {};
@@ -958,7 +1731,8 @@ function renderHome(site, services) {
 
   setText(
     'aboutPreviewButton',
-    about.button || 'About Us'
+    about.button ||
+    'About Us'
   );
 
   setHref(
@@ -975,17 +1749,30 @@ function renderHome(site, services) {
   if (points) {
 
     points.innerHTML =
-      (about.points || [])
+      (
+        about.points || []
+      )
         .map(
-          point => `
-            <div class="about-point">
-              <i class="fas fa-circle-check"></i>
-              <span>${escapeHtml(point)}</span>
-            </div>
-          `
+          point =>
+            `
+              <div class="about-point">
+
+                <i class="fas fa-circle-check"></i>
+
+                <span>
+                  ${escapeHtml(
+                    point
+                  )}
+                </span>
+
+              </div>
+            `
         )
         .join('');
   }
+
+
+  /* SERVICES PREVIEW */
 
   const servicePreview =
     home.services_preview || {};
@@ -1017,7 +1804,12 @@ function renderHome(site, services) {
     './services.html'
   );
 
-  renderServiceCards(services);
+  renderServiceCards(
+    services
+  );
+
+
+  /* WHY US PREVIEW */
 
   const whyPreview =
     home.why_preview || {};
@@ -1051,6 +1843,9 @@ function renderHome(site, services) {
 
   renderWhyPreview(site);
 
+
+  /* CTA */
+
   const cta =
     home.cta || {};
 
@@ -1076,8 +1871,12 @@ function renderHome(site, services) {
     './contact.html'
   );
 
+
+  /* INSTAGRAM */
+
   instagramAudioEnabled =
-    site.home?.instagram_section
+    site.home
+      ?.instagram_section
       ?.audio_default_enabled === true;
 
   renderInstagram(site);
@@ -1085,15 +1884,23 @@ function renderHome(site, services) {
   applyVisibility(site);
 }
 
+
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+
 let instagramEmbedPromise = null;
 
 function instagramId(url) {
+
   const match =
     String(url || '').match(
       /instagram\.com\/(?:reel|reels|p)\/([^/?#]+)/i
     );
 
-  return match ? match[1] : '';
+  return match
+    ? match[1]
+    : '';
 }
 
 function ensureInstagramEmbedScript() {
@@ -1104,7 +1911,9 @@ function ensureInstagramEmbedScript() {
     return Promise.resolve();
   }
 
-  if (instagramEmbedPromise) {
+  if (
+    instagramEmbedPromise
+  ) {
     return instagramEmbedPromise;
   }
 
@@ -1121,32 +1930,49 @@ function ensureInstagramEmbedScript() {
         const check = () => {
 
           if (
-            window.instgrm?.Embeds?.process
+            window.instgrm
+              ?.Embeds
+              ?.process
           ) {
+
             resolve();
+
           } else {
-            setTimeout(check, 100);
+
+            setTimeout(
+              check,
+              100
+            );
           }
         };
 
         check();
+
         return;
       }
 
       const script =
-        document.createElement('script');
+        document.createElement(
+          'script'
+        );
 
       script.async = true;
+
       script.src =
         'https://www.instagram.com/embed.js';
 
       script.dataset.instagramEmbedScript =
         'true';
 
-      script.onload = () => resolve();
-      script.onerror = () => resolve();
+      script.onload = () =>
+        resolve();
 
-      document.head.appendChild(script);
+      script.onerror = () =>
+        resolve();
+
+      document.head.appendChild(
+        script
+      );
     });
 
   return instagramEmbedPromise;
@@ -1155,31 +1981,49 @@ function ensureInstagramEmbedScript() {
 function renderInstagram(site) {
 
   const holder =
-    document.getElementById('instagramReel');
+    document.getElementById(
+      'instagramReel'
+    );
 
   if (!holder) return;
 
   const section =
-    site.home?.instagram_section || {};
+    site.home
+      ?.instagram_section ||
+    {};
 
-  if (section.enabled === false) {
+  if (
+    section.enabled === false
+  ) {
 
     holder.innerHTML = '';
 
     const prev =
-      document.getElementById('instagramPrev');
+      document.getElementById(
+        'instagramPrev'
+      );
 
     const next =
-      document.getElementById('instagramNext');
+      document.getElementById(
+        'instagramNext'
+      );
 
-    if (prev) prev.style.display = 'none';
-    if (next) next.style.display = 'none';
+    if (prev) {
+      prev.style.display = 'none';
+    }
+
+    if (next) {
+      next.style.display = 'none';
+    }
 
     return;
   }
 
   const list =
-    (site.instagram_reels || [])
+    (
+      site.instagram_reels ||
+      []
+    )
       .filter(
         item =>
           item &&
@@ -1189,10 +2033,14 @@ function renderInstagram(site) {
       );
 
   const prev =
-    document.getElementById('instagramPrev');
+    document.getElementById(
+      'instagramPrev'
+    );
 
   const next =
-    document.getElementById('instagramNext');
+    document.getElementById(
+      'instagramNext'
+    );
 
   if (!list.length) {
 
@@ -1201,7 +2049,9 @@ function renderInstagram(site) {
 
         <i class="fab fa-instagram"></i>
 
-        <strong>Instagram Reel</strong>
+        <strong>
+          Instagram Reel
+        </strong>
 
         <span>
           ${escapeHtml(
@@ -1213,8 +2063,13 @@ function renderInstagram(site) {
       </div>
     `;
 
-    if (prev) prev.disabled = true;
-    if (next) next.disabled = true;
+    if (prev) {
+      prev.disabled = true;
+    }
+
+    if (next) {
+      next.disabled = true;
+    }
 
     return;
   }
@@ -1237,9 +2092,12 @@ function renderInstagram(site) {
   holder.innerHTML = `
     <blockquote
       class="instagram-media"
-      data-instgrm-permalink="https://www.instagram.com/reel/${encodeURIComponent(id)}/"
+      data-instgrm-permalink="https://www.instagram.com/reel/${encodeURIComponent(
+        id
+      )}/"
       data-instgrm-version="14"
-      style="background:#fff;border:0;border-radius:0;box-shadow:none;margin:0;padding:0;width:100%;">
+      style="background:#fff;border:0;border-radius:0;box-shadow:none;margin:0;padding:0;width:100%;"
+    >
     </blockquote>
   `;
 
@@ -1285,7 +2143,11 @@ function renderInstagram(site) {
     .then(() => {
 
       try {
-        window.instgrm?.Embeds?.process();
+
+        window.instgrm
+          ?.Embeds
+          ?.process();
+
       } catch (_) {}
 
     });
@@ -1294,12 +2156,19 @@ function renderInstagram(site) {
 function bindInstagramButtons() {
 
   const prev =
-    document.getElementById('instagramPrev');
+    document.getElementById(
+      'instagramPrev'
+    );
 
   const next =
-    document.getElementById('instagramNext');
+    document.getElementById(
+      'instagramNext'
+    );
 
-  if (prev && !prev.dataset.bound) {
+  if (
+    prev &&
+    !prev.dataset.bound
+  ) {
 
     prev.dataset.bound = '1';
 
@@ -1308,30 +2177,46 @@ function bindInstagramButtons() {
       () => {
 
         const list =
-          (SITE?.instagram_reels || [])
+          (
+            SITE
+              ?.instagram_reels ||
+            []
+          )
             .filter(
               item =>
                 item &&
                 item.enabled !== false &&
                 item.url &&
-                instagramId(item.url)
+                instagramId(
+                  item.url
+                )
             );
 
-        if (list.length < 2) return;
+        if (
+          list.length < 2
+        ) {
+          return;
+        }
 
         instagramIndex =
           (
             instagramIndex -
             1 +
             list.length
-          ) % list.length;
+          ) %
+          list.length;
 
-        renderInstagram(SITE);
+        renderInstagram(
+          SITE
+        );
       }
     );
   }
 
-  if (next && !next.dataset.bound) {
+  if (
+    next &&
+    !next.dataset.bound
+  ) {
 
     next.dataset.bound = '1';
 
@@ -1340,28 +2225,46 @@ function bindInstagramButtons() {
       () => {
 
         const list =
-          (SITE?.instagram_reels || [])
+          (
+            SITE
+              ?.instagram_reels ||
+            []
+          )
             .filter(
               item =>
                 item &&
                 item.enabled !== false &&
                 item.url &&
-                instagramId(item.url)
+                instagramId(
+                  item.url
+                )
             );
 
-        if (list.length < 2) return;
+        if (
+          list.length < 2
+        ) {
+          return;
+        }
 
         instagramIndex =
           (
             instagramIndex +
             1
-          ) % list.length;
+          ) %
+          list.length;
 
-        renderInstagram(SITE);
+        renderInstagram(
+          SITE
+        );
       }
     );
   }
 }
+
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
 
 function renderAbout(site) {
 
@@ -1418,12 +2321,15 @@ function renderAbout(site) {
   );
 
   const photo =
-    document.getElementById('profilePhoto');
+    document.getElementById(
+      'profilePhoto'
+    );
 
   setImg(
     photo,
     about.profile_photo ||
-      site.media_assets?.profile_photo,
+      site.media_assets
+        ?.profile_photo,
     about.profile_photo_alt ||
       about.profile_name ||
       'Profile photo'
@@ -1437,10 +2343,14 @@ function renderAbout(site) {
   if (ph) {
 
     const span =
-      ph.querySelector('span');
+      ph.querySelector(
+        'span'
+      );
 
     const small =
-      ph.querySelector('small');
+      ph.querySelector(
+        'small'
+      );
 
     if (span) {
 
@@ -1467,9 +2377,15 @@ function renderAbout(site) {
   if (textHolder) {
 
     textHolder.innerHTML =
-      (about.main_paragraphs || [])
+      (
+        about.main_paragraphs ||
+        []
+      )
         .map(
-          p => `<p>${escapeHtml(p)}</p>`
+          p =>
+            `<p>${escapeHtml(
+              p
+            )}</p>`
         )
         .join('');
   }
@@ -1481,11 +2397,14 @@ function renderAbout(site) {
       () => {
 
         if (ph) {
-          ph.style.display = 'none';
+          ph.style.display =
+            'none';
         }
 
       },
-      { once: true }
+      {
+        once: true
+      }
     );
 
     photo.addEventListener(
@@ -1493,16 +2412,25 @@ function renderAbout(site) {
       () => {
 
         if (ph) {
-          ph.style.display = 'flex';
+          ph.style.display =
+            'flex';
         }
 
-        photo.style.display = 'none';
+        photo.style.display =
+          'none';
 
       },
-      { once: true }
+      {
+        once: true
+      }
     );
   }
 }
+
+
+/* =========================================================
+   WHY US PAGE
+========================================================= */
 
 function renderWhy(site) {
 
@@ -1525,47 +2453,58 @@ function renderWhy(site) {
   );
 
   const grid =
-    document.getElementById('whyGrid');
+    document.getElementById(
+      'whyGrid'
+    );
 
   if (grid) {
 
     grid.innerHTML =
-      (why.cards || [])
+      (
+        why.cards || []
+      )
         .map(
-          card => `
-            <article class="why-card">
+          card =>
+            `
+              <article class="why-card">
 
-              <img
-                class="why-card-image"
-                src="${escapeHtml(
-                  normalizeAsset(card.image)
-                )}"
-                alt="${escapeHtml(
-                  card.image_alt ||
-                  card.title ||
-                  ''
-                )}"
-              >
+                <img
+                  class="why-card-image"
+                  src="${escapeHtml(
+                    normalizeAsset(
+                      card.image
+                    )
+                  )}"
+                  alt="${escapeHtml(
+                    card.image_alt ||
+                    card.title ||
+                    ''
+                  )}"
+                >
 
-              <div class="why-card-body">
+                <div class="why-card-body">
 
-                <i class="fas ${escapeHtml(
-                  card.icon ||
-                  'fa-circle-nodes'
-                )}"></i>
+                  <i class="fas ${escapeHtml(
+                    card.icon ||
+                    'fa-circle-nodes'
+                  )}"></i>
 
-                <h3>${escapeHtml(
-                  card.title || ''
-                )}</h3>
+                  <h3>
+                    ${escapeHtml(
+                      card.title || ''
+                    )}
+                  </h3>
 
-                <p>${escapeHtml(
-                  card.text || ''
-                )}</p>
+                  <p>
+                    ${escapeHtml(
+                      card.text || ''
+                    )}
+                  </p>
 
-              </div>
+                </div>
 
-            </article>
-          `
+              </article>
+            `
         )
         .join('');
   }
@@ -1578,46 +2517,65 @@ function renderWhy(site) {
   if (process) {
 
     process.innerHTML =
-      (why.process || [])
+      (
+        why.process || []
+      )
         .map(
-          item => `
-            <article class="process-card">
+          item =>
+            `
+              <article class="process-card">
 
-              <img
-                src="${escapeHtml(
-                  normalizeAsset(item.image)
-                )}"
-                alt="${escapeHtml(
-                  item.image_alt ||
-                  item.title ||
-                  ''
-                )}"
-              >
+                <img
+                  src="${escapeHtml(
+                    normalizeAsset(
+                      item.image
+                    )
+                  )}"
+                  alt="${escapeHtml(
+                    item.image_alt ||
+                    item.title ||
+                    ''
+                  )}"
+                >
 
-              <div class="process-card-body">
+                <div class="process-card-body">
 
-                <div class="process-number">
-                  ${escapeHtml(item.number || '')}
+                  <div class="process-number">
+                    ${escapeHtml(
+                      item.number || ''
+                    )}
+                  </div>
+
+                  <h3>
+                    ${escapeHtml(
+                      item.title || ''
+                    )}
+                  </h3>
+
+                  <p>
+                    ${escapeHtml(
+                      item.text || ''
+                    )}
+                  </p>
+
                 </div>
 
-                <h3>${escapeHtml(
-                  item.title || ''
-                )}</h3>
-
-                <p>${escapeHtml(
-                  item.text || ''
-                )}</p>
-
-              </div>
-
-            </article>
-          `
+              </article>
+            `
         )
         .join('');
   }
 }
 
-function renderContact(site, services) {
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+
+function renderContact(
+  site,
+  services
+) {
 
   const c =
     site.contact || {};
@@ -1687,15 +2645,38 @@ function renderContact(site, services) {
 
   setText(
     'contactSubmitButton',
-    c.form_button || 'Send Enquiry'
+    c.form_button ||
+    'Send Enquiry'
   );
 
+
+  /* FORM PLACEHOLDERS */
+
   [
-    ['name', c.form_name_placeholder],
-    ['company', c.form_company_placeholder],
-    ['email', c.form_email_placeholder],
-    ['phone', c.form_phone_placeholder],
-    ['message', c.form_message_placeholder]
+    [
+      'name',
+      c.form_name_placeholder
+    ],
+
+    [
+      'company',
+      c.form_company_placeholder
+    ],
+
+    [
+      'email',
+      c.form_email_placeholder
+    ],
+
+    [
+      'phone',
+      c.form_phone_placeholder
+    ],
+
+    [
+      'message',
+      c.form_message_placeholder
+    ]
   ].forEach(
     ([id, placeholder]) => {
 
@@ -1703,11 +2684,15 @@ function renderContact(site, services) {
         document.getElementById(id);
 
       if (el) {
+
         el.placeholder =
           placeholder || '';
       }
     }
   );
+
+
+  /* CONTACT INFORMATION */
 
   const items =
     document.getElementById(
@@ -1717,6 +2702,7 @@ function renderContact(site, services) {
   if (items) {
 
     items.innerHTML = `
+
       <div class="contact-item">
 
         <i class="fas fa-phone"></i>
@@ -1725,22 +2711,30 @@ function renderContact(site, services) {
 
           <strong>
             ${escapeHtml(
-              c.phone_label || 'Phone'
+              c.phone_label ||
+              'Phone'
             )}
           </strong>
 
           <a
             href="tel:${escapeHtml(
-              String(c.phone || '')
-                .replace(/\s+/g, '')
+              String(
+                c.phone || ''
+              ).replace(
+                /\s+/g,
+                ''
+              )
             )}"
           >
-            ${escapeHtml(c.phone || '')}
+            ${escapeHtml(
+              c.phone || ''
+            )}
           </a>
 
         </div>
 
       </div>
+
 
       <div class="contact-item">
 
@@ -1750,7 +2744,8 @@ function renderContact(site, services) {
 
           <strong>
             ${escapeHtml(
-              c.email_label || 'Email'
+              c.email_label ||
+              'Email'
             )}
           </strong>
 
@@ -1768,6 +2763,7 @@ function renderContact(site, services) {
 
       </div>
 
+
       <div class="contact-item">
 
         <i class="fas fa-globe"></i>
@@ -1776,7 +2772,8 @@ function renderContact(site, services) {
 
           <strong>
             ${escapeHtml(
-              c.website_label || 'Website'
+              c.website_label ||
+              'Website'
             )}
           </strong>
 
@@ -1796,6 +2793,7 @@ function renderContact(site, services) {
 
       </div>
 
+
       <div class="contact-item">
 
         <i class="fab fa-whatsapp"></i>
@@ -1804,7 +2802,8 @@ function renderContact(site, services) {
 
           <strong>
             ${escapeHtml(
-              c.whatsapp_label || 'WhatsApp'
+              c.whatsapp_label ||
+              'WhatsApp'
             )}
           </strong>
 
@@ -1824,41 +2823,61 @@ function renderContact(site, services) {
         </div>
 
       </div>
+
     `;
   }
 
+
+  /* SERVICE DROPDOWN */
+
   const select =
-    document.getElementById('service');
+    document.getElementById(
+      'service'
+    );
 
   if (select) {
 
     select.innerHTML =
-      `<option value="">
-        ${escapeHtml(
-          c.form_service_placeholder ||
-          ui.contact_select_placeholder ||
-          'Select requirement'
-        )}
-      </option>` +
+      `
+        <option value="">
+          ${escapeHtml(
+            c.form_service_placeholder ||
+            ui.contact_select_placeholder ||
+            'Select requirement'
+          )}
+        </option>
+      ` +
 
       services
         .map(
           service =>
-            `<option value="${escapeHtml(
-              service.title
-            )}">
-              ${escapeHtml(
-                service.title
-              )}
-            </option>`
+            `
+              <option
+                value="${escapeHtml(
+                  service.title
+                )}"
+              >
+                ${escapeHtml(
+                  service.title
+                )}
+              </option>
+            `
         )
         .join('');
   }
 
-  const form =
-    document.getElementById('contactForm');
 
-  if (form && !form.dataset.bound) {
+  /* FORM + WHATSAPP BUTTON */
+
+  const form =
+    document.getElementById(
+      'contactForm'
+    );
+
+  if (
+    form &&
+    !form.dataset.bound
+  ) {
 
     form.dataset.bound = '1';
 
@@ -1881,15 +2900,27 @@ function renderContact(site, services) {
       whatsappButton.addEventListener(
         'click',
         () =>
-          handleWhatsAppEnquiry(site)
+          handleWhatsAppEnquiry(
+            site
+          )
       );
     }
   }
 }
 
-function templateMessage(template, data) {
 
-  return String(template || '')
+/* =========================================================
+   WHATSAPP MESSAGE TEMPLATE
+========================================================= */
+
+function templateMessage(
+  template,
+  data
+) {
+
+  return String(
+    template || ''
+  )
     .replaceAll(
       '{name}',
       data.name || ''
@@ -1916,7 +2947,15 @@ function templateMessage(template, data) {
     );
 }
 
-function showToast(message, ok = true) {
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(
+  message,
+  ok = true
+) {
 
   const toast =
     document.getElementById(
@@ -1925,16 +2964,21 @@ function showToast(message, ok = true) {
 
   if (!toast) return;
 
-  toast.textContent = message;
+  toast.textContent =
+    message;
 
-  toast.classList.add('show');
+  toast.classList.add(
+    'show'
+  );
 
   toast.style.background =
     ok
       ? 'var(--navy)'
       : '#7a1f29';
 
-  clearTimeout(window.__toast);
+  clearTimeout(
+    window.__toast
+  );
 
   window.__toast =
     setTimeout(
@@ -1946,36 +2990,57 @@ function showToast(message, ok = true) {
     );
 }
 
-function validateForm(form) {
+
+/* =========================================================
+   FORM VALIDATION
+========================================================= */
+
+function validateForm(
+  form
+) {
 
   let validForm = true;
 
   form
-    .querySelectorAll('[required]')
-    .forEach(field => {
+    .querySelectorAll(
+      '[required]'
+    )
+    .forEach(
+      field => {
 
-      const value =
-        String(field.value || '').trim();
+        const value =
+          String(
+            field.value || ''
+          ).trim();
 
-      const valid =
-        value !== '' &&
-        (
-          field.type !== 'email' ||
-          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+        const valid =
+          value !== '' &&
+          (
+            field.type !==
+              'email' ||
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+              value
+            )
+          );
+
+        field.classList.toggle(
+          'invalid',
+          !valid
         );
 
-      field.classList.toggle(
-        'invalid',
-        !valid
-      );
-
-      if (!valid) {
-        validForm = false;
+        if (!valid) {
+          validForm = false;
+        }
       }
-    });
+    );
 
   return validForm;
 }
+
+
+/* =========================================================
+   GOOGLE APPS SCRIPT
+========================================================= */
 
 function sendToGoogleAppsScript(
   url,
@@ -1999,18 +3064,29 @@ function sendToGoogleAppsScript(
   const payload =
     new URLSearchParams({
       ...data,
-      source: 'AssurIntellec website',
+      source:
+        'AssurIntellec website',
+
       submitted_at:
         new Date().toISOString()
     });
 
   fetch(url, {
     method: 'POST',
+
     mode: 'no-cors',
+
     body: payload,
+
     keepalive: true
+
   })
-    .then(() => callback(true))
+    .then(
+      () =>
+        callback(
+          true
+        )
+    )
     .catch(
       error =>
         callback(
@@ -2020,6 +3096,11 @@ function sendToGoogleAppsScript(
         )
     );
 }
+
+
+/* =========================================================
+   SEND ENQUIRY
+========================================================= */
 
 function handleEnquirySubmit(
   event,
@@ -2034,7 +3115,12 @@ function handleEnquirySubmit(
   const c =
     site.contact || {};
 
-  if (!validateForm(form)) {
+
+  /* VALIDATION */
+
+  if (
+    !validateForm(form)
+  ) {
 
     showToast(
       c.form_validation_message ||
@@ -2045,10 +3131,18 @@ function handleEnquirySubmit(
     return;
   }
 
+
+  /* FORM DATA */
+
   const data =
     Object.fromEntries(
-      new FormData(form).entries()
+      new FormData(
+        form
+      ).entries()
     );
+
+
+  /* BUTTON */
 
   const sendButton =
     form.querySelector(
@@ -2062,19 +3156,27 @@ function handleEnquirySubmit(
 
   if (sendButton) {
 
-    sendButton.disabled = true;
+    sendButton.disabled =
+      true;
 
     sendButton.textContent =
       c.form_sending_text ||
       'Sending…';
   }
 
+
+  /* FINISH */
+
   const finish =
-    (ok, errorMessage) => {
+    (
+      ok,
+      errorMessage
+    ) => {
 
       if (sendButton) {
 
-        sendButton.disabled = false;
+        sendButton.disabled =
+          false;
 
         sendButton.textContent =
           originalButtonText;
@@ -2101,7 +3203,12 @@ function handleEnquirySubmit(
       }
     };
 
-  if (c.google_apps_script_url) {
+
+  /* SEND TO GOOGLE APPS SCRIPT */
+
+  if (
+    c.google_apps_script_url
+  ) {
 
     sendToGoogleAppsScript(
       c.google_apps_script_url,
@@ -2118,7 +3225,14 @@ function handleEnquirySubmit(
   }
 }
 
-function handleWhatsAppEnquiry(site) {
+
+/* =========================================================
+   SEND ENQUIRY TO WHATSAPP
+========================================================= */
+
+function handleWhatsAppEnquiry(
+  site
+) {
 
   const form =
     document.getElementById(
@@ -2130,7 +3244,12 @@ function handleWhatsAppEnquiry(site) {
   const c =
     site.contact || {};
 
-  if (!validateForm(form)) {
+
+  /* VALIDATION */
+
+  if (
+    !validateForm(form)
+  ) {
 
     showToast(
       c.form_validation_message ||
@@ -2141,21 +3260,32 @@ function handleWhatsAppEnquiry(site) {
     return;
   }
 
+
+  /* FORM DATA */
+
   const data =
     Object.fromEntries(
-      new FormData(form).entries()
+      new FormData(
+        form
+      ).entries()
     );
+
+
+  /* MESSAGE TEMPLATE */
 
   const template =
     c.whatsapp_prefill_template ||
-`New AssurIntellec™ website enquiry
+`
+New AssurIntellec™ website enquiry
 
 Name: {name}
 Company: {company}
 Email: {email}
 Phone: {phone}
 Requirement: {service}
-Message: {message}`;
+Message: {message}
+`;
+
 
   const whatsappMessage =
     templateMessage(
@@ -2163,22 +3293,32 @@ Message: {message}`;
       data
     );
 
+
   /*
-    Use the configured WhatsApp phone number
-    when available. Otherwise use the
-    AssurIntellec company phone number.
+    Use whatsapp_phone when available.
+    Otherwise use the company phone.
   */
+
   const phoneNumber =
     String(
       c.whatsapp_phone ||
       c.phone ||
       '917600666436'
-    ).replace(/\D/g, '');
+    ).replace(
+      /\D/g,
+      ''
+    );
+
+
+  /* WHATSAPP URL */
 
   const whatsappURL =
     `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       whatsappMessage
     )}`;
+
+
+  /* OPEN WHATSAPP */
 
   window.open(
     whatsappURL,
@@ -2187,10 +3327,18 @@ Message: {message}`;
   );
 }
 
-function renderServicesPage(site) {
+
+/* =========================================================
+   SERVICES PAGE
+========================================================= */
+
+function renderServicesPage(
+  site
+) {
 
   const page =
-    site.pages?.services || {};
+    site.pages?.services ||
+    {};
 
   setText(
     'servicesPageEyebrow',
@@ -2212,10 +3360,19 @@ function renderServicesPage(site) {
     ''
   );
 
-  renderServiceCards(SERVICES);
+  renderServiceCards(
+    SERVICES
+  );
 }
 
-function renderServiceDetail(site) {
+
+/* =========================================================
+   SERVICE DETAIL PAGE
+========================================================= */
+
+function renderServiceDetail(
+  site
+) {
 
   const slug =
     document.body.dataset.serviceSlug ||
@@ -2228,6 +3385,7 @@ function renderServiceDetail(site) {
     );
 
   if (!service) return;
+
 
   setText(
     'servicePageEyebrow',
@@ -2259,15 +3417,24 @@ function renderServiceDetail(site) {
     ''
   );
 
+
+  /* SERVICE ICON */
+
   const icon =
     document.getElementById(
       'serviceDetailIcon'
     );
 
   if (icon) {
+
     icon.innerHTML =
-      iconHtml(service.icon);
+      iconHtml(
+        service.icon
+      );
   }
+
+
+  /* SERVICE IMAGES */
 
   const image1 =
     document.getElementById(
@@ -2282,7 +3449,8 @@ function renderServiceDetail(site) {
   setImg(
     image1,
     service.image_1 ||
-      site.media_assets?.pharmaceutical ||
+      site.media_assets
+        ?.pharmaceutical ||
       '/images/uploads/pharmaceutical.jpg',
     service.image_1_alt ||
       service.title
@@ -2291,11 +3459,15 @@ function renderServiceDetail(site) {
   setImg(
     image2,
     service.image_2 ||
-      site.media_assets?.about_research ||
+      site.media_assets
+        ?.about_research ||
       '/images/uploads/about-research.jpg',
     service.image_2_alt ||
       service.title
   );
+
+
+  /* IMAGE CAPTIONS */
 
   setText(
     'serviceCaption1',
@@ -2323,6 +3495,9 @@ function renderServiceDetail(site) {
     'Supporting environment'
   );
 
+
+  /* SERVICE VIDEO */
+
   const videoHolder =
     document.getElementById(
       'serviceVideoHolder'
@@ -2330,7 +3505,9 @@ function renderServiceDetail(site) {
 
   if (videoHolder) {
 
-    if (service.service_video) {
+    if (
+      service.service_video
+    ) {
 
       videoHolder.innerHTML = `
         <video
@@ -2350,12 +3527,16 @@ function renderServiceDetail(site) {
 
     } else {
 
-      videoHolder.innerHTML = '';
+      videoHolder.innerHTML =
+        '';
 
       videoHolder.style.display =
         'none';
     }
   }
+
+
+  /* SERVICE SECTIONS */
 
   const sectionHolder =
     document.getElementById(
@@ -2365,46 +3546,70 @@ function renderServiceDetail(site) {
   if (sectionHolder) {
 
     sectionHolder.innerHTML =
-      (service.sections || [])
+      (
+        service.sections ||
+        []
+      )
         .map(
-          section => `
-            <article class="detail-card">
+          section =>
+            `
+              <article class="detail-card">
 
-              <h3>
-                ${escapeHtml(
-                  section.heading || ''
-                )}
-              </h3>
+                <h3>
+                  ${escapeHtml(
+                    section.heading ||
+                    ''
+                  )}
+                </h3>
 
-              ${
-                (section.paragraphs || [])
-                  .map(
-                    p =>
-                      `<p>${escapeHtml(p)}</p>`
+                ${
+                  (
+                    section.paragraphs ||
+                    []
                   )
-                  .join('')
-              }
+                    .map(
+                      p =>
+                        `<p>${escapeHtml(
+                          p
+                        )}</p>`
+                    )
+                    .join('')
+                }
 
-              ${
-                (section.bullets || []).length
-                  ? `
-                    <ul class="detail-list">
-                      ${section.bullets
-                        .map(
-                          b =>
-                            `<li>${escapeHtml(b)}</li>`
-                        )
-                        .join('')}
-                    </ul>
-                  `
-                  : ''
-              }
+                ${
+                  (
+                    section.bullets ||
+                    []
+                  ).length
+                    ? `
+                      <ul class="detail-list">
 
-            </article>
-          `
+                        ${section.bullets
+                          .map(
+                            b =>
+                              `
+                                <li>
+                                  ${escapeHtml(
+                                    b
+                                  )}
+                                </li>
+                              `
+                          )
+                          .join('')}
+
+                      </ul>
+                    `
+                    : ''
+                }
+
+              </article>
+            `
         )
         .join('');
   }
+
+
+  /* SERVICE CTA */
 
   setText(
     'serviceCta',
@@ -2418,6 +3623,9 @@ function renderServiceDetail(site) {
     './contact.html'
   );
 
+
+  /* BACK TO SERVICES */
+
   const back =
     document.querySelector(
       '.detail-cta-row .text-link'
@@ -2426,22 +3634,33 @@ function renderServiceDetail(site) {
   if (back) {
 
     back.textContent =
-      site.home?.services_preview
+      site.home
+        ?.services_preview
         ?.back_to_services_label ||
-      site.ui?.service_back_label ||
+      site.ui
+        ?.service_back_label ||
       'Back to Services';
 
     back.href =
-      site.home?.services_preview
+      site.home
+        ?.services_preview
         ?.back_to_services_url ||
       './services.html';
   }
 }
 
-function applyVisibility(site) {
+
+/* =========================================================
+   SECTION VISIBILITY
+========================================================= */
+
+function applyVisibility(
+  site
+) {
 
   const v =
-    site.section_visibility || {};
+    site.section_visibility ||
+    {};
 
   const map = {
 
@@ -2463,7 +3682,9 @@ function applyVisibility(site) {
 
   Object.entries(map)
     .forEach(
-      ([key, className]) => {
+      (
+        [key, className]
+      ) => {
 
         const el =
           document.querySelector(
@@ -2480,6 +3701,11 @@ function applyVisibility(site) {
       }
     );
 }
+
+
+/* =========================================================
+   INITIALIZE WEBSITE
+========================================================= */
 
 async function init() {
 
@@ -2500,9 +3726,18 @@ async function init() {
       )
     );
 
+
+  /* THEME */
+
   applyTheme(SITE);
 
+
+  /* SEO */
+
   updateMeta(SITE);
+
+
+  /* HEADER / FOOTER */
 
   renderHeader(SITE);
 
@@ -2511,47 +3746,88 @@ async function init() {
     SERVICES
   );
 
-  renderWhatsApp(SITE);
+  renderWhatsApp(
+    SITE
+  );
+
+
+  /* PAGE ROUTING */
 
   const page =
     document.body.dataset.page;
 
-  if (page === 'home') {
+
+  if (
+    page === 'home'
+  ) {
+
     renderHome(
       SITE,
       SERVICES
     );
   }
 
-  if (page === 'about') {
-    renderAbout(SITE);
+
+  if (
+    page === 'about'
+  ) {
+
+    renderAbout(
+      SITE
+    );
   }
 
-  if (page === 'services') {
-    renderServicesPage(SITE);
+
+  if (
+    page === 'services'
+  ) {
+
+    renderServicesPage(
+      SITE
+    );
   }
 
-  if (page === 'why') {
-    renderWhy(SITE);
+
+  if (
+    page === 'why'
+  ) {
+
+    renderWhy(
+      SITE
+    );
   }
 
-  if (page === 'contact') {
+
+  if (
+    page === 'contact'
+  ) {
+
     renderContact(
       SITE,
       SERVICES
     );
   }
 
-  if (page === 'service') {
-    renderServiceDetail(SITE);
+
+  if (
+    page === 'service'
+  ) {
+
+    renderServiceDetail(
+      SITE
+    );
   }
 
-  /*
-    Bind Instagram navigation after
-    the page content exists.
-  */
+
+  /* INSTAGRAM BUTTONS */
+
   bindInstagramButtons();
 }
+
+
+/* =========================================================
+   START
+========================================================= */
 
 document.addEventListener(
   'DOMContentLoaded',
