@@ -1,67 +1,2559 @@
-:root{
-  --navy:#0b1f3a;--blue:#123f73;--blue2:#1e6aa8;--gold:#c9a227;--white:#fff;
-  --light:#f5f8fc;--light2:#edf3f9;--text:#233247;--muted:#68778a;--border:#dde6ef;
-  --shadow:0 15px 45px rgba(11,31,58,.10);--radius:18px;--max:1220px;--base:16px;
-  --logo-width:520px;--logo-height:124px;--hero-height:700px;--hero-overlay:.84;
-  --instagram-width:330px;--section-spacing:80px;--card-radius:18px;--social-icon-size:27px;
-  --font-body:Inter,Arial,Helvetica,sans-serif;--font-heading:Inter,Arial,Helvetica,sans-serif;
-  --font-nav:Inter,Arial,Helvetica,sans-serif;--font-button:Inter,Arial,Helvetica,sans-serif;
-  --header-height:132px;--nav-gap:20px;--social-gap:15px;--footer-social-gap:15px;
-  --hero-content-max:850px;--hero-content-padding:100px;--hero-company-size:80px;--hero-company-line-height:1;
-  --hero-heading-size:66px;--hero-heading-line-height:1.05;--hero-description-size:17px;--hero-kicker-size:13px;
-  --hero-border-width:6px;--hero-border-color:#c9a227;--hero-sound-size:44px;
-  --section-heading-margin:44px;--section-title-size:48px;--section-description-size:15px;
-  --card-title-size:17px;--card-text-size:13px;--button-font-size:14px;--button-padding-y:13px;--button-padding-x:22px;--button-radius:9px;
-  --page-hero-padding:75px;--page-hero-title-size:60px;--page-hero-description-size:15px;
-  --about-title-size:52px;--about-text-size:15px;--about-reel-gap:44px;--instagram-radius:12px;--instagram-arrow-size:20px;--instagram-arrow-button-size:42px;
-  --profile-card-width:220px;--service-detail-title-size:34px;--service-detail-text-size:15px;--service-image-height:255px;
-  --detail-heading-size:20px;--detail-text-size:14px;--why-image-height:190px;--process-image-height:150px;
-  --process-title-size:17px;--process-text-size:13px;--contact-heading-size:42px;--contact-text-size:15px;--form-label-size:12px;
-  --footer-heading-size:14px;--footer-text-size:13px;--footer-bottom-size:12px;--footer-logo-width:320px;--footer-logo-height:82px;
-  --whatsapp-size:58px;--whatsapp-right:22px;--whatsapp-bottom:22px;--service-grid-gap:20px;--why-grid-gap:19px;--process-grid-gap:20px;--card-padding:24px;
-  --eyebrow-size:12px;--eyebrow-letter-spacing:2px;--trust-title-size:14px;--trust-text-size:12px;--trust-icon-size:22px;
-  --about-point-size:13px;--service-number-size:14px;--service-icon-size:21px;--service-arrow-size:16px;--why-icon-size:25px;--why-title-size:18px;
-  --cta-title-size:46px;--cta-text-size:14px;--profile-label-size:11px;--profile-name-size:16px;--profile-position-size:12px;--about-closing-size:16px;
-  --contact-label-size:13px;--contact-value-size:14px;--form-input-size:14px;--detail-list-size:13px;--footer-link-size:13px;
-  --button-primary-bg:#fff;--button-primary-text:#0b1f3a;--button-dark-bg:#0b1f3a;--button-dark-text:#fff;--button-outline-border:#fff;--button-outline-text:#fff;--button-outline-bg:rgba(255,255,255,.08);
-  --service-icon-bg:#edf3f9;--service-icon-color:#1e6aa8;--service-arrow-bg:#edf3f9;--service-arrow-color:#1e6aa8;--social-icon-padding:2px;
-  --footer-bg:#07182e;--footer-text:#fff;--header-bg:#fff;
+let SITE = null;
+let SERVICES = [];
+let instagramIndex = 0;
+let instagramAudioEnabled = false;
+let heroAudioEnabled = true;
+
+const FALLBACK_SITE = {
+  company_name: 'AssurIntellec™',
+  tagline: 'Intelligent Solutions. Assured Compliance.',
+  social: { items: [] },
+  contact: {
+    whatsapp: 'https://wa.me/message/BFANWJ2N3FWOP1',
+    email: 'info@assurintellec.in'
+  },
+  hero: {
+    video: '/videos/hero-60sec.mp4',
+    poster: '/images/uploads/hero.jpg'
+  },
+  home: {},
+  about: {},
+  why_us: {},
+  footer: {},
+  theme: {}
+};
+
+const FALLBACK_SERVICES = [];
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);font-style:var(--body-font-style,normal);background:#fff;color:var(--text);line-height:1.6;overflow-x:hidden;font-size:var(--base);font-weight:var(--font-body-weight,400)}
-a{text-decoration:none;color:inherit}button,input,textarea,select{font:inherit;font-family:var(--font-body)}h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);font-style:var(--font-heading-style,normal);font-weight:var(--font-heading-weight,800)}img{max-width:100%;display:block}
-.container{width:min(92%,var(--max));margin:0 auto}.section{padding:var(--section-spacing) 0}.section-light{background:var(--light)}
-.eyebrow{display:inline-block;color:var(--blue2);font-size:var(--eyebrow-size);font-weight:800;text-transform:uppercase;letter-spacing:var(--eyebrow-letter-spacing);margin-bottom:10px}.section-heading{text-align:center;margin-bottom:var(--section-heading-margin)}.section-heading h2{font-size:var(--section-title-size);line-height:1.15;color:var(--navy);margin-bottom:12px}.section-heading p{max-width:760px;margin:0 auto;color:var(--muted);font-size:var(--section-description-size)}.compact-heading{margin-bottom:30px}
-header{position:sticky;top:0;z-index:1000;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.navbar{min-height:var(--header-height);display:flex;align-items:center;gap:24px}.brand{display:flex;align-items:center;min-width:var(--logo-width);flex-shrink:0}.brand-logo{width:var(--logo-width);height:var(--logo-height);max-width:none;object-fit:contain;object-position:left center;display:block}.brand-fallback{display:none;font-size:30px;font-weight:800;color:var(--navy)}
-nav{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:var(--nav-gap)}nav a{font-family:var(--font-nav);font-style:var(--font-nav-style,normal);font-weight:var(--font-nav-weight,700);font-size:13px;color:var(--navy);white-space:nowrap;transition:.25s}nav a:hover{color:var(--blue2)}.social-top,.footer-social{display:flex;align-items:center;gap:var(--social-gap)}.footer-social{gap:var(--footer-social-gap);flex-wrap:wrap}.social-top a,.footer-social a{width:auto;height:auto;border:0;border-radius:0;background:transparent;padding:var(--social-icon-padding);display:inline-flex;align-items:center;justify-content:center;font-size:var(--social-icon-size);line-height:1;box-shadow:none;transition:transform .22s,opacity .22s;color:var(--social-color,#fff)}.social-top a:hover,.footer-social a:hover{transform:translateY(-3px) scale(1.08);opacity:.82}.menu-toggle{display:none;border:0;background:transparent;color:var(--navy);font-size:27px;cursor:pointer}
-.hero{position:relative;min-height:var(--hero-height);display:flex;align-items:center;isolation:isolate;overflow:hidden;background:var(--navy);border-bottom:var(--hero-border-width) solid var(--hero-border-color)}.hero-bg-video,.hero-bg-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-object-position,center);z-index:-2;display:block;margin:0;padding:0}.hero-bg-video{background:var(--navy)}.hero-bg-fallback{display:none}.hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,24,45,.94) 0%,rgba(7,24,45,var(--hero-overlay)) 42%,rgba(7,24,45,.42) 74%,rgba(7,24,45,var(--hero-overlay-right-opacity,.16)) 100%)}.hero-content{color:#fff;padding:var(--hero-content-padding) 0;max-width:var(--hero-content-max)}.hero-company{font-size:clamp(46px,var(--hero-company-size),var(--hero-company-size));font-weight:var(--font-heading-weight,800);line-height:var(--hero-company-line-height);letter-spacing:-2.5px;margin-bottom:18px;color:#fff}.hero-kicker{color:#e6cf74;font-size:var(--hero-kicker-size);font-weight:800;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px}.hero h1{font-size:clamp(38px,5vw,var(--hero-heading-size));line-height:var(--hero-heading-line-height);letter-spacing:-1.8px;margin-bottom:20px}.hero p{max-width:740px;font-size:var(--hero-description-size);color:rgba(255,255,255,.88);margin-bottom:30px}.hero-buttons{display:flex;gap:13px;flex-wrap:wrap}.btn{font-family:var(--font-button);font-style:var(--font-button-style,normal);font-weight:var(--font-button-weight,700);display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:49px;padding:var(--button-padding-y) var(--button-padding-x);border-radius:var(--button-radius);font-size:var(--button-font-size);transition:.25s;border:0;cursor:pointer}.btn-primary{background:var(--button-primary-bg);color:var(--button-primary-text)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.15)}.dark-btn{background:var(--button-dark-bg);color:var(--button-dark-text)}.dark-btn:hover{background:var(--blue)}.btn-outline{border:1px solid var(--button-outline-border);color:var(--button-outline-text);background:var(--button-outline-bg)}.btn-outline:hover{background:#fff;color:var(--navy)}.hero-sound{position:absolute;right:28px;bottom:26px;width:var(--hero-sound-size);height:var(--hero-sound-size);border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(7,24,45,.46);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;transition:.2s}.hero-sound:hover{background:rgba(7,24,45,.72);transform:scale(1.05)}
-.trust-strip{background:var(--navy);color:#fff}.trust-grid{display:grid;grid-template-columns:repeat(4,1fr)}.trust-item{text-align:center;padding:22px 10px}.trust-item i{font-size:var(--trust-icon-size);color:#e4c95d;margin-bottom:7px}.trust-item strong{display:block;font-size:var(--trust-title-size)}.trust-item span{display:block;font-size:var(--trust-text-size);color:rgba(255,255,255,.64);margin-top:3px}
-.about-reel-section{background:#fff}.about-reel-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--about-reel-gap)}.about-home-copy{padding-right:10px}.about-content h2{color:var(--navy);font-size:var(--about-title-size);line-height:1.12;margin-bottom:17px}.about-content p{color:var(--muted);font-size:var(--about-text-size);margin-bottom:16px}.about-points{display:grid;gap:11px;margin:22px 0 24px}.about-point{display:flex;gap:12px}.about-point i{color:var(--gold);margin-top:4px}.about-point span{font-size:var(--about-point-size);font-weight:600}.instagram-carousel{display:flex;align-items:center;justify-content:center;gap:12px}
-.home-instagram{justify-self:end;position:relative}
-.instagram-arrow{width:var(--instagram-arrow-button-size);height:var(--instagram-arrow-button-size);border:0;background:transparent;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--instagram-arrow-size);transition:.2s;flex:0 0 var(--instagram-arrow-button-size)}
-.instagram-arrow:hover:not(:disabled){color:var(--blue2);transform:scale(1.12)}
-.instagram-arrow:disabled{opacity:.28;cursor:default}
-.instagram-reel-wrap{width:var(--instagram-width);aspect-ratio:9/16;overflow:hidden;border-radius:var(--instagram-radius);background:#fff;border:1px solid var(--border);box-shadow:0 12px 35px rgba(11,31,58,.12);position:relative;display:flex;align-items:flex-start;justify-content:center}
-.instagram-reel-wrap>div{width:100%;height:100%;display:flex;align-items:flex-start;justify-content:center;overflow:hidden;background:#fff}
-.instagram-reel-wrap .instagram-media{margin:0 auto!important;width:100%!important;max-width:none!important;min-width:0!important}
-.instagram-reel-wrap iframe{width:100%!important;max-width:100%!important;border:0!important;display:block!important;margin:0 auto!important}
-.instagram-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;color:var(--muted);padding:15px}
-.instagram-placeholder i{font-size:36px;color:#d62976}
-.instagram-placeholder strong{color:var(--navy);font-size:14px}
-.instagram-placeholder span{font-size:11px;max-width:220px}.instagram-audio{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);z-index:8;min-height:36px;padding:7px 11px;border:1px solid rgba(255,255,255,.75);border-radius:999px;background:rgba(7,24,45,.78);color:#fff;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.16)}.instagram-audio:hover{background:rgba(7,24,45,.92)}.instagram-audio-hint{position:absolute;left:8px;right:8px;bottom:52px;z-index:7;background:rgba(7,24,45,.8);color:#fff;padding:7px 9px;border-radius:8px;font-size:10px;text-align:center;display:none}.instagram-audio-hint.show{display:block}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--service-grid-gap)}.service-card{background:#fff;border:1px solid var(--border);border-radius:var(--card-radius);padding:var(--card-padding);box-shadow:0 8px 26px rgba(11,31,58,.05);transition:.25s;min-height:120px;display:flex;align-items:center;justify-content:space-between;gap:18px}.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.service-title-content{display:flex;align-items:center;gap:14px}.service-number{color:var(--gold);font-size:var(--service-number-size);font-weight:800;min-width:30px}.service-icon{width:50px;height:50px;border-radius:14px;background:var(--service-icon-bg);display:flex;align-items:center;justify-content:center;color:var(--service-icon-color);font-size:var(--service-icon-size);flex:0 0 50px}.service-card h3{color:var(--navy);font-size:var(--card-title-size);line-height:1.25;margin:0}.service-read{width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--service-arrow-color);background:var(--service-arrow-bg);font-size:var(--service-arrow-size);flex:0 0 38px}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--why-grid-gap)}.why-grid-large{grid-template-columns:repeat(2,1fr)}.why-card{background:#fff;border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;box-shadow:0 8px 25px rgba(11,31,58,.04)}.why-card-image{width:100%;height:var(--why-image-height);object-fit:var(--why-image-object-fit,cover)}.why-card-body{padding:22px}.why-card i{font-size:var(--why-icon-size);color:var(--blue2);margin-bottom:14px}.why-card h3{color:var(--navy);font-size:var(--why-title-size);margin-bottom:7px}.why-card p{font-size:var(--card-text-size);color:var(--muted)}
-.cta{padding:72px 0;background:linear-gradient(110deg,var(--navy),#144b7c);color:#fff}.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px}.cta h2{font-size:clamp(28px,4vw,var(--cta-title-size));line-height:1.1;margin-bottom:11px}.cta p{color:rgba(255,255,255,.75);font-size:var(--cta-text-size);max-width:760px}
-.page-hero{padding:var(--page-hero-padding) 0;background:linear-gradient(110deg,#071b33,var(--blue));color:#fff;border-bottom:var(--hero-border-width) solid var(--hero-border-color)}.page-hero .eyebrow{color:#e6cf74}.page-hero h1{font-size:clamp(38px,5vw,var(--page-hero-title-size));line-height:1.08;margin-bottom:12px}.page-hero p{max-width:780px;color:rgba(255,255,255,.78);font-size:var(--page-hero-description-size)}
-.profile-about{display:grid;grid-template-columns:var(--profile-card-width) 1fr;gap:48px;align-items:start}.profile-card{width:var(--profile-card-width);background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 12px 30px rgba(11,31,58,.09)}.profile-card-label{font-size:var(--profile-label-size);text-transform:uppercase;letter-spacing:1.7px;color:var(--blue2);font-weight:800;margin:2px 2px 10px}.passport-photo-frame{width:100%;aspect-ratio:35/45;background:#edf2f7;border:1px solid #d8e2ec;border-radius:8px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}.passport-photo-frame img{width:100%;height:100%;object-fit:cover}.profile-photo-placeholder{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:7px;color:var(--muted);text-align:center;padding:15px}.profile-photo-placeholder i{font-size:31px;color:var(--blue2)}.profile-photo-placeholder span{font-size:12px;font-weight:700}.profile-photo-placeholder small{font-size:10px}.profile-card-info{padding:13px 3px 2px;text-align:center}.profile-card-info h3{color:var(--navy);font-size:var(--profile-name-size);line-height:1.3}.profile-card-info p{color:var(--blue2);font-size:var(--profile-position-size);font-weight:700;margin-top:5px}.about-profile-details{min-width:0}.about-profile-details p{font-size:var(--about-text-size);color:var(--muted);margin-bottom:16px}.profile-detail-box{margin-top:25px;padding:23px;border:1px solid var(--border);border-radius:16px;background:var(--light)}.profile-detail-box h3{color:var(--navy);font-size:19px;margin-bottom:9px}.approach-flow{color:var(--blue)!important;font-weight:800;margin:0!important}.about-closing{margin-top:23px;white-space:pre-line;color:var(--navy);font-weight:800;font-size:var(--about-closing-size);border-left:4px solid var(--gold);padding-left:15px}
-.service-detail-video{margin-top:24px;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 9px 26px rgba(11,31,58,.06)}.service-detail-video video{display:block;width:100%;max-height:520px;background:#08182d}.service-detail-video+ .service-gallery-grid{margin-top:24px}
-.service-detail-top{display:grid;grid-template-columns:.95fr 1.05fr;gap:45px;align-items:start}.detail-icon{width:58px;height:58px;border-radius:15px;background:var(--light2);display:flex;align-items:center;justify-content:center;color:var(--blue2);font-size:23px;margin-bottom:17px}.service-detail-intro h2{color:var(--navy);font-size:var(--service-detail-title-size);line-height:1.15;margin-bottom:13px}.service-detail-intro p{font-size:var(--service-detail-text-size);color:var(--muted)}.service-gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.service-media-card{margin:0;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 9px 26px rgba(11,31,58,.06)}.service-media-card img{width:100%;height:var(--service-image-height);object-fit:var(--service-image-object-fit,cover);background:#e9eff5}.service-media-card figcaption{padding:16px}.service-media-card strong{display:block;color:var(--navy);font-size:13px;margin-bottom:4px}.service-media-card span{display:block;color:var(--muted);font-size:12px}.service-detail-sections{display:grid;gap:19px}.detail-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 8px 24px rgba(11,31,58,.04)}.detail-card h3{color:var(--navy);font-size:var(--detail-heading-size);margin-bottom:10px}.detail-card p{font-size:var(--detail-text-size);color:var(--muted);margin-bottom:10px}.detail-card p:last-child{margin-bottom:0}.detail-list{list-style:none;display:grid;gap:7px}.detail-list li{font-size:var(--detail-list-size);color:#43546a;padding-left:19px;position:relative}.detail-list li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}.detail-cta-row{display:flex;align-items:center;gap:22px}
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--process-grid-gap)}.process-card{overflow:hidden;background:#fff;border:1px solid var(--border);border-radius:16px;text-align:center}.process-card img{width:100%;height:var(--process-image-height);object-fit:var(--process-image-object-fit,cover)}.process-card-body{padding:20px}.process-number{width:48px;height:48px;border-radius:50%;margin:0 auto 13px;display:flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;font-weight:800}.process-card h3{color:var(--navy);font-size:var(--process-title-size);margin-bottom:7px}.process-card p{color:var(--muted);font-size:var(--process-text-size)}
-.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:45px;align-items:start}.contact-info h2{color:var(--navy);font-size:var(--contact-heading-size);line-height:1.15;margin-bottom:15px}.contact-info>p{color:var(--muted);margin-bottom:25px;font-size:var(--contact-text-size)}.contact-items{display:grid;gap:13px}.contact-item{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-bottom:1px solid var(--border)}.contact-item i{width:22px;color:var(--blue2);margin-top:4px}.contact-item strong{display:block;color:var(--navy);font-size:var(--contact-label-size);margin-bottom:3px}.contact-item span,.contact-item a{color:var(--muted);font-size:var(--contact-value-size);word-break:break-word}.contact-form{background:#fff;padding:31px;border-radius:20px;border:1px solid var(--border);box-shadow:var(--shadow)}.contact-form h3{color:var(--navy);font-size:22px;margin-bottom:18px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.form-group{display:grid;gap:7px}.form-group.full{grid-column:1/-1}.form-group label{color:var(--navy);font-size:var(--form-label-size);font-weight:700}.form-group input,.form-group textarea,.form-group select{width:100%;padding:13px 14px;font-size:var(--form-input-size);border:1px solid var(--border);border-radius:9px;background:#fbfdff;font:inherit;color:var(--text);outline:none}.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(30,106,168,.08)}.form-group textarea{resize:vertical;min-height:130px}.form-group input.invalid,.form-group textarea.invalid,.form-group select.invalid{border-color:#c83f4a}.form-help{font-size:11px;color:var(--muted)}
-footer{background:var(--footer-bg);color:var(--footer-text);padding:62px 0 25px}.footer-grid{display:grid;grid-template-columns:1.25fr .75fr 1fr 1fr;gap:35px;padding-bottom:38px;border-bottom:1px solid rgba(255,255,255,.1)}.footer-logo{width:var(--footer-logo-width);height:var(--footer-logo-height);object-fit:contain;object-position:left center;margin-bottom:17px}.footer-brand p{color:rgba(255,255,255,.62);font-size:var(--footer-text-size);max-width:360px}footer h4{font-size:var(--footer-heading-size);margin-bottom:15px;color:#fff}.footer-links{list-style:none;display:grid;gap:8px}.footer-links li{font-size:var(--footer-link-size);color:rgba(255,255,255,.62)}.footer-links a:hover{color:#fff}.footer-contact{display:grid;gap:10px}.footer-contact a,.footer-contact span{color:rgba(255,255,255,.64);font-size:var(--footer-text-size)}.footer-bottom{padding-top:21px;display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-bottom p{font-size:var(--footer-bottom-size);color:rgba(255,255,255,.52)}
-.image-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#e8eef5,#cfd9e4);display:flex;align-items:center;justify-content:center;color:#738398;font-size:13px;text-align:center;padding:20px}.image-missing{opacity:0!important;background:linear-gradient(135deg,#e8eef5,#cfd9e4)!important}.site-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,120px);opacity:0;background:var(--navy);color:#fff;padding:13px 18px;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.18);font-size:13px;z-index:5000;transition:.25s;max-width:min(92%,540px);text-align:center}.site-toast.show{transform:translate(-50%,0);opacity:1}.whatsapp-float{position:fixed;right:var(--whatsapp-right);bottom:var(--whatsapp-bottom);width:var(--whatsapp-size);height:var(--whatsapp-size);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#25d366;color:#fff;font-size:29px;z-index:3000;box-shadow:0 12px 28px rgba(37,211,102,.32);transition:.2s}.whatsapp-float:hover{transform:translateY(-3px) scale(1.05)}
-@media(max-width:1180px){.navbar{gap:16px}.brand{min-width:390px}.brand-logo{width:390px;height:98px}nav{gap:15px}nav a{font-size:12px}.social-top{gap:12px}.social-top a{font-size:24px}.footer-social{gap:12px}}
-@media(max-width:1020px){.navbar{min-height:100px}.brand{min-width:0;flex:1}.brand-logo{width:350px;height:88px;max-width:70vw}.menu-toggle{display:block}nav{position:absolute;left:0;right:0;top:100px;background:#fff;border-bottom:1px solid var(--border);display:none;padding:18px 4%;flex-direction:column;align-items:flex-start;gap:15px}nav.active{display:flex}.social-top{margin-left:0;display:flex;flex-wrap:wrap}.about-reel-grid,.service-detail-top,.contact-grid{grid-template-columns:1fr}.home-instagram{justify-self:center}.services-grid{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:repeat(2,1fr)}.why-grid-large{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.section{padding:62px 0}.hero{min-height:650px}.hero-content{padding:80px 0}.hero-company{font-size:clamp(42px,12vw,66px)}.hero h1{font-size:clamp(34px,9vw,52px)}.hero p{font-size:15px}.trust-grid{grid-template-columns:repeat(2,1fr)}.services-grid,.why-grid,.why-grid-large,.process-grid,.footer-grid{grid-template-columns:1fr}.service-gallery-grid{grid-template-columns:1fr}.instagram-reel-wrap{width:326px}.profile-about{grid-template-columns:1fr}.profile-card{width:min(260px,100%);margin:0 auto}.form-grid{grid-template-columns:1fr}.form-group.full{grid-column:auto}.cta-inner{flex-direction:column;align-items:flex-start}.footer-bottom{flex-direction:column;align-items:flex-start}.detail-cta-row{flex-direction:column;align-items:flex-start}}
-@media(max-width:600px){.navbar{min-height:84px}.brand-logo{width:290px;height:72px;max-width:76vw}nav{top:84px}.social-top{display:flex;flex-wrap:wrap}.social-top a{font-size:22px}.hero-sound{right:15px;bottom:16px}.hero-buttons{flex-direction:column;align-items:stretch}.btn{width:100%}.instagram-reel-wrap{width:min(326px,82vw)}.instagram-carousel{gap:4px}.instagram-arrow{width:36px;flex:0 0 36px}.footer-logo{width:280px;height:75px}.why-card-image{height:210px}.service-media-card img{height:230px}}
+
+function normalizeAsset(value) {
+  if (!value) return '';
+  const s = String(value).trim();
+  if (!s) return '';
+  return s.startsWith('/') ? '.' + s : s;
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el && value !== undefined && value !== null) {
+    el.textContent = String(value);
+  }
+}
+
+function setHref(id, value) {
+  const el = document.getElementById(id);
+  if (el && value) {
+    el.href = value;
+  }
+}
+
+function setImg(img, value, alt = 'Image') {
+  if (!img) return;
+
+  img.alt = alt;
+
+  const src = normalizeAsset(value);
+
+  if (!src) {
+    img.style.display = 'none';
+    return;
+  }
+
+  img.style.display = 'block';
+  img.style.opacity = '1';
+  img.src = src;
+  img.onerror = () => showImageFallback(img);
+}
+
+function showImageFallback(img) {
+  img.style.opacity = '0';
+  img.classList.add('image-missing');
+}
+
+function iconHtml(icon) {
+  return `<i class="fas ${escapeHtml(icon || 'fa-circle-nodes')}"></i>`;
+}
+
+async function readJson(path, fallback) {
+  try {
+    const response = await fetch(path, { cache: 'no-store' });
+
+    if (!response.ok) {
+      throw new Error(`${path} ${response.status}`);
+    }
+
+    return await response.json();
+
+  } catch (error) {
+    console.warn('Content fallback:', error);
+    return fallback;
+  }
+}
+
+function firstFamily(value) {
+  const first = String(value || '')
+    .split(',')[0]
+    .trim()
+    .replace(/^['"]|['"]$/g, '');
+
+  return first;
+}
+
+function loadGoogleFonts(theme) {
+  const families = [
+    theme.font_body_family,
+    theme.font_heading_family,
+    theme.font_nav_family,
+    theme.font_button_family
+  ]
+    .map(firstFamily)
+    .filter(Boolean);
+
+  const googleCandidates = new Set([
+    'Inter',
+    'Poppins',
+    'Roboto',
+    'Montserrat',
+    'Lato',
+    'Open Sans',
+    'Nunito',
+    'Raleway',
+    'Merriweather',
+    'Playfair Display',
+    'Oswald',
+    'Source Sans 3',
+    'Manrope',
+    'DM Sans',
+    'Outfit'
+  ]);
+
+  const selected = [...new Set(families)]
+    .filter(f => googleCandidates.has(f));
+
+  if (!selected.length) return;
+
+  let link = document.getElementById('dynamicGoogleFonts');
+
+  if (!link) {
+    link = document.createElement('link');
+    link.id = 'dynamicGoogleFonts';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+  }
+
+  const href =
+    'https://fonts.googleapis.com/css2?family=' +
+    selected
+      .map(
+        f =>
+          encodeURIComponent(f).replace(/%20/g, '+') +
+          ':wght@300;400;500;600;700;800'
+      )
+      .join('&family=') +
+    '&display=swap';
+
+  link.href = href;
+}
+
+function applyTheme(site) {
+  const t = site.theme || {};
+  const root = document.documentElement;
+
+  const map = {
+    navy: ['--navy', 'value'],
+    blue: ['--blue', 'value'],
+    blue2: ['--blue2', 'value'],
+    gold: ['--gold', 'value'],
+
+    text: ['--text', 'value'],
+    muted: ['--muted', 'value'],
+    light: ['--light', 'value'],
+    light2: ['--light2', 'value'],
+
+    border: ['--border', 'value'],
+    footer_background: ['--footer-bg', 'value'],
+    footer_text: ['--footer-text', 'value'],
+    header_background: ['--header-bg', 'value'],
+
+    container_max: ['--max', 'px'],
+    header_logo_width: ['--logo-width', 'px'],
+    header_logo_height: ['--logo-height', 'px'],
+
+    hero_min_height: ['--hero-height', 'px'],
+    hero_overlay_opacity: ['--hero-overlay', 'value'],
+    instagram_width: ['--instagram-width', 'px'],
+
+    base_font_size: ['--base', 'px'],
+    section_spacing: ['--section-spacing', 'px'],
+    card_radius: ['--card-radius', 'px'],
+    social_icon_size: ['--social-icon-size', 'px'],
+
+    header_min_height: ['--header-height', 'px'],
+    nav_gap: ['--nav-gap', 'px'],
+    social_gap: ['--social-gap', 'px'],
+    footer_social_gap: ['--footer-social-gap', 'px'],
+
+    hero_content_max: ['--hero-content-max', 'px'],
+    hero_content_padding: ['--hero-content-padding', 'px'],
+    hero_company_size: ['--hero-company-size', 'px'],
+    hero_company_line_height: ['--hero-company-line-height', 'value'],
+
+    hero_heading_size: ['--hero-heading-size', 'px'],
+    hero_heading_line_height: ['--hero-heading-line-height', 'value'],
+    hero_description_size: ['--hero-description-size', 'px'],
+    hero_kicker_size: ['--hero-kicker-size', 'px'],
+
+    hero_border_width: ['--hero-border-width', 'px'],
+    hero_border_color: ['--hero-border-color', 'value'],
+    hero_sound_size: ['--hero-sound-size', 'px'],
+
+    section_heading_margin: ['--section-heading-margin', 'px'],
+    section_title_size: ['--section-title-size', 'px'],
+    section_description_size: ['--section-description-size', 'px'],
+
+    card_title_size: ['--card-title-size', 'px'],
+    card_text_size: ['--card-text-size', 'px'],
+
+    button_font_size: ['--button-font-size', 'px'],
+    button_padding_y: ['--button-padding-y', 'px'],
+    button_padding_x: ['--button-padding-x', 'px'],
+    button_radius: ['--button-radius', 'px'],
+
+    page_hero_padding: ['--page-hero-padding', 'px'],
+    page_hero_title_size: ['--page-hero-title-size', 'px'],
+    page_hero_description_size: ['--page-hero-description-size', 'px'],
+
+    about_title_size: ['--about-title-size', 'px'],
+    about_text_size: ['--about-text-size', 'px'],
+    about_reel_gap: ['--about-reel-gap', 'px'],
+    instagram_radius: ['--instagram-radius', 'px'],
+
+    instagram_arrow_size: ['--instagram-arrow-size', 'px'],
+    instagram_arrow_button_size: ['--instagram-arrow-button-size', 'px'],
+
+    profile_card_width: ['--profile-card-width', 'px'],
+
+    service_detail_title_size: ['--service-detail-title-size', 'px'],
+    service_detail_text_size: ['--service-detail-text-size', 'px'],
+    service_image_height: ['--service-image-height', 'px'],
+
+    detail_heading_size: ['--detail-heading-size', 'px'],
+    detail_text_size: ['--detail-text-size', 'px'],
+
+    why_image_height: ['--why-image-height', 'px'],
+    process_image_height: ['--process-image-height', 'px'],
+
+    process_title_size: ['--process-title-size', 'px'],
+    process_text_size: ['--process-text-size', 'px'],
+
+    contact_heading_size: ['--contact-heading-size', 'px'],
+    contact_text_size: ['--contact-text-size', 'px'],
+
+    form_label_size: ['--form-label-size', 'px'],
+
+    footer_heading_size: ['--footer-heading-size', 'px'],
+    footer_text_size: ['--footer-text-size', 'px'],
+    footer_bottom_size: ['--footer-bottom-size', 'px'],
+
+    footer_logo_width: ['--footer-logo-width', 'px'],
+    footer_logo_height: ['--footer-logo-height', 'px'],
+
+    whatsapp_size: ['--whatsapp-size', 'px'],
+    whatsapp_right: ['--whatsapp-right', 'px'],
+    whatsapp_bottom: ['--whatsapp-bottom', 'px'],
+
+    service_grid_gap: ['--service-grid-gap', 'px'],
+    why_grid_gap: ['--why-grid-gap', 'px'],
+    process_grid_gap: ['--process-grid-gap', 'px'],
+
+    card_padding: ['--card-padding', 'px'],
+
+    font_body_family: ['--font-body', 'value'],
+    font_heading_family: ['--font-heading', 'value'],
+    font_nav_family: ['--font-nav', 'value'],
+    font_button_family: ['--font-button', 'value'],
+
+    font_body_style: ['--body-font-style', 'value'],
+    font_heading_style: ['--font-heading-style', 'value'],
+    font_nav_style: ['--font-nav-style', 'value'],
+    font_button_style: ['--font-button-style', 'value'],
+
+    font_body_weight: ['--font-body-weight', 'value'],
+    font_heading_weight: ['--font-heading-weight', 'value'],
+    font_nav_weight: ['--font-nav-weight', 'value'],
+    font_button_weight: ['--font-button-weight', 'value']
+  };
+
+  Object.entries(map).forEach(([key, [cssVar, unit]]) => {
+    const value = t[key];
+
+    if (value === undefined || value === null || value === '') {
+      return;
+    }
+
+    root.style.setProperty(
+      cssVar,
+      unit === 'value' ? String(value) : `${value}${unit}`
+    );
+  });
+
+  loadGoogleFonts(t);
+
+  const customCss = String(site.custom_css || '').trim();
+
+  let customStyle = document.getElementById('customCmsCss');
+
+  if (!customStyle) {
+    customStyle = document.createElement('style');
+    customStyle.id = 'customCmsCss';
+    document.head.appendChild(customStyle);
+  }
+
+  customStyle.textContent = customCss;
+}
+
+function socialItems(site) {
+  return Array.isArray(site.social?.items)
+    ? site.social.items
+        .filter(
+          x =>
+            x &&
+            x.enabled !== false &&
+            x.url
+        )
+        .slice(0, 12)
+    : [];
+}
+
+function socialHtml(site, location) {
+  return socialItems(site)
+    .map(item => {
+      const color =
+        location === 'footer'
+          ? item.footer_color || item.color || '#ffffff'
+          : item.header_color || item.color || '#111111';
+
+      return `<a
+        class="${escapeHtml(item.class_name || '')}"
+        href="${escapeHtml(item.url)}"
+        target="_blank"
+        rel="noopener"
+        aria-label="${escapeHtml(item.label || item.key || 'Social')}"
+        style="--social-color:${escapeHtml(color)}"
+      >
+        <i class="${escapeHtml(item.icon || 'fa-solid fa-link')}"></i>
+      </a>`;
+    })
+    .join('');
+}
+
+function renderHeader(site) {
+  const n = site.navigation || {};
+  const ui = site.ui || {};
+  const visibility = site.section_visibility || {};
+
+  const logo = normalizeAsset(
+    site.media_assets?.logo ||
+    '/images/uploads/logo_transparent_png_tm.png'
+  );
+
+  const social =
+    visibility.header_social === false
+      ? ''
+      : `<div class="social-top">${socialHtml(site, 'header')}</div>`;
+
+  const html = `
+    <header>
+      <div class="container navbar">
+
+        <a
+          href="./index.html"
+          class="brand"
+          aria-label="${escapeHtml(site.company_name || 'AssurIntellec™')}"
+        >
+          <img
+            class="brand-logo"
+            src="${escapeHtml(logo)}"
+            alt="${escapeHtml(site.company_name || 'AssurIntellec™')}"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+          >
+          <div class="brand-fallback">
+            ${escapeHtml(site.company_name || 'AssurIntellec™')}
+          </div>
+        </a>
+
+        <nav id="mainNav">
+          <a href="./index.html">${escapeHtml(n.home || 'Home')}</a>
+          <a href="./about.html">${escapeHtml(n.about || 'About Us')}</a>
+          <a href="./services.html">${escapeHtml(n.services || 'Services')}</a>
+          <a href="./why-us.html">${escapeHtml(n.why_us || 'Why Us')}</a>
+          <a href="./contact.html">${escapeHtml(n.contact || 'Contact Us')}</a>
+          ${social}
+        </nav>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="${escapeHtml(ui.menu_open_label || 'Open navigation')}"
+          title="${escapeHtml(ui.menu_open_label || 'Open navigation')}"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+      </div>
+    </header>
+  `;
+
+  const holder = document.getElementById('site-header');
+
+  if (holder) {
+    holder.innerHTML = html;
+  }
+
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mainNav');
+
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('active');
+
+    const open = nav.classList.contains('active');
+    const icon = toggle.querySelector('i');
+
+    if (icon) {
+      icon.className = open
+        ? 'fas fa-xmark'
+        : 'fas fa-bars';
+    }
+
+    toggle.setAttribute(
+      'aria-label',
+      open
+        ? (ui.menu_close_label || 'Close navigation')
+        : (ui.menu_open_label || 'Open navigation')
+    );
+
+    toggle.setAttribute(
+      'title',
+      open
+        ? (ui.menu_close_label || 'Close navigation')
+        : (ui.menu_open_label || 'Open navigation')
+    );
+  });
+
+  document
+    .querySelectorAll('#mainNav a')
+    .forEach(a =>
+      a.addEventListener(
+        'click',
+        () => nav.classList.remove('active')
+      )
+    );
+}
+
+function renderFooter(site, services) {
+  const f = site.footer || {};
+  const n = site.navigation || {};
+  const visibility = site.section_visibility || {};
+
+  const logo = normalizeAsset(
+    site.media_assets?.logo ||
+    '/images/uploads/logo_transparent_png_tm.png'
+  );
+
+  const serviceLinks = services
+    .slice(0, 7)
+    .map(
+      s =>
+        `<li>
+          <a href="./${escapeHtml(
+            s.page_file || `service-${s.slug}.html`
+          )}">
+            ${escapeHtml(s.title || '')}
+          </a>
+        </li>`
+    )
+    .join('');
+
+  const footerSocial =
+    visibility.footer_social === false
+      ? ''
+      : `<div class="footer-social">${socialHtml(site, 'footer')}</div>`;
+
+  const holder = document.getElementById('site-footer');
+
+  if (!holder) return;
+
+  holder.innerHTML = `
+    <footer>
+      <div class="container">
+
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <img
+              class="footer-logo"
+              src="${escapeHtml(logo)}"
+              alt="${escapeHtml(site.company_name || 'AssurIntellec™')}"
+            >
+            <p>${escapeHtml(f.description || '')}</p>
+          </div>
+
+          <div>
+            <h4>${escapeHtml(f.quick_links_title || 'Quick Links')}</h4>
+
+            <ul class="footer-links">
+              <li><a href="./index.html">${escapeHtml(n.home || 'Home')}</a></li>
+              <li><a href="./about.html">${escapeHtml(n.about || 'About Us')}</a></li>
+              <li><a href="./services.html">${escapeHtml(n.services || 'Services')}</a></li>
+              <li><a href="./why-us.html">${escapeHtml(n.why_us || 'Why Us')}</a></li>
+              <li><a href="./contact.html">${escapeHtml(n.contact || 'Contact Us')}</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>${escapeHtml(f.services_title || 'Services')}</h4>
+            <ul class="footer-links">${serviceLinks}</ul>
+          </div>
+
+          <div>
+            <h4>${escapeHtml(f.social_title || 'Connect')}</h4>
+            ${footerSocial}
+
+            <h4 style="margin-top:20px">
+              ${escapeHtml(f.contact_title || 'Contact')}
+            </h4>
+
+            <div class="footer-contact">
+
+              <a
+                href="tel:${escapeHtml(
+                  String(site.contact?.phone || '').replace(/\s+/g, '')
+                )}"
+              >
+                ${escapeHtml(site.contact?.phone || '')}
+              </a>
+
+              <a
+                href="mailto:${escapeHtml(site.contact?.email || '')}"
+              >
+                ${escapeHtml(site.contact?.email || '')}
+              </a>
+
+              <a
+                href="${escapeHtml(site.contact?.website || '#')}"
+                target="_blank"
+                rel="noopener"
+              >
+                ${escapeHtml(site.contact?.website || '')}
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            © ${new Date().getFullYear()}
+            ${escapeHtml(site.company_name || 'AssurIntellec™')}.
+            ${escapeHtml(f.copyright || '')}
+          </p>
+
+          <p>${escapeHtml(site.tagline || '')}</p>
+        </div>
+
+      </div>
+    </footer>
+  `;
+}
+
+function renderWhatsApp(site) {
+  const holder = document.getElementById('whatsappFloat');
+
+  if (!holder) return;
+
+  if (site.section_visibility?.floating_whatsapp === false) {
+    holder.innerHTML = '';
+    return;
+  }
+
+  const c = site.contact || {};
+
+  if (!c.whatsapp) {
+    holder.innerHTML = '';
+    return;
+  }
+
+  holder.innerHTML = `
+    <a
+      class="whatsapp-float"
+      href="${escapeHtml(c.whatsapp)}"
+      target="_blank"
+      rel="noopener"
+      aria-label="${escapeHtml(
+        c.whatsapp_label || 'WhatsApp'
+      )}"
+      title="${escapeHtml(
+        c.whatsapp_text || 'Start WhatsApp conversation'
+      )}"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  `;
+}
+
+function updateMeta(site) {
+  document.title =
+    site.seo?.title ||
+    site.company_name ||
+    'AssurIntellec™';
+
+  const meta =
+    document.querySelector('meta[name="description"]');
+
+  if (meta) {
+    meta.content = site.seo?.description || '';
+  }
+}
+
+function normalizeServices(data) {
+  return Array.isArray(data?.services)
+    ? data.services
+    : Array.isArray(data)
+      ? data
+      : [];
+}
+
+function renderServiceCards(services) {
+  const grid =
+    document.getElementById('servicesGrid');
+
+  if (!grid) return;
+
+  const aria =
+    SITE?.ui?.service_read_aria ||
+    'Open service details';
+
+  grid.innerHTML = services
+    .map((service, index) => {
+
+      const file =
+        service.page_file ||
+        `service-${service.slug}.html`;
+
+      return `
+        <a
+          class="service-card"
+          href="./${escapeHtml(file)}"
+          aria-label="${escapeHtml(
+            `${aria}: ${service.title || ''}`
+          )}"
+        >
+
+          <div class="service-title-content">
+
+            <span class="service-number">
+              ${String(index + 1).padStart(2, '0')}.
+            </span>
+
+            <span class="service-icon">
+              ${iconHtml(service.icon)}
+            </span>
+
+            <h3>${escapeHtml(service.title)}</h3>
+
+          </div>
+
+          <span class="service-read" aria-hidden="true">
+            <i class="fas fa-arrow-right"></i>
+          </span>
+
+        </a>
+      `;
+    })
+    .join('');
+}
+
+function renderWhyPreview(site) {
+  const grid =
+    document.getElementById('whyPreviewGrid');
+
+  if (!grid) return;
+
+  grid.innerHTML =
+    (site.why_us?.cards || [])
+      .slice(0, 4)
+      .map(
+        card => `
+          <article class="why-card">
+
+            <img
+              class="why-card-image"
+              src="${escapeHtml(
+                normalizeAsset(card.image)
+              )}"
+              alt="${escapeHtml(
+                card.image_alt ||
+                card.title ||
+                ''
+              )}"
+            >
+
+            <div class="why-card-body">
+
+              <i class="fas ${escapeHtml(
+                card.icon ||
+                'fa-circle-nodes'
+              )}"></i>
+
+              <h3>${escapeHtml(
+                card.title || ''
+              )}</h3>
+
+              <p>${escapeHtml(
+                card.text || ''
+              )}</p>
+
+            </div>
+
+          </article>
+        `
+      )
+      .join('');
+}
+
+function renderHome(site, services) {
+  const h = site.hero || {};
+  const home = site.home || {};
+
+  setText(
+    'heroCompany',
+    h.company_name || site.company_name
+  );
+
+  setText('heroKicker', h.kicker);
+  setText('heroHeading', h.heading);
+  setText('heroDescription', h.description);
+
+  setText(
+    'heroPrimaryButton',
+    h.button_primary
+  );
+
+  setHref(
+    'heroPrimaryButton',
+    h.button_primary_url ||
+    './services.html'
+  );
+
+  setText(
+    'heroSecondaryButton',
+    h.button_secondary
+  );
+
+  setHref(
+    'heroSecondaryButton',
+    h.button_secondary_url ||
+    './contact.html'
+  );
+
+  const video =
+    document.getElementById('heroVideo');
+
+  const poster =
+    document.getElementById('heroImage');
+
+  if (video) {
+
+    video.autoplay =
+      h.video_autoplay !== false;
+
+    video.loop =
+      h.video_loop !== false;
+
+    heroAudioEnabled =
+      h.video_audio_default_enabled !== false;
+
+    video.volume = 1;
+
+    video.muted =
+      !heroAudioEnabled;
+
+    video.innerHTML = `
+      <source
+        src="${escapeHtml(
+          normalizeAsset(
+            h.video ||
+            site.media_assets?.hero_video ||
+            '/videos/hero-60sec.mp4'
+          )
+        )}"
+        type="video/mp4"
+      >
+    `;
+
+    video.setAttribute(
+      'aria-label',
+      h.video_alt ||
+      'AssurIntellec hero video'
+    );
+
+    video.load();
+  }
+
+  setImg(
+    poster,
+    h.poster ||
+      site.media_assets?.hero_poster ||
+      '/images/uploads/hero.jpg',
+    h.poster_alt ||
+      'Pharmaceutical facility'
+  );
+
+  if (poster) {
+    poster.style.display = 'none';
+  }
+
+  const sound =
+    document.getElementById('heroSound');
+
+  const updateHeroSoundButton = () => {
+
+    if (!sound || !video) return;
+
+    const muted = !!video.muted;
+
+    sound.innerHTML =
+      muted
+        ? '<i class="fas fa-volume-xmark"></i>'
+        : '<i class="fas fa-volume-high"></i>';
+
+    sound.setAttribute(
+      'aria-label',
+      muted
+        ? (
+            h.video_sound_label ||
+            'Enable hero video sound'
+          )
+        : (
+            h.video_mute_label ||
+            'Mute hero video'
+          )
+    );
+
+    sound.setAttribute(
+      'title',
+      sound.getAttribute('aria-label')
+    );
+  };
+
+  if (sound && video) {
+
+    updateHeroSoundButton();
+
+    if (!sound.dataset.bound) {
+
+      sound.dataset.bound = '1';
+
+      sound.addEventListener(
+        'click',
+        () => {
+
+          video.muted = !video.muted;
+          video.volume = 1;
+
+          updateHeroSoundButton();
+
+          video.play().catch(() => {});
+        }
+      );
+    }
+
+    if (video.autoplay) {
+
+      video.play()
+        .then(() => {
+          updateHeroSoundButton();
+        })
+        .catch(() => {
+
+          if (heroAudioEnabled) {
+
+            video.muted = true;
+
+            updateHeroSoundButton();
+          }
+        });
+    }
+  }
+
+  video?.addEventListener(
+    'error',
+    () => {
+
+      if (poster) {
+        poster.style.display = 'block';
+      }
+
+    }
+  );
+
+  const trust =
+    document.getElementById('trustGrid');
+
+  if (trust) {
+
+    trust.innerHTML =
+      (home.trust_items || [])
+        .map(
+          item => `
+            <div class="trust-item">
+
+              <i class="fas ${escapeHtml(
+                item.icon ||
+                'fa-circle'
+              )}"></i>
+
+              <strong>${escapeHtml(
+                item.title || ''
+              )}</strong>
+
+              <span>${escapeHtml(
+                item.text || ''
+              )}</span>
+
+            </div>
+          `
+        )
+        .join('');
+  }
+
+  const about =
+    home.about_preview || {};
+
+  setText(
+    'aboutPreviewEyebrow',
+    about.eyebrow
+  );
+
+  setText(
+    'aboutPreviewTitle',
+    about.title
+  );
+
+  setText(
+    'aboutPreviewText',
+    about.paragraph ||
+    about.text
+  );
+
+  setText(
+    'aboutPreviewButton',
+    about.button || 'About Us'
+  );
+
+  setHref(
+    'aboutPreviewButton',
+    about.button_url ||
+    './about.html'
+  );
+
+  const points =
+    document.getElementById(
+      'aboutPreviewPoints'
+    );
+
+  if (points) {
+
+    points.innerHTML =
+      (about.points || [])
+        .map(
+          point => `
+            <div class="about-point">
+              <i class="fas fa-circle-check"></i>
+              <span>${escapeHtml(point)}</span>
+            </div>
+          `
+        )
+        .join('');
+  }
+
+  const servicePreview =
+    home.services_preview || {};
+
+  setText(
+    'servicesPreviewEyebrow',
+    servicePreview.eyebrow
+  );
+
+  setText(
+    'servicesPreviewTitle',
+    servicePreview.title
+  );
+
+  setText(
+    'servicesPreviewDescription',
+    servicePreview.description
+  );
+
+  setText(
+    'servicesPreviewButton',
+    servicePreview.button ||
+    'View All Services'
+  );
+
+  setHref(
+    'servicesPreviewButton',
+    servicePreview.button_url ||
+    './services.html'
+  );
+
+  renderServiceCards(services);
+
+  const whyPreview =
+    home.why_preview || {};
+
+  setText(
+    'whyPreviewEyebrow',
+    whyPreview.eyebrow
+  );
+
+  setText(
+    'whyPreviewTitle',
+    whyPreview.title
+  );
+
+  setText(
+    'whyPreviewDescription',
+    whyPreview.description
+  );
+
+  setText(
+    'whyPreviewButton',
+    whyPreview.button ||
+    'Why Us'
+  );
+
+  setHref(
+    'whyPreviewButton',
+    whyPreview.button_url ||
+    './why-us.html'
+  );
+
+  renderWhyPreview(site);
+
+  const cta =
+    home.cta || {};
+
+  setText(
+    'homeCtaTitle',
+    cta.title
+  );
+
+  setText(
+    'homeCtaText',
+    cta.text
+  );
+
+  setText(
+    'homeCtaButton',
+    cta.button ||
+    'Contact Us'
+  );
+
+  setHref(
+    'homeCtaButton',
+    cta.button_url ||
+    './contact.html'
+  );
+
+  instagramAudioEnabled =
+    site.home?.instagram_section
+      ?.audio_default_enabled === true;
+
+  renderInstagram(site);
+
+  applyVisibility(site);
+}
+
+let instagramEmbedPromise = null;
+
+function instagramId(url) {
+  const match =
+    String(url || '').match(
+      /instagram\.com\/(?:reel|reels|p)\/([^/?#]+)/i
+    );
+
+  return match ? match[1] : '';
+}
+
+function ensureInstagramEmbedScript() {
+
+  if (
+    window.instgrm?.Embeds?.process
+  ) {
+    return Promise.resolve();
+  }
+
+  if (instagramEmbedPromise) {
+    return instagramEmbedPromise;
+  }
+
+  instagramEmbedPromise =
+    new Promise(resolve => {
+
+      const existing =
+        document.querySelector(
+          'script[data-instagram-embed-script="true"]'
+        );
+
+      if (existing) {
+
+        const check = () => {
+
+          if (
+            window.instgrm?.Embeds?.process
+          ) {
+            resolve();
+          } else {
+            setTimeout(check, 100);
+          }
+        };
+
+        check();
+        return;
+      }
+
+      const script =
+        document.createElement('script');
+
+      script.async = true;
+      script.src =
+        'https://www.instagram.com/embed.js';
+
+      script.dataset.instagramEmbedScript =
+        'true';
+
+      script.onload = () => resolve();
+      script.onerror = () => resolve();
+
+      document.head.appendChild(script);
+    });
+
+  return instagramEmbedPromise;
+}
+
+function renderInstagram(site) {
+
+  const holder =
+    document.getElementById('instagramReel');
+
+  if (!holder) return;
+
+  const section =
+    site.home?.instagram_section || {};
+
+  if (section.enabled === false) {
+
+    holder.innerHTML = '';
+
+    const prev =
+      document.getElementById('instagramPrev');
+
+    const next =
+      document.getElementById('instagramNext');
+
+    if (prev) prev.style.display = 'none';
+    if (next) next.style.display = 'none';
+
+    return;
+  }
+
+  const list =
+    (site.instagram_reels || [])
+      .filter(
+        item =>
+          item &&
+          item.enabled !== false &&
+          item.url &&
+          instagramId(item.url)
+      );
+
+  const prev =
+    document.getElementById('instagramPrev');
+
+  const next =
+    document.getElementById('instagramNext');
+
+  if (!list.length) {
+
+    holder.innerHTML = `
+      <div class="instagram-placeholder">
+
+        <i class="fab fa-instagram"></i>
+
+        <strong>Instagram Reel</strong>
+
+        <span>
+          ${escapeHtml(
+            section.empty_message ||
+            'Add a public Instagram Reel URL in Decap CMS.'
+          )}
+        </span>
+
+      </div>
+    `;
+
+    if (prev) prev.disabled = true;
+    if (next) next.disabled = true;
+
+    return;
+  }
+
+  instagramIndex =
+    Math.max(
+      0,
+      Math.min(
+        instagramIndex,
+        list.length - 1
+      )
+    );
+
+  const item =
+    list[instagramIndex];
+
+  const id =
+    instagramId(item.url);
+
+  holder.innerHTML = `
+    <blockquote
+      class="instagram-media"
+      data-instgrm-permalink="https://www.instagram.com/reel/${encodeURIComponent(id)}/"
+      data-instgrm-version="14"
+      style="background:#fff;border:0;border-radius:0;box-shadow:none;margin:0;padding:0;width:100%;">
+    </blockquote>
+  `;
+
+  if (prev) {
+
+    prev.style.display =
+      'inline-flex';
+
+    prev.disabled =
+      list.length < 2;
+
+    prev.setAttribute(
+      'aria-label',
+      section.prev_label ||
+      'Previous Instagram Reel'
+    );
+
+    prev.title =
+      section.prev_label ||
+      'Previous Instagram Reel';
+  }
+
+  if (next) {
+
+    next.style.display =
+      'inline-flex';
+
+    next.disabled =
+      list.length < 2;
+
+    next.setAttribute(
+      'aria-label',
+      section.next_label ||
+      'Next Instagram Reel'
+    );
+
+    next.title =
+      section.next_label ||
+      'Next Instagram Reel';
+  }
+
+  ensureInstagramEmbedScript()
+    .then(() => {
+
+      try {
+        window.instgrm?.Embeds?.process();
+      } catch (_) {}
+
+    });
+}
+
+function bindInstagramButtons() {
+
+  const prev =
+    document.getElementById('instagramPrev');
+
+  const next =
+    document.getElementById('instagramNext');
+
+  if (prev && !prev.dataset.bound) {
+
+    prev.dataset.bound = '1';
+
+    prev.addEventListener(
+      'click',
+      () => {
+
+        const list =
+          (SITE?.instagram_reels || [])
+            .filter(
+              item =>
+                item &&
+                item.enabled !== false &&
+                item.url &&
+                instagramId(item.url)
+            );
+
+        if (list.length < 2) return;
+
+        instagramIndex =
+          (
+            instagramIndex -
+            1 +
+            list.length
+          ) % list.length;
+
+        renderInstagram(SITE);
+      }
+    );
+  }
+
+  if (next && !next.dataset.bound) {
+
+    next.dataset.bound = '1';
+
+    next.addEventListener(
+      'click',
+      () => {
+
+        const list =
+          (SITE?.instagram_reels || [])
+            .filter(
+              item =>
+                item &&
+                item.enabled !== false &&
+                item.url &&
+                instagramId(item.url)
+            );
+
+        if (list.length < 2) return;
+
+        instagramIndex =
+          (
+            instagramIndex +
+            1
+          ) % list.length;
+
+        renderInstagram(SITE);
+      }
+    );
+  }
+}
+
+function renderAbout(site) {
+
+  const about =
+    site.about || {};
+
+  const ui =
+    site.ui || {};
+
+  setText(
+    'aboutEyebrow',
+    about.eyebrow
+  );
+
+  setText(
+    'aboutPageTitle',
+    about.page_title
+  );
+
+  setText(
+    'aboutPageDescription',
+    about.page_description
+  );
+
+  setText(
+    'profileCardLabel',
+    about.profile_card_label ||
+    'Founder Profile'
+  );
+
+  setText(
+    'profileName',
+    about.profile_name
+  );
+
+  setText(
+    'profilePosition',
+    about.profile_position
+  );
+
+  setText(
+    'aboutApproachTitle',
+    about.approach_title
+  );
+
+  setText(
+    'aboutApproachFlow',
+    about.approach_flow
+  );
+
+  setText(
+    'aboutClosing',
+    about.closing
+  );
+
+  const photo =
+    document.getElementById('profilePhoto');
+
+  setImg(
+    photo,
+    about.profile_photo ||
+      site.media_assets?.profile_photo,
+    about.profile_photo_alt ||
+      about.profile_name ||
+      'Profile photo'
+  );
+
+  const ph =
+    document.getElementById(
+      'profilePhotoPlaceholder'
+    );
+
+  if (ph) {
+
+    const span =
+      ph.querySelector('span');
+
+    const small =
+      ph.querySelector('small');
+
+    if (span) {
+
+      span.textContent =
+        about.profile_missing_title ||
+        ui.profile_placeholder_title ||
+        'Upload profile photo';
+    }
+
+    if (small) {
+
+      small.textContent =
+        about.profile_missing_help ||
+        ui.profile_placeholder_help ||
+        'Use Decap CMS → Site Settings → About Us';
+    }
+  }
+
+  const textHolder =
+    document.getElementById(
+      'aboutMainText'
+    );
+
+  if (textHolder) {
+
+    textHolder.innerHTML =
+      (about.main_paragraphs || [])
+        .map(
+          p => `<p>${escapeHtml(p)}</p>`
+        )
+        .join('');
+  }
+
+  if (photo) {
+
+    photo.addEventListener(
+      'load',
+      () => {
+
+        if (ph) {
+          ph.style.display = 'none';
+        }
+
+      },
+      { once: true }
+    );
+
+    photo.addEventListener(
+      'error',
+      () => {
+
+        if (ph) {
+          ph.style.display = 'flex';
+        }
+
+        photo.style.display = 'none';
+
+      },
+      { once: true }
+    );
+  }
+}
+
+function renderWhy(site) {
+
+  const why =
+    site.why_us || {};
+
+  setText(
+    'whyEyebrow',
+    why.eyebrow
+  );
+
+  setText(
+    'whyPageTitle',
+    why.page_title
+  );
+
+  setText(
+    'whyPageDescription',
+    why.page_description
+  );
+
+  const grid =
+    document.getElementById('whyGrid');
+
+  if (grid) {
+
+    grid.innerHTML =
+      (why.cards || [])
+        .map(
+          card => `
+            <article class="why-card">
+
+              <img
+                class="why-card-image"
+                src="${escapeHtml(
+                  normalizeAsset(card.image)
+                )}"
+                alt="${escapeHtml(
+                  card.image_alt ||
+                  card.title ||
+                  ''
+                )}"
+              >
+
+              <div class="why-card-body">
+
+                <i class="fas ${escapeHtml(
+                  card.icon ||
+                  'fa-circle-nodes'
+                )}"></i>
+
+                <h3>${escapeHtml(
+                  card.title || ''
+                )}</h3>
+
+                <p>${escapeHtml(
+                  card.text || ''
+                )}</p>
+
+              </div>
+
+            </article>
+          `
+        )
+        .join('');
+  }
+
+  const process =
+    document.getElementById(
+      'processGrid'
+    );
+
+  if (process) {
+
+    process.innerHTML =
+      (why.process || [])
+        .map(
+          item => `
+            <article class="process-card">
+
+              <img
+                src="${escapeHtml(
+                  normalizeAsset(item.image)
+                )}"
+                alt="${escapeHtml(
+                  item.image_alt ||
+                  item.title ||
+                  ''
+                )}"
+              >
+
+              <div class="process-card-body">
+
+                <div class="process-number">
+                  ${escapeHtml(item.number || '')}
+                </div>
+
+                <h3>${escapeHtml(
+                  item.title || ''
+                )}</h3>
+
+                <p>${escapeHtml(
+                  item.text || ''
+                )}</p>
+
+              </div>
+
+            </article>
+          `
+        )
+        .join('');
+  }
+}
+
+function renderContact(site, services) {
+
+  const c =
+    site.contact || {};
+
+  const ui =
+    site.ui || {};
+
+  setText(
+    'contactEyebrow',
+    c.page_eyebrow
+  );
+
+  setText(
+    'contactPageTitle',
+    c.page_title
+  );
+
+  setText(
+    'contactPageDescription',
+    c.page_description
+  );
+
+  setText(
+    'contactHeading',
+    c.heading
+  );
+
+  setText(
+    'contactDescription',
+    c.description
+  );
+
+  setText(
+    'contactFormTitle',
+    c.form_title
+  );
+
+  setText(
+    'labelName',
+    c.form_name_label
+  );
+
+  setText(
+    'labelCompany',
+    c.form_company_label
+  );
+
+  setText(
+    'labelEmail',
+    c.form_email_label
+  );
+
+  setText(
+    'labelPhone',
+    c.form_phone_label
+  );
+
+  setText(
+    'labelService',
+    c.form_service_label
+  );
+
+  setText(
+    'labelMessage',
+    c.form_message_label
+  );
+
+  setText(
+    'contactSubmitButton',
+    c.form_button || 'Send Enquiry'
+  );
+
+  [
+    ['name', c.form_name_placeholder],
+    ['company', c.form_company_placeholder],
+    ['email', c.form_email_placeholder],
+    ['phone', c.form_phone_placeholder],
+    ['message', c.form_message_placeholder]
+  ].forEach(
+    ([id, placeholder]) => {
+
+      const el =
+        document.getElementById(id);
+
+      if (el) {
+        el.placeholder =
+          placeholder || '';
+      }
+    }
+  );
+
+  const items =
+    document.getElementById(
+      'contactItems'
+    );
+
+  if (items) {
+
+    items.innerHTML = `
+      <div class="contact-item">
+
+        <i class="fas fa-phone"></i>
+
+        <div>
+
+          <strong>
+            ${escapeHtml(
+              c.phone_label || 'Phone'
+            )}
+          </strong>
+
+          <a
+            href="tel:${escapeHtml(
+              String(c.phone || '')
+                .replace(/\s+/g, '')
+            )}"
+          >
+            ${escapeHtml(c.phone || '')}
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="contact-item">
+
+        <i class="fas fa-envelope"></i>
+
+        <div>
+
+          <strong>
+            ${escapeHtml(
+              c.email_label || 'Email'
+            )}
+          </strong>
+
+          <a
+            href="mailto:${escapeHtml(
+              c.email || ''
+            )}"
+          >
+            ${escapeHtml(
+              c.email || ''
+            )}
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="contact-item">
+
+        <i class="fas fa-globe"></i>
+
+        <div>
+
+          <strong>
+            ${escapeHtml(
+              c.website_label || 'Website'
+            )}
+          </strong>
+
+          <a
+            href="${escapeHtml(
+              c.website || '#'
+            )}"
+            target="_blank"
+            rel="noopener"
+          >
+            ${escapeHtml(
+              c.website || ''
+            )}
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="contact-item">
+
+        <i class="fab fa-whatsapp"></i>
+
+        <div>
+
+          <strong>
+            ${escapeHtml(
+              c.whatsapp_label || 'WhatsApp'
+            )}
+          </strong>
+
+          <a
+            href="${escapeHtml(
+              c.whatsapp || '#'
+            )}"
+            target="_blank"
+            rel="noopener"
+          >
+            ${escapeHtml(
+              c.whatsapp_text ||
+              'Start WhatsApp conversation'
+            )}
+          </a>
+
+        </div>
+
+      </div>
+    `;
+  }
+
+  const select =
+    document.getElementById('service');
+
+  if (select) {
+
+    select.innerHTML =
+      `<option value="">
+        ${escapeHtml(
+          c.form_service_placeholder ||
+          ui.contact_select_placeholder ||
+          'Select requirement'
+        )}
+      </option>` +
+
+      services
+        .map(
+          service =>
+            `<option value="${escapeHtml(
+              service.title
+            )}">
+              ${escapeHtml(
+                service.title
+              )}
+            </option>`
+        )
+        .join('');
+  }
+
+  const form =
+    document.getElementById('contactForm');
+
+  if (form && !form.dataset.bound) {
+
+    form.dataset.bound = '1';
+
+    form.addEventListener(
+      'submit',
+      event =>
+        handleEnquirySubmit(
+          event,
+          site
+        )
+    );
+
+    const whatsappButton =
+      document.getElementById(
+        'contactWhatsAppButton'
+      );
+
+    if (whatsappButton) {
+
+      whatsappButton.addEventListener(
+        'click',
+        () =>
+          handleWhatsAppEnquiry(site)
+      );
+    }
+  }
+}
+
+function templateMessage(template, data) {
+
+  return String(template || '')
+    .replaceAll(
+      '{name}',
+      data.name || ''
+    )
+    .replaceAll(
+      '{company}',
+      data.company || ''
+    )
+    .replaceAll(
+      '{email}',
+      data.email || ''
+    )
+    .replaceAll(
+      '{phone}',
+      data.phone || ''
+    )
+    .replaceAll(
+      '{service}',
+      data.service || ''
+    )
+    .replaceAll(
+      '{message}',
+      data.message || ''
+    );
+}
+
+function showToast(message, ok = true) {
+
+  const toast =
+    document.getElementById(
+      'siteToast'
+    );
+
+  if (!toast) return;
+
+  toast.textContent = message;
+
+  toast.classList.add('show');
+
+  toast.style.background =
+    ok
+      ? 'var(--navy)'
+      : '#7a1f29';
+
+  clearTimeout(window.__toast);
+
+  window.__toast =
+    setTimeout(
+      () =>
+        toast.classList.remove(
+          'show'
+        ),
+      4500
+    );
+}
+
+function validateForm(form) {
+
+  let validForm = true;
+
+  form
+    .querySelectorAll('[required]')
+    .forEach(field => {
+
+      const value =
+        String(field.value || '').trim();
+
+      const valid =
+        value !== '' &&
+        (
+          field.type !== 'email' ||
+          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+        );
+
+      field.classList.toggle(
+        'invalid',
+        !valid
+      );
+
+      if (!valid) {
+        validForm = false;
+      }
+    });
+
+  return validForm;
+}
+
+function sendToGoogleAppsScript(
+  url,
+  data,
+  callback
+) {
+
+  if (
+    !url ||
+    !url.startsWith('http')
+  ) {
+
+    callback(
+      false,
+      'No Google Apps Script web-app URL has been configured.'
+    );
+
+    return;
+  }
+
+  const payload =
+    new URLSearchParams({
+      ...data,
+      source: 'AssurIntellec website',
+      submitted_at:
+        new Date().toISOString()
+    });
+
+  fetch(url, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: payload,
+    keepalive: true
+  })
+    .then(() => callback(true))
+    .catch(
+      error =>
+        callback(
+          false,
+          error?.message ||
+          'Network error'
+        )
+    );
+}
+
+function handleEnquirySubmit(
+  event,
+  site
+) {
+
+  event.preventDefault();
+
+  const form =
+    event.currentTarget;
+
+  const c =
+    site.contact || {};
+
+  if (!validateForm(form)) {
+
+    showToast(
+      c.form_validation_message ||
+      'Please complete the required fields.',
+      false
+    );
+
+    return;
+  }
+
+  const data =
+    Object.fromEntries(
+      new FormData(form).entries()
+    );
+
+  const sendButton =
+    form.querySelector(
+      'button[type="submit"]'
+    );
+
+  const originalButtonText =
+    sendButton?.textContent ||
+    c.form_button ||
+    'Send Enquiry';
+
+  if (sendButton) {
+
+    sendButton.disabled = true;
+
+    sendButton.textContent =
+      c.form_sending_text ||
+      'Sending…';
+  }
+
+  const finish =
+    (ok, errorMessage) => {
+
+      if (sendButton) {
+
+        sendButton.disabled = false;
+
+        sendButton.textContent =
+          originalButtonText;
+      }
+
+      if (ok) {
+
+        showToast(
+          c.enquiry_success_message ||
+          'Thank you. Your enquiry has been received.',
+          true
+        );
+
+        form.reset();
+
+      } else {
+
+        showToast(
+          errorMessage ||
+          c.enquiry_error_message ||
+          'Your enquiry could not be sent automatically.',
+          false
+        );
+      }
+    };
+
+  if (c.google_apps_script_url) {
+
+    sendToGoogleAppsScript(
+      c.google_apps_script_url,
+      data,
+      finish
+    );
+
+  } else {
+
+    finish(
+      false,
+      'Google Apps Script URL is not configured yet.'
+    );
+  }
+}
+
+function handleWhatsAppEnquiry(site) {
+
+  const form =
+    document.getElementById(
+      'contactForm'
+    );
+
+  if (!form) return;
+
+  const c =
+    site.contact || {};
+
+  if (!validateForm(form)) {
+
+    showToast(
+      c.form_validation_message ||
+      'Please complete the required fields.',
+      false
+    );
+
+    return;
+  }
+
+  const data =
+    Object.fromEntries(
+      new FormData(form).entries()
+    );
+
+  const template =
+    c.whatsapp_prefill_template ||
+`New AssurIntellec™ website enquiry
+
+Name: {name}
+Company: {company}
+Email: {email}
+Phone: {phone}
+Requirement: {service}
+Message: {message}`;
+
+  const whatsappMessage =
+    templateMessage(
+      template,
+      data
+    );
+
+  /*
+    Use the configured WhatsApp phone number
+    when available. Otherwise use the
+    AssurIntellec company phone number.
+  */
+  const phoneNumber =
+    String(
+      c.whatsapp_phone ||
+      c.phone ||
+      '917600666436'
+    ).replace(/\D/g, '');
+
+  const whatsappURL =
+    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+  window.open(
+    whatsappURL,
+    '_blank',
+    'noopener'
+  );
+}
+
+function renderServicesPage(site) {
+
+  const page =
+    site.pages?.services || {};
+
+  setText(
+    'servicesPageEyebrow',
+    page.eyebrow
+  );
+
+  setText(
+    'servicesPageTitle',
+    page.title ||
+    site.navigation?.services ||
+    'Services'
+  );
+
+  setText(
+    'servicesPageDescription',
+    page.description ||
+    site.home?.services_preview
+      ?.description ||
+    ''
+  );
+
+  renderServiceCards(SERVICES);
+}
+
+function renderServiceDetail(site) {
+
+  const slug =
+    document.body.dataset.serviceSlug ||
+    '';
+
+  const service =
+    SERVICES.find(
+      item =>
+        item.slug === slug
+    );
+
+  if (!service) return;
+
+  setText(
+    'servicePageEyebrow',
+    service.page_eyebrow ||
+    'Service'
+  );
+
+  setText(
+    'servicePageTitle',
+    service.page_title ||
+    service.title
+  );
+
+  setText(
+    'servicePageDescription',
+    service.page_description ||
+    service.description
+  );
+
+  setText(
+    'serviceIntroTitle',
+    service.intro_title ||
+    ''
+  );
+
+  setText(
+    'serviceIntro',
+    service.intro ||
+    ''
+  );
+
+  const icon =
+    document.getElementById(
+      'serviceDetailIcon'
+    );
+
+  if (icon) {
+    icon.innerHTML =
+      iconHtml(service.icon);
+  }
+
+  const image1 =
+    document.getElementById(
+      'serviceImage1'
+    );
+
+  const image2 =
+    document.getElementById(
+      'serviceImage2'
+    );
+
+  setImg(
+    image1,
+    service.image_1 ||
+      site.media_assets?.pharmaceutical ||
+      '/images/uploads/pharmaceutical.jpg',
+    service.image_1_alt ||
+      service.title
+  );
+
+  setImg(
+    image2,
+    service.image_2 ||
+      site.media_assets?.about_research ||
+      '/images/uploads/about-research.jpg',
+    service.image_2_alt ||
+      service.title
+  );
+
+  setText(
+    'serviceCaption1',
+    service.gallery_caption_1 ||
+    'Supporting visual'
+  );
+
+  setText(
+    'serviceCaption2',
+    service.gallery_caption_2 ||
+    'Additional visual'
+  );
+
+  setText(
+    'serviceImageText1',
+    service.image_1_text ||
+    service.image_1_alt ||
+    'Technical environment'
+  );
+
+  setText(
+    'serviceImageText2',
+    service.image_2_text ||
+    service.image_2_alt ||
+    'Supporting environment'
+  );
+
+  const videoHolder =
+    document.getElementById(
+      'serviceVideoHolder'
+    );
+
+  if (videoHolder) {
+
+    if (service.service_video) {
+
+      videoHolder.innerHTML = `
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          src="${escapeHtml(
+            normalizeAsset(
+              service.service_video
+            )
+          )}"
+        ></video>
+      `;
+
+      videoHolder.style.display =
+        'block';
+
+    } else {
+
+      videoHolder.innerHTML = '';
+
+      videoHolder.style.display =
+        'none';
+    }
+  }
+
+  const sectionHolder =
+    document.getElementById(
+      'serviceDetailSections'
+    );
+
+  if (sectionHolder) {
+
+    sectionHolder.innerHTML =
+      (service.sections || [])
+        .map(
+          section => `
+            <article class="detail-card">
+
+              <h3>
+                ${escapeHtml(
+                  section.heading || ''
+                )}
+              </h3>
+
+              ${
+                (section.paragraphs || [])
+                  .map(
+                    p =>
+                      `<p>${escapeHtml(p)}</p>`
+                  )
+                  .join('')
+              }
+
+              ${
+                (section.bullets || []).length
+                  ? `
+                    <ul class="detail-list">
+                      ${section.bullets
+                        .map(
+                          b =>
+                            `<li>${escapeHtml(b)}</li>`
+                        )
+                        .join('')}
+                    </ul>
+                  `
+                  : ''
+              }
+
+            </article>
+          `
+        )
+        .join('');
+  }
+
+  setText(
+    'serviceCta',
+    service.cta ||
+    'Contact Us'
+  );
+
+  setHref(
+    'serviceCta',
+    service.cta_url ||
+    './contact.html'
+  );
+
+  const back =
+    document.querySelector(
+      '.detail-cta-row .text-link'
+    );
+
+  if (back) {
+
+    back.textContent =
+      site.home?.services_preview
+        ?.back_to_services_label ||
+      site.ui?.service_back_label ||
+      'Back to Services';
+
+    back.href =
+      site.home?.services_preview
+        ?.back_to_services_url ||
+      './services.html';
+  }
+}
+
+function applyVisibility(site) {
+
+  const v =
+    site.section_visibility || {};
+
+  const map = {
+
+    trust_strip:
+      'trust-strip',
+
+    about_reel_home:
+      'about-reel-section',
+
+    services_preview_home:
+      'home-services-preview',
+
+    why_preview_home:
+      'home-why-preview',
+
+    home_cta:
+      'home-cta'
+  };
+
+  Object.entries(map)
+    .forEach(
+      ([key, className]) => {
+
+        const el =
+          document.querySelector(
+            `.${className}`
+          );
+
+        if (el) {
+
+          el.style.display =
+            v[key] === false
+              ? 'none'
+              : '';
+        }
+      }
+    );
+}
+
+async function init() {
+
+  SITE =
+    await readJson(
+      './content/site.json',
+      FALLBACK_SITE
+    );
+
+  SERVICES =
+    normalizeServices(
+      await readJson(
+        './content/services.json',
+        {
+          services:
+            FALLBACK_SERVICES
+        }
+      )
+    );
+
+  applyTheme(SITE);
+
+  updateMeta(SITE);
+
+  renderHeader(SITE);
+
+  renderFooter(
+    SITE,
+    SERVICES
+  );
+
+  renderWhatsApp(SITE);
+
+  const page =
+    document.body.dataset.page;
+
+  if (page === 'home') {
+    renderHome(
+      SITE,
+      SERVICES
+    );
+  }
+
+  if (page === 'about') {
+    renderAbout(SITE);
+  }
+
+  if (page === 'services') {
+    renderServicesPage(SITE);
+  }
+
+  if (page === 'why') {
+    renderWhy(SITE);
+  }
+
+  if (page === 'contact') {
+    renderContact(
+      SITE,
+      SERVICES
+    );
+  }
+
+  if (page === 'service') {
+    renderServiceDetail(SITE);
+  }
+
+  /*
+    Bind Instagram navigation after
+    the page content exists.
+  */
+  bindInstagramButtons();
+}
+
+document.addEventListener(
+  'DOMContentLoaded',
+  init
+);
