@@ -25,7 +25,23 @@
           <div class="form-group"><label for="phone" id="labelPhone"></label><input id="phone" name="phone" type="tel"></div>
           <div class="form-group full"><label for="service" id="labelService"></label><select id="service" name="service" required></select></div>
           <div class="form-group full"><label for="message" id="labelMessage"></label><textarea id="message" name="message" required></textarea></div>
-          <div class="form-group full"><button type="submit" class="btn btn-primary dark-btn" id="contactSubmitButton"></button></div>
+          <div class="form-group full contact-form-actions">
+
+  <button
+    type="submit"
+    class="btn btn-primary dark-btn"
+    id="contactSubmitButton">
+  </button>
+
+  <button
+    type="button"
+    class="btn whatsapp-form-button"
+    id="contactWhatsAppButton">
+    <i class="fab fa-whatsapp"></i>
+    Send on WhatsApp
+  </button>
+
+</div>
         </div>
       </form>
     </div>
