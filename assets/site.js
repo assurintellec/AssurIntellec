@@ -740,12 +740,80 @@ function sendToGoogleAppsScript(url, data, callback) {
 
 function handleEnquirySubmit(event, site) {
   event.preventDefault();
+
   const form = event.currentTarget;
   const c = site.contact || {};
+
   if (!validateForm(form)) {
-    showToast(c.form_validation_message || 'Please complete the required fields.', false);
+    showToast(
+      c.form_validation_message ||
+      'Please complete the required fields.',
+      false
+    );
     return;
   }
+
+  const data = Object.fromEntries(
+    new FormData(form).entries()
+  );
+
+  const sendButton =
+    form.querySelector('button[type="submit"]');
+
+  const originalButtonText =
+    sendButton?.textContent ||
+    c.form_button ||
+    'Send Enquiry';
+
+  if (sendButton) {
+    sendButton.disabled = true;
+    sendButton.textContent =
+      c.form_sending_text || 'Sending…';
+  }
+
+  const finish = ok => {
+
+    if (sendButton) {
+      sendButton.disabled = false;
+      sendButton.textContent =
+        originalButtonText;
+    }
+
+    if (ok) {
+
+      showToast(
+        c.enquiry_success_message ||
+        'Thank you. Your enquiry has been received.',
+        true
+      );
+
+      form.reset();
+
+    } else {
+
+      showToast(
+        c.enquiry_error_message ||
+        'Your enquiry could not be sent automatically.',
+        false
+      );
+
+    }
+  };
+
+  if (c.google_apps_script_url) {
+
+    sendToGoogleAppsScript(
+      c.google_apps_script_url,
+      data,
+      finish
+    );
+
+  } else {
+
+    finish(false);
+
+  }
+}
 
   const data = Object.fromEntries(new FormData(form).entries());
   const whatsappMessage = templateMessage(c.whatsapp_prefill_template, data);
