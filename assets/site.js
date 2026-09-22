@@ -675,10 +675,26 @@ function renderContact(site, services) {
   }
 
   const form = document.getElementById('contactForm');
-  if (form && !form.dataset.bound) {
-    form.dataset.bound = '1';
-    form.addEventListener('submit', event => handleEnquirySubmit(event, site));
+
+if (form && !form.dataset.bound) {
+
+  form.dataset.bound = '1';
+
+  form.addEventListener(
+    'submit',
+    event => handleEnquirySubmit(event, site)
+  );
+
+  const whatsappButton =
+    document.getElementById('contactWhatsAppButton');
+
+  if (whatsappButton) {
+    whatsappButton.addEventListener(
+      'click',
+      () => handleWhatsAppEnquiry(site)
+    );
   }
+}
 }
 
 function templateMessage(template, data) {
