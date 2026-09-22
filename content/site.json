@@ -3,7 +3,7 @@
     "whatsapp_prefill_template": "New AssurIntellec™ website enquiry\nName: {name}\nCompany: {company}\nEmail: {email}\nPhone: {phone}\nRequirement: {service}\nMessage: {message}",
     "form_message_placeholder": "Describe your requirement...",
     "form_message_label": "Message",
-    "google_apps_script_url": "",
+    "google_apps_script_url": "https://script.google.com/macros/s/AKfycbx3N_hBLsq7IejKbeveFiwjHfy09DWII7ZsZpv2zefVrO1hggIDPoNiw-1mmYJW7KNnDg/exec",
     "heading": "Let's discuss your requirement",
     "phone_label": "Phone",
     "form_phone_placeholder": "+91",
