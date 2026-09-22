@@ -4,8 +4,8 @@ backend:
   branch: main
 media_folder: images/uploads
 public_folder: /images/uploads
-site_url: https://assurintellec.com
-display_url: https://assurintellec.com
+site_url: https://www.assurintellec.in
+display_url: https://www.assurintellec.in
 collections:
 - label: Site Settings
   name: site_settings
