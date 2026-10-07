@@ -208,18 +208,25 @@
     "button_radius": 9,
     "why_title_size": 18
   },
+  "visitor_counter": {
+    "enabled": true,
+    "label": "Website Visitors",
+    "namespace": "assurintellec.in",
+    "action": "view",
+    "key": "website-visitors"
+  },
   "section_visibility": {
-    "header_social": true,
-    "footer_social": true,
-    "trust_strip": true,
-    "about_reel_home": true,
-    "services_preview_home": true,
+    "testimonials_home": true,
+    "client_logos_home": true,
+    "floating_whatsapp": true,
     "why_preview_home": true,
     "home_cta": true,
-    "floating_whatsapp": true,
+    "trust_strip": true,
+    "footer_social": true,
+    "about_reel_home": true,
     "approval_logos_home": true,
-    "client_logos_home": true,
-    "testimonials_home": true
+    "services_preview_home": true,
+    "header_social": true
   },
   "instagram_reels": [
     {
@@ -461,6 +468,7 @@
   },
   "media_assets": {
     "pharmaceutical": "/images/uploads/pharmaceutical.jpg",
+    "schema_logo": "/images/google-logo-512.png",
     "logo": "/images/uploads/logo_transparent_png_tm.png",
     "about_research": "/images/uploads/about-research.jpg",
     "healthcare": "/images/uploads/healthcare.jpg",
@@ -468,55 +476,13 @@
     "life_sciences": "/images/uploads/life-sciences.jpg",
     "hero_poster": "/images/uploads/hero.jpg",
     "biotechnology": "/images/uploads/biotechnology.jpg",
+    "favicon": "/images/favicon-192.png",
     "hero_video": "/videos/hero-60sec.mp4",
     "research": "/images/uploads/research.jpg",
     "about_lab": "/images/uploads/about-lab.jpg",
-    "profile_photo": "/images/uploads/pratik-passport.jpg",
-    "favicon": "/images/favicon-192.png",
-    "schema_logo": "/images/google-logo-512.png"
+    "profile_photo": "/images/uploads/pratik-passport.jpg"
   },
   "home": {
-    "trust_items": [
-      {
-        "icon": "fa-industry",
-        "title": "Pharmaceutical Engineering",
-        "text": "Facility & technical support"
-      },
-      {
-        "icon": "fa-shield-halved",
-        "title": "GMP & Compliance",
-        "text": "Quality-focused solutions"
-      },
-      {
-        "icon": "fa-flask",
-        "title": "Scientific Services",
-        "text": "Research & laboratory support"
-      },
-      {
-        "icon": "fa-handshake",
-        "title": "Advisory",
-        "text": "Technical & commercial support"
-      }
-    ],
-    "about_preview": {
-      "eyebrow": "About AssurIntellec™",
-      "title": "Connecting expertise with opportunity",
-      "paragraph": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform founded on a strong foundation in Pharmaceutics, pharmaceutical research, teaching, laboratory expertise and scientific innovation.",
-      "points": [
-        "Pharmaceutical facility and GMP-focused support",
-        "Scientific, technical and research-oriented solutions",
-        "Advisory support across projects and opportunities",
-        "Integrated life sciences business support"
-      ],
-      "button": "About Us",
-      "button_url": "./about.html"
-    },
-    "instagram_section": {
-      "enabled": true,
-      "prev_label": "Previous Instagram Reel",
-      "next_label": "Next Instagram Reel",
-      "empty_message": "Add public Instagram Reel URLs in Decap CMS."
-    },
     "services_preview": {
       "eyebrow": "What We Do",
       "title": "Services",
@@ -524,19 +490,6 @@
       "button": "View All Services",
       "button_url": "./services.html",
       "back_to_services_label": "Back to Services"
-    },
-    "why_preview": {
-      "eyebrow": "Why AssurIntellec™",
-      "title": "Why Us",
-      "description": "A structured, technically informed and practical approach to pharmaceutical and life-sciences requirements.",
-      "button": "Why Us",
-      "button_url": "./why-us.html"
-    },
-    "cta": {
-      "title": "Have a pharmaceutical or life sciences requirement?",
-      "text": "Connect with AssurIntellec™ for technical, regulatory, scientific and business support.",
-      "button": "Contact AssurIntellec™",
-      "button_url": "./contact.html"
     },
     "approval_logos": {
       "eyebrow": "Certificates & Approvals",
@@ -575,8 +528,21 @@
         }
       ]
     },
+    "cta": {
+      "title": "Have a pharmaceutical or life sciences requirement?",
+      "text": "Connect with AssurIntellec™ for technical, regulatory, scientific and business support.",
+      "button": "Contact AssurIntellec™",
+      "button_url": "./contact.html"
+    },
+    "why_preview": {
+      "eyebrow": "Why AssurIntellec™",
+      "title": "Why Us",
+      "description": "A structured, technically informed and practical approach to pharmaceutical and life-sciences requirements.",
+      "button": "Why Us",
+      "button_url": "./why-us.html"
+    },
     "client_logos": {
-      "eyebrow": "",
+      "eyebrow": "Customer ",
       "title": "Our Clients",
       "description": "",
       "items": [
@@ -616,10 +582,10 @@
       "items": [
         {
           "rating": 5,
-          "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
-          "name": "Customer Name",
-          "company": "Company Name",
-          "avatar": ""
+          "text": "Professional and knowledgeable team with excellent pharmaceutical consulting services. Highly recommended.",
+          "name": "Mr. Dhaval Shah",
+          "company": "Pharma Tech Engineers",
+          "avatar": "/images/uploads/pharma-tech-engineering.png"
         },
         {
           "rating": 5,
@@ -636,13 +602,52 @@
           "avatar": ""
         }
       ]
-    }
-  },
-  "visitor_counter": {
-    "enabled": true,
-    "label": "Website Visitors",
-    "namespace": "assurintellec.in",
-    "action": "view",
-    "key": "website-visitors"
+    },
+    "why_us": {
+      "eyebrow": "Why AssurIntellec™",
+      "title": "Why Us",
+      "description": "A structured, technically informed and practical approach to pharmaceutical and life-sciences requirements."
+    },
+    "about_preview": {
+      "eyebrow": "About AssurIntellec™",
+      "title": "Connecting expertise with opportunity",
+      "paragraph": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform founded on a strong foundation in Pharmaceutics, pharmaceutical research, teaching, laboratory expertise and scientific innovation.",
+      "points": [
+        "Pharmaceutical facility and GMP-focused support",
+        "Scientific, technical and research-oriented solutions",
+        "Advisory support across projects and opportunities",
+        "Integrated life sciences business support"
+      ],
+      "button": "About Us",
+      "button_url": "./about.html"
+    },
+    "instagram_section": {
+      "enabled": true,
+      "prev_label": "Previous Instagram Reel",
+      "next_label": "Next Instagram Reel",
+      "empty_message": "Add public Instagram Reel URLs in Decap CMS."
+    },
+    "trust_items": [
+      {
+        "icon": "fa-industry",
+        "title": "Pharmaceutical Engineering",
+        "text": "Facility & technical support"
+      },
+      {
+        "icon": "fa-shield-halved",
+        "title": "GMP & Compliance",
+        "text": "Quality-focused solutions"
+      },
+      {
+        "icon": "fa-flask",
+        "title": "Scientific Services",
+        "text": "Research & laboratory support"
+      },
+      {
+        "icon": "fa-handshake",
+        "title": "Advisory",
+        "text": "Technical & commercial support"
+      }
+    ]
   }
 }
