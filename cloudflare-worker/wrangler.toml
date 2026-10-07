@@ -1,9 +1,0 @@
-name = "assurintellec-titan-mail"
-main = "src/index.js"
-compatibility_date = "2026-09-01"
-workers_dev = true
-
-# Secrets are added in the Cloudflare dashboard/CLI and must NOT be committed:
-# TITAN_SMTP_USER
-# TITAN_SMTP_PASS
-# WORKER_BRIDGE_TOKEN
