@@ -1,0 +1,22 @@
+{
+  "approval_images": [
+    "/images/uploads/approval-fda.png",
+    "/images/uploads/approval-iso.png",
+    "/images/uploads/approval-glp.png",
+    "/images/uploads/approval-who-gmp.png",
+    "/images/uploads/approval-schedule-m.png",
+    "/images/uploads/approval-nabl.png"
+  ],
+  "client_images": [
+    "/images/uploads/client-envacare.png",
+    "/images/uploads/client-axelus-pharma.jpg",
+    "/images/uploads/client-3.png",
+    "/images/uploads/client-4.png",
+    "/images/uploads/client-5.png"
+  ],
+  "testimonial_avatars": [
+    "/images/uploads/testimonial-customer-1.png",
+    "/images/uploads/testimonial-customer-2.png",
+    "/images/uploads/testimonial-customer-3.png"
+  ]
+}
