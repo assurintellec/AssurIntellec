@@ -549,16 +549,16 @@
         {
           "title": "Client Logo 1",
           "image": "/images/uploads/client-ginni-filaments.png",
-          "alt": "Ginni Filaments Limited client logo"
+          "alt": "Envacare Laboratory"
         },
         {
           "title": "Client Logo 2",
-          "image": "/images/uploads/client-kamallie-pharmaceuticals.png",
-          "alt": "Client pharmaceutical company logo"
+          "image": "/images/uploads/axelus-png.png",
+          "alt": "Axelus Pharma Pvt. Ltd."
         },
         {
           "title": "Client Logo 3",
-          "image": "/images/uploads/client-ketul-chem.png",
+          "image": "/images/uploads/client-kumar-organic-products.png",
           "alt": "Ketul Chem Private Limited client logo"
         },
         {
@@ -569,7 +569,7 @@
         {
           "title": "Client Logo 5",
           "image": "/images/uploads/client-kumar-organic-products.png",
-          "alt": "Kumar Organic Products Limited client logo"
+          "alt": "NA"
         }
       ]
     },
