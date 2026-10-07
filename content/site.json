@@ -588,17 +588,17 @@
           "avatar": "/images/uploads/testimonial-customer-1.png"
         },
         {
-          "name": "Customer Name",
-          "company": "Company Name",
+          "name": "Ravi Bambhroliya",
+          "company": "Envacare Laboratory LLP",
           "rating": 5,
-          "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
+          "text": "Exceptional service and a truly professional experience. The team is highly knowledgeable, helpful, and attentive to every detail. Highly recommended!",
           "avatar": "/images/uploads/testimonial-customer-2.png"
         },
         {
-          "name": "Customer Name",
-          "company": "Company Name",
+          "name": "Manoj Gupta",
+          "company": "Get ISO Certificate",
           "rating": 5,
-          "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
+          "text": "Best Services for approval",
           "avatar": "/images/uploads/testimonial-customer-3.png"
         }
       ]
