@@ -548,27 +548,27 @@
       "items": [
         {
           "title": "FDA",
-          "image": "/images/uploads/approval-fda.png",
+          "image": "/images/uploads/1.fda.jpg",
           "alt": "FDA approval logo"
         },
         {
           "title": ".",
-          "image": "/images/uploads/approval-iso.png",
+          "image": "/images/uploads/2-iso_certification.jpg",
           "alt": "."
         },
         {
           "title": ".",
-          "image": "/images/uploads/approval-glp.png",
+          "image": "/images/uploads/3.glp.jpg",
           "alt": "."
         },
         {
           "title": ".",
-          "image": "/images/uploads/approval-who-gmp.png",
+          "image": "/images/uploads/4.who-gmp.jpg",
           "alt": "."
         },
         {
           "title": ".",
-          "image": "/images/uploads/approval-schedule-m.png",
+          "image": "/images/uploads/5.revised_schedule_m.jpg",
           "alt": "."
         }
       ]
