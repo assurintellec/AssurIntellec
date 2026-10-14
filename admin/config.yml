@@ -1,0 +1,2411 @@
+backend:
+  name: turbo-github
+  turbo_site_id: 970e4e24-dfda-4ae1-beec-118e1dc52488
+  branch: main
+media_folder: images/uploads
+public_folder: /images/uploads
+site_url: https://www.assurintellec.in
+display_url: https://www.assurintellec.in
+collections:
+- label: Site Settings
+  name: site_settings
+  files:
+  - label: Complete Website Settings
+    name: settings
+    file: content/site.json
+    format: json
+    fields:
+    - label: Company Name
+      name: company_name
+      widget: string
+    - label: Brand Subtitle
+      name: brand_subtitle
+      widget: string
+    - label: Tagline
+      name: tagline
+      widget: string
+    - label: Branding & Loading Splash
+      name: branding
+      widget: object
+      collapsed: true
+      fields:
+      - label: Enable Loading Splash
+        name: splash_enabled
+        widget: boolean
+        default: true
+      - label: Splash Display Time (ms)
+        name: splash_display_ms
+        widget: number
+        value_type: int
+        min: 0
+        max: 2500
+        default: 950
+      - label: Splash Fade-out Time (ms)
+        name: splash_fade_ms
+        widget: number
+        value_type: int
+        min: 0
+        max: 1200
+        default: 360
+      - label: Animate Header Logo Entrance
+        name: header_logo_animation
+        widget: boolean
+        default: true
+    - label: SEO
+      name: seo
+      widget: object
+      collapsed: true
+      fields:
+      - label: Schema / Google Search Logo URL
+        name: logo_url
+        widget: string
+        required: false
+        default: https://www.assurintellec.in/images/uploads/logo_transparent_png_tm.png
+        hint: Crawlable full brand logo used in Organization structured data. Google decides whether to show it in Search.
+      - label: Page Title
+        name: title
+        widget: string
+      - label: Meta Description
+        name: description
+        widget: text
+      - label: Canonical Base URL
+        name: canonical_base
+        widget: string
+        hint: Official canonical domain used for page SEO.
+    - label: Website Visitor Counter
+      name: visitor_counter
+      widget: object
+      collapsed: true
+      fields:
+      - label: Enable Visitor Counter
+        name: enabled
+        widget: boolean
+        default: true
+      - label: Starting Visitor Count
+        name: starting_count
+        widget: number
+        value_type: int
+        min: 0
+        default: 0
+        hint: Used only when first initializing the server count or when Baseline Reset Version is changed. This does not
+          store the live total.
+      - label: Visitor Counter Label
+        name: label
+        widget: string
+        default: Website Visitors
+      - label: Display Position
+        name: display_position
+        widget: select
+        options:
+        - label: Footer bottom (current position)
+          value: footer-bottom
+        - label: Footer contact area
+          value: footer-contact
+        - label: Floating bottom-left
+          value: floating
+        default: footer-bottom
+      - label: Counting Policy
+        name: counting_policy
+        widget: select
+        options:
+        - label: One count per browser tab session (recommended)
+          value: session
+        - label: One count per browser per day
+          value: daily_browser
+        default: session
+        hint: This is an approximate visit unit, not an exact count of individual people. Refreshes are deduplicated by the
+          server.
+      - label: Baseline Reset Date / Version
+        name: baseline_version
+        widget: string
+        required: false
+        default: ''
+        hint: Leave blank to let the backend try a one-time import from the previous CounterAPI total. To intentionally reset,
+          set Starting Visitor Count and change this value to a new unique version/date, then publish.
+      - label: Number Format
+        name: number_format
+        widget: select
+        options:
+        - label: Thousands separators (12,850)
+          value: thousands
+        - label: Plain number (12850)
+          value: plain
+        default: thousands
+      - label: Counter Animation
+        name: counter_animation
+        widget: boolean
+        default: true
+      - label: Counter Animation Duration (ms)
+        name: animation_duration_ms
+        widget: number
+        value_type: int
+        min: 0
+        max: 2000
+        default: 500
+      - label: Legacy Counter Namespace (migration only)
+        name: namespace
+        widget: string
+        required: false
+        default: assurintellec.in
+        hint: Used only once if the backend needs to import the previous CounterAPI total.
+      - label: Legacy Counter Action (migration only)
+        name: action
+        widget: string
+        required: false
+        default: view
+      - label: Legacy Counter Key (migration only)
+        name: key
+        widget: string
+        required: false
+        default: website-visitors
+      - label: Try importing legacy counter once
+        name: legacy_import_enabled
+        widget: boolean
+        default: true
+    - label: Global Animation System
+      name: motion
+      widget: object
+      collapsed: true
+      fields:
+      - label: Enable Global Animations
+        name: enabled
+        widget: boolean
+        default: true
+      - label: Animation Intensity
+        name: intensity
+        widget: select
+        options:
+        - label: Subtle and premium
+          value: subtle
+        - label: Standard
+          value: standard
+        default: subtle
+      - label: Entrance Duration (ms)
+        name: duration_ms
+        widget: number
+        value_type: int
+        min: 150
+        max: 1400
+        default: 620
+      - label: Stagger Between Cards (ms)
+        name: stagger_ms
+        widget: number
+        value_type: int
+        min: 0
+        max: 250
+        default: 65
+    - label: Navigation
+      name: navigation
+      widget: object
+      collapsed: true
+      fields:
+      - label: Home
+        name: home
+        widget: string
+      - label: About Us
+        name: about
+        widget: string
+      - label: Services
+        name: services
+        widget: string
+      - label: Why Us
+        name: why_us
+        widget: string
+      - label: Contact Us
+        name: contact
+        widget: string
+    - label: Social Media
+      name: social
+      widget: object
+      collapsed: true
+      fields:
+      - label: Social Links (drag to change order)
+        name: items
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - label: Key
+          name: key
+          widget: string
+        - label: Label
+          name: label
+          widget: string
+        - label: URL
+          name: url
+          widget: string
+        - label: Font Awesome Icon Class
+          name: icon
+          widget: string
+        - label: CSS Color Class (optional)
+          name: class_name
+          widget: string
+          required: false
+        - label: Header Icon Color
+          name: header_color
+          widget: color
+          allowInput: true
+          default: '#111111'
+        - label: Footer Icon Color
+          name: footer_color
+          widget: color
+          allowInput: true
+          default: '#ffffff'
+        - label: Enabled
+          name: enabled
+          widget: boolean
+          default: true
+    - label: Contact & Enquiry
+      name: contact
+      widget: object
+      collapsed: true
+      fields:
+      - label: Office Phone
+        name: phone
+        widget: string
+        hint: Main office number shown on the website.
+      - label: Office Phone Label
+        name: phone_label
+        widget: string
+      - label: Mobile Phone
+        name: mobile_phone
+        widget: string
+        required: false
+      - label: Mobile Phone Label
+        name: mobile_phone_label
+        widget: string
+        required: false
+      - label: Public Email
+        name: email
+        widget: string
+      - label: Website
+        name: website
+        widget: string
+      - label: Website Display Text
+        name: website_display
+        widget: string
+        hint: Visible website text, for example www.assurintellec.in. The Website field remains the clickable URL.
+      - label: WhatsApp Link
+        name: whatsapp
+        widget: string
+      - label: WhatsApp Phone Number
+        name: whatsapp_phone
+        widget: string
+        required: false
+        hint: International digits only, e.g. 917600666436. Used by the pre-filled enquiry WhatsApp button.
+      - label: Enquiry Recipient Email
+        name: enquiry_recipient_email
+        widget: string
+        hint: Email address used by the Apps Script enquiry notification.
+      - label: Service Page Contact Label
+        name: service_contact_label
+        widget: string
+      - label: Service Page Contact Email
+        name: service_contact_email
+        widget: string
+        hint: Shown at the bottom of every individual service page.
+      - label: Google Apps Script Web App URL
+        name: google_apps_script_url
+        widget: string
+        required: false
+        hint: Existing deployed Google Apps Script /exec URL. This endpoint handles enquiries and the persistent visitor counter;
+          keep the same deployment URL when publishing a new script version.
+      - label: Customer Confirmation Email Enabled
+        name: customer_confirmation_email_enabled
+        widget: boolean
+        default: true
+        hint: Sends an automatic confirmation email to the customer after a successful enquiry submission.
+      - label: Customer Confirmation From Email
+        name: customer_confirmation_email_from_email
+        widget: string
+        hint: The mail Worker must authenticate using this same verified sender mailbox. It cannot truthfully send from this
+          address unless TITAN_SMTP_USER is configured to this address.
+      - label: Customer Confirmation Email Subject
+        name: customer_confirmation_email_subject
+        widget: string
+      - label: Customer Confirmation Email Message
+        name: customer_confirmation_email_message
+        widget: text
+        hint: 'Editable main message template. Supported placeholders: {name}, {company}, {email}, {phone}, {service}, {message},
+          {reference}, and {services}. The branded signature, contact details and logo are added automatically from the published
+          Site Settings / Media Assets, so the logo can be changed through Decap CMS.'
+      - label: Page Eyebrow
+        name: page_eyebrow
+        widget: string
+      - label: Page Title
+        name: page_title
+        widget: string
+      - label: Page Description
+        name: page_description
+        widget: text
+      - label: Contact Heading
+        name: heading
+        widget: string
+      - label: Contact Description
+        name: description
+        widget: text
+      - label: Form Title
+        name: form_title
+        widget: string
+      - label: Name Label
+        name: form_name_label
+        widget: string
+      - label: Company Label
+        name: form_company_label
+        widget: string
+      - label: Email Label
+        name: form_email_label
+        widget: string
+      - label: Phone Label
+        name: form_phone_label
+        widget: string
+      - label: Requirement Label
+        name: form_service_label
+        widget: string
+      - label: Message Label
+        name: form_message_label
+        widget: string
+      - label: Name Placeholder
+        name: form_name_placeholder
+        widget: string
+      - label: Company Placeholder
+        name: form_company_placeholder
+        widget: string
+      - label: Email Placeholder
+        name: form_email_placeholder
+        widget: string
+      - label: Phone Placeholder
+        name: form_phone_placeholder
+        widget: string
+      - label: Message Placeholder
+        name: form_message_placeholder
+        widget: string
+      - label: Submit Button
+        name: form_button
+        widget: string
+      - label: Website Label
+        name: website_label
+        widget: string
+      - label: Email Label (Contact Card)
+        name: email_label
+        widget: string
+      - label: WhatsApp Label
+        name: whatsapp_label
+        widget: string
+      - label: WhatsApp Link Text
+        name: whatsapp_text
+        widget: string
+      - label: Success Message
+        name: enquiry_success_message
+        widget: string
+      - label: Success Title
+        name: enquiry_success_title
+        widget: string
+        hint: Centre confirmation title shown after a successful enquiry.
+      - label: Success Received Line
+        name: enquiry_success_received
+        widget: string
+      - label: Success Review Message
+        name: enquiry_success_body
+        widget: text
+      - label: Success Closing Line
+        name: enquiry_success_closing
+        widget: string
+      - label: Success Tagline
+        name: enquiry_success_tagline
+        widget: string
+      - label: Success Close Label
+        name: enquiry_success_close_label
+        widget: string
+      - label: Error Message
+        name: enquiry_error_message
+        widget: text
+      - label: WhatsApp Prefill Template
+        name: whatsapp_prefill_template
+        widget: text
+        hint: 'Available fields: {name}, {company}, {email}, {phone}, {service}, {message}'
+      - label: Form Service Placeholder
+        name: form_service_placeholder
+        widget: string
+        required: false
+        default: Select requirement
+      - label: Form Validation Message
+        name: form_validation_message
+        widget: string
+        required: false
+      - label: Form Sending Text
+        name: form_sending_text
+        widget: string
+        required: false
+      - label: Enquiry Subject
+        name: enquiry_subject
+        widget: string
+        required: false
+    - label: Hero
+      name: hero
+      widget: object
+      collapsed: true
+      fields:
+      - label: Hero Company Name
+        name: company_name
+        widget: string
+      - label: Kicker
+        name: kicker
+        widget: string
+      - label: Heading
+        name: heading
+        widget: string
+      - label: Description
+        name: description
+        widget: text
+      - label: Hero Video
+        name: video
+        widget: file
+        required: false
+        media_folder: /videos
+        public_folder: /videos
+      - label: Hero Poster / Fallback Image
+        name: poster
+        widget: image
+        required: false
+      - label: Primary Button Text
+        name: button_primary
+        widget: string
+      - label: Primary Button URL
+        name: button_primary_url
+        widget: string
+      - label: Secondary Button Text
+        name: button_secondary
+        widget: string
+      - label: Secondary Button URL
+        name: button_secondary_url
+        widget: string
+      - label: Sound Button Label
+        name: video_sound_label
+        widget: string
+      - label: Mute Button Label
+        name: video_mute_label
+        widget: string
+      - label: Audio On by Default
+        name: video_audio_default_enabled
+        widget: boolean
+        default: true
+        hint: The hero video starts with audio requested by default. Browsers may block autoplay with sound; in that case
+          it starts muted until the visitor enables audio.
+      - label: Autoplay
+        name: video_autoplay
+        widget: boolean
+        default: true
+      - label: Loop
+        name: video_loop
+        widget: boolean
+        default: true
+      - label: Hero Video Alt Text
+        name: video_alt
+        widget: string
+        required: false
+      - label: Hero Poster Alt Text
+        name: poster_alt
+        widget: string
+        required: false
+    - label: Homepage
+      name: home
+      widget: object
+      collapsed: true
+      fields:
+      - label: Trust Strip
+        name: trust_items
+        widget: list
+        summary: '{{fields.title}}'
+        fields:
+        - label: Icon
+          name: icon
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Supporting Text
+          name: text
+          widget: string
+      - label: Instagram Reel Viewer Settings
+        name: instagram_section
+        widget: object
+        collapsed: true
+        fields:
+        - label: Enabled
+          name: enabled
+          widget: boolean
+          default: true
+          required: false
+        - label: Prev label
+          name: prev_label
+          widget: string
+          required: false
+          default: Previous Instagram Reel
+        - label: Next label
+          name: next_label
+          widget: string
+          required: false
+          default: Next Instagram Reel
+        - label: Empty message
+          name: empty_message
+          widget: text
+          required: false
+          default: Upload an authorized MP4 video or add a public Instagram Reel URL in Decap CMS.
+      - label: Certificates & Approvals Logos (6)
+        name: approval_logos
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+        - label: Section Title
+          name: title
+          widget: string
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        - label: Six Logos (all 6 visible at once)
+          name: items
+          widget: list
+          min: 6
+          max: 6
+          allow_add: false
+          allow_remove: false
+          allow_reorder: true
+          summary: '{{fields.title}}'
+          fields:
+          - label: Logo / Certificate Image
+            name: image
+            widget: image
+            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates the image reference
+              automatically.
+          - label: Display Name
+            name: title
+            widget: string
+          - label: Alt Text
+            name: alt
+            widget: string
+      - label: Valuable Customer Logos (5)
+        name: client_logos
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+        - label: Section Title
+          name: title
+          widget: string
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        - label: Five Customer Logos
+          name: items
+          widget: list
+          min: 5
+          max: 5
+          allow_add: false
+          allow_remove: false
+          allow_reorder: true
+          summary: '{{fields.title}}'
+          fields:
+          - label: Customer Logo
+            name: image
+            widget: image
+            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates the image reference
+              automatically.
+          - label: Company / Display Name
+            name: title
+            widget: string
+          - label: Alt Text
+            name: alt
+            widget: string
+      - label: Testimonials (3 cards shown at once)
+        name: testimonials
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+        - label: Section Title
+          name: title
+          widget: string
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        - label: Google Reviews Link
+          name: google_link
+          widget: string
+          hint: Opens your existing Google reviews page. Keep this as your AssurIntellec Google review link.
+        - label: Google Button Label
+          name: google_link_label
+          widget: string
+          default: Read all reviews on Google
+        - label: Three Testimonials
+          name: items
+          widget: list
+          min: 3
+          max: 3
+          allow_add: false
+          allow_remove: false
+          allow_reorder: true
+          summary: '{{fields.name}} — {{fields.company}}'
+          fields:
+          - label: Rating
+            name: rating
+            widget: number
+            value_type: int
+            min: 1
+            max: 5
+            default: 5
+          - label: Testimonial Text
+            name: text
+            widget: text
+          - label: Customer Name
+            name: name
+            widget: string
+          - label: Company Name
+            name: company
+            widget: string
+          - label: Customer Photo (optional)
+            name: avatar
+            widget: image
+            required: false
+            hint: Upload any PNG, JPG or WebP. The three testimonial photos are editable here and can also be replaced directly
+              in GitHub.
+      - label: Why Us Page
+        name: why_us
+        widget: object
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Description
+          name: description
+          widget: text
+      - label: Services Preview
+        name: services_preview
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+          default: What We Do
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          default: Services
+        - label: Description
+          name: description
+          widget: text
+          required: false
+          default: Seven focused service verticals across pharmaceutical and life-sciences requirements.
+        - label: Button
+          name: button
+          widget: string
+          required: false
+          default: View All Services
+        - label: Button url
+          name: button_url
+          widget: string
+          required: false
+          default: ./services.html
+        - label: Back to services label
+          name: back_to_services_label
+          widget: string
+          required: false
+          default: Back to Services
+      - label: Homepage Call to Action
+        name: cta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          default: Have a pharmaceutical or life sciences requirement?
+        - label: Text
+          name: text
+          widget: text
+          required: false
+          default: Connect with AssurIntellec™ for technical, regulatory, scientific and business support.
+        - label: Button
+          name: button
+          widget: string
+          required: false
+          default: Contact AssurIntellec™
+        - label: Button url
+          name: button_url
+          widget: string
+          required: false
+          default: ./contact.html
+      - label: Why Us Preview
+        name: why_preview
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+          default: Why AssurIntellec™
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          default: Why Us
+        - label: Description
+          name: description
+          widget: text
+          required: false
+          default: A structured, technically informed and practical approach to pharmaceutical and life-sciences requirements.
+        - label: Button
+          name: button
+          widget: string
+          required: false
+          default: Why Us
+        - label: Button url
+          name: button_url
+          widget: string
+          required: false
+          default: ./why-us.html
+      - label: About Preview
+        name: about_preview
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+          default: About AssurIntellec™
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          default: Connecting expertise with opportunity
+        - label: Paragraph
+          name: paragraph
+          widget: text
+          required: false
+          default: AssurIntellec™ is a pharmaceutical and life sciences solutions platform founded on a strong foundation
+            in Pharmaceutics, pharmaceutical research, teaching, laboratory expertise and scientific innovation.
+        - label: Points
+          name: points
+          widget: list
+          required: false
+          field:
+            label: Item
+            name: item
+            widget: text
+        - label: Button
+          name: button
+          widget: string
+          required: false
+          default: About Us
+        - label: Button url
+          name: button_url
+          widget: string
+          required: false
+          default: ./about.html
+    - label: Expert Team — 10 Editable Profiles
+      name: expert_team
+      widget: object
+      collapsed: true
+      fields:
+      - label: Enable Expert Team Section
+        name: enabled
+        widget: boolean
+        default: true
+      - label: Eyebrow Label
+        name: eyebrow
+        widget: string
+        required: false
+      - label: Section Heading
+        name: title
+        widget: string
+        required: false
+      - label: Subtitle
+        name: subtitle
+        widget: text
+        required: false
+      - label: Description
+        name: description
+        widget: text
+        required: false
+      - label: Profile Details Button Text
+        name: card_details_label
+        widget: string
+        required: false
+      - label: Modal Heading
+        name: modal_title
+        widget: string
+        required: false
+      - label: Modal Close Button Label
+        name: close_button_label
+        widget: string
+        required: false
+      - label: Empty State Text
+        name: empty_state
+        widget: text
+        required: false
+      - label: Biography Heading
+        name: biography_label
+        widget: string
+        required: false
+      - label: Professional Experience Heading
+        name: experience_label
+        widget: string
+        required: false
+      - label: Qualifications Heading
+        name: qualifications_label
+        widget: string
+        required: false
+      - label: Areas of Expertise Heading
+        name: expertise_label
+        widget: string
+        required: false
+      - label: Achievements Heading
+        name: achievements_label
+        widget: string
+        required: false
+      - label: Additional Information Heading
+        name: additional_label
+        widget: string
+        required: false
+      - label: Ten Expert Slots (keep unused profiles disabled)
+        name: profiles
+        widget: list
+        min: 10
+        max: 10
+        allow_add: false
+        allow_remove: false
+        allow_reorder: true
+        summary: '{{fields.order}} — {{fields.name}}'
+        fields:
+        - label: Enable Profile
+          name: enabled
+          widget: boolean
+          default: false
+        - label: Serial Number / Display Order
+          name: order
+          widget: number
+          value_type: int
+          min: 1
+          max: 100
+          default: 1
+        - label: Expert Name
+          name: name
+          widget: string
+          required: false
+        - label: Professional Designation
+          name: designation
+          widget: string
+          required: false
+        - label: Short Introduction
+          name: short_intro
+          widget: text
+          required: false
+        - label: Profile Image / Illustration
+          name: image
+          widget: image
+          required: false
+          hint: Upload a real approved profile photograph or an illustrative placeholder. Avoid presenting a generic illustration
+            as a real photograph.
+        - label: Image Alternative Text
+          name: image_alt
+          widget: string
+          required: false
+        - label: Full Biography
+          name: biography
+          widget: text
+          required: false
+        - label: Professional Experience
+          name: experience
+          widget: text
+          required: false
+        - label: Qualifications and Education
+          name: qualifications
+          widget: text
+          required: false
+        - label: Areas of Expertise
+          name: expertise
+          widget: list
+          required: false
+          field:
+            label: Area
+            name: area
+            widget: string
+        - label: Achievements
+          name: achievements
+          widget: text
+          required: false
+        - label: Additional Information
+          name: additional_information
+          widget: text
+          required: false
+        - label: Profile Button Label (optional)
+          name: button_label
+          widget: string
+          required: false
+    - label: Instagram Reels — 5 Editable Entries
+      name: instagram_reels
+      widget: list
+      min: 5
+      max: 5
+      allow_add: false
+      allow_remove: false
+      allow_reorder: true
+      summary: '{{fields.title}}'
+      fields:
+      - label: Enable Reel
+        name: enabled
+        widget: boolean
+        default: true
+      - label: Reel Label
+        name: title
+        widget: string
+      - label: Authorized Local MP4 Video (preferred for video-only view)
+        name: video
+        widget: file
+        required: false
+        media_folder: /videos
+        public_folder: /videos
+        hint: Upload a video you own or are authorized to publish. A local MP4 provides a clean video-only presentation without
+          Instagram interface elements.
+      - label: Optional Poster Image
+        name: poster
+        widget: image
+        required: false
+      - label: External Instagram Reel URL (fallback)
+        name: url
+        widget: string
+        required: false
+      - label: Accessible Video Alt/Label
+        name: alt
+        widget: string
+        required: false
+    - label: About Us & Founder Profile
+      name: about
+      widget: object
+      collapsed: true
+      fields:
+      - label: Approach title
+        name: approach_title
+        widget: string
+        required: false
+        default: Our Approach
+      - label: Profile name
+        name: profile_name
+        widget: string
+        required: false
+        default: Mr. Pratik Siddhapura (Ph.D.)
+      - label: Approach flow
+        name: approach_flow
+        widget: text
+        required: false
+        default: Scientific Knowledge → Practical Solutions → Assured Compliance
+      - label: Profile email
+        name: profile_email
+        widget: string
+        required: false
+        default: pratik@assurintellec.com
+      - label: Profile photo alt
+        name: profile_photo_alt
+        widget: string
+        required: false
+        default: Mr. Pratik Siddhapura (Ph.D.)
+      - label: Page title
+        name: page_title
+        widget: string
+        required: false
+        default: About Us
+      - label: Eyebrow
+        name: eyebrow
+        widget: string
+        required: false
+        default: AssurIntellec™
+      - label: Main paragraphs
+        name: main_paragraphs
+        widget: list
+        required: false
+        field:
+          label: Paragraph
+          name: paragraph
+          widget: text
+      - label: Page description
+        name: page_description
+        widget: text
+        required: false
+        default: Scientific knowledge, practical solutions and assured compliance for pharmaceutical and life sciences requirements.
+      - label: Closing
+        name: closing
+        widget: text
+        required: false
+        default: 'AssurIntellec™
+
+          Intelligent Solutions. Assured Compliance.'
+      - label: Profile phone
+        name: profile_phone
+        widget: string
+        required: false
+        default: '7405660185'
+      - label: Profile card label
+        name: profile_card_label
+        widget: string
+        required: false
+        default: Founder Profile
+      - label: Founder Profile Photo
+        name: profile_photo
+        widget: image
+        required: false
+        default: /images/uploads/pratik_passport_size.jpg
+      - label: Profile position
+        name: profile_position
+        widget: string
+        required: false
+        default: Founder & CEO AssurIntellec
+    - label: Section Visibility
+      name: section_visibility
+      widget: object
+      collapsed: true
+      fields:
+      - label: Header Social Icons
+        name: header_social
+        widget: boolean
+        default: true
+      - label: Footer Social Icons
+        name: footer_social
+        widget: boolean
+        default: true
+      - label: Homepage Trust Strip
+        name: trust_strip
+        widget: boolean
+        default: true
+      - label: Homepage Certificates & Approvals Logos
+        name: approval_logos_home
+        widget: boolean
+        default: true
+      - label: Homepage Valuable Customer Logos
+        name: client_logos_home
+        widget: boolean
+        default: true
+      - label: Homepage Testimonials
+        name: testimonials_home
+        widget: boolean
+        default: true
+      - label: Homepage About + Reel
+        name: about_reel_home
+        widget: boolean
+        default: true
+      - label: Homepage Services Preview
+        name: services_preview_home
+        widget: boolean
+        default: true
+      - label: Homepage Why Us Preview
+        name: why_preview_home
+        widget: boolean
+        default: true
+      - label: Homepage CTA
+        name: home_cta
+        widget: boolean
+        default: true
+      - label: Floating WhatsApp
+        name: floating_whatsapp
+        widget: boolean
+        default: true
+    - label: User Interface Text
+      name: ui
+      widget: object
+      collapsed: true
+      fields:
+      - label: Menu Open Label
+        name: menu_open_label
+        widget: string
+      - label: Menu Close Label
+        name: menu_close_label
+        widget: string
+      - label: Service Open ARIA Label
+        name: service_read_aria
+        widget: string
+      - label: Service Back Label
+        name: service_back_label
+        widget: string
+      - label: Instagram Viewer ARIA Label
+        name: instagram_viewer_label
+        widget: string
+      - label: Profile Placeholder Title
+        name: profile_placeholder_title
+        widget: string
+      - label: Profile Placeholder Help
+        name: profile_placeholder_help
+        widget: text
+      - label: Footer Home Label
+        name: footer_home_label
+        widget: string
+      - label: Contact Service Placeholder
+        name: contact_select_placeholder
+        widget: string
+    - label: Custom CSS (Advanced)
+      name: custom_css
+      widget: code
+      default_language: css
+      required: false
+      hint: Optional advanced customization. Normal design controls are available under Theme & Layout.
+    - label: Editor Notes
+      name: editor_notes
+      widget: object
+      collapsed: true
+      fields:
+      - label: Instructions
+        name: instructions
+        widget: text
+        required: false
+      - label: Enquiry Workflow Note
+        name: enquiry
+        widget: text
+        required: false
+      - label: Instagram Reel Note
+        name: instagram
+        widget: text
+        required: false
+      - label: Mobile Layout Note
+        name: mobile
+        widget: text
+        required: false
+      - label: Logo Sections Note
+        name: logos
+        widget: text
+        required: false
+      - label: Visitor Counter Note
+        name: visitor_counter
+        widget: text
+        required: false
+      - label: Search Logo Note
+        name: search_logo
+        widget: text
+        required: false
+      - label: Instagram Viewer Note
+        name: instagram_viewer
+        widget: text
+        required: false
+    - label: Footer Content
+      name: footer
+      widget: object
+      collapsed: true
+      fields:
+      - label: Description
+        name: description
+        widget: text
+        required: false
+        default: Pharmaceutical & life sciences solutions across engineering, compliance, advisory, scientific, technology
+          and manufacturing support.
+      - label: Quick links title
+        name: quick_links_title
+        widget: string
+        required: false
+        default: Quick Links
+      - label: Services title
+        name: services_title
+        widget: string
+        required: false
+        default: Services
+      - label: Contact title
+        name: contact_title
+        widget: string
+        required: false
+        default: Contact
+      - label: Social title
+        name: social_title
+        widget: string
+        required: false
+        default: Connect
+      - label: Copyright
+        name: copyright
+        widget: string
+        required: false
+        default: All rights reserved.
+    - label: Media Assets & Logo
+      name: media_assets
+      widget: object
+      collapsed: true
+      fields:
+      - label: Pharmaceutical
+        name: pharmaceutical
+        widget: image
+        required: false
+        default: /images/uploads/pharmaceutical.jpg
+      - label: Organization Schema Logo
+        name: schema_logo
+        widget: image
+        required: false
+        default: /images/uploads/logo_transparent_png_tm.png
+      - label: Logo
+        name: logo
+        widget: image
+        required: false
+        default: /images/uploads/logo_transparent_png_tm.png
+      - label: About research
+        name: about_research
+        widget: image
+        required: false
+        default: /images/uploads/about-research.jpg
+      - label: Healthcare
+        name: healthcare
+        widget: image
+        required: false
+        default: /images/uploads/healthcare.jpg
+      - label: Contract manufacturing
+        name: contract_manufacturing
+        widget: image
+        required: false
+        default: /images/uploads/contract-manufacturing.jpg
+      - label: Life sciences
+        name: life_sciences
+        widget: image
+        required: false
+        default: /images/uploads/life-sciences.jpg
+      - label: Hero poster
+        name: hero_poster
+        widget: image
+        required: false
+        default: /images/uploads/hero.jpg
+      - label: Biotechnology
+        name: biotechnology
+        widget: image
+        required: false
+        default: /images/uploads/biotechnology.jpg
+      - label: Favicon
+        name: favicon
+        widget: image
+        required: false
+        default: /images/favicon-192.png
+      - label: Hero Video
+        name: hero_video
+        widget: file
+        required: false
+        default: /videos/hero-60sec.mp4
+        media_folder: /videos
+        public_folder: /videos
+      - label: Research
+        name: research
+        widget: image
+        required: false
+        default: /images/uploads/research.jpg
+      - label: About lab
+        name: about_lab
+        widget: image
+        required: false
+        default: /images/uploads/about-lab.jpg
+      - label: Founder Profile Photo
+        name: profile_photo
+        widget: image
+        required: false
+        default: /images/uploads/pratik_passport_size.jpg
+    - label: Theme & Layout Controls
+      name: theme
+      widget: object
+      collapsed: true
+      fields:
+      - label: Eyebrow letter spacing
+        name: eyebrow_letter_spacing
+        widget: number
+        value_type: int
+        default: 2
+        required: false
+      - label: Gold
+        name: gold
+        widget: color
+        allowInput: true
+        default: '#c9a227'
+        required: false
+      - label: Header background
+        name: header_background
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Trust icon size
+        name: trust_icon_size
+        widget: number
+        value_type: int
+        default: 22
+        required: false
+      - label: Card radius
+        name: card_radius
+        widget: number
+        value_type: int
+        default: 18
+        required: false
+      - label: Font button family
+        name: font_button_family
+        widget: string
+        required: false
+        default: Inter
+      - label: Profile position size
+        name: profile_position_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: About text size
+        name: about_text_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Service arrow size
+        name: service_arrow_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: Footer heading size
+        name: footer_heading_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: About point size
+        name: about_point_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Card padding
+        name: card_padding
+        widget: number
+        value_type: int
+        default: 24
+        required: false
+      - label: Profile label size
+        name: profile_label_size
+        widget: number
+        value_type: int
+        default: 11
+        required: false
+      - label: Section title size
+        name: section_title_size
+        widget: number
+        value_type: int
+        default: 48
+        required: false
+      - label: Footer link size
+        name: footer_link_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Why image height
+        name: why_image_height
+        widget: number
+        value_type: int
+        default: 190
+        required: false
+      - label: Hero heading size
+        name: hero_heading_size
+        widget: number
+        value_type: int
+        default: 66
+        required: false
+      - label: Service arrow color
+        name: service_arrow_color
+        widget: color
+        allowInput: true
+        default: '#1e6aa8'
+        required: false
+      - label: Process text size
+        name: process_text_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Base font size
+        name: base_font_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: About reel gap
+        name: about_reel_gap
+        widget: number
+        value_type: int
+        default: 44
+        required: false
+      - label: Cta text size
+        name: cta_text_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Instagram arrow size
+        name: instagram_arrow_size
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Button font size
+        name: button_font_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Font heading style
+        name: font_heading_style
+        widget: string
+        required: false
+        default: normal
+      - label: Card text size
+        name: card_text_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Font body style
+        name: font_body_style
+        widget: string
+        required: false
+        default: normal
+      - label: Social Icon Gap (px)
+        name: social_gap
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Font nav weight
+        name: font_nav_weight
+        widget: number
+        value_type: int
+        default: 700
+        required: false
+      - label: Header Logo Width (px)
+        name: header_logo_width
+        widget: number
+        value_type: int
+        default: 190
+        required: false
+      - label: Hero object position
+        name: hero_object_position
+        widget: string
+        required: false
+        default: center
+      - label: Process image object fit
+        name: process_image_object_fit
+        widget: string
+        required: false
+        default: cover
+      - label: Font heading weight
+        name: font_heading_weight
+        widget: number
+        value_type: int
+        default: 800
+        required: false
+      - label: Detail text size
+        name: detail_text_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Section heading margin
+        name: section_heading_margin
+        widget: number
+        value_type: int
+        default: 44
+        required: false
+      - label: Font nav style
+        name: font_nav_style
+        widget: string
+        required: false
+        default: normal
+      - label: Font body weight
+        name: font_body_weight
+        widget: number
+        value_type: int
+        default: 400
+        required: false
+      - label: Hero content padding
+        name: hero_content_padding
+        widget: number
+        value_type: int
+        default: 100
+        required: false
+      - label: Header min height
+        name: header_min_height
+        widget: number
+        value_type: int
+        default: 144
+        required: false
+      - label: Container max
+        name: container_max
+        widget: number
+        value_type: int
+        default: 1220
+        required: false
+      - label: Mobile side padding
+        name: mobile_side_padding
+        widget: number
+        value_type: int
+        default: 18
+        required: false
+      - label: Hero left offset
+        name: hero_left_offset
+        widget: number
+        value_type: int
+        default: 38
+        required: false
+      - label: Service grid gap
+        name: service_grid_gap
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Form label size
+        name: form_label_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Service icon color
+        name: service_icon_color
+        widget: color
+        allowInput: true
+        default: '#1e6aa8'
+        required: false
+      - label: Footer social gap
+        name: footer_social_gap
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Hero kicker size
+        name: hero_kicker_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Hero company size
+        name: hero_company_size
+        widget: number
+        value_type: int
+        default: 80
+        required: false
+      - label: Hero description size
+        name: hero_description_size
+        widget: number
+        value_type: int
+        default: 17
+        required: false
+      - label: Section spacing
+        name: section_spacing
+        widget: number
+        value_type: int
+        default: 80
+        required: false
+      - label: Button dark text
+        name: button_dark_text
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Header Logo Height (px)
+        name: header_logo_height
+        widget: number
+        value_type: int
+        default: 132
+        required: false
+      - label: Logo max width mobile
+        name: logo_max_width_mobile
+        widget: number
+        value_type: int
+        default: 76
+        required: false
+      - label: Button dark background
+        name: button_dark_background
+        widget: color
+        allowInput: true
+        default: '#0b1f3a'
+        required: false
+      - label: Service icon background
+        name: service_icon_background
+        widget: color
+        allowInput: true
+        default: '#edf3f9'
+        required: false
+      - label: Muted
+        name: muted
+        widget: color
+        allowInput: true
+        default: '#68778a'
+        required: false
+      - label: Instagram arrow button size
+        name: instagram_arrow_button_size
+        widget: number
+        value_type: int
+        default: 42
+        required: false
+      - label: Hero company line height
+        name: hero_company_line_height
+        widget: number
+        value_type: int
+        default: 1
+        required: false
+      - label: Contact label size
+        name: contact_label_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Why image object fit
+        name: why_image_object_fit
+        widget: string
+        required: false
+        default: cover
+      - label: Border
+        name: border
+        widget: color
+        allowInput: true
+        default: '#dde6ef'
+        required: false
+      - label: Detail heading size
+        name: detail_heading_size
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Trust text size
+        name: trust_text_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Service detail title size
+        name: service_detail_title_size
+        widget: number
+        value_type: int
+        default: 34
+        required: false
+      - label: Mobile section spacing
+        name: mobile_section_spacing
+        widget: number
+        value_type: int
+        default: 62
+        required: false
+      - label: Profile card width
+        name: profile_card_width
+        widget: number
+        value_type: int
+        default: 220
+        required: false
+      - label: Service number size
+        name: service_number_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Text
+        name: text
+        widget: color
+        allowInput: true
+        default: '#233247'
+        required: false
+      - label: Instagram crop bottom
+        name: instagram_crop_bottom
+        widget: number
+        value_type: int
+        default: 58
+        required: false
+      - label: Process grid gap
+        name: process_grid_gap
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Whatsapp size
+        name: whatsapp_size
+        widget: number
+        value_type: int
+        default: 58
+        required: false
+      - label: Service arrow background
+        name: service_arrow_background
+        widget: color
+        allowInput: true
+        default: '#edf3f9'
+        required: false
+      - label: Contact value size
+        name: contact_value_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Profile photo ratio width
+        name: profile_photo_ratio_width
+        widget: number
+        value_type: int
+        default: 35
+        required: false
+      - label: Whatsapp right
+        name: whatsapp_right
+        widget: number
+        value_type: int
+        default: 22
+        required: false
+      - label: Service detail text size
+        name: service_detail_text_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Trust title size
+        name: trust_title_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Mobile Logo Width (px)
+        name: mobile_logo_width
+        widget: number
+        value_type: int
+        default: 145
+        required: false
+      - label: Footer text size
+        name: footer_text_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Mobile reel height
+        name: mobile_reel_height
+        widget: number
+        value_type: int
+        default: 585
+        required: false
+      - label: Why icon size
+        name: why_icon_size
+        widget: number
+        value_type: int
+        default: 25
+        required: false
+      - label: Hero heading line height
+        name: hero_heading_line_height
+        widget: number
+        value_type: float
+        default: 1.05
+        required: false
+      - label: Font nav family
+        name: font_nav_family
+        widget: string
+        required: false
+        default: Inter
+      - label: Font body family
+        name: font_body_family
+        widget: string
+        required: false
+        default: Inter
+      - label: Footer bottom size
+        name: footer_bottom_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Footer text
+        name: footer_text
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Form input size
+        name: form_input_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Font heading family
+        name: font_heading_family
+        widget: string
+        required: false
+        default: Inter
+      - label: Footer background
+        name: footer_background
+        widget: color
+        allowInput: true
+        default: '#07182e'
+        required: false
+      - label: Instagram crop top
+        name: instagram_crop_top
+        widget: number
+        value_type: int
+        default: 58
+        required: false
+      - label: Font button style
+        name: font_button_style
+        widget: string
+        required: false
+        default: normal
+      - label: Detail list size
+        name: detail_list_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Hero overlay right opacity
+        name: hero_overlay_right_opacity
+        widget: number
+        value_type: float
+        default: 0.16
+        required: false
+      - label: Why grid gap
+        name: why_grid_gap
+        widget: number
+        value_type: int
+        default: 19
+        required: false
+      - label: Instagram height
+        name: instagram_height
+        widget: number
+        value_type: int
+        default: 605
+        required: false
+      - label: Contact text size
+        name: contact_text_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Font button weight
+        name: font_button_weight
+        widget: number
+        value_type: int
+        default: 700
+        required: false
+      - label: Hero border color
+        name: hero_border_color
+        widget: color
+        allowInput: true
+        default: '#c9a227'
+        required: false
+      - label: Social Icon Size (px)
+        name: social_icon_size
+        widget: number
+        value_type: int
+        default: 31
+        required: false
+      - label: Service image height
+        name: service_image_height
+        widget: number
+        value_type: int
+        default: 255
+        required: false
+      - label: Navigation Font Size (px)
+        name: nav_font_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: Light
+        name: light
+        widget: color
+        allowInput: true
+        default: '#f5f8fc'
+        required: false
+      - label: Hero sound size
+        name: hero_sound_size
+        widget: number
+        value_type: int
+        default: 44
+        required: false
+      - label: Footer Logo Width (px)
+        name: footer_logo_width
+        widget: number
+        value_type: int
+        default: 190
+        required: false
+      - label: Button outline border
+        name: button_outline_border
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Navy
+        name: navy
+        widget: color
+        allowInput: true
+        default: '#0b1f3a'
+        required: false
+      - label: Hero overlay opacity
+        name: hero_overlay_opacity
+        widget: number
+        value_type: float
+        default: 0.84
+        required: false
+      - label: Button primary text
+        name: button_primary_text
+        widget: color
+        allowInput: true
+        default: '#0b1f3a'
+        required: false
+      - label: Footer Logo Height (px)
+        name: footer_logo_height
+        widget: number
+        value_type: int
+        default: 140
+        required: false
+      - label: Card title size
+        name: card_title_size
+        widget: number
+        value_type: int
+        default: 17
+        required: false
+      - label: Eyebrow size
+        name: eyebrow_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Button outline text
+        name: button_outline_text
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Cta title size
+        name: cta_title_size
+        widget: number
+        value_type: int
+        default: 46
+        required: false
+      - label: Hero border width
+        name: hero_border_width
+        widget: number
+        value_type: int
+        default: 6
+        required: false
+      - label: Process title size
+        name: process_title_size
+        widget: number
+        value_type: int
+        default: 17
+        required: false
+      - label: Whatsapp bottom
+        name: whatsapp_bottom
+        widget: number
+        value_type: int
+        default: 22
+        required: false
+      - label: Button primary background
+        name: button_primary_background
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Blue2
+        name: blue2
+        widget: color
+        allowInput: true
+        default: '#1e6aa8'
+        required: false
+      - label: Button outline background
+        name: button_outline_background
+        widget: color
+        required: false
+        default: rgba(255,255,255,.08)
+        allowInput: true
+      - label: Hero min height
+        name: hero_min_height
+        widget: number
+        value_type: int
+        default: 700
+        required: false
+      - label: Page hero description size
+        name: page_hero_description_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Instagram width
+        name: instagram_width
+        widget: number
+        value_type: int
+        default: 340
+        required: false
+      - label: Hero content max
+        name: hero_content_max
+        widget: number
+        value_type: int
+        default: 850
+        required: false
+      - label: Blue
+        name: blue
+        widget: color
+        allowInput: true
+        default: '#123f73'
+        required: false
+      - label: About title size
+        name: about_title_size
+        widget: number
+        value_type: int
+        default: 52
+        required: false
+      - label: Navigation Gap (px)
+        name: nav_gap
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Process image height
+        name: process_image_height
+        widget: number
+        value_type: int
+        default: 150
+        required: false
+      - label: Page hero padding
+        name: page_hero_padding
+        widget: number
+        value_type: int
+        default: 75
+        required: false
+      - label: Light2
+        name: light2
+        widget: color
+        allowInput: true
+        default: '#edf3f9'
+        required: false
+      - label: Mobile Header Height (px)
+        name: mobile_header_height
+        widget: number
+        value_type: int
+        default: 92
+        required: false
+      - label: About closing size
+        name: about_closing_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: Page hero title size
+        name: page_hero_title_size
+        widget: number
+        value_type: int
+        default: 60
+        required: false
+      - label: Contact heading size
+        name: contact_heading_size
+        widget: number
+        value_type: int
+        default: 42
+        required: false
+      - label: Social icon padding
+        name: social_icon_padding
+        widget: number
+        value_type: int
+        default: 2
+        required: false
+      - label: Button padding x
+        name: button_padding_x
+        widget: number
+        value_type: int
+        default: 22
+        required: false
+      - label: Service icon size
+        name: service_icon_size
+        widget: number
+        value_type: int
+        default: 21
+        required: false
+      - label: Section description size
+        name: section_description_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Button padding y
+        name: button_padding_y
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Profile photo ratio height
+        name: profile_photo_ratio_height
+        widget: number
+        value_type: int
+        default: 45
+        required: false
+      - label: Service image object fit
+        name: service_image_object_fit
+        widget: string
+        required: false
+        default: cover
+      - label: Instagram radius
+        name: instagram_radius
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Profile name size
+        name: profile_name_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: Button radius
+        name: button_radius
+        widget: number
+        value_type: int
+        default: 9
+        required: false
+      - label: Why title size
+        name: why_title_size
+        widget: number
+        value_type: int
+        default: 18
+        required: false
+    - label: Page Intro Text
+      name: pages
+      widget: object
+      collapsed: true
+      fields:
+      - label: Services
+        name: services
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+          default: AssurIntellec™
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          default: Services
+        - label: Description
+          name: description
+          widget: text
+          required: false
+          default: Seven focused service verticals across pharmaceutical and life-sciences requirements.
+      - label: Why us
+        name: why_us
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+          default: AssurIntellec™
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          default: Why Us
+        - label: Description
+          name: description
+          widget: text
+          required: false
+          default: A structured approach for pharmaceutical and life-sciences technical and business requirements.
+    - label: Why Us Page Content
+      name: why_us
+      widget: object
+      collapsed: true
+      fields:
+      - label: Eyebrow
+        name: eyebrow
+        widget: string
+        required: false
+        default: AssurIntellec™
+      - label: Page title
+        name: page_title
+        widget: string
+        required: false
+        default: Why Us
+      - label: Page description
+        name: page_description
+        widget: string
+        required: false
+        default: A structured approach for pharmaceutical and life-sciences technical and business requirements.
+      - label: Cards
+        name: cards
+        widget: list
+        summary: '{{fields.title}}'
+        fields:
+        - label: Icon
+          name: icon
+          widget: string
+          required: false
+          default: fa-certificate
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          default: Technical Focus
+        - label: Text
+          name: text
+          widget: text
+          required: false
+          default: Our service scope includes pharmaceutical facility planning, GMP, cleanroom and HVAC considerations, machinery
+            and laboratory technologies, qualification, validation and related technical support.
+        - label: Image
+          name: image
+          widget: image
+          required: false
+        - label: Image alt
+          name: image_alt
+          widget: string
+          required: false
+          default: Pharmaceutical facility
+      - label: Process
+        name: process
+        widget: list
+        summary: '{{fields.title}}'
+        fields:
+        - label: Number
+          name: number
+          widget: string
+          required: false
+          default: '01'
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          default: Understand
+        - label: Text
+          name: text
+          widget: text
+          required: false
+          default: Clarify scope, objective and requirement.
+        - label: Image
+          name: image
+          widget: image
+          required: false
+        - label: Image alt
+          name: image_alt
+          widget: string
+          required: false
+          default: Planning and research
+- label: Services
+  name: services
+  files:
+  - label: All 7 Services
+    name: all_services
+    file: content/services.json
+    format: json
+    fields:
+    - label: Service List
+      name: services
+      widget: list
+      summary: '{{fields.title}}'
+      fields:
+      - label: Slug
+        name: slug
+        widget: string
+        hint: Keep the existing slug unless you also rename the matching service-*.html file.
+      - label: Page File
+        name: page_file
+        widget: string
+        hint: Existing service HTML file name. Keep unchanged unless you also rename the file.
+      - label: Title
+        name: title
+        widget: string
+      - label: Icon Class
+        name: icon
+        widget: string
+      - label: Short Description
+        name: description
+        widget: text
+      - label: Card Bullet Points (for future use)
+        name: card_bullets
+        widget: list
+        field:
+          label: Bullet
+          name: bullet
+          widget: string
+      - label: Page Eyebrow
+        name: page_eyebrow
+        widget: string
+      - label: Page Title
+        name: page_title
+        widget: string
+      - label: Page Description
+        name: page_description
+        widget: text
+      - label: Intro Heading
+        name: intro_title
+        widget: string
+      - label: Intro Text
+        name: intro
+        widget: text
+      - label: Service Photo 1
+        name: image_1
+        widget: image
+        required: false
+      - label: Photo 1 Alt Text
+        name: image_1_alt
+        widget: string
+      - label: Photo 1 Caption
+        name: gallery_caption_1
+        widget: string
+      - label: Photo 1 Supporting Text
+        name: image_1_text
+        widget: text
+      - label: Service Photo 2
+        name: image_2
+        widget: image
+        required: false
+      - label: Photo 2 Alt Text
+        name: image_2_alt
+        widget: string
+      - label: Photo 2 Caption
+        name: gallery_caption_2
+        widget: string
+      - label: Photo 2 Supporting Text
+        name: image_2_text
+        widget: text
+      - label: Detail Sections
+        name: sections
+        widget: list
+        summary: '{{fields.heading}}'
+        fields:
+        - label: Section Heading
+          name: heading
+          widget: string
+        - label: Paragraphs
+          name: paragraphs
+          widget: list
+          field:
+            label: Paragraph
+            name: paragraph
+            widget: text
+        - label: Bullet Points
+          name: bullets
+          widget: list
+          field:
+            label: Bullet
+            name: bullet
+            widget: string
+      - label: Contact Button Text
+        name: cta
+        widget: string
+      - label: Contact Button URL
+        name: cta_url
+        widget: string
+        required: false
+        default: ./contact.html
+      - label: Optional Service Video
+        name: service_video
+        widget: file
+        required: false
+        media_folder: /videos
+        public_folder: /videos
