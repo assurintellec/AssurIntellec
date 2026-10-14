@@ -385,7 +385,7 @@
     "eyebrow": "OUR EXPERTS",
     "profiles": [
       {
-        "enabled": false,
+        "enabled": true,
         "qualifications": "M.Sc. Biotechnology — Hyderabad Central University (1998)\n\nB.Sc. Botany, Zoology & Chemistry — Osmania University (1996)",
         "achievements": "Vaccine Manufacturing | GMP & Regulatory Compliance | Quality Management Systems | Audit Readiness | Process Validation | Deviation & CAPA Management | Technical Documentation | Aseptic Operations",
         "image_alt": "Mr. SRINIVAS RAO CHELLUMALA",
