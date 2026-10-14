@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-labelledby="title desc">
+<title id="title">Generic expert profile illustration</title><desc id="desc">A neutral illustrated professional wearing a navy suit and gold tie on a pale blue background.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f8fc"/><stop offset="1" stop-color="#e5edf6"/></linearGradient><linearGradient id="suit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163c68"/><stop offset="1" stop-color="#081b33"/></linearGradient></defs>
+<rect width="480" height="600" rx="28" fill="url(#bg)"/><circle cx="240" cy="205" r="115" fill="#d7e4f1"/>
+<path d="M82 600v-35c9-105 71-169 158-169s149 64 158 169v35z" fill="url(#suit)"/>
+<path d="M177 401l63 71 63-71 41 32-49 167H185l-49-167z" fill="#fff"/>
+<path d="M222 454h36l18 146h-72z" fill="#c9a227"/>
+<path d="M170 124c4-65 139-91 168 6l-7 75-29-56-104 0-24 52z" fill="#293747"/>
+<ellipse cx="240" cy="217" rx="80" ry="101" fill="#c98865"/>
+<path d="M162 209c3-49 13-82 43-100 35-20 83-15 109 17 14 17 20 46 19 70l-20-28-22-29-66 22-43 1z" fill="#293747"/>
+<path d="M200 218q16-11 31 0M250 218q16-11 31 0" fill="none" stroke="#26384a" stroke-width="7" stroke-linecap="round"/>
+<path d="M225 260q15 10 30 0" fill="none" stroke="#7f4938" stroke-width="6" stroke-linecap="round"/>
+<path d="M212 287q28 18 56 0" fill="none" stroke="#7f4938" stroke-width="7" stroke-linecap="round"/>
+<path d="M187 177q19-13 39-3M254 174q20-10 39 4" fill="none" stroke="#293747" stroke-width="10" stroke-linecap="round"/>
+<circle cx="240" cy="86" r="10" fill="#c9a227" opacity=".8"/>
+</svg>
