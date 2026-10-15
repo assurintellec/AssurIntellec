@@ -210,7 +210,7 @@
   },
   "visitor_counter": {
     "counter_animation": false,
-    "enabled": true,
+    "enabled": false,
     "display_position": "footer-bottom",
     "number_format": "thousands",
     "starting_count": 1000,
