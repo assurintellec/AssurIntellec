@@ -209,7 +209,7 @@
     "why_title_size": 18
   },
   "visitor_counter": {
-    "counter_animation": true,
+    "counter_animation": false,
     "enabled": true,
     "display_position": "footer-bottom",
     "number_format": "thousands",
