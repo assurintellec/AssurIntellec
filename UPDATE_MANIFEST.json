@@ -1,0 +1,45 @@
+{
+  "approval_images": [
+    "/images/uploads/approval-fda.png",
+    "/images/uploads/approval-iso.png",
+    "/images/uploads/approval-glp.png",
+    "/images/uploads/approval-who-gmp.png",
+    "/images/uploads/approval-schedule-m.png",
+    "/images/uploads/approval-nabl.png"
+  ],
+  "client_images": [
+    "/images/uploads/client-envacare.png",
+    "/images/uploads/client-axelus-pharma.jpg",
+    "/images/uploads/client-3.png",
+    "/images/uploads/client-4.png",
+    "/images/uploads/client-5.png"
+  ],
+  "testimonial_avatars": [
+    "/images/uploads/testimonial-customer-1.png",
+    "/images/uploads/testimonial-customer-2.png",
+    "/images/uploads/testimonial-customer-3.png"
+  ],
+  "follow_up_fixes": {
+    "decap_cms_error": "Changed Advanced Custom CSS from widget: code to widget: text; pinned Decap Turbo CMS loader to 3.17.0-beta.3.",
+    "expert_team_layout": "One full-width row per enabled expert: serial number, portrait, details.",
+    "logo_animation": "CSS alpha-mask gold/blue light sweep inside original transparent logo artwork; controls in Decap CMS.",
+    "global_motion": "Expanded section/card/image/button/footer reveal and hover animations with prefers-reduced-motion support."
+  },
+  "cms_media_text_enhancements_2026_10_15": {
+    "why_us": "Four configurable points; enabled toggle per point; dynamic subsections and bullets; a single selected full-width detail panel; 16:9 image/video per point.",
+    "services": "Seven service records use descriptive unique image filenames and one 16:9 main media area with an image/video selector, poster, video upload, caption, alt text, and click settings.",
+    "click_actions": "CMS-managed optional links for the hero background, approvals/client logos, testimonial photos, founder photo, expert profile cards, Why Us media/cards, and service media/cards where supported.",
+    "typography": "Site-wide list of individual CSS selector style rules for color, size, font family, weight, style, alignment, line height and letter spacing.",
+    "files": [
+      "admin/config.yml",
+      "content/site.json",
+      "content/services.json",
+      "assets/site.js",
+      "assets/site.css",
+      "why-us.html",
+      "service-*.html",
+      "CMS_MEDIA_AND_TEXT_CONTROLS.md"
+    ],
+    "deployment_status": "Local source package only; not deployed to GitHub/Cloudflare in this update."
+  }
+}
