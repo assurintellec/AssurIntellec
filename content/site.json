@@ -213,7 +213,7 @@
     "enabled": true,
     "display_position": "footer-bottom",
     "number_format": "thousands",
-    "starting_count": 0,
+    "starting_count": 500,
     "label": "Website Visitors",
     "action": "view",
     "animation_duration_ms": 500,
