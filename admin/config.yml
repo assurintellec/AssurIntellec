@@ -37,8 +37,8 @@ collections:
         name: logo_url
         widget: string
         required: false
-        hint: Optional full URL override. Leave blank to use the uploaded Google Search / Organization Logo in
-          Media Assets. Google decides whether to show a logo in Search.
+        hint: Optional full URL override. Leave blank to use the uploaded Google Search / Organization Logo in Media
+          Assets. Google decides whether to show a logo in Search.
       - label: Page Title
         name: title
         widget: string
@@ -80,8 +80,8 @@ collections:
       - label: Counter Key
         name: key
         widget: string
-        hint: Keep this stable across normal updates. Change only when intentionally starting a fresh counter;
-          use Starting Value to carry forward the last displayed total.
+        hint: Keep this stable across normal updates. Change only when intentionally starting a fresh counter; use
+          Starting Value to carry forward the last displayed total.
         required: false
       - label: Starting Value / Carry-Forward Offset
         name: start_value
@@ -89,8 +89,8 @@ collections:
         value_type: int
         default: 0
         required: false
-        hint: Added to the live CounterAPI count. Keep the current namespace/key during normal site updates. 
-          If intentionally starting with a fresh key, set this to the last count to carry forward.
+        hint: Added to the live CounterAPI count. Keep the current namespace/key during normal site updates. If
+          intentionally starting with a fresh key, set this to the last count to carry forward.
       required: false
     - label: Navigation
       name: navigation
@@ -277,8 +277,7 @@ collections:
       - label: Website Display Text
         name: website_display
         widget: string
-        hint: Visible website text, for example www.assurintellec.in. The Website field remains the clickable 
-          URL.
+        hint: Visible website text, for example www.assurintellec.in. The Website field remains the clickable URL.
         required: false
       - label: WhatsApp Link
         name: whatsapp
@@ -307,8 +306,8 @@ collections:
         name: google_apps_script_url
         widget: string
         required: false
-        hint: Paste the deployed /exec Web App URL. The production website uses a secure iframe bridge to 
-          avoid browser CORS limitations.
+        hint: Paste the deployed /exec Web App URL. The production website uses a secure iframe bridge to avoid
+          browser CORS limitations.
       - label: Customer Confirmation Email Enabled
         name: customer_confirmation_email_enabled
         widget: boolean
@@ -318,8 +317,7 @@ collections:
       - label: Customer Confirmation From Email
         name: customer_confirmation_email_from_email
         widget: string
-        hint: Must be configured as a Gmail 'Send mail as' alias for the Google account running the Apps 
-          Script.
+        hint: Must be configured as a Gmail 'Send mail as' alias for the Google account running the Apps Script.
         required: false
       - label: Customer Confirmation Email Subject
         name: customer_confirmation_email_subject
@@ -522,8 +520,8 @@ collections:
         name: map_link_url
         widget: string
         required: false
-        hint: Public Google Maps link opened by the Open in Google Maps link. This can be a maps.app.goo.gl 
-          share URL.
+        hint: Public Google Maps link opened by the Open in Google Maps link. This can be a maps.app.goo.gl share
+          URL.
       required: false
     - label: Hero
       name: hero
@@ -584,8 +582,8 @@ collections:
         name: video_audio_default_enabled
         widget: boolean
         default: true
-        hint: The hero video starts with audio requested by default. Browsers may block autoplay with sound; 
-          in that case it starts muted until the visitor enables audio.
+        hint: The hero video starts with audio requested by default. Browsers may block autoplay with sound; in
+          that case it starts muted until the visitor enables audio.
         required: false
       - label: Autoplay
         name: video_autoplay
@@ -680,8 +678,8 @@ collections:
           - label: Logo / Certificate Image
             name: image
             widget: image
-            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates 
-              the image reference automatically.
+            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates the
+              image reference automatically.
             required: false
           - label: Display Name
             name: title
@@ -739,8 +737,8 @@ collections:
           - label: Customer Logo
             name: image
             widget: image
-            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates 
-              the image reference automatically.
+            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates the
+              image reference automatically.
             required: false
           - label: Company / Display Name
             name: title
@@ -829,8 +827,8 @@ collections:
             name: avatar
             widget: image
             required: false
-            hint: Upload any PNG, JPG or WebP. The three testimonial photos are editable here and can also be 
-              replaced directly in GitHub.
+            hint: Upload any PNG, JPG or WebP. The three testimonial photos are editable here and can also be replaced
+              directly in GitHub.
           - label: Enable Link
             name: link_enabled
             widget: boolean
@@ -1115,7 +1113,8 @@ collections:
       name: custom_css
       widget: text
       required: false
-      hint: Optional advanced customization. Enter plain CSS here. Normal design controls are available under Theme & Layout.
+      hint: Optional advanced customization. Enter plain CSS here. Normal design controls are available under Theme
+        & Layout.
     - label: Editor Notes
       name: editor_notes
       widget: object
@@ -1209,8 +1208,7 @@ collections:
         name: profile_photo
         widget: image
         required: false
-        hint: PNG/JPG/JPEG/WebP accepted. Recommended 600×750 px, up to 5 MB. Use a distinct file for each 
-          profile.
+        hint: PNG/JPG/JPEG/WebP accepted. Recommended 600×750 px, up to 5 MB. Use a distinct file for each profile.
       - label: Profile Photo Alt Text
         name: profile_photo_alt
         widget: string
@@ -1510,20 +1508,19 @@ collections:
         name: schema_logo
         widget: image
         required: false
-        hint: Square PNG, 512×512 px recommended, up to 5 MB. Used in Organization structured data unless an 
-          optional URL override is set under SEO.
+        hint: Square PNG, 512×512 px recommended, up to 5 MB. Used in Organization structured data unless an optional
+          URL override is set under SEO.
       - label: Website Favicon
         name: favicon
         widget: image
         required: false
-        hint: Square PNG, 192×192 px recommended. The header/browser icon links update from this CMS field 
-          after the site loads.
+        hint: Square PNG, 192×192 px recommended. The header/browser icon links update from this CMS field after
+          the site loads.
       - label: Footer Animated-Logo Still Image
         name: footer_logo_image
         widget: image
         required: false
-        hint: Transparent PNG preferred. It will be animated inside the black footer logo panel if no video is
-          selected.
+        hint: Transparent PNG preferred. It will be animated inside the black footer logo panel if no video is selected.
       - label: Footer Logo Video (optional)
         name: footer_logo_video
         widget: file
@@ -1565,8 +1562,8 @@ collections:
         widget: boolean
         default: true
         required: false
-        hint: Master switch for optional image/video links across logos, Why Us media, service media, expert 
-          portraits and footer logo.
+        hint: Master switch for optional image/video links across logos, Why Us media, service media, expert portraits
+          and footer logo.
       - label: Image Hover Zoom Enabled
         name: image_hover_zoom_enabled
         widget: boolean
@@ -1588,7 +1585,7 @@ collections:
         widget: number
         value_type: float
         min: 1.01
-        max: 1.10
+        max: 1.1
         step: 0.005
         default: 1.035
         required: false
@@ -2728,8 +2725,8 @@ collections:
         name: primary_image
         widget: image
         required: false
-        hint: Upload PNG/JPG/JPEG/WebP. Recommended 1600×900 px (16:9), up to 5 MB. Use the distinct filename 
-          Service_1 through Service_7.
+        hint: Upload PNG/JPG/JPEG/WebP. Recommended 1600×900 px (16:9), up to 5 MB. Use the distinct filename Service_1
+          through Service_7.
       - label: Primary Service Video (optional)
         name: primary_video
         widget: file
@@ -2758,8 +2755,7 @@ collections:
         name: media_link_url
         widget: string
         required: false
-        hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are both 
-          enabled.
+        hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are both enabled.
       - label: Detail Sections
         name: sections
         widget: list
