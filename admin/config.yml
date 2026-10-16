@@ -37,8 +37,8 @@ collections:
         name: logo_url
         widget: string
         required: false
-        hint: Optional full URL override. Leave blank to use the uploaded Google Search / Organization
-          Logo in Media Assets. Google decides whether to show a logo in Search.
+        hint: Optional full URL override. Leave blank to use the uploaded Google Search / Organization Logo in
+          Media Assets. Google decides whether to show a logo in Search.
       - label: Page Title
         name: title
         widget: string
@@ -80,8 +80,8 @@ collections:
       - label: Counter Key
         name: key
         widget: string
-        hint: Keep this stable across normal updates. Change only when intentionally starting a fresh
-          counter; use Starting Value to carry forward the last displayed total.
+        hint: Keep this stable across normal updates. Change only when intentionally starting a fresh counter;
+          use Starting Value to carry forward the last displayed total.
         required: false
       - label: Starting Value / Carry-Forward Offset
         name: start_value
@@ -89,7 +89,7 @@ collections:
         value_type: int
         default: 0
         required: false
-        hint: Added to the live CounterAPI count. Keep the current namespace/key during normal site updates.
+        hint: Added to the live CounterAPI count. Keep the current namespace/key during normal site updates. 
           If intentionally starting with a fresh key, set this to the last count to carry forward.
       required: false
     - label: Navigation
@@ -172,6 +172,78 @@ collections:
         allow_remove: true
         required: false
       required: false
+    - label: Footer Content
+      name: footer
+      widget: object
+      collapsed: true
+      fields:
+      - label: Footer Description
+        name: description
+        widget: text
+        required: false
+      - label: Quick Links Heading
+        name: quick_links_title
+        widget: string
+        required: false
+      - label: Services Heading
+        name: services_title
+        widget: string
+        required: false
+      - label: Contact Heading
+        name: contact_title
+        widget: string
+        required: false
+      - label: Social Heading
+        name: social_title
+        widget: string
+        required: false
+      - label: Copyright Text
+        name: copyright
+        widget: string
+        required: false
+      required: false
+    - label: Page-Level Text
+      name: pages
+      widget: object
+      collapsed: true
+      fields:
+      - label: Services Page
+        name: services
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Page Title
+          name: title
+          widget: string
+          required: false
+        - label: Page Description
+          name: description
+          widget: text
+          required: false
+        required: false
+      - label: Why Us Page
+        name: why_us
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Page Title
+          name: title
+          widget: string
+          required: false
+        - label: Page Description
+          name: description
+          widget: text
+          required: false
+        required: false
+      required: false
     - label: Contact & Enquiry
       name: contact
       widget: object
@@ -205,7 +277,7 @@ collections:
       - label: Website Display Text
         name: website_display
         widget: string
-        hint: Visible website text, for example www.assurintellec.in. The Website field remains the clickable
+        hint: Visible website text, for example www.assurintellec.in. The Website field remains the clickable 
           URL.
         required: false
       - label: WhatsApp Link
@@ -235,8 +307,8 @@ collections:
         name: google_apps_script_url
         widget: string
         required: false
-        hint: Paste the deployed /exec Web App URL. The production website uses a secure iframe bridge
-          to avoid browser CORS limitations.
+        hint: Paste the deployed /exec Web App URL. The production website uses a secure iframe bridge to 
+          avoid browser CORS limitations.
       - label: Customer Confirmation Email Enabled
         name: customer_confirmation_email_enabled
         widget: boolean
@@ -246,7 +318,7 @@ collections:
       - label: Customer Confirmation From Email
         name: customer_confirmation_email_from_email
         widget: string
-        hint: Must be configured as a Gmail 'Send mail as' alias for the Google account running the Apps
+        hint: Must be configured as a Gmail 'Send mail as' alias for the Google account running the Apps 
           Script.
         required: false
       - label: Customer Confirmation Email Subject
@@ -256,10 +328,9 @@ collections:
       - label: Customer Confirmation Email Message
         name: customer_confirmation_email_message
         widget: text
-        hint: 'Editable main message template. Supported placeholders: {name}, {company}, {email}, {phone},
-          {service}, {message}, {reference}, and {services}. The branded signature, contact details and
-          logo are added automatically from the published Site Settings / Media Assets, so the logo can
-          be changed through Decap CMS.'
+        hint: 'Editable main message template. Supported placeholders: {name}, {company}, {email}, {phone}, {service},
+          {message}, {reference}, and {services}. The branded signature, contact details and logo are added automatically
+          from the published Site Settings / Media Assets, so the logo can be changed through Decap CMS.'
         required: false
       - label: Page Eyebrow
         name: page_eyebrow
@@ -451,7 +522,8 @@ collections:
         name: map_link_url
         widget: string
         required: false
-        hint: Public Google Maps link opened by the Open in Google Maps link. This can be a maps.app.goo.gl share URL.
+        hint: Public Google Maps link opened by the Open in Google Maps link. This can be a maps.app.goo.gl 
+          share URL.
       required: false
     - label: Hero
       name: hero
@@ -512,8 +584,8 @@ collections:
         name: video_audio_default_enabled
         widget: boolean
         default: true
-        hint: The hero video starts with audio requested by default. Browsers may block autoplay with
-          sound; in that case it starts muted until the visitor enables audio.
+        hint: The hero video starts with audio requested by default. Browsers may block autoplay with sound; 
+          in that case it starts muted until the visitor enables audio.
         required: false
       - label: Autoplay
         name: video_autoplay
@@ -608,7 +680,7 @@ collections:
           - label: Logo / Certificate Image
             name: image
             widget: image
-            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates
+            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates 
               the image reference automatically.
             required: false
           - label: Display Name
@@ -667,7 +739,7 @@ collections:
           - label: Customer Logo
             name: image
             widget: image
-            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates
+            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates 
               the image reference automatically.
             required: false
           - label: Company / Display Name
@@ -716,8 +788,7 @@ collections:
         - label: Google Reviews Link
           name: google_link
           widget: string
-          hint: Opens your existing Google reviews page. Keep this as your AssurIntellec Google review
-            link.
+          hint: Opens your existing Google reviews page. Keep this as your AssurIntellec Google review link.
           required: false
         - label: Google Button Label
           name: google_link_label
@@ -758,8 +829,8 @@ collections:
             name: avatar
             widget: image
             required: false
-            hint: Upload any PNG, JPG or WebP. The three testimonial photos are editable here and can
-              also be replaced directly in GitHub.
+            hint: Upload any PNG, JPG or WebP. The three testimonial photos are editable here and can also be 
+              replaced directly in GitHub.
           - label: Enable Link
             name: link_enabled
             widget: boolean
@@ -796,6 +867,146 @@ collections:
           required: false
         required: false
         collapsed: true
+      - label: Homepage Services Preview
+        name: services_preview
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        - label: Button
+          name: button
+          widget: string
+          required: false
+        - label: Button Url
+          name: button_url
+          widget: string
+          required: false
+        - label: Back To Services Label
+          name: back_to_services_label
+          widget: string
+          required: false
+        required: false
+      - label: Homepage Call To Action
+        name: cta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Text
+          name: text
+          widget: text
+          required: false
+        - label: Button
+          name: button
+          widget: string
+          required: false
+        - label: Button Url
+          name: button_url
+          widget: string
+          required: false
+        required: false
+      - label: Homepage Why Us Preview
+        name: why_preview
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        - label: Button
+          name: button
+          widget: string
+          required: false
+        - label: Button Url
+          name: button_url
+          widget: string
+          required: false
+        required: false
+      - label: Homepage About Preview
+        name: about_preview
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Paragraph
+          name: paragraph
+          widget: text
+          required: false
+        - label: Points
+          name: points
+          widget: list
+          field:
+            label: Point
+            name: item
+            widget: string
+            required: false
+          min: 0
+          allow_add: true
+          allow_delete: true
+          allow_remove: true
+          required: false
+        - label: Button
+          name: button
+          widget: string
+          required: false
+        - label: Button Url
+          name: button_url
+          widget: string
+          required: false
+        required: false
+      - label: Homepage Instagram Viewer
+        name: instagram_section
+        widget: object
+        collapsed: true
+        fields:
+        - label: Enabled
+          name: enabled
+          widget: boolean
+          default: true
+          required: false
+        - label: Prev Label
+          name: prev_label
+          widget: string
+          required: false
+        - label: Next Label
+          name: next_label
+          widget: string
+          required: false
+        - label: Empty Message
+          name: empty_message
+          widget: string
+          required: false
+        required: false
       required: false
     - label: Section Visibility
       name: section_visibility
@@ -895,11 +1106,16 @@ collections:
         name: contact_select_placeholder
         widget: string
         required: false
+      - label: Footer Home Link Label
+        name: footer_home_label
+        widget: string
+        required: false
       required: false
     - label: Custom CSS (Advanced)
       name: custom_css
       widget: code
       default_language: css
+      output_code_only: true
       required: false
       hint: Optional advanced customization. Normal design controls are available under Theme & Layout.
     - label: Editor Notes
@@ -913,6 +1129,30 @@ collections:
         required: false
       - label: Instagram Viewer Note
         name: instagram_viewer
+        widget: text
+        required: false
+      - label: Enquiry
+        name: enquiry
+        widget: text
+        required: false
+      - label: Instagram
+        name: instagram
+        widget: text
+        required: false
+      - label: Mobile
+        name: mobile
+        widget: text
+        required: false
+      - label: Logos
+        name: logos
+        widget: text
+        required: false
+      - label: Visitor Counter Guidance
+        name: visitor_counter
+        widget: text
+        required: false
+      - label: Search Logo Guidance
+        name: search_logo
         widget: text
         required: false
       required: false
@@ -971,8 +1211,8 @@ collections:
         name: profile_photo
         widget: image
         required: false
-        hint: PNG/JPG/JPEG/WebP accepted. Recommended 600×750 px, up to 5 MB. Use a distinct file for
-          each profile.
+        hint: PNG/JPG/JPEG/WebP accepted. Recommended 600×750 px, up to 5 MB. Use a distinct file for each 
+          profile.
       - label: Profile Photo Alt Text
         name: profile_photo_alt
         widget: string
@@ -1272,20 +1512,20 @@ collections:
         name: schema_logo
         widget: image
         required: false
-        hint: Square PNG, 512×512 px recommended, up to 5 MB. Used in Organization structured data unless
-          an optional URL override is set under SEO.
+        hint: Square PNG, 512×512 px recommended, up to 5 MB. Used in Organization structured data unless an 
+          optional URL override is set under SEO.
       - label: Website Favicon
         name: favicon
         widget: image
         required: false
-        hint: Square PNG, 192×192 px recommended. The header/browser icon links update from this CMS field
+        hint: Square PNG, 192×192 px recommended. The header/browser icon links update from this CMS field 
           after the site loads.
       - label: Footer Animated-Logo Still Image
         name: footer_logo_image
         widget: image
         required: false
-        hint: Transparent PNG preferred. It will be animated inside the black footer logo panel if no
-          video is selected.
+        hint: Transparent PNG preferred. It will be animated inside the black footer logo panel if no video is
+          selected.
       - label: Footer Logo Video (optional)
         name: footer_logo_video
         widget: file
@@ -1327,8 +1567,8 @@ collections:
         widget: boolean
         default: true
         required: false
-        hint: Master switch for optional image/video links across logos, Why Us media, service media,
-          expert portraits and footer logo.
+        hint: Master switch for optional image/video links across logos, Why Us media, service media, expert 
+          portraits and footer logo.
       - label: Image Hover Zoom Enabled
         name: image_hover_zoom_enabled
         widget: boolean
@@ -2321,8 +2561,8 @@ collections:
         name: selector
         widget: string
         required: false
-        hint: 'Examples: #heroHeading, .service-card h3, .testimonial-text, #contactHeading. Use one selector
-          per override.'
+        hint: 'Examples: #heroHeading, .service-card h3, .testimonial-text, #contactHeading. Use one selector per
+          override.'
       - label: Font Size (px)
         name: font_size
         widget: number
@@ -2490,7 +2730,7 @@ collections:
         name: primary_image
         widget: image
         required: false
-        hint: Upload PNG/JPG/JPEG/WebP. Recommended 1600×900 px (16:9), up to 5 MB. Use the distinct filename
+        hint: Upload PNG/JPG/JPEG/WebP. Recommended 1600×900 px (16:9), up to 5 MB. Use the distinct filename 
           Service_1 through Service_7.
       - label: Primary Service Video (optional)
         name: primary_video
@@ -2520,8 +2760,8 @@ collections:
         name: media_link_url
         widget: string
         required: false
-        hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are
-          both enabled.
+        hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are both 
+          enabled.
       - label: Detail Sections
         name: sections
         widget: list
