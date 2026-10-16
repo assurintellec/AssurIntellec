@@ -30,26 +30,6 @@ function normalizeAsset(value) {
   return s.startsWith('/') ? '.' + s : s;
 }
 
-function safeMediaHref(value) {
-  const raw = String(value || '').trim();
-  if (!raw) return '';
-  if (/^(https?:\/\/|mailto:|tel:|\/|\.\/|#)/i.test(raw)) return raw;
-  return '';
-}
-
-function mediaLinkWrap(site, item, mediaHtml, label = '') {
-  const globalEnabled = site?.media_options?.clickable_images_enabled !== false;
-  const enabled = item?.link_enabled === true;
-  const href = safeMediaHref(item?.link_url);
-  if (!globalEnabled || !enabled || !href) return mediaHtml;
-  return `<a class="clickable-media" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(label || 'Open linked media')}" data-media-link="true">${mediaHtml}</a>`;
-}
-
-function formatAddress(contact) {
-  return [contact?.address_line_1, contact?.address_line_2, contact?.address_city, contact?.address_region, contact?.address_postal_code, contact?.address_country]
-    .map(value => String(value || '').trim()).filter(Boolean).join(', ');
-}
-
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el && value !== undefined && value !== null) el.textContent = String(value);
@@ -285,30 +265,40 @@ function renderFooter(site, services) {
   const f = site.footer || {};
   const n = site.navigation || {};
   const visibility = site.section_visibility || {};
-  const assets = site.media_assets || {};
-  const logo = normalizeAsset(assets.footer_logo_image || assets.logo || '/images/uploads/logo_transparent_png_tm.png');
-  const logoVideo = normalizeAsset(assets.footer_logo_video || '');
-  const useLogoVideo = assets.footer_logo_mode === 'video' && logoVideo;
+  const logo = normalizeAsset(
+    site.media_assets?.logo ||
+    '/images/uploads/logo_transparent_png_tm.png'
+  );
 
   const serviceLinks = services.slice(0, 7).map(s => `
-    <li><a href="./${escapeHtml(s.page_file || `service-${s.slug}.html`)}">${escapeHtml(s.title || '')}</a></li>
+    <li>
+      <a href="./${escapeHtml(s.page_file || `service-${s.slug}.html`)}">
+        ${escapeHtml(s.title || '')}
+      </a>
+    </li>
   `).join('');
-  const footerSocial = visibility.footer_social === false ? '' : `<div class="footer-social">${socialHtml(site, 'footer')}</div>`;
+
+  const footerSocial = visibility.footer_social === false
+    ? ''
+    : `<div class="footer-social">${socialHtml(site, 'footer')}</div>`;
+
   const holder = document.getElementById('site-footer');
   if (!holder) return;
-
-  let logoVisual = useLogoVideo
-    ? `<video class="footer-logo-video" src="${escapeHtml(logoVideo)}" autoplay muted loop playsinline preload="metadata" aria-label="${escapeHtml(assets.footer_logo_alt || 'AssurIntellec animated logo')}"></video>`
-    : `<img class="footer-logo footer-logo-animated" src="${escapeHtml(logo)}" alt="${escapeHtml(assets.footer_logo_alt || site.company_name || 'AssurIntellec™')}" loading="lazy">`;
-  logoVisual = mediaLinkWrap(site, {link_enabled:assets.footer_logo_link_enabled,link_url:assets.footer_logo_link_url}, logoVisual, 'Open AssurIntellec logo link');
 
   holder.innerHTML = `
     <footer>
       <div class="container">
         <div class="footer-grid">
+
           <div class="footer-brand">
-            <div class="footer-logo-stage">${logoVisual}</div>
+            <img
+              class="footer-logo"
+              src="${escapeHtml(logo)}"
+              alt="${escapeHtml(site.company_name || 'AssurIntellec™')}"
+            >
+            <p>${escapeHtml(f.description || '')}</p>
           </div>
+
           <div>
             <h4>${escapeHtml(f.quick_links_title || 'Quick Links')}</h4>
             <ul class="footer-links">
@@ -319,26 +309,65 @@ function renderFooter(site, services) {
               <li><a href="./contact.html">${escapeHtml(n.contact || 'Contact Us')}</a></li>
             </ul>
           </div>
+
           <div>
             <h4>${escapeHtml(f.services_title || 'Services')}</h4>
             <ul class="footer-links">${serviceLinks}</ul>
           </div>
+
           <div>
             <h4>${escapeHtml(f.social_title || 'Connect')}</h4>
             ${footerSocial}
-            <h4 style="margin-top:20px">${escapeHtml(f.contact_title || 'Contact')}</h4>
+
+            <h4 style="margin-top:20px">
+              ${escapeHtml(f.contact_title || 'Contact')}
+            </h4>
+
             <div class="footer-contact">
-              <span><strong>${escapeHtml(site.contact?.phone_label || 'Office No.')}</strong><a href="tel:${escapeHtml(telephoneHref(site.contact?.phone))}">${escapeHtml(site.contact?.phone || '')}</a></span>
-              <span><strong>${escapeHtml(site.contact?.mobile_phone_label || 'Mobile No.')}</strong><a href="tel:${escapeHtml(telephoneHref(site.contact?.mobile_phone))}">${escapeHtml(site.contact?.mobile_phone || '')}</a></span>
-              <span><strong>${escapeHtml(site.contact?.email_label || 'Email')}</strong><a href="mailto:${escapeHtml(site.contact?.email || '')}">${escapeHtml(site.contact?.email || '')}</a></span>
-              <span><strong>Website</strong><a href="${escapeHtml(safeMediaHref(site.contact?.website) || '#')}" target="_blank" rel="noopener">${escapeHtml(site.contact?.website_display || site.contact?.website || '')}</a></span>
+              <span>
+                <strong>${escapeHtml(site.contact?.phone_label || 'Office No.')}</strong>
+                <a href="tel:${escapeHtml(telephoneHref(site.contact?.phone))}">
+                  ${escapeHtml(site.contact?.phone || '')}
+                </a>
+              </span>
+
+              <span>
+                <strong>${escapeHtml(site.contact?.mobile_phone_label || 'Mobile No.')}</strong>
+                <a href="tel:${escapeHtml(telephoneHref(site.contact?.mobile_phone))}">
+                  ${escapeHtml(site.contact?.mobile_phone || '')}
+                </a>
+              </span>
+
+              <span>
+                <strong>${escapeHtml(site.contact?.email_label || 'Email')}</strong>
+                <a href="mailto:${escapeHtml(site.contact?.email || '')}">
+                  ${escapeHtml(site.contact?.email || '')}
+                </a>
+              </span>
+
+              <span>
+                <strong>Website</strong>
+                <a
+                  href="${escapeHtml(site.contact?.website || '#')}"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  ${escapeHtml(site.contact?.website_display || site.contact?.website || '')}
+                </a>
+              </span>
             </div>
           </div>
+
         </div>
+
         <div class="footer-bottom">
-          <p>© ${new Date().getFullYear()} ${escapeHtml(site.company_name || 'AssurIntellec™')}. ${escapeHtml(f.copyright || '')}</p>
+          <p>
+            © ${new Date().getFullYear()}
+            ${escapeHtml(site.company_name || 'AssurIntellec™')}.
+            ${escapeHtml(f.copyright || '')}
+          </p>
           <div class="footer-bottom-right">
-            <p class="visitor-stat" id="visitorStat" aria-live="polite"${site.visitor_counter?.enabled === false ? ' style="display:none"' : ''}>${escapeHtml(site.visitor_counter?.label || 'Website Visitors')}: <strong id="visitorCount">—</strong></p>
+            <p class="visitor-stat" id="visitorStat" aria-live="polite">${escapeHtml(site.visitor_counter?.label || 'Website Visitors')}: <strong id="visitorCount">—</strong></p>
             <p>${escapeHtml(site.tagline || '')}</p>
           </div>
         </div>
@@ -368,14 +397,6 @@ function updateMeta(site) {
   const meta = document.querySelector('meta[name="description"]');
   if (meta) meta.content = site.seo?.description || '';
 
-  // Let the CMS-uploaded favicon drive the browser icon on every site page.
-  const favicon = String(site.media_assets?.favicon || '').trim();
-  if (favicon) {
-    document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach(link => {
-      link.href = favicon;
-    });
-  }
-
   const canonical = document.querySelector('link[rel="canonical"]');
   const canonicalBase = String(site.seo?.canonical_base || '').trim().replace(/\/$/, '');
 
@@ -389,7 +410,7 @@ function updateMeta(site) {
   const schema = document.getElementById('organizationSchema');
   if (schema) {
     try {
-      const logo = String(site.seo?.logo_url || site.media_assets?.schema_logo || `${canonicalBase || window.location.origin}/images/uploads/Google_Search_Logo.png`).replace(/^\.\//, '');
+      const logo = String(site.seo?.logo_url || site.media_assets?.schema_logo || `${canonicalBase || window.location.origin}/images/google-logo-512.png`).replace(/^\.\//, '');
       const absoluteLogo = /^https?:\/\//i.test(logo) ? logo : `${canonicalBase || window.location.origin}/${logo.replace(/^\//, '')}`;
       const organization = {
         '@context': 'https://schema.org',
@@ -401,11 +422,11 @@ function updateMeta(site) {
         image: absoluteLogo,
         address: {
           '@type': 'PostalAddress',
-          streetAddress: [site.contact?.address_line_1, site.contact?.address_line_2].filter(Boolean).join(', '),
-          addressLocality: site.contact?.address_city || 'Kholvad',
-          addressRegion: site.contact?.address_region || 'Gujarat',
-          postalCode: site.contact?.address_postal_code || '394190',
-          addressCountry: site.contact?.address_country || 'IN'
+          streetAddress: '88 to 92, Gate No. 3, Siddhivinayak Industrial Estate, Opp. Opera Palace, Laskana - Kholvad Road',
+          addressLocality: 'Kholvad',
+          addressRegion: 'Gujarat',
+          postalCode: '394190',
+          addressCountry: 'IN'
         },
         email: site.contact?.email || '',
         telephone: site.contact?.phone || ''
@@ -418,15 +439,14 @@ function updateMeta(site) {
 }
 
 function normalizeServices(data) {
-  const list = Array.isArray(data?.services) ? data.services : (Array.isArray(data) ? data : []);
-  return list.filter(service => service && service.enabled !== false && (service.slug || service.title || service.page_file));
+  return Array.isArray(data?.services) ? data.services : (Array.isArray(data) ? data : []);
 }
 
 function renderServiceCards(services) {
   const grid = document.getElementById('servicesGrid');
   if (!grid) return;
   const aria = SITE?.ui?.service_read_aria || 'Open service details';
-  grid.innerHTML = services.filter(service => service && service.enabled !== false && String(service.title || '').trim()).map((service, index) => {
+  grid.innerHTML = services.map((service, index) => {
     const file = service.page_file || `service-${service.slug}.html`;
     return `<a class="service-card" href="./${escapeHtml(file)}" aria-label="${escapeHtml(`${aria}: ${service.title || ''}`)}">
       <div class="service-title-content">
@@ -439,65 +459,13 @@ function renderServiceCards(services) {
   }).join('');
 }
 
-function whyMediaHtml(site, card, label) {
-  const mode = card.media_type === 'video' && card.video ? 'video' : 'image';
-  let html = '';
-  if (mode === 'video') {
-    html = `<video class="why-card-video" controls playsinline preload="metadata" src="${escapeHtml(normalizeAsset(card.video))}" aria-label="${escapeHtml(card.image_alt || label || 'Why Us video')}"></video>`;
-  } else if (card.image) {
-    html = `<img class="why-card-image" src="${escapeHtml(normalizeAsset(card.image))}" alt="${escapeHtml(card.image_alt || label || '')}" loading="lazy" decoding="async">`;
-  }
-  if (!html) html = `<div class="why-card-media-fallback"><i class="fas ${escapeHtml(card.icon || 'fa-circle-nodes')}"></i></div>`;
-  return mediaLinkWrap(site,card,html,label);
-}
-
-function showWhyDetails(grid, card, site) {
-  if (!grid || !card) return;
-  let panel = grid.parentElement?.querySelector(':scope > .why-detail-panel');
-  if (!panel) {
-    panel = document.createElement('section');
-    panel.className = 'why-detail-panel';
-    panel.setAttribute('aria-live','polite');
-    grid.insertAdjacentElement('afterend',panel);
-  }
-  const title = card.detail_title || card.title || 'Why AssurIntellec';
-  const subtitle = card.detail_subtitle || '';
-  const media = whyMediaHtml(site,card,title);
-  const details = (Array.isArray(card.details)?card.details:[]).filter(item => item && (item.heading || item.text || (item.bullets||[]).length));
-  const detailsHtml = details.map(detail => `<article class="why-detail-section">${detail.heading ? `<h4>${escapeHtml(detail.heading)}</h4>`:''}${detail.text ? `<p>${escapeHtml(detail.text)}</p>`:''}${(detail.bullets||[]).length ? `<ul>${detail.bullets.filter(Boolean).map(point=>`<li>${escapeHtml(typeof point==='string'?point:(point.point||''))}</li>`).join('')}</ul>`:''}</article>`).join('');
-  const intro = card.detail_intro || '';
-  panel.innerHTML = `<button type="button" class="why-detail-close" aria-label="${escapeHtml(site.why_us?.detail_close_label || 'Close details')}"><i class="fas fa-xmark" aria-hidden="true"></i> ${escapeHtml(site.why_us?.detail_close_label || 'Close details')}</button>
-    <div class="why-detail-layout"><div class="why-detail-visual">${media}</div><div class="why-detail-copy"><span class="eyebrow">Why AssurIntellec</span><h3>${escapeHtml(title)}</h3>${subtitle ? `<h4 class="why-detail-subtitle">${escapeHtml(subtitle)}</h4>`:''}${intro ? `<p class="why-detail-intro">${escapeHtml(intro)}</p>`:''}${detailsHtml}</div></div>`;
-  panel.classList.add('is-open');
-  panel.querySelector('.why-detail-close')?.addEventListener('click',()=>{panel.classList.remove('is-open');panel.innerHTML='';});
-  panel.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
-}
-
-function renderWhyCardGrid(site, gridId, cards) {
-  const grid = document.getElementById(gridId);
-  if (!grid) return;
-  const items = (Array.isArray(cards)?cards:[]).filter(card=>card && card.enabled !== false && (card.title || card.text || card.home_text || card.image || card.video)).slice(0,4);
-  grid.innerHTML = items.map((card,index) => `<article class="why-card why-card-interactive" role="button" tabindex="0" aria-expanded="false" data-why-index="${index}">
-    <div class="why-card-media">${whyMediaHtml(site,card,card.title || `Why ${index+1}`)}</div>
-    <div class="why-card-body"><i class="fas ${escapeHtml(card.icon || 'fa-circle-nodes')}"></i><h3>${escapeHtml(card.title || '')}</h3><p>${escapeHtml(card.home_text || card.text || '')}</p><span class="why-card-open">Explore details <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
-  </article>`).join('');
-  const oldPanel = grid.parentElement?.querySelector(':scope > .why-detail-panel');
-  if (oldPanel) { oldPanel.remove(); }
-  grid.querySelectorAll('.why-card-interactive').forEach((el,index)=>{
-    const activate=(event)=>{
-      if (event?.target?.closest?.('a,video,button')) return;
-      event?.preventDefault?.();
-      grid.querySelectorAll('.why-card-interactive').forEach(cardEl=>cardEl.setAttribute('aria-expanded','false'));
-      el.setAttribute('aria-expanded','true');
-      showWhyDetails(grid,items[index],site);
-    };
-    el.addEventListener('click',activate);
-    el.addEventListener('keydown',event=>{if(event.target!==el&&event.target?.closest?.('a,video,button'))return;if(event.key==='Enter'||event.key===' '){activate(event);}});
-  });
-}
-
 function renderWhyPreview(site) {
-  renderWhyCardGrid(site,'whyPreviewGrid',site.why_us?.cards || []);
+  const grid = document.getElementById('whyPreviewGrid');
+  if (!grid) return;
+  grid.innerHTML = (site.why_us?.cards || []).slice(0,4).map(card => `<article class="why-card">
+    <img class="why-card-image" src="${escapeHtml(normalizeAsset(card.image))}" alt="${escapeHtml(card.image_alt || card.title || '')}">
+    <div class="why-card-body"><i class="fas ${escapeHtml(card.icon || 'fa-circle-nodes')}"></i><h3>${escapeHtml(card.title || '')}</h3><p>${escapeHtml(card.text || '')}</p></div>
+  </article>`).join('');
 }
 
 function setupHorizontalCarousel(grid, prevButton, nextButton, itemSelector, visibleDesktop = 5) {
@@ -543,18 +511,30 @@ function renderLogoShowcase(site, configKey, ids, cardClass = '', options = {}) 
   setText(ids.eyebrow, config.eyebrow || '');
   setText(ids.title, config.title || '');
   setText(ids.description, config.description || '');
+
   const grid = document.getElementById(ids.grid);
   if (!grid) return;
+
   const maxItems = Number.isFinite(options.maxItems) ? options.maxItems : 5;
   const items = Array.isArray(config.items) ? config.items.slice(0, maxItems) : [];
-  grid.innerHTML = items.filter(item => item && item.image && item.enabled !== false).map((item, index) => {
+  grid.innerHTML = items.filter(item => item && item.image).map((item, index) => {
     const src = normalizeAsset(item.image);
     const alt = item.alt || item.title || `Logo ${index + 1}`;
-    const image = `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" onerror="this.closest('article')?.classList.add('logo-image-error')">`;
-    const media = mediaLinkWrap(site,item,image,item.title || alt);
-    return `<article class="logo-showcase-card ${escapeHtml(cardClass)}" data-media-label="${escapeHtml(item.title || alt)}">${media}</article>`;
+    const errorHandler = `this.closest('article')?.classList.add('logo-image-error')`;
+    return `<article class="logo-showcase-card ${escapeHtml(cardClass)}">
+      <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" onerror="${errorHandler}">
+    </article>`;
   }).join('');
-  if (options.carousel) setupHorizontalCarousel(grid,document.getElementById(options.prevId),document.getElementById(options.nextId),`.${cardClass}`,options.visibleDesktop || 5);
+
+  if (options.carousel) {
+    setupHorizontalCarousel(
+      grid,
+      document.getElementById(options.prevId),
+      document.getElementById(options.nextId),
+      `.${cardClass}`,
+      options.visibleDesktop || 5
+    );
+  }
 }
 
 function renderLogoShowcases(site) {
@@ -572,28 +552,36 @@ function renderTestimonials(site) {
   setText('testimonialsEyebrow', cfg.eyebrow || 'TESTIMONIALS');
   setText('testimonialsTitle', cfg.title || 'What Our Customers Say?');
   setText('testimonialsDescription', cfg.description || '');
-  setHref('testimonialsGoogleLink', safeMediaHref(cfg.google_link) || '#');
+  setHref('testimonialsGoogleLink', cfg.google_link || '#');
   setText('testimonialsGoogleLinkLabel', cfg.google_link_label || 'Read all reviews on Google');
+
   const grid = document.getElementById('testimonialsGrid');
   if (!grid) return;
-  const items = (Array.isArray(cfg.items) ? cfg.items : []).filter(item => item && item.enabled !== false && (item.name || item.company || item.text || item.avatar)).slice(0,3);
-  grid.innerHTML = items.map((item) => {
+
+  const items = Array.isArray(cfg.items) ? cfg.items.slice(0, 3) : [];
+  grid.innerHTML = items.map((item, index) => {
     const rating = Math.max(1, Math.min(5, Math.round(Number(item?.rating) || 5)));
-    const name = String(item?.name || '').trim();
-    const company = String(item?.company || '').trim();
-    const text = String(item?.text || '').trim();
+    const name = String(item?.name || 'Customer Name');
+    const company = String(item?.company || 'Company Name');
+    const text = String(item?.text || '');
     const avatarSrc = item?.avatar ? normalizeAsset(item.avatar) : '';
-    const initial = escapeHtml(name.charAt(0).toUpperCase() || '?');
+    const initial = escapeHtml(name.trim().charAt(0).toUpperCase() || '?');
     const avatar = avatarSrc
-      ? `<img src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(name || 'Customer')}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="testimonial-avatar-fallback" style="display:none">${initial}</span>`
+      ? `<img src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="testimonial-avatar-fallback" style="display:none">${initial}</span>`
       : `<span class="testimonial-avatar-fallback">${initial}</span>`;
-    const avatarLinked = mediaLinkWrap(site,item,avatar,`Open link for ${name || 'customer photo'}`);
     return `<article class="testimonial-card">
-      <div class="testimonial-stars" aria-label="${rating} star rating">${'★'.repeat(rating)}${'☆'.repeat(5-rating)}</div>
-      ${text ? `<p class="testimonial-text">“${escapeHtml(text)}”</p>` : ''}
-      <div class="testimonial-footer"><div class="testimonial-person">${avatarLinked}<div>${name ? `<strong>${escapeHtml(name)}</strong>` : ''}${company ? `<span>${escapeHtml(company)}</span>` : ''}</div></div><span class="testimonial-quote-mark" aria-hidden="true">“</span></div>
+      <div class="testimonial-stars" aria-label="${rating} star rating">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</div>
+      <p class="testimonial-text">“${escapeHtml(text)}”</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-person">${avatar}<div><strong>${escapeHtml(name)}</strong><span>${escapeHtml(company)}</span></div></div>
+        <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+      </div>
     </article>`;
   }).join('');
+
+  if (!items.length) {
+    grid.innerHTML = '<div class="testimonial-empty">Add three testimonials in Decap CMS.</div>';
+  }
 }
 
 async function initVisitorCounter(site) {
@@ -610,7 +598,6 @@ async function initVisitorCounter(site) {
   const namespace = encodeURIComponent(String(cfg.namespace || 'assurintellec.in').trim());
   const action = encodeURIComponent(String(cfg.action || 'view').trim());
   const key = encodeURIComponent(String(cfg.key || 'website-visitors').trim());
-  const startValue = Math.max(0, Number(cfg.start_value) || 0);
   const baseUrl = `https://counterapi.com/api/${namespace}/${action}/${key}`;
   const sessionKey = `assurintellec-counter:${namespace}:${action}:${key}`;
 
@@ -628,51 +615,11 @@ async function initVisitorCounter(site) {
     const value = Number(data?.value);
     if (!Number.isFinite(value)) throw new Error('Invalid visitor count');
 
-    countEl.textContent = (startValue + value).toLocaleString();
+    countEl.textContent = value.toLocaleString();
   } catch (error) {
     console.warn('Visitor counter unavailable:', error);
     stat.style.display = 'none';
   }
-}
-
-function startServiceHeadingAnimation(site, services) {
-  const heading = document.getElementById('heroHeading');
-  const description = document.getElementById('heroDescription');
-  const hero = site.hero || {};
-  const text = String(hero.description || '').trim();
-  if (description) description.style.display = text ? '' : 'none';
-  if (!heading || hero.service_cycle_enabled === false) return;
-
-  const configured = Array.isArray(hero.service_cycle_titles) ? hero.service_cycle_titles : [];
-  const titles = configured.map(item => typeof item === 'string' ? item : item?.title).map(x => String(x || '').trim()).filter(Boolean);
-  const fallbackTitles = services.map(x => String(x?.title || '').trim()).filter(Boolean);
-  const cycle = titles.length ? titles : fallbackTitles;
-  if (!cycle.length) return;
-
-  heading.innerHTML = '<span class="hero-typed-text" aria-live="polite"></span><span class="typing-cursor" aria-hidden="true">|</span>';
-  const typed = heading.querySelector('.hero-typed-text');
-  if (!typed) return;
-  let wordIndex = 0, charIndex = 0, deleting = false;
-  const typeNext = () => {
-    if (!typed.isConnected) return;
-    const word = cycle[wordIndex % cycle.length];
-    typed.textContent = word.slice(0, charIndex);
-    if (!deleting && charIndex < word.length) {
-      charIndex++;
-      window.setTimeout(typeNext, 76);
-    } else if (!deleting) {
-      deleting = true;
-      window.setTimeout(typeNext, 1250);
-    } else if (charIndex > 0) {
-      charIndex--;
-      window.setTimeout(typeNext, 32);
-    } else {
-      deleting = false;
-      wordIndex = (wordIndex + 1) % cycle.length;
-      window.setTimeout(typeNext, 200);
-    }
-  };
-  typeNext();
 }
 
 function renderHome(site, services) {
@@ -683,7 +630,6 @@ function renderHome(site, services) {
   setText('heroKicker', h.kicker);
   setText('heroHeading', h.heading);
   setText('heroDescription', h.description);
-  startServiceHeadingAnimation(site, services);
   setText('heroPrimaryButton', h.button_primary);
   setHref('heroPrimaryButton', h.button_primary_url || './services.html');
   setText('heroSecondaryButton', h.button_secondary);
@@ -697,11 +643,11 @@ function renderHome(site, services) {
     heroAudioEnabled = h.video_audio_default_enabled !== false;
     video.volume = 1;
     video.muted = !heroAudioEnabled;
-    video.innerHTML = `<source src="${escapeHtml(normalizeAsset(h.video || '/videos/hero-60sec.mp4'))}" type="video/mp4">`;
+    video.innerHTML = `<source src="${escapeHtml(normalizeAsset(h.video || site.media_assets?.hero_video || '/videos/hero-60sec.mp4'))}" type="video/mp4">`;
     video.setAttribute('aria-label', h.video_alt || 'AssurIntellec hero video');
     video.load();
   }
-  setImg(poster, h.poster || '/images/uploads/hero.jpg', h.poster_alt || 'Pharmaceutical facility');
+  setImg(poster, h.poster || site.media_assets?.hero_poster || '/images/uploads/hero.jpg', h.poster_alt || 'Pharmaceutical facility');
   if (poster) poster.style.display = 'none';
 
   const sound = document.getElementById('heroSound');
@@ -989,6 +935,7 @@ function bindInstagramButtons() {
 function renderAbout(site) {
   const about = site.about || {};
   const ui = site.ui || {};
+
   setText('aboutEyebrow', about.eyebrow);
   setText('aboutPageTitle', about.page_title);
   setText('aboutPageDescription', about.page_description);
@@ -996,95 +943,63 @@ function renderAbout(site) {
   setText('profileName', about.profile_name);
   setText('profilePosition', about.profile_position);
   setText('profilePhoneText', about.profile_phone || '');
-  setHref('profilePhone', about.profile_phone ? `tel:${telephoneHref(about.profile_phone)}` : '');
+  setHref('profilePhone', `tel:${telephoneHref(about.profile_phone)}`);
   setText('profileEmailText', about.profile_email || '');
   setHref('profileEmail', about.profile_email ? `mailto:${about.profile_email}` : '');
   setText('aboutApproachTitle', about.approach_title);
   setText('aboutApproachFlow', about.approach_flow);
   setText('aboutClosing', about.closing);
+
   const photo = document.getElementById('profilePhoto');
-  setImg(photo,about.profile_photo || '',about.profile_photo_alt || about.profile_name || 'Profile photo');
+  setImg(
+    photo,
+    about.profile_photo || site.media_assets?.profile_photo,
+    about.profile_photo_alt || about.profile_name || 'Profile photo'
+  );
+
   const ph = document.getElementById('profilePhotoPlaceholder');
   if (ph) {
-    const span=ph.querySelector('span'),small=ph.querySelector('small');
-    if(span)span.textContent=about.profile_missing_title || ui.profile_placeholder_title || 'Upload profile photo';
-    if(small)small.textContent=about.profile_missing_help || ui.profile_placeholder_help || 'Use Decap CMS → Site Settings → About Us';
-  }
-  const textHolder=document.getElementById('aboutMainText');
-  if(textHolder)textHolder.innerHTML=(about.main_paragraphs||[]).filter(Boolean).map(p=>`<p>${escapeHtml(p)}</p>`).join('');
-  if(photo){
-    photo.addEventListener('load',()=>{if(ph)ph.style.display='none';},{once:true});
-    photo.addEventListener('error',()=>{if(ph)ph.style.display='flex';photo.style.display='none';},{once:true});
+    const span = ph.querySelector('span');
+    const small = ph.querySelector('small');
+    if (span) span.textContent = about.profile_missing_title || ui.profile_placeholder_title || 'Upload profile photo';
+    if (small) small.textContent = about.profile_missing_help || ui.profile_placeholder_help || 'Use Decap CMS → Site Settings → About Us';
   }
 
-  setText('expertTeamEyebrow', about.eyebrow || site.company_name || 'AssurIntellec™');
-  setText('expertTeamTitle', about.expert_team_title || 'Expert Team');
-  setText('expertTeamDescription', about.expert_team_description || '');
-  const team = document.getElementById('expertTeamSection');
-  const grid = document.getElementById('expertGrid');
-  const experts=(Array.isArray(about.experts)?about.experts:[]).filter(item=>item && item.enabled===true && String(item.name||'').trim());
-  if(team)team.style.display=experts.length?'block':'none';
-  if(grid)grid.innerHTML=experts.map((expert,index)=>{
-    const alt=expert.image_alt||expert.name||'Expert profile';
-    const photoHtml=expert.image?`<img class="expert-photo" src="${escapeHtml(normalizeAsset(expert.image))}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async">`:`<div class="expert-photo-placeholder" aria-hidden="true"><i class="fas fa-user-tie"></i></div>`;
-    const linked=mediaLinkWrap(site,expert,photoHtml,expert.name);
-    return `<article class="expert-card" role="button" tabindex="0" data-expert-index="${index}"><div class="expert-card-photo">${linked}</div><div class="expert-card-copy"><h3>${escapeHtml(expert.name)}</h3>${expert.role?`<p class="expert-role">${escapeHtml(expert.role)}</p>`:''}${expert.card_text?`<p class="expert-card-text">${escapeHtml(expert.card_text)}</p>`:''}<span class="expert-view-profile">View profile <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div></article>`;
-  }).join('');
-  const overlay=document.getElementById('expertProfileOverlay');
-  const dialog=overlay?.querySelector('.expert-profile-dialog');
-  const profileContent=document.getElementById('expertProfileContent');
-  const close=()=>{if(overlay){overlay.classList.remove('is-open');overlay.setAttribute('aria-hidden','true');}if(profileContent)profileContent.innerHTML='';document.body.classList.remove('profile-modal-open');};
-  const openProfile=(expert)=>{
-    if(!overlay||!profileContent)return;
-    const detailSections=(Array.isArray(expert.details)?expert.details:[]).filter(d=>d&&(d.heading||d.text||(d.bullets||[]).length)).map(d=>`<section class="expert-detail-section">${d.heading?`<h3>${escapeHtml(d.heading)}</h3>`:''}${d.text?`<p>${escapeHtml(d.text)}</p>`:''}${(d.bullets||[]).length?`<ul>${d.bullets.filter(Boolean).map(b=>`<li>${escapeHtml(typeof b==='string'?b:(b.point||''))}</li>`).join('')}</ul>`:''}</section>`).join('');
-    profileContent.innerHTML=`<div class="expert-profile-heading">${expert.image?`<img src="${escapeHtml(normalizeAsset(expert.image))}" alt="${escapeHtml(expert.image_alt||expert.name)}">`:''}<div><span class="eyebrow">Expert Profile</span><h2 id="expertProfileTitle">${escapeHtml(expert.detail_title||expert.name)}</h2>${expert.role?`<p class="expert-profile-role">${escapeHtml(expert.role)}</p>`:''}${expert.detail_subtitle?`<p>${escapeHtml(expert.detail_subtitle)}</p>`:''}</div></div>${expert.card_text?`<p class="expert-profile-intro">${escapeHtml(expert.card_text)}</p>`:''}${detailSections}`;
-    overlay.classList.add('is-open');overlay.setAttribute('aria-hidden','false');document.body.classList.add('profile-modal-open');dialog?.focus();
-  };
-  if(grid){
-    grid.querySelectorAll('.expert-card').forEach(card=>{
-      const index=Number(card.dataset.expertIndex);const expert=experts[index];
-      const activate=event=>{if(event?.target?.closest?.('a'))return;event?.preventDefault?.();if(expert)openProfile(expert);};
-      card.addEventListener('click',activate);card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){activate(event);}});
-    });
+  const textHolder = document.getElementById('aboutMainText');
+  if (textHolder) {
+    textHolder.innerHTML = (about.main_paragraphs || [])
+      .map(p => `<p>${escapeHtml(p)}</p>`)
+      .join('');
   }
-  document.getElementById('expertProfileClose')?.addEventListener('click',close);
-  if(overlay&&!overlay.dataset.bound){overlay.dataset.bound='1';overlay.addEventListener('click',event=>{if(event.target===overlay)close();});document.addEventListener('keydown',event=>{if(event.key==='Escape')close();});}
+
+  if (photo) {
+    photo.addEventListener('load', () => {
+      if (ph) ph.style.display = 'none';
+    }, { once: true });
+
+    photo.addEventListener('error', () => {
+      if (ph) ph.style.display = 'flex';
+      photo.style.display = 'none';
+    }, { once: true });
+  }
 }
 
 function renderWhy(site) {
-  const why=site.why_us||{};
-  setText('whyEyebrow',why.eyebrow);
-  setText('whyPageTitle',why.page_title);
-  setText('whyPageDescription',why.page_description);
-  renderWhyCardGrid(site,'whyGrid',why.cards||[]);
-  const process=document.getElementById('processGrid');
-  if(process)process.innerHTML=(Array.isArray(why.process)?why.process:[]).filter(item=>item&&(item.title||item.text||item.image)).map(item=>{
-    const img=item.image?`<img src="${escapeHtml(normalizeAsset(item.image))}" alt="${escapeHtml(item.image_alt||item.title||'')}" loading="lazy" decoding="async">`:'';
-    const media=mediaLinkWrap(site,item,img,item.title||'Process image');
-    return `<article class="process-card">${media}<div class="process-card-body"><div class="process-number">${escapeHtml(item.number||'')}</div>${item.title?`<h3>${escapeHtml(item.title)}</h3>`:''}${item.text?`<p>${escapeHtml(item.text)}</p>`:''}</div></article>`;
-  }).join('');
-}
+  const why = site.why_us || {};
+  setText('whyEyebrow', why.eyebrow);
+  setText('whyPageTitle', why.page_title);
+  setText('whyPageDescription', why.page_description);
+  const grid = document.getElementById('whyGrid');
+  if (grid) grid.innerHTML = (why.cards || []).map(card => `<article class="why-card">
+    <img class="why-card-image" src="${escapeHtml(normalizeAsset(card.image))}" alt="${escapeHtml(card.image_alt || card.title || '')}">
+    <div class="why-card-body"><i class="fas ${escapeHtml(card.icon || 'fa-circle-nodes')}"></i><h3>${escapeHtml(card.title || '')}</h3><p>${escapeHtml(card.text || '')}</p></div>
+  </article>`).join('');
 
-function renderContactLocation(site) {
-  const c=site.contact||{};
-  const holder=document.getElementById('contactLocation');
-  if(!holder)return;
-  if(c.location_enabled===false){holder.style.display='none';return;}
-  const address=formatAddress(c);
-  if(!address && !c.map_embed_url){holder.style.display='none';return;}
-  holder.style.display='grid';
-  setText('contactLocationTitle',c.location_title||'Our Location');
-  setText('contactAddress',address);
-  const mapUrl=String(c.map_embed_url||'').trim();
-  const frame=document.getElementById('contactMapFrame');
-  const openLink=document.getElementById('contactMapLink');
-  if(mapUrl && /^https:\/\//i.test(mapUrl)){
-    if(frame){frame.style.display='block';frame.innerHTML=`<iframe title="${escapeHtml(c.location_title||'Google Maps location')}" src="${escapeHtml(mapUrl)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;}
-    if(openLink){openLink.style.display='inline-flex';openLink.href=mapUrl;}
-  }else{
-    if(frame){frame.innerHTML='';frame.style.display='none';}
-    if(openLink)openLink.style.display='none';
-  }
+  const process = document.getElementById('processGrid');
+  if (process) process.innerHTML = (why.process || []).map(item => `<article class="process-card">
+    <img src="${escapeHtml(normalizeAsset(item.image))}" alt="${escapeHtml(item.image_alt || item.title || '')}">
+    <div class="process-card-body"><div class="process-number">${escapeHtml(item.number || '')}</div><h3>${escapeHtml(item.title || '')}</h3><p>${escapeHtml(item.text || '')}</p></div>
+  </article>`).join('');
 }
 
 function renderContact(site, services) {
@@ -1201,7 +1116,6 @@ function renderContact(site, services) {
   }
 
   bindEnquirySuccessOverlay(site);
-  renderContactLocation(site);
 }
 
 function templateMessage(template, data) {
@@ -1696,61 +1610,55 @@ function renderServicesPage(site) {
 }
 
 function renderServiceDetail(site) {
-  const slug=document.body.dataset.serviceSlug||'';
-  const service=SERVICES.find(item=>item.slug===slug);
-  if(!service)return;
-  setText('servicePageEyebrow',service.page_eyebrow||'Service');
-  setText('servicePageTitle',service.page_title||service.title);
-  setText('servicePageDescription',service.page_description||service.description);
-  setText('serviceIntroTitle',service.intro_title||'');
-  setText('serviceIntro',service.intro||'');
-  const icon=document.getElementById('serviceDetailIcon');if(icon)icon.innerHTML=iconHtml(service.icon);
-  const stage=document.getElementById('serviceMediaStage');
-  const caption=document.getElementById('serviceMediaCaption');
-  const mode=service.primary_media_type==='video'?'video':'image';
-  const videoPath=service.primary_video||service.service_video||'';
-  const imagePath=service.primary_image||service.image_1||'';
-  let mediaHtml='';
-  if(mode==='video' && videoPath){
-    mediaHtml=`<video class="service-primary-video" controls playsinline preload="metadata" src="${escapeHtml(normalizeAsset(videoPath))}" aria-label="${escapeHtml(service.media_alt||service.title||'Service video')}"></video>`;
-  }else if(imagePath){
-    mediaHtml=`<img class="service-primary-image" src="${escapeHtml(normalizeAsset(imagePath))}" alt="${escapeHtml(service.media_alt||service.image_1_alt||service.title||'Service image')}" loading="lazy" decoding="async">`;
-  }else{
-    mediaHtml=`<div class="service-media-placeholder"><i class="fas ${escapeHtml(service.icon||'fa-circle-nodes')}"></i><span>${escapeHtml(service.title||'Service visual')}</span></div>`;
-  }
-  if(stage){stage.innerHTML=mediaLinkWrap(site,{link_enabled:service.media_link_enabled,link_url:service.media_link_url},mediaHtml,service.title||'Service media');}
-  setText('serviceCaption1',service.caption||service.gallery_caption_1||'');
-  setText('serviceImageText1',service.media_text||service.image_1_text||service.description||'');
-  if(caption){const cap=String(service.caption||service.gallery_caption_1||'').trim();const txt=String(service.media_text||service.image_1_text||service.description||'').trim();caption.style.display=(cap||txt)?'flex':'none';}
-  const sectionHolder=document.getElementById('serviceDetailSections');
-  if(sectionHolder)sectionHolder.innerHTML=(Array.isArray(service.sections)?service.sections:[]).filter(section=>section&&(section.heading||(section.paragraphs||[]).length||(section.bullets||[]).length)).map(section=>`<article class="detail-card">${section.heading?`<h3>${escapeHtml(section.heading)}</h3>`:''}${(section.paragraphs||[]).filter(Boolean).map(p=>`<p>${escapeHtml(p)}</p>`).join('')}${(section.bullets||[]).length?`<ul class="detail-list">${section.bullets.filter(Boolean).map(b=>`<li>${escapeHtml(b)}</li>`).join('')}</ul>`:''}</article>`).join('');
-  setText('serviceContactLabel',site.contact?.service_contact_label||'Contact');
-  setText('serviceContactEmail',site.contact?.service_contact_email||'');
-  setHref('serviceContactEmail',site.contact?.service_contact_email?`mailto:${site.contact.service_contact_email}`:'');
-  setText('serviceCta',service.cta||'Contact Us');
-  setHref('serviceCta',safeMediaHref(service.cta_url)||'./contact.html');
-  const back=document.querySelector('.detail-cta-row .text-link');
-  if(back){back.textContent=site.home?.services_preview?.back_to_services_label||site.ui?.service_back_label||'Back to Services';back.href=site.home?.services_preview?.back_to_services_url||'./services.html';}
-}
+  const slug = document.body.dataset.serviceSlug || '';
+  const service = SERVICES.find(item => item.slug === slug);
+  if (!service) return;
+  setText('servicePageEyebrow', service.page_eyebrow || 'Service');
+  setText('servicePageTitle', service.page_title || service.title);
+  setText('servicePageDescription', service.page_description || service.description);
+  setText('serviceIntroTitle', service.intro_title || '');
+  setText('serviceIntro', service.intro || '');
+  const icon = document.getElementById('serviceDetailIcon');
+  if (icon) icon.innerHTML = iconHtml(service.icon);
 
-function applyTextStyleOverrides(site) {
-  const overrides=Array.isArray(site.text_style_overrides)?site.text_style_overrides:[];
-  overrides.filter(item=>item&&item.enabled!==false&&String(item.selector||'').trim()).forEach(item=>{
-    let targets=[];
-    try{targets=Array.from(document.querySelectorAll(String(item.selector).trim()));}catch(error){console.warn('Invalid text style selector skipped:',item.selector);return;}
-    targets.forEach(el=>{
-      const size=Number(item.font_size);
-      if(Number.isFinite(size)&&size>=8&&size<=120)el.style.fontSize=`${size}px`;
-      const color=String(item.color||'').trim();
-      if(color && (window.CSS?.supports?.('color',color) || /^#[0-9a-f]{3,8}$/i.test(color)))el.style.color=color;
-      const family=String(item.font_family||'').trim();
-      if(family && /^[a-zA-Z0-9 ,_'"-]{1,80}$/.test(family))el.style.fontFamily=family;
-      const weight=String(item.font_weight||'').trim();
-      if(['400','500','600','700','800','normal','bold'].includes(weight))el.style.fontWeight=weight;
-      const style=String(item.font_style||'').trim();
-      if(['normal','italic'].includes(style))el.style.fontStyle=style;
-    });
-  });
+  const image1 = document.getElementById('serviceImage1');
+  const image2 = document.getElementById('serviceImage2');
+  setImg(image1, service.image_1 || site.media_assets?.pharmaceutical || '/images/uploads/pharmaceutical.jpg', service.image_1_alt || service.title);
+  setImg(image2, service.image_2 || site.media_assets?.about_research || '/images/uploads/about-research.jpg', service.image_2_alt || service.title);
+  setText('serviceCaption1', service.gallery_caption_1 || 'Supporting visual');
+  setText('serviceCaption2', service.gallery_caption_2 || 'Additional visual');
+  setText('serviceImageText1', service.image_1_text || service.image_1_alt || 'Technical environment');
+  setText('serviceImageText2', service.image_2_text || service.image_2_alt || 'Supporting environment');
+
+  const videoHolder = document.getElementById('serviceVideoHolder');
+  if (videoHolder) {
+    if (service.service_video) {
+      videoHolder.innerHTML = `<video controls playsinline preload="metadata" src="${escapeHtml(normalizeAsset(service.service_video))}"></video>`;
+      videoHolder.style.display = 'block';
+    } else {
+      videoHolder.innerHTML = '';
+      videoHolder.style.display = 'none';
+    }
+  }
+
+  const sectionHolder = document.getElementById('serviceDetailSections');
+  if (sectionHolder) sectionHolder.innerHTML = (service.sections || []).map(section => `<article class="detail-card">
+    <h3>${escapeHtml(section.heading || '')}</h3>
+    ${(section.paragraphs || []).map(p => `<p>${escapeHtml(p)}</p>`).join('')}
+    ${(section.bullets || []).length ? `<ul class="detail-list">${section.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ul>` : ''}
+  </article>`).join('');
+
+  setText('serviceContactLabel', site.contact?.service_contact_label || 'Contact');
+  setText('serviceContactEmail', site.contact?.service_contact_email || '');
+  setHref('serviceContactEmail', site.contact?.service_contact_email ? `mailto:${site.contact.service_contact_email}` : '');
+
+  setText('serviceCta', service.cta || 'Contact Us');
+  setHref('serviceCta', service.cta_url || './contact.html');
+  const back = document.querySelector('.detail-cta-row .text-link');
+  if (back) {
+    back.textContent = site.home?.services_preview?.back_to_services_label || site.ui?.service_back_label || 'Back to Services';
+    back.href = site.home?.services_preview?.back_to_services_url || './services.html';
+  }
 }
 
 function applyVisibility(site) {
@@ -1788,12 +1696,6 @@ async function init() {
   if (page === 'why') renderWhy(SITE);
   if (page === 'contact') renderContact(SITE, SERVICES);
   if (page === 'service') renderServiceDetail(SITE);
-  applyTextStyleOverrides(SITE);
-  if (SITE.media_options?.image_hover_zoom_enabled === false) document.documentElement.classList.add('disable-image-zoom');
-  if (SITE.visitor_counter?.enabled === false) {
-    const stat=document.getElementById('visitorStat');
-    if(stat)stat.style.display='none';
-  }
 }
 
 document.addEventListener('DOMContentLoaded', init);

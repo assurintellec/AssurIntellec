@@ -39,17 +39,16 @@
         }
       ],
       "cta": "Discuss GMP Requirement",
+      "image_1": "/images/uploads/pharmaceutical.jpg",
+      "image_2": "/images/uploads/contract-manufacturing.jpg",
+      "image_1_alt": "GMP Engineering & Compliance – technical environment",
+      "image_2_alt": "GMP Engineering & Compliance – supporting environment",
+      "gallery_caption_1": "Supporting visual",
+      "gallery_caption_2": "Additional visual",
+      "image_1_text": "Visual reference for GMP Engineering & Compliance",
+      "image_2_text": "Supporting visual for GMP Engineering & Compliance",
       "page_file": "service-gmp-engineering.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_1.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for GMP Engineering & Compliance",
-      "media_alt": "GMP Engineering & Compliance – technical environment",
-      "enabled": true
+      "cta_url": "./contact.html"
     },
     {
       "slug": "advisory-transactions",
@@ -88,17 +87,16 @@
         }
       ],
       "cta": "Discuss Advisory Requirement",
+      "image_1": "/images/uploads/pharmaceutical.jpg",
+      "image_2": "/images/uploads/about-research.jpg",
+      "image_1_alt": "Advisory & Transactions – technical environment",
+      "image_2_alt": "Advisory & Transactions – supporting environment",
+      "gallery_caption_1": "Supporting visual",
+      "gallery_caption_2": "Additional visual",
+      "image_1_text": "Visual reference for Advisory & Transactions",
+      "image_2_text": "Supporting visual for Advisory & Transactions",
       "page_file": "service-advisory-transactions.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_2.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Advisory & Transactions",
-      "media_alt": "Advisory & Transactions – technical environment",
-      "enabled": true
+      "cta_url": "./contact.html"
     },
     {
       "slug": "talent-recruitment",
@@ -135,17 +133,16 @@
         }
       ],
       "cta": "Discuss Talent Requirement",
+      "image_1": "/images/uploads/biotechnology.jpg",
+      "image_2": "/images/uploads/healthcare.jpg",
+      "image_1_alt": "Talent & Recruitment – technical environment",
+      "image_2_alt": "Talent & Recruitment – supporting environment",
+      "gallery_caption_1": "Supporting visual",
+      "gallery_caption_2": "Additional visual",
+      "image_1_text": "Visual reference for Talent & Recruitment",
+      "image_2_text": "Supporting visual for Talent & Recruitment",
       "page_file": "service-talent-recruitment.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_3.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Talent & Recruitment",
-      "media_alt": "Talent & Recruitment – technical environment",
-      "enabled": true
+      "cta_url": "./contact.html"
     },
     {
       "slug": "life-sciences-trade",
@@ -182,17 +179,16 @@
         }
       ],
       "cta": "Discuss Trade Requirement",
+      "image_1": "/images/uploads/life-sciences.jpg",
+      "image_2": "/images/uploads/pharmaceutical.jpg",
+      "image_1_alt": "Life Sciences Trade – technical environment",
+      "image_2_alt": "Life Sciences Trade – supporting environment",
+      "gallery_caption_1": "Supporting visual",
+      "gallery_caption_2": "Additional visual",
+      "image_1_text": "Visual reference for Life Sciences Trade",
+      "image_2_text": "Supporting visual for Life Sciences Trade",
       "page_file": "service-life-sciences-trade.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_4.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Life Sciences Trade",
-      "media_alt": "Life Sciences Trade – technical environment",
-      "enabled": true
+      "cta_url": "./contact.html"
     },
     {
       "slug": "pharma-laboratory-technologies",
@@ -230,17 +226,16 @@
         }
       ],
       "cta": "Discuss Technology Requirement",
+      "image_1": "/images/uploads/research.jpg",
+      "image_2": "/images/uploads/about-research.jpg",
+      "image_1_alt": "Pharma & Laboratory Technologies – technical environment",
+      "image_2_alt": "Pharma & Laboratory Technologies – supporting environment",
+      "gallery_caption_1": "Supporting visual",
+      "gallery_caption_2": "Additional visual",
+      "image_1_text": "Visual reference for Pharma & Laboratory Technologies",
+      "image_2_text": "Supporting visual for Pharma & Laboratory Technologies",
       "page_file": "service-pharma-laboratory-technologies.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_5.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Pharma & Laboratory Technologies",
-      "media_alt": "Pharma & Laboratory Technologies – technical environment",
-      "enabled": true
+      "cta_url": "./contact.html"
     },
     {
       "slug": "research-scientific-services",
@@ -279,17 +274,16 @@
         }
       ],
       "cta": "Discuss Research Requirement",
+      "image_1": "/images/uploads/about-research.jpg",
+      "image_2": "/images/uploads/research.jpg",
+      "image_1_alt": "Research & Scientific Services – technical environment",
+      "image_2_alt": "Research & Scientific Services – supporting environment",
+      "gallery_caption_1": "Supporting visual",
+      "gallery_caption_2": "Additional visual",
+      "image_1_text": "Visual reference for Research & Scientific Services",
+      "image_2_text": "Supporting visual for Research & Scientific Services",
       "page_file": "service-research-scientific-services.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_6.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Research & Scientific Services",
-      "media_alt": "Research & Scientific Services – technical environment",
-      "enabled": true
+      "cta_url": "./contact.html"
     },
     {
       "slug": "pharma-solutions-manufacturing",
@@ -328,17 +322,16 @@
         }
       ],
       "cta": "Discuss Manufacturing Requirement",
+      "image_1": "/images/uploads/contract-manufacturing.jpg",
+      "image_2": "/images/uploads/pharmaceutical.jpg",
+      "image_1_alt": "Pharma Solutions & Manufacturing – technical environment",
+      "image_2_alt": "Pharma Solutions & Manufacturing – supporting environment",
+      "gallery_caption_1": "Supporting visual",
+      "gallery_caption_2": "Additional visual",
+      "image_1_text": "Visual reference for Pharma Solutions & Manufacturing",
+      "image_2_text": "Supporting visual for Pharma Solutions & Manufacturing",
       "page_file": "service-pharma-solutions-manufacturing.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_7.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Pharma Solutions & Manufacturing",
-      "media_alt": "Pharma Solutions & Manufacturing – technical environment",
-      "enabled": true
+      "cta_url": "./contact.html"
     }
   ]
 }

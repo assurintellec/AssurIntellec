@@ -48,16 +48,7 @@
     "description": "Connect with AssurIntellec™ for pharmaceutical engineering, GMP, advisory, scientific, research and manufacturing-related requirements.",
     "enquiry_success_closing": "A confirmation message has been sent to your email. We look forward to speaking with you.",
     "form_title": "Send an enquiry",
-    "website_display": "www.assurintellec.in",
-    "location_enabled": true,
-    "location_title": "Our Location",
-    "address_line_1": "88 to 92, Gate No. 3, Siddhivinayak Industrial Estate, Opp. Opera Palace",
-    "address_line_2": "Laskana - Kholvad Road",
-    "address_city": "Kholvad",
-    "address_region": "Gujarat",
-    "address_postal_code": "394190",
-    "address_country": "India",
-    "map_embed_url": "https://www.google.com/maps?q=88%20to%2092%2C%20Gate%20No.%203%2C%20Siddhivinayak%20Industrial%20Estate%2C%20Kholvad%2C%20Gujarat%20394190&output=embed"
+    "website_display": "www.assurintellec.in"
   },
   "pages": {
     "services": {
@@ -117,7 +108,7 @@
     "service_grid_gap": 20,
     "form_label_size": 12,
     "service_icon_color": "#1e6aa8",
-    "footer_social_gap": 17,
+    "footer_social_gap": 15,
     "hero_kicker_size": 13,
     "hero_company_size": 80,
     "hero_description_size": 17,
@@ -170,9 +161,9 @@
     "contact_text_size": 15,
     "font_button_weight": 700,
     "hero_border_color": "#c9a227",
-    "social_icon_size": 36,
+    "social_icon_size": 31,
     "service_image_height": 255,
-    "nav_font_size": 18,
+    "nav_font_size": 16,
     "light": "#f5f8fc",
     "hero_sound_size": 44,
     "footer_logo_width": 320,
@@ -222,8 +213,7 @@
     "label": "Website Visitors",
     "namespace": "assurintellec.in",
     "action": "view",
-    "key": "website-visitors",
-    "start_value": 0
+    "key": "website-visitors"
   },
   "section_visibility": {
     "testimonials_home": true,
@@ -261,31 +251,6 @@
     },
     {
       "title": "Instagram Reel 5",
-      "url": "",
-      "enabled": true
-    },
-    {
-      "title": "Instagram Reel 6",
-      "url": "",
-      "enabled": true
-    },
-    {
-      "title": "Instagram Reel 7",
-      "url": "",
-      "enabled": true
-    },
-    {
-      "title": "Instagram Reel 8",
-      "url": "",
-      "enabled": true
-    },
-    {
-      "title": "Instagram Reel 9",
-      "url": "",
-      "enabled": true
-    },
-    {
-      "title": "Instagram Reel 10",
       "url": "",
       "enabled": true
     }
@@ -352,16 +317,6 @@
         "enabled": true,
         "header_color": "#111111",
         "footer_color": "#FFFFFF"
-      },
-      {
-        "key": "google",
-        "label": "Google",
-        "url": "https://share.google/BDZ7i6bRNwF4qLD3S",
-        "icon": "fa-brands fa-google",
-        "class_name": "social-google",
-        "enabled": true,
-        "header_color": "#4285F4",
-        "footer_color": "#4285F4"
       }
     ]
   },
@@ -383,151 +338,7 @@
     "profile_phone": "7405660185",
     "profile_card_label": "Founder Profile",
     "profile_photo": "/images/uploads/pratik_passport_size.jpg",
-    "profile_position": "Founder & CEO AssurIntellec",
-    "expert_team_title": "Expert Team",
-    "expert_team_description": "Meet the professionals supporting our pharmaceutical and life-sciences work.",
-    "experts": [
-      {
-        "slot": "Expert_1",
-        "enabled": false,
-        "name": "Expert_1",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_2",
-        "enabled": false,
-        "name": "Expert_2",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_3",
-        "enabled": false,
-        "name": "Expert_3",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_4",
-        "enabled": false,
-        "name": "Expert_4",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_5",
-        "enabled": false,
-        "name": "Expert_5",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_6",
-        "enabled": false,
-        "name": "Expert_6",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_7",
-        "enabled": false,
-        "name": "Expert_7",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_8",
-        "enabled": false,
-        "name": "Expert_8",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_9",
-        "enabled": false,
-        "name": "Expert_9",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_10",
-        "enabled": false,
-        "name": "Expert_10",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      }
-    ]
+    "profile_position": "Founder & CEO AssurIntellec"
   },
   "tagline": "Intelligent Solutions. Assured Compliance.",
   "editor_notes": {
@@ -568,89 +379,29 @@
         "icon": "fa-certificate",
         "title": "Technical Focus",
         "text": "Our service scope includes pharmaceutical facility planning, GMP, cleanroom and HVAC considerations, machinery and laboratory technologies, qualification, validation and related technical support.",
-        "image": "/images/uploads/Why_1.png",
-        "image_alt": "Pharmaceutical facility",
-        "home_text": "Technical support shaped around pharmaceutical facilities, GMP and laboratory requirements.",
-        "detail_title": "Technical Focus",
-        "detail_subtitle": "How AssurIntellec can support this area",
-        "media_type": "image",
-        "video": "",
-        "enabled": true,
-        "link_enabled": false,
-        "link_url": "",
-        "details": [
-          {
-            "heading": "Scope and focus",
-            "text": "Our service scope includes pharmaceutical facility planning, GMP, cleanroom and HVAC considerations, machinery and laboratory technologies, qualification, validation and related technical support.",
-            "bullets": []
-          }
-        ]
+        "image": "/images/uploads/pharmaceutical.jpg",
+        "image_alt": "Pharmaceutical facility"
       },
       {
         "icon": "fa-puzzle-piece",
         "title": "Integrated Thinking",
         "text": "Projects may involve technical, regulatory, commercial and operational questions. The service model is designed to consider these elements together.",
-        "image": "/images/uploads/Why_2.png",
-        "image_alt": "Biotechnology laboratory",
-        "home_text": "An integrated view of technical, regulatory, commercial and operational considerations.",
-        "detail_title": "Integrated Thinking",
-        "detail_subtitle": "How AssurIntellec can support this area",
-        "media_type": "image",
-        "video": "",
-        "enabled": true,
-        "link_enabled": false,
-        "link_url": "",
-        "details": [
-          {
-            "heading": "Scope and focus",
-            "text": "Projects may involve technical, regulatory, commercial and operational questions. The service model is designed to consider these elements together.",
-            "bullets": []
-          }
-        ]
+        "image": "/images/uploads/biotechnology.jpg",
+        "image_alt": "Biotechnology laboratory"
       },
       {
         "icon": "fa-clipboard-check",
         "title": "Structured Approach",
         "text": "We organize work around understanding the requirement, assessing the situation, developing a solution and supporting implementation.",
-        "image": "/images/uploads/Why_3.png",
-        "image_alt": "Scientific research laboratory",
-        "home_text": "A clear process to understand, assess, develop and support each requirement.",
-        "detail_title": "Structured Approach",
-        "detail_subtitle": "How AssurIntellec can support this area",
-        "media_type": "image",
-        "video": "",
-        "enabled": true,
-        "link_enabled": false,
-        "link_url": "",
-        "details": [
-          {
-            "heading": "Scope and focus",
-            "text": "We organize work around understanding the requirement, assessing the situation, developing a solution and supporting implementation.",
-            "bullets": []
-          }
-        ]
+        "image": "/images/uploads/research.jpg",
+        "image_alt": "Scientific research laboratory"
       },
       {
         "icon": "fa-arrows-to-circle",
         "title": "Practical Orientation",
         "text": "The objective is to provide practical support aligned with the specific project, facility, technology, research or business requirement.",
-        "image": "/images/uploads/Why_4.png",
-        "image_alt": "Contract manufacturing facility",
-        "home_text": "Practical project support aligned to the facility, technology, research or business need.",
-        "detail_title": "Practical Orientation",
-        "detail_subtitle": "How AssurIntellec can support this area",
-        "media_type": "image",
-        "video": "",
-        "enabled": true,
-        "link_enabled": false,
-        "link_url": "",
-        "details": [
-          {
-            "heading": "Scope and focus",
-            "text": "The objective is to provide practical support aligned with the specific project, facility, technology, research or business requirement.",
-            "bullets": []
-          }
-        ]
+        "image": "/images/uploads/contract-manufacturing.jpg",
+        "image_alt": "Contract manufacturing facility"
       }
     ],
     "process": [
@@ -658,36 +409,35 @@
         "number": "01",
         "title": "Understand",
         "text": "Clarify scope, objective and requirement.",
-        "image": "/images/uploads/Process_1.png",
-        "image_alt": "Illustration of requirement discovery"
+        "image": "/images/uploads/about-research.jpg",
+        "image_alt": "Planning and research"
       },
       {
         "number": "02",
         "title": "Assess",
         "text": "Review technical, regulatory and commercial considerations.",
-        "image": "/images/uploads/Process_2.png",
-        "image_alt": "Illustration of technical assessment"
+        "image": "/images/uploads/healthcare.jpg",
+        "image_alt": "Healthcare environment"
       },
       {
         "number": "03",
         "title": "Develop",
         "text": "Build a practical solution based on the requirement.",
-        "image": "/images/uploads/Process_3.png",
-        "image_alt": "Illustration of laboratory development and validation"
+        "image": "/images/uploads/life-sciences.jpg",
+        "image_alt": "Life sciences development"
       },
       {
         "number": "04",
         "title": "Support",
         "text": "Provide implementation-oriented project support.",
-        "image": "/images/uploads/Process_4.png",
-        "image_alt": "Illustration of practical implementation and support"
+        "image": "/images/uploads/hero.jpg",
+        "image_alt": "Pharmaceutical operations"
       }
-    ],
-    "detail_close_label": "Close details"
+    ]
   },
   "hero": {
     "video_sound_label": "Enable hero video sound",
-    "heading": "GMP Engineering & Compliance",
+    "heading": "Pharmaceutical & Life Sciences Solutions",
     "button_primary_url": "./services.html",
     "button_secondary": "Discuss Your Requirement",
     "video_autoplay": true,
@@ -700,17 +450,7 @@
     "video_audio_default_enabled": true,
     "button_secondary_url": "./contact.html",
     "video": "/videos/hero-60sec.mp4",
-    "description": "",
-    "service_cycle_enabled": true,
-    "service_cycle_titles": [
-      "GMP Engineering & Compliance",
-      "Advisory & Transactions",
-      "Talent & Recruitment",
-      "Life Sciences Trade",
-      "Pharma & Laboratory Technologies",
-      "Research & Scientific Services",
-      "Pharma Solutions & Manufacturing"
-    ]
+    "description": "Comprehensive solutions across pharmaceutical engineering, GMP compliance, advisory, talent, life sciences trade, technology, research and manufacturing support."
   },
   "footer": {
     "description": "Pharmaceutical & life sciences solutions across engineering, compliance, advisory, scientific, technology and manufacturing support.",
@@ -724,18 +464,23 @@
     "title": "AssurIntellec™ | Pharmaceutical & Life Sciences Solutions",
     "description": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform providing GMP, regulatory, engineering, scientific, research, manufacturing, talent, trade and strategic advisory support.",
     "canonical_base": "https://www.assurintellec.in",
-    "logo_url": ""
+    "logo_url": "https://www.assurintellec.in/images/google-logo-512.png"
   },
   "media_assets": {
-    "schema_logo": "/images/uploads/Google_Search_Logo.png",
+    "pharmaceutical": "/images/uploads/pharmaceutical.jpg",
+    "schema_logo": "/images/google-logo-512.png",
     "logo": "/images/uploads/logo_transparent_png_tm.png",
-    "favicon": "/images/uploads/Favicon.png",
-    "footer_logo_mode": "video",
-    "footer_logo_image": "/images/uploads/logo_transparent_png_tm.png",
-    "footer_logo_video": "/videos/footer-logo-animated.mp4",
-    "footer_logo_link_enabled": false,
-    "footer_logo_link_url": "",
-    "footer_logo_alt": "AssurIntellec animated logo"
+    "about_research": "/images/uploads/about-research.jpg",
+    "healthcare": "/images/uploads/healthcare.jpg",
+    "contract_manufacturing": "/images/uploads/contract-manufacturing.jpg",
+    "life_sciences": "/images/uploads/life-sciences.jpg",
+    "hero_poster": "/images/uploads/hero.jpg",
+    "biotechnology": "/images/uploads/biotechnology.jpg",
+    "favicon": "/images/favicon-192.png",
+    "hero_video": "/videos/hero-60sec.mp4",
+    "research": "/images/uploads/research.jpg",
+    "about_lab": "/images/uploads/about-lab.jpg",
+    "profile_photo": "/images/uploads/pratik-passport.jpg"
   },
   "home": {
     "services_preview": {
@@ -753,51 +498,33 @@
       "items": [
         {
           "title": "FDA",
-          "image": "/images/uploads/FDA.png",
-          "alt": "FDA approval logo",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "image": "/images/uploads/approval-fda.png",
+          "alt": "FDA approval logo"
         },
         {
           "title": "ISO",
-          "image": "/images/uploads/ISO.png",
-          "alt": "ISO certification logo",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "image": "/images/uploads/approval-iso.png",
+          "alt": "ISO certification logo"
         },
         {
           "title": "GLP",
-          "image": "/images/uploads/GLP.png",
-          "alt": "Good Laboratory Practice GLP logo",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "image": "/images/uploads/approval-glp.png",
+          "alt": "Good Laboratory Practice GLP logo"
         },
         {
           "title": "WHO GMP",
-          "image": "/images/uploads/WHO_GMP.png",
-          "alt": "WHO GMP certification logo",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "image": "/images/uploads/approval-who-gmp.png",
+          "alt": "WHO GMP certification logo"
         },
         {
           "title": "Revised Schedule M",
-          "image": "/images/uploads/Revised_Schedule_M.png",
-          "alt": "Revised Schedule M logo",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "image": "/images/uploads/approval-schedule-m.png",
+          "alt": "Revised Schedule M logo"
         },
         {
           "title": "NABL",
-          "image": "/images/uploads/NABL.png",
-          "alt": "NABL ISO/IEC 17025 accredited logo",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "image": "/images/uploads/approval-nabl.png",
+          "alt": "NABL ISO/IEC 17025 accredited logo"
         }
       ]
     },
@@ -821,43 +548,28 @@
       "items": [
         {
           "title": "Envacare",
-          "image": "/images/uploads/Envacare.png",
-          "alt": "Envacare",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "image": "/images/uploads/client-envacare.png",
+          "alt": "Envacare Laboratory"
         },
         {
           "title": "Axelus Pharma",
-          "image": "/images/uploads/Axelus_Pharma.jpg",
-          "alt": "Axelus Pharma",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "image": "/images/uploads/client-axelus-pharma.jpg",
+          "alt": "Axelus Pharma Pvt. Ltd."
         },
         {
-          "title": "Client_3",
-          "image": "/images/uploads/Client_3.png",
-          "alt": "Client_3 logo placeholder",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "title": "client-3",
+          "image": "/images/uploads/client-3.png",
+          "alt": "client-3"
         },
         {
-          "title": "Client_4",
-          "image": "/images/uploads/Client_4.png",
-          "alt": "Client_4 logo placeholder",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "title": "client-4",
+          "image": "/images/uploads/client-4.png",
+          "alt": "client-4"
         },
         {
-          "title": "Client_5",
-          "image": "/images/uploads/Client_5.png",
-          "alt": "Client_5 logo placeholder",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "title": "client-5",
+          "image": "/images/uploads/client-5.png",
+          "alt": "client-5"
         }
       ]
     },
@@ -865,7 +577,7 @@
       "eyebrow": "TESTIMONIALS",
       "title": "What Our Customers Say?",
       "description": "",
-      "google_link": "https://maps.app.goo.gl/esBDC8E4CaLzHMsk7",
+      "google_link": "https://www.google.com/search?sca_esv=545ff8be9a415e69&sxsrf=APpeQnsGuom_J98-et17C2fWzcpD74CdOQ%3A1791361419934&q=Assurintellec&stick=H4sIAAAAAAAAAONgU1I1qDBLMTZNNU-ySE00MbEwt7C0MqiwTEm1SEpNTDJJS001M7ZMXsTK61hcXFqUmVeSmpOTmgwAtphv7zkAAAA&mat=CZye7p3yzMP8&ved=2ahUKEwjDtuWovaeXAxXCjOEIHXXMK1oQrMcEegQIHRAC#mpd=~18213626660420230812/customers/reviews",
       "google_link_label": "Read all reviews on Google",
       "items": [
         {
@@ -873,30 +585,21 @@
           "company": "Pharma Tech Engineers",
           "rating": 5,
           "text": "Professional and knowledgeable team with excellent pharmaceutical consulting services. Highly recommended.",
-          "avatar": "/images/uploads/testimonial-customer-1.png",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": true
+          "avatar": "/images/uploads/testimonial-customer-1.png"
         },
         {
           "name": "Customer Name",
           "company": "Company Name",
           "rating": 5,
           "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
-          "avatar": "/images/uploads/testimonial-customer-2.png",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": false
+          "avatar": "/images/uploads/testimonial-customer-2.png"
         },
         {
           "name": "Customer Name",
           "company": "Company Name",
           "rating": 5,
           "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
-          "avatar": "/images/uploads/testimonial-customer-3.png",
-          "link_enabled": false,
-          "link_url": "",
-          "enabled": false
+          "avatar": "/images/uploads/testimonial-customer-3.png"
         }
       ]
     },
@@ -946,10 +649,5 @@
         "text": "Technical & commercial support"
       }
     ]
-  },
-  "media_options": {
-    "clickable_images_enabled": true,
-    "image_hover_zoom_enabled": true
-  },
-  "text_style_overrides": []
+  }
 }
