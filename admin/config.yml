@@ -1113,11 +1113,9 @@ collections:
       required: false
     - label: Custom CSS (Advanced)
       name: custom_css
-      widget: code
-      default_language: css
-      output_code_only: true
+      widget: text
       required: false
-      hint: Optional advanced customization. Normal design controls are available under Theme & Layout.
+      hint: Optional advanced customization. Enter plain CSS here. Normal design controls are available under Theme & Layout.
     - label: Editor Notes
       name: editor_notes
       widget: object
