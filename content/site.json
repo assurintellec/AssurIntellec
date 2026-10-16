@@ -965,5 +965,6 @@
     "reveal_animation_duration_ms": 650,
     "reveal_animation_distance": 18,
     "card_hover_lift_enabled": true
-  }
+  },
+  "custom_css": ""
 }
