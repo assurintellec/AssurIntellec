@@ -1,0 +1,955 @@
+{
+  "contact": {
+    "enquiry_success_title": "Thank You, {name}!",
+    "whatsapp_prefill_template": "New AssurIntellec™ website enquiry\nName: {name}\nCompany: {company}\nEmail: {email}\nPhone: {phone}\nRequirement: {service}\nMessage: {message}",
+    "form_message_placeholder": "Describe your requirement...",
+    "customer_confirmation_email_subject": "Thank You, {name} — Your Enquiry Has Been Received | AssurIntellec™",
+    "whatsapp_phone": "917600666436",
+    "form_message_label": "Message",
+    "google_apps_script_url": "https://script.google.com/macros/s/AKfycbxNODxoIOmvfDCa0l3uK6H91qKK4WXBjt9T8WMWIH9GHVGeg2HWCKcD6BDZam4ZOHXroA/exec",
+    "heading": "Let's discuss your requirement",
+    "phone_label": "Office No.",
+    "mobile_phone_label": "Mobile No.",
+    "form_phone_placeholder": "+91",
+    "whatsapp_label": "WhatsApp",
+    "page_title": "Contact Us",
+    "form_phone_label": "Phone",
+    "service_contact_label": "Contact",
+    "page_description": "Tell us about your pharmaceutical, life-sciences, scientific, engineering or advisory requirement.",
+    "form_button": "Send Enquiry",
+    "phone": "+91 7600 666 436",
+    "enquiry_success_message": "Your enquiry has been successfully received.",
+    "form_service_label": "Requirement",
+    "enquiry_subject": "New AssurIntellec™ website enquiry",
+    "website_label": "Website",
+    "email_label": "Email",
+    "mobile_phone": "7405660185",
+    "whatsapp": "https://wa.me/message/BFANWJ2N3FWOP1",
+    "customer_confirmation_email_from_email": "info@assurintellec.in",
+    "service_contact_email": "contact@assurintellec.in",
+    "enquiry_error_message": "Your enquiry could not be sent automatically. Please use the email or WhatsApp contact options below.",
+    "customer_confirmation_email_enabled": true,
+    "enquiry_success_close_label": "Close confirmation message",
+    "form_email_placeholder": "you@example.com",
+    "form_company_placeholder": "Company name",
+    "form_email_label": "Email",
+    "enquiry_success_tagline": "Intelligent Solutions, Assured Compliance.",
+    "form_company_label": "Company",
+    "page_eyebrow": "AssurIntellec™",
+    "enquiry_success_received": "Your enquiry has been received successfully.",
+    "enquiry_success_body": "Thank you for reaching out to AssurIntellec™. We appreciate your interest and have received your requirements. Our team will review your enquiry carefully and contact you shortly to discuss the most suitable solution and next steps.",
+    "enquiry_recipient_email": "info@assurintellec.in",
+    "whatsapp_text": "Start WhatsApp conversation",
+    "form_name_placeholder": "Your name",
+    "website": "https://www.assurintellec.in",
+    "customer_confirmation_email_message": "Dear {name},\n\nThank you for contacting AssurIntellec™. We are pleased to confirm that your enquiry has been received successfully.\n\nEnquiry Reference: {reference}\nRequirement: {service}\nCompany: {company}\n\nYour Requirement Details:\n{message}\n\nOur Services\n{services}\n\nOur team will review your requirement carefully and contact you shortly to discuss the most suitable solution, scope and next steps.\n\nPlease feel free to reply to this email if you would like to provide any additional information.\n\nWe look forward to connecting with you.",
+    "form_name_label": "Name",
+    "email": "info@assurintellec.in",
+    "description": "Connect with AssurIntellec™ for pharmaceutical engineering, GMP, advisory, scientific, research and manufacturing-related requirements.",
+    "enquiry_success_closing": "A confirmation message has been sent to your email. We look forward to speaking with you.",
+    "form_title": "Send an enquiry",
+    "website_display": "www.assurintellec.in",
+    "location_enabled": true,
+    "location_title": "Our Location",
+    "address_line_1": "88 to 92, Gate No. 3, Siddhivinayak Industrial Estate, Opp. Opera Palace",
+    "address_line_2": "Laskana - Kholvad Road",
+    "address_city": "Kholvad",
+    "address_region": "Gujarat",
+    "address_postal_code": "394190",
+    "address_country": "India",
+    "map_embed_url": "https://www.google.com/maps?q=88%20to%2092%2C%20Gate%20No.%203%2C%20Siddhivinayak%20Industrial%20Estate%2C%20Kholvad%2C%20Gujarat%20394190&output=embed"
+  },
+  "pages": {
+    "services": {
+      "eyebrow": "AssurIntellec™",
+      "title": "Services",
+      "description": "Seven focused service verticals across pharmaceutical and life-sciences requirements."
+    },
+    "why_us": {
+      "eyebrow": "AssurIntellec™",
+      "title": "Why Us",
+      "description": "A structured approach for pharmaceutical and life-sciences technical and business requirements."
+    }
+  },
+  "theme": {
+    "eyebrow_letter_spacing": 2,
+    "gold": "#c9a227",
+    "header_background": "#ffffff",
+    "trust_icon_size": 22,
+    "card_radius": 18,
+    "font_button_family": "Inter",
+    "profile_position_size": 12,
+    "about_text_size": 15,
+    "service_arrow_size": 16,
+    "footer_heading_size": 14,
+    "about_point_size": 13,
+    "card_padding": 24,
+    "profile_label_size": 11,
+    "section_title_size": 48,
+    "footer_link_size": 13,
+    "why_image_height": 190,
+    "hero_heading_size": 66,
+    "service_arrow_color": "#1e6aa8",
+    "process_text_size": 13,
+    "base_font_size": 16,
+    "about_reel_gap": 44,
+    "cta_text_size": 14,
+    "instagram_arrow_size": 20,
+    "button_font_size": 14,
+    "font_heading_style": "normal",
+    "card_text_size": 13,
+    "font_body_style": "normal",
+    "social_gap": 20,
+    "font_nav_weight": 700,
+    "header_logo_width": 390,
+    "hero_object_position": "center",
+    "process_image_object_fit": "cover",
+    "font_heading_weight": 800,
+    "detail_text_size": 14,
+    "section_heading_margin": 44,
+    "font_nav_style": "normal",
+    "font_body_weight": 400,
+    "hero_content_padding": 100,
+    "header_min_height": 132,
+    "container_max": 1220,
+    "mobile_side_padding": 18,
+    "hero_left_offset": 38,
+    "service_grid_gap": 20,
+    "form_label_size": 12,
+    "service_icon_color": "#1e6aa8",
+    "footer_social_gap": 17,
+    "hero_kicker_size": 13,
+    "hero_company_size": 80,
+    "hero_description_size": 17,
+    "section_spacing": 80,
+    "button_dark_text": "#ffffff",
+    "header_logo_height": 100,
+    "logo_max_width_mobile": 76,
+    "button_dark_background": "#0b1f3a",
+    "service_icon_background": "#edf3f9",
+    "muted": "#68778a",
+    "instagram_arrow_button_size": 42,
+    "hero_company_line_height": 1,
+    "contact_label_size": 13,
+    "why_image_object_fit": "cover",
+    "border": "#dde6ef",
+    "detail_heading_size": 20,
+    "trust_text_size": 12,
+    "service_detail_title_size": 34,
+    "mobile_section_spacing": 62,
+    "profile_card_width": 220,
+    "service_number_size": 14,
+    "text": "#233247",
+    "instagram_crop_bottom": 58,
+    "process_grid_gap": 20,
+    "whatsapp_size": 58,
+    "service_arrow_background": "#edf3f9",
+    "contact_value_size": 14,
+    "profile_photo_ratio_width": 35,
+    "whatsapp_right": 22,
+    "service_detail_text_size": 15,
+    "trust_title_size": 14,
+    "mobile_logo_width": 270,
+    "footer_text_size": 13,
+    "mobile_reel_height": 585,
+    "why_icon_size": 25,
+    "hero_heading_line_height": 1.05,
+    "font_nav_family": "Inter",
+    "font_body_family": "Inter",
+    "footer_bottom_size": 12,
+    "footer_text": "#ffffff",
+    "form_input_size": 14,
+    "font_heading_family": "Inter",
+    "footer_background": "#07182e",
+    "instagram_crop_top": 58,
+    "font_button_style": "normal",
+    "detail_list_size": 13,
+    "hero_overlay_right_opacity": 0.16,
+    "why_grid_gap": 19,
+    "instagram_height": 605,
+    "contact_text_size": 15,
+    "font_button_weight": 700,
+    "hero_border_color": "#c9a227",
+    "social_icon_size": 36,
+    "service_image_height": 255,
+    "nav_font_size": 18,
+    "light": "#f5f8fc",
+    "hero_sound_size": 44,
+    "footer_logo_width": 320,
+    "button_outline_border": "#ffffff",
+    "navy": "#0b1f3a",
+    "hero_overlay_opacity": 0.84,
+    "button_primary_text": "#0b1f3a",
+    "footer_logo_height": 82,
+    "card_title_size": 17,
+    "eyebrow_size": 12,
+    "button_outline_text": "#ffffff",
+    "cta_title_size": 46,
+    "hero_border_width": 6,
+    "process_title_size": 17,
+    "whatsapp_bottom": 22,
+    "button_primary_background": "#ffffff",
+    "blue2": "#1e6aa8",
+    "button_outline_background": "rgba(255,255,255,.08)",
+    "hero_min_height": 700,
+    "page_hero_description_size": 15,
+    "instagram_width": 340,
+    "hero_content_max": 850,
+    "blue": "#123f73",
+    "about_title_size": 52,
+    "nav_gap": 26,
+    "process_image_height": 150,
+    "page_hero_padding": 75,
+    "light2": "#edf3f9",
+    "mobile_header_height": 84,
+    "about_closing_size": 16,
+    "page_hero_title_size": 60,
+    "contact_heading_size": 42,
+    "social_icon_padding": 2,
+    "button_padding_x": 22,
+    "service_icon_size": 21,
+    "section_description_size": 15,
+    "button_padding_y": 13,
+    "profile_photo_ratio_height": 45,
+    "service_image_object_fit": "cover",
+    "instagram_radius": 12,
+    "profile_name_size": 16,
+    "button_radius": 9,
+    "why_title_size": 18
+  },
+  "visitor_counter": {
+    "enabled": true,
+    "label": "Website Visitors",
+    "namespace": "assurintellec.in",
+    "action": "view",
+    "key": "website-visitors",
+    "start_value": 0
+  },
+  "section_visibility": {
+    "testimonials_home": true,
+    "client_logos_home": true,
+    "floating_whatsapp": true,
+    "why_preview_home": true,
+    "home_cta": true,
+    "trust_strip": true,
+    "footer_social": true,
+    "about_reel_home": true,
+    "approval_logos_home": true,
+    "services_preview_home": true,
+    "header_social": true
+  },
+  "instagram_reels": [
+    {
+      "title": "Instagram Reel 1",
+      "url": "https://www.instagram.com/reel/DdriZdqshN7/?stkn=MTRnNHhsZDNteXZyMw==",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 2",
+      "url": "https://www.instagram.com/reel/DdMlN0CMnXe/?stkn=bGc5Z3V2OTR3a3c0",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 3",
+      "url": "https://www.instagram.com/reel/DdbkEHhMSMH/?stkn=MWpsanB1bXhzbGJ4dw==",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 4",
+      "url": "https://www.instagram.com/reel/Dc-XdSVuJoZ/?stkn=eTR6dHYzMXJkcXo=",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 5",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 6",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 7",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 8",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 9",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "title": "Instagram Reel 10",
+      "url": "",
+      "enabled": true
+    }
+  ],
+  "company_name": "AssurIntellec™",
+  "social": {
+    "items": [
+      {
+        "key": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/assurintellec?utm_source=qr&igsi=MW43Z3M2anZpbHo1",
+        "icon": "fa-brands fa-instagram",
+        "class_name": "social-instagram",
+        "enabled": true,
+        "header_color": "#E4405F",
+        "footer_color": "#E4405F"
+      },
+      {
+        "key": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/Intellegentsolution",
+        "icon": "fa-brands fa-facebook-f",
+        "class_name": "social-facebook",
+        "enabled": true,
+        "header_color": "#1877F2",
+        "footer_color": "#1877F2"
+      },
+      {
+        "key": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/assurintellec",
+        "icon": "fa-brands fa-linkedin-in",
+        "class_name": "social-linkedin",
+        "enabled": true,
+        "header_color": "#0A66C2",
+        "footer_color": "#0A66C2"
+      },
+      {
+        "key": "youtube",
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@AssurIntellec",
+        "icon": "fa-brands fa-youtube",
+        "class_name": "social-youtube",
+        "enabled": true,
+        "header_color": "#FF0000",
+        "footer_color": "#FF0000"
+      },
+      {
+        "key": "threads",
+        "label": "Threads",
+        "url": "https://www.threads.com/@assurintellec",
+        "icon": "fa-brands fa-threads",
+        "class_name": "social-threads",
+        "enabled": true,
+        "header_color": "#111111",
+        "footer_color": "#FFFFFF"
+      },
+      {
+        "key": "x",
+        "label": "X",
+        "url": "https://x.com/AssurIntellec",
+        "icon": "fa-brands fa-x-twitter",
+        "class_name": "social-x",
+        "enabled": true,
+        "header_color": "#111111",
+        "footer_color": "#FFFFFF"
+      },
+      {
+        "key": "google",
+        "label": "Google",
+        "url": "https://share.google/BDZ7i6bRNwF4qLD3S",
+        "icon": "fa-brands fa-google",
+        "class_name": "social-google",
+        "enabled": true,
+        "header_color": "#4285F4",
+        "footer_color": "#4285F4"
+      }
+    ]
+  },
+  "about": {
+    "approach_title": "Our Approach",
+    "profile_name": "Mr. Pratik Siddhapura (Ph.D.)",
+    "approach_flow": "Scientific Knowledge → Practical Solutions → Assured Compliance",
+    "profile_email": "ceo@assurintellec.com",
+    "profile_photo_alt": "Mr. Pratik Siddhapura (Ph.D.)",
+    "page_title": "About Us",
+    "eyebrow": "AssurIntellec™",
+    "main_paragraphs": [
+      "AssurIntellec™ is a pharmaceutical and life sciences solutions platform founded on a strong foundation in Pharmaceutics, pharmaceutical research, teaching, laboratory expertise and scientific innovation.",
+      "The platform is led by Mr. Pratik J. Siddhapura, with an academic background in B.Pharm, M.Pharm (Pharmaceutics) and ongoing Ph.D. research at Gujarat Technological University. His professional experience includes pharmaceutical education, research coordination, training and placement activities, and practical exposure to pharmaceutical and laboratory environments.",
+      "AssurIntellec™ brings this scientific and technical foundation into practical services covering GMP & regulatory compliance, pharmaceutical facility planning, machinery and laboratory equipment, research & formulation support, manufacturing solutions, talent and recruitment, life-sciences trade, and strategic advisory."
+    ],
+    "page_description": "Scientific knowledge, practical solutions and assured compliance for pharmaceutical and life sciences requirements.",
+    "closing": "AssurIntellec™\nIntelligent Solutions. Assured Compliance.",
+    "profile_phone": "7405660185",
+    "profile_card_label": "Founder Profile",
+    "profile_photo": "/images/uploads/pratik_passport_size.jpg",
+    "profile_position": "Founder & CEO AssurIntellec",
+    "expert_team_title": "Expert Team",
+    "expert_team_description": "Meet the professionals supporting our pharmaceutical and life-sciences work.",
+    "experts": [
+      {
+        "slot": "Expert_1",
+        "enabled": false,
+        "name": "Expert_1",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_2",
+        "enabled": false,
+        "name": "Expert_2",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_3",
+        "enabled": false,
+        "name": "Expert_3",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_4",
+        "enabled": false,
+        "name": "Expert_4",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_5",
+        "enabled": false,
+        "name": "Expert_5",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_6",
+        "enabled": false,
+        "name": "Expert_6",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_7",
+        "enabled": false,
+        "name": "Expert_7",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_8",
+        "enabled": false,
+        "name": "Expert_8",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_9",
+        "enabled": false,
+        "name": "Expert_9",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      },
+      {
+        "slot": "Expert_10",
+        "enabled": false,
+        "name": "Expert_10",
+        "role": "",
+        "card_text": "",
+        "image": "",
+        "image_alt": "",
+        "detail_title": "",
+        "detail_subtitle": "",
+        "details": [],
+        "link_enabled": false,
+        "link_url": ""
+      }
+    ]
+  },
+  "tagline": "Intelligent Solutions. Assured Compliance.",
+  "editor_notes": {
+    "instructions": "Use Decap CMS → Site Settings to edit website text, navigation, contact details, emails, WhatsApp settings, hero content, typography, layout, media assets and Instagram Reel URLs. Navigation font size and gap are editable under Theme & Layout. Hero left offset is editable under Theme & Layout. About profile phone/email are editable under About Us. Service-page contact email is editable under Contact & Enquiry.",
+    "enquiry": "Send Enquiry submits the form to the configured Google Apps Script Web App URL. The Apps Script saves the enquiry in the Enquiries Google Sheet, sends the enquiry notification to the configured recipient, generates an AI-###### reference number, and sends a branded automatic confirmation email to the customer. The confirmation email includes the customer name, company, selected requirement, requirement details, the current seven AssurIntellec™ services, website, contact phone and email, plus the current website logo. The logo and contact details are pulled from the published Site Settings / Media Assets, so changes made through Decap CMS are automatically used for future confirmation emails after the website content is published. The website then displays the centred confirmation message without clearing the visitor's entered form data. No SMS service or SMS API is used.",
+    "instagram": "Five Instagram Reel slots are available in Decap CMS. The enabled public Reel URLs are shown one at a time with the left/right arrows. The homepage viewer hides/crops the Instagram profile/caption/comment area so the viewer presents the Reel video region only.",
+    "mobile": "Responsive mobile rules keep navigation, social icons, hero, Reel viewer, service cards, contact form, footer and buttons within the phone viewport. Mobile Reel sizing is editable under Theme & Layout.",
+    "instagram_viewer": "Instagram audio on/off controls were removed. The homepage Reel viewer is configured to show the video area only; profile/caption/comment areas are visually cropped by the viewer.",
+    "logos": "Homepage certificates/approvals and valuable customer logo sections each have exactly five editable image slots under Decap CMS → Site Settings → Homepage. Replace the images to update the five visible logos.",
+    "visitor_counter": "The website visitor count is shown in the footer and uses CounterAPI. The namespace and key are editable under Decap CMS → Site Settings → Visitor Counter.",
+    "search_logo": "The site includes a 192×192 PNG favicon plus Organization structured data. Google decides when to refresh the favicon/search presentation after crawling the site."
+  },
+  "brand_subtitle": "Pharmaceutical & Life Sciences Solutions",
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "why_us": "Why Us",
+    "contact": "Contact Us"
+  },
+  "ui": {
+    "profile_placeholder_help": "Use Decap CMS → Site Settings → About Us",
+    "service_back_label": "Back to Services",
+    "service_read_aria": "Open service details",
+    "menu_close_label": "Close navigation",
+    "contact_select_placeholder": "Select requirement",
+    "instagram_viewer_label": "Instagram Reel viewer",
+    "profile_placeholder_title": "Upload profile photo",
+    "footer_home_label": "Home",
+    "menu_open_label": "Open navigation"
+  },
+  "why_us": {
+    "eyebrow": "AssurIntellec™",
+    "page_title": "Why Us",
+    "page_description": "A structured approach for pharmaceutical and life-sciences technical and business requirements.",
+    "cards": [
+      {
+        "icon": "fa-certificate",
+        "title": "Technical Focus",
+        "text": "Our service scope includes pharmaceutical facility planning, GMP, cleanroom and HVAC considerations, machinery and laboratory technologies, qualification, validation and related technical support.",
+        "image": "/images/uploads/Why_1.png",
+        "image_alt": "Pharmaceutical facility",
+        "home_text": "Technical support shaped around pharmaceutical facilities, GMP and laboratory requirements.",
+        "detail_title": "Technical Focus",
+        "detail_subtitle": "How AssurIntellec can support this area",
+        "media_type": "image",
+        "video": "",
+        "enabled": true,
+        "link_enabled": false,
+        "link_url": "",
+        "details": [
+          {
+            "heading": "Scope and focus",
+            "text": "Our service scope includes pharmaceutical facility planning, GMP, cleanroom and HVAC considerations, machinery and laboratory technologies, qualification, validation and related technical support.",
+            "bullets": []
+          }
+        ]
+      },
+      {
+        "icon": "fa-puzzle-piece",
+        "title": "Integrated Thinking",
+        "text": "Projects may involve technical, regulatory, commercial and operational questions. The service model is designed to consider these elements together.",
+        "image": "/images/uploads/Why_2.png",
+        "image_alt": "Biotechnology laboratory",
+        "home_text": "An integrated view of technical, regulatory, commercial and operational considerations.",
+        "detail_title": "Integrated Thinking",
+        "detail_subtitle": "How AssurIntellec can support this area",
+        "media_type": "image",
+        "video": "",
+        "enabled": true,
+        "link_enabled": false,
+        "link_url": "",
+        "details": [
+          {
+            "heading": "Scope and focus",
+            "text": "Projects may involve technical, regulatory, commercial and operational questions. The service model is designed to consider these elements together.",
+            "bullets": []
+          }
+        ]
+      },
+      {
+        "icon": "fa-clipboard-check",
+        "title": "Structured Approach",
+        "text": "We organize work around understanding the requirement, assessing the situation, developing a solution and supporting implementation.",
+        "image": "/images/uploads/Why_3.png",
+        "image_alt": "Scientific research laboratory",
+        "home_text": "A clear process to understand, assess, develop and support each requirement.",
+        "detail_title": "Structured Approach",
+        "detail_subtitle": "How AssurIntellec can support this area",
+        "media_type": "image",
+        "video": "",
+        "enabled": true,
+        "link_enabled": false,
+        "link_url": "",
+        "details": [
+          {
+            "heading": "Scope and focus",
+            "text": "We organize work around understanding the requirement, assessing the situation, developing a solution and supporting implementation.",
+            "bullets": []
+          }
+        ]
+      },
+      {
+        "icon": "fa-arrows-to-circle",
+        "title": "Practical Orientation",
+        "text": "The objective is to provide practical support aligned with the specific project, facility, technology, research or business requirement.",
+        "image": "/images/uploads/Why_4.png",
+        "image_alt": "Contract manufacturing facility",
+        "home_text": "Practical project support aligned to the facility, technology, research or business need.",
+        "detail_title": "Practical Orientation",
+        "detail_subtitle": "How AssurIntellec can support this area",
+        "media_type": "image",
+        "video": "",
+        "enabled": true,
+        "link_enabled": false,
+        "link_url": "",
+        "details": [
+          {
+            "heading": "Scope and focus",
+            "text": "The objective is to provide practical support aligned with the specific project, facility, technology, research or business requirement.",
+            "bullets": []
+          }
+        ]
+      }
+    ],
+    "process": [
+      {
+        "number": "01",
+        "title": "Understand",
+        "text": "Clarify scope, objective and requirement.",
+        "image": "/images/uploads/Process_1.png",
+        "image_alt": "Illustration of requirement discovery"
+      },
+      {
+        "number": "02",
+        "title": "Assess",
+        "text": "Review technical, regulatory and commercial considerations.",
+        "image": "/images/uploads/Process_2.png",
+        "image_alt": "Illustration of technical assessment"
+      },
+      {
+        "number": "03",
+        "title": "Develop",
+        "text": "Build a practical solution based on the requirement.",
+        "image": "/images/uploads/Process_3.png",
+        "image_alt": "Illustration of laboratory development and validation"
+      },
+      {
+        "number": "04",
+        "title": "Support",
+        "text": "Provide implementation-oriented project support.",
+        "image": "/images/uploads/Process_4.png",
+        "image_alt": "Illustration of practical implementation and support"
+      }
+    ],
+    "detail_close_label": "Close details"
+  },
+  "hero": {
+    "video_sound_label": "Enable hero video sound",
+    "heading": "GMP Engineering & Compliance",
+    "button_primary_url": "./services.html",
+    "button_secondary": "Discuss Your Requirement",
+    "video_autoplay": true,
+    "video_loop": true,
+    "company_name": "AssurIntellec™",
+    "poster": "/images/uploads/hero.jpg",
+    "video_mute_label": "Mute hero video",
+    "kicker": "Intelligent Solutions. Assured Compliance.",
+    "button_primary": "Explore Services",
+    "video_audio_default_enabled": true,
+    "button_secondary_url": "./contact.html",
+    "video": "/videos/hero-60sec.mp4",
+    "description": "",
+    "service_cycle_enabled": true,
+    "service_cycle_titles": [
+      "GMP Engineering & Compliance",
+      "Advisory & Transactions",
+      "Talent & Recruitment",
+      "Life Sciences Trade",
+      "Pharma & Laboratory Technologies",
+      "Research & Scientific Services",
+      "Pharma Solutions & Manufacturing"
+    ]
+  },
+  "footer": {
+    "description": "Pharmaceutical & life sciences solutions across engineering, compliance, advisory, scientific, technology and manufacturing support.",
+    "quick_links_title": "Quick Links",
+    "services_title": "Services",
+    "contact_title": "Contact",
+    "social_title": "Connect",
+    "copyright": "All rights reserved."
+  },
+  "seo": {
+    "title": "AssurIntellec™ | Pharmaceutical & Life Sciences Solutions",
+    "description": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform providing GMP, regulatory, engineering, scientific, research, manufacturing, talent, trade and strategic advisory support.",
+    "canonical_base": "https://www.assurintellec.in",
+    "logo_url": ""
+  },
+  "media_assets": {
+    "schema_logo": "/images/uploads/Google_Search_Logo.png",
+    "logo": "/images/uploads/logo_transparent_png_tm.png",
+    "favicon": "/images/uploads/Favicon.png",
+    "footer_logo_mode": "video",
+    "footer_logo_image": "/images/uploads/logo_transparent_png_tm.png",
+    "footer_logo_video": "/videos/footer-logo-animated.mp4",
+    "footer_logo_link_enabled": false,
+    "footer_logo_link_url": "",
+    "footer_logo_alt": "AssurIntellec animated logo"
+  },
+  "home": {
+    "services_preview": {
+      "eyebrow": "What We Do",
+      "title": "Services",
+      "description": "Seven focused service verticals across pharmaceutical and life-sciences requirements.",
+      "button": "View All Services",
+      "button_url": "./services.html",
+      "back_to_services_label": "Back to Services"
+    },
+    "approval_logos": {
+      "eyebrow": "Certificates & Approvals",
+      "title": "We Can Help You Get The Certificate Required for Your Company",
+      "description": "",
+      "items": [
+        {
+          "title": "FDA",
+          "image": "/images/uploads/FDA.png",
+          "alt": "FDA approval logo",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "ISO",
+          "image": "/images/uploads/ISO.png",
+          "alt": "ISO certification logo",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "GLP",
+          "image": "/images/uploads/GLP.png",
+          "alt": "Good Laboratory Practice GLP logo",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "WHO GMP",
+          "image": "/images/uploads/WHO_GMP.png",
+          "alt": "WHO GMP certification logo",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "Revised Schedule M",
+          "image": "/images/uploads/Revised_Schedule_M.png",
+          "alt": "Revised Schedule M logo",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "NABL",
+          "image": "/images/uploads/NABL.png",
+          "alt": "NABL ISO/IEC 17025 accredited logo",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        }
+      ]
+    },
+    "cta": {
+      "title": "Have a pharmaceutical or life sciences requirement?",
+      "text": "Connect with AssurIntellec™ for technical, regulatory, scientific and business support.",
+      "button": "Contact AssurIntellec™",
+      "button_url": "./contact.html"
+    },
+    "why_preview": {
+      "eyebrow": "Why AssurIntellec™",
+      "title": "Why Us",
+      "description": "A structured, technically informed and practical approach to pharmaceutical and life-sciences requirements.",
+      "button": "Why Us",
+      "button_url": "./why-us.html"
+    },
+    "client_logos": {
+      "eyebrow": "Our Clients",
+      "title": "Our Clients",
+      "description": "",
+      "items": [
+        {
+          "title": "Envacare",
+          "image": "/images/uploads/Envacare.png",
+          "alt": "Envacare",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "Axelus Pharma",
+          "image": "/images/uploads/Axelus_Pharma.jpg",
+          "alt": "Axelus Pharma",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "Client_3",
+          "image": "/images/uploads/Client_3.png",
+          "alt": "Client_3 logo placeholder",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "Client_4",
+          "image": "/images/uploads/Client_4.png",
+          "alt": "Client_4 logo placeholder",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "title": "Client_5",
+          "image": "/images/uploads/Client_5.png",
+          "alt": "Client_5 logo placeholder",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        }
+      ]
+    },
+    "testimonials": {
+      "eyebrow": "TESTIMONIALS",
+      "title": "What Our Customers Say?",
+      "description": "",
+      "google_link": "https://maps.app.goo.gl/esBDC8E4CaLzHMsk7",
+      "google_link_label": "Read all reviews on Google",
+      "items": [
+        {
+          "name": "Mr. Dhaval Shah",
+          "company": "Pharma Tech Engineers",
+          "rating": 5,
+          "text": "Professional and knowledgeable team with excellent pharmaceutical consulting services. Highly recommended.",
+          "avatar": "/images/uploads/testimonial-customer-1.png",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": true
+        },
+        {
+          "name": "Customer Name",
+          "company": "Company Name",
+          "rating": 5,
+          "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
+          "avatar": "/images/uploads/testimonial-customer-2.png",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": false
+        },
+        {
+          "name": "Customer Name",
+          "company": "Company Name",
+          "rating": 5,
+          "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
+          "avatar": "/images/uploads/testimonial-customer-3.png",
+          "link_enabled": false,
+          "link_url": "",
+          "enabled": false
+        }
+      ]
+    },
+    "why_us": {
+      "eyebrow": "Why AssurIntellec™",
+      "title": "Why Us",
+      "description": "A structured, technically informed and practical approach to pharmaceutical and life-sciences requirements."
+    },
+    "about_preview": {
+      "eyebrow": "About AssurIntellec™",
+      "title": "Connecting expertise with opportunity",
+      "paragraph": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform founded on a strong foundation in Pharmaceutics, pharmaceutical research, teaching, laboratory expertise and scientific innovation.",
+      "points": [
+        "Pharmaceutical facility and GMP-focused support",
+        "Scientific, technical and research-oriented solutions",
+        "Advisory support across projects and opportunities",
+        "Integrated life sciences business support"
+      ],
+      "button": "About Us",
+      "button_url": "./about.html"
+    },
+    "instagram_section": {
+      "enabled": true,
+      "prev_label": "Previous Instagram Reel",
+      "next_label": "Next Instagram Reel",
+      "empty_message": "Add public Instagram Reel URLs in Decap CMS."
+    },
+    "trust_items": [
+      {
+        "icon": "fa-industry",
+        "title": "Pharmaceutical Engineering",
+        "text": "Facility & technical support"
+      },
+      {
+        "icon": "fa-shield-halved",
+        "title": "GMP & Compliance",
+        "text": "Quality-focused solutions"
+      },
+      {
+        "icon": "fa-flask",
+        "title": "Scientific Services",
+        "text": "Research & laboratory support"
+      },
+      {
+        "icon": "fa-handshake",
+        "title": "Advisory",
+        "text": "Technical & commercial support"
+      }
+    ]
+  },
+  "media_options": {
+    "clickable_images_enabled": true,
+    "image_hover_zoom_enabled": true
+  },
+  "text_style_overrides": []
+}
