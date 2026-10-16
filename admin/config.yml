@@ -1,0 +1,2562 @@
+publish_mode: simple
+backend:
+  name: turbo-github
+  turbo_site_id: 970e4e24-dfda-4ae1-beec-118e1dc52488
+  branch: main
+media_folder: images/uploads
+public_folder: /images/uploads
+site_url: https://www.assurintellec.in
+display_url: https://www.assurintellec.in
+collections:
+- label: Site Settings
+  name: site_settings
+  files:
+  - label: Complete Website Settings
+    name: settings
+    file: content/site.json
+    format: json
+    fields:
+    - label: Company Name
+      name: company_name
+      widget: string
+      required: false
+    - label: Brand Subtitle
+      name: brand_subtitle
+      widget: string
+      required: false
+    - label: Tagline
+      name: tagline
+      widget: string
+      required: false
+    - label: SEO
+      name: seo
+      widget: object
+      collapsed: true
+      fields:
+      - label: Schema / Google Search Logo URL (optional override)
+        name: logo_url
+        widget: string
+        required: false
+        hint: Optional full URL override. Leave blank to use the uploaded Google Search / Organization
+          Logo in Media Assets. Google decides whether to show a logo in Search.
+      - label: Page Title
+        name: title
+        widget: string
+        required: false
+      - label: Meta Description
+        name: description
+        widget: text
+        required: false
+      - label: Canonical Base URL
+        name: canonical_base
+        widget: string
+        hint: Official canonical domain used for page SEO.
+        required: false
+      required: false
+    - label: Visitor Counter
+      name: visitor_counter
+      widget: object
+      collapsed: true
+      fields:
+      - label: Enabled
+        name: enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Display Label
+        name: label
+        widget: string
+        required: false
+      - label: Counter Namespace
+        name: namespace
+        widget: string
+        hint: Keep this stable to preserve the website visitor count across website file replacements.
+        required: false
+      - label: Counter Action
+        name: action
+        widget: string
+        default: view
+        required: false
+      - label: Counter Key
+        name: key
+        widget: string
+        hint: Keep this stable across normal updates. Change only when intentionally starting a fresh
+          counter; use Starting Value to carry forward the last displayed total.
+        required: false
+      - label: Starting Value / Carry-Forward Offset
+        name: start_value
+        widget: number
+        value_type: int
+        default: 0
+        required: false
+        hint: Added to the live CounterAPI count. Keep the current namespace/key during normal site updates.
+          If intentionally starting with a fresh key, set this to the last count to carry forward.
+      required: false
+    - label: Navigation
+      name: navigation
+      widget: object
+      collapsed: true
+      fields:
+      - label: Home
+        name: home
+        widget: string
+        required: false
+      - label: About Us
+        name: about
+        widget: string
+        required: false
+      - label: Services
+        name: services
+        widget: string
+        required: false
+      - label: Why Us
+        name: why_us
+        widget: string
+        required: false
+      - label: Contact Us
+        name: contact
+        widget: string
+        required: false
+      required: false
+    - label: Social Media
+      name: social
+      widget: object
+      collapsed: true
+      fields:
+      - label: Social Links (drag to change order)
+        name: items
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - label: Key
+          name: key
+          widget: string
+          required: false
+        - label: Label
+          name: label
+          widget: string
+          required: false
+        - label: URL
+          name: url
+          widget: string
+          required: false
+        - label: Font Awesome Icon Class
+          name: icon
+          widget: string
+          required: false
+        - label: CSS Color Class (optional)
+          name: class_name
+          widget: string
+          required: false
+        - label: Header Icon Color
+          name: header_color
+          widget: color
+          allowInput: true
+          default: '#111111'
+          required: false
+        - label: Footer Icon Color
+          name: footer_color
+          widget: color
+          allowInput: true
+          default: '#ffffff'
+          required: false
+        - label: Enabled
+          name: enabled
+          widget: boolean
+          default: true
+          required: false
+        min: 0
+        max: 12
+        allow_add: true
+        allow_delete: true
+        allow_remove: true
+        required: false
+      required: false
+    - label: Contact & Enquiry
+      name: contact
+      widget: object
+      collapsed: true
+      fields:
+      - label: Office Phone
+        name: phone
+        widget: string
+        hint: Main office number shown on the website.
+        required: false
+      - label: Office Phone Label
+        name: phone_label
+        widget: string
+        required: false
+      - label: Mobile Phone
+        name: mobile_phone
+        widget: string
+        required: false
+      - label: Mobile Phone Label
+        name: mobile_phone_label
+        widget: string
+        required: false
+      - label: Public Email
+        name: email
+        widget: string
+        required: false
+      - label: Website
+        name: website
+        widget: string
+        required: false
+      - label: Website Display Text
+        name: website_display
+        widget: string
+        hint: Visible website text, for example www.assurintellec.in. The Website field remains the clickable
+          URL.
+        required: false
+      - label: WhatsApp Link
+        name: whatsapp
+        widget: string
+        required: false
+      - label: WhatsApp Phone Number
+        name: whatsapp_phone
+        widget: string
+        required: false
+        hint: International digits only, e.g. 917600666436. Used by the pre-filled enquiry WhatsApp button.
+      - label: Enquiry Recipient Email
+        name: enquiry_recipient_email
+        widget: string
+        hint: Email address used by the Apps Script enquiry notification.
+        required: false
+      - label: Service Page Contact Label
+        name: service_contact_label
+        widget: string
+        required: false
+      - label: Service Page Contact Email
+        name: service_contact_email
+        widget: string
+        hint: Shown at the bottom of every individual service page.
+        required: false
+      - label: Google Apps Script Web App URL
+        name: google_apps_script_url
+        widget: string
+        required: false
+        hint: Paste the deployed /exec Web App URL. The production website uses a secure iframe bridge
+          to avoid browser CORS limitations.
+      - label: Customer Confirmation Email Enabled
+        name: customer_confirmation_email_enabled
+        widget: boolean
+        default: true
+        hint: Sends an automatic confirmation email to the customer after a successful enquiry submission.
+        required: false
+      - label: Customer Confirmation From Email
+        name: customer_confirmation_email_from_email
+        widget: string
+        hint: Must be configured as a Gmail 'Send mail as' alias for the Google account running the Apps
+          Script.
+        required: false
+      - label: Customer Confirmation Email Subject
+        name: customer_confirmation_email_subject
+        widget: string
+        required: false
+      - label: Customer Confirmation Email Message
+        name: customer_confirmation_email_message
+        widget: text
+        hint: 'Editable main message template. Supported placeholders: {name}, {company}, {email}, {phone},
+          {service}, {message}, {reference}, and {services}. The branded signature, contact details and
+          logo are added automatically from the published Site Settings / Media Assets, so the logo can
+          be changed through Decap CMS.'
+        required: false
+      - label: Page Eyebrow
+        name: page_eyebrow
+        widget: string
+        required: false
+      - label: Page Title
+        name: page_title
+        widget: string
+        required: false
+      - label: Page Description
+        name: page_description
+        widget: text
+        required: false
+      - label: Contact Heading
+        name: heading
+        widget: string
+        required: false
+      - label: Contact Description
+        name: description
+        widget: text
+        required: false
+      - label: Form Title
+        name: form_title
+        widget: string
+        required: false
+      - label: Name Label
+        name: form_name_label
+        widget: string
+        required: false
+      - label: Company Label
+        name: form_company_label
+        widget: string
+        required: false
+      - label: Email Label
+        name: form_email_label
+        widget: string
+        required: false
+      - label: Phone Label
+        name: form_phone_label
+        widget: string
+        required: false
+      - label: Requirement Label
+        name: form_service_label
+        widget: string
+        required: false
+      - label: Message Label
+        name: form_message_label
+        widget: string
+        required: false
+      - label: Name Placeholder
+        name: form_name_placeholder
+        widget: string
+        required: false
+      - label: Company Placeholder
+        name: form_company_placeholder
+        widget: string
+        required: false
+      - label: Email Placeholder
+        name: form_email_placeholder
+        widget: string
+        required: false
+      - label: Phone Placeholder
+        name: form_phone_placeholder
+        widget: string
+        required: false
+      - label: Message Placeholder
+        name: form_message_placeholder
+        widget: string
+        required: false
+      - label: Submit Button
+        name: form_button
+        widget: string
+        required: false
+      - label: Website Label
+        name: website_label
+        widget: string
+        required: false
+      - label: Email Label (Contact Card)
+        name: email_label
+        widget: string
+        required: false
+      - label: WhatsApp Label
+        name: whatsapp_label
+        widget: string
+        required: false
+      - label: WhatsApp Link Text
+        name: whatsapp_text
+        widget: string
+        required: false
+      - label: Success Message
+        name: enquiry_success_message
+        widget: string
+        required: false
+      - label: Success Title
+        name: enquiry_success_title
+        widget: string
+        hint: Centre confirmation title shown after a successful enquiry.
+        required: false
+      - label: Success Received Line
+        name: enquiry_success_received
+        widget: string
+        required: false
+      - label: Success Review Message
+        name: enquiry_success_body
+        widget: text
+        required: false
+      - label: Success Closing Line
+        name: enquiry_success_closing
+        widget: string
+        required: false
+      - label: Success Tagline
+        name: enquiry_success_tagline
+        widget: string
+        required: false
+      - label: Success Close Label
+        name: enquiry_success_close_label
+        widget: string
+        required: false
+      - label: Error Message
+        name: enquiry_error_message
+        widget: text
+        required: false
+      - label: WhatsApp Prefill Template
+        name: whatsapp_prefill_template
+        widget: text
+        hint: 'Available fields: {name}, {company}, {email}, {phone}, {service}, {message}'
+        required: false
+      - label: Form Service Placeholder
+        name: form_service_placeholder
+        widget: string
+        required: false
+        default: Select requirement
+      - label: Form Validation Message
+        name: form_validation_message
+        widget: string
+        required: false
+      - label: Form Sending Text
+        name: form_sending_text
+        widget: string
+        required: false
+      - label: Enquiry Subject
+        name: enquiry_subject
+        widget: string
+        required: false
+      - label: Show Location and Map
+        name: location_enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Location Heading
+        name: location_title
+        widget: string
+        required: false
+      - label: Address Display (exact visible address)
+        name: address_display
+        widget: string
+        required: false
+        hint: Optional exact public-facing address. If set, this is displayed as written.
+      - label: Address Line 1
+        name: address_line_1
+        widget: string
+        required: false
+      - label: Address Line 2
+        name: address_line_2
+        widget: string
+        required: false
+      - label: City / Locality
+        name: address_city
+        widget: string
+        required: false
+      - label: State / Region
+        name: address_region
+        widget: string
+        required: false
+      - label: Postal Code
+        name: address_postal_code
+        widget: string
+        required: false
+      - label: Country
+        name: address_country
+        widget: string
+        required: false
+      - label: Google Maps Embed URL
+        name: map_embed_url
+        widget: string
+        required: false
+        hint: Paste a Google Maps embed URL. Leave blank to hide the map.
+      - label: Google Maps Open Link
+        name: map_link_url
+        widget: string
+        required: false
+        hint: Public Google Maps link opened by the Open in Google Maps link. This can be a maps.app.goo.gl share URL.
+      required: false
+    - label: Hero
+      name: hero
+      widget: object
+      collapsed: true
+      fields:
+      - label: Hero Company Name
+        name: company_name
+        widget: string
+        required: false
+      - label: Kicker
+        name: kicker
+        widget: string
+        required: false
+      - label: Heading
+        name: heading
+        widget: string
+        required: false
+      - label: Description
+        name: description
+        widget: text
+        required: false
+      - label: Hero Video
+        name: video
+        widget: file
+        required: false
+        media_folder: videos
+        public_folder: /videos
+      - label: Hero Poster / Fallback Image
+        name: poster
+        widget: image
+        required: false
+      - label: Primary Button Text
+        name: button_primary
+        widget: string
+        required: false
+      - label: Primary Button URL
+        name: button_primary_url
+        widget: string
+        required: false
+      - label: Secondary Button Text
+        name: button_secondary
+        widget: string
+        required: false
+      - label: Secondary Button URL
+        name: button_secondary_url
+        widget: string
+        required: false
+      - label: Sound Button Label
+        name: video_sound_label
+        widget: string
+        required: false
+      - label: Mute Button Label
+        name: video_mute_label
+        widget: string
+        required: false
+      - label: Audio On by Default
+        name: video_audio_default_enabled
+        widget: boolean
+        default: true
+        hint: The hero video starts with audio requested by default. Browsers may block autoplay with
+          sound; in that case it starts muted until the visitor enables audio.
+        required: false
+      - label: Autoplay
+        name: video_autoplay
+        widget: boolean
+        default: true
+        required: false
+      - label: Loop
+        name: video_loop
+        widget: boolean
+        default: true
+        required: false
+      - label: Hero Video Alt Text
+        name: video_alt
+        widget: string
+        required: false
+      - label: Hero Poster Alt Text
+        name: poster_alt
+        widget: string
+        required: false
+      - label: Animated Service Heading Enabled
+        name: service_cycle_enabled
+        widget: boolean
+        default: true
+        required: false
+        hint: Types each configured service title, erases it, and repeats continuously.
+      - label: Animated Service Titles (up to 7)
+        name: service_cycle_titles
+        widget: list
+        fields:
+        - label: Service Title
+          name: title
+          widget: string
+          required: false
+        required: false
+        min: 0
+        max: 7
+        allow_add: true
+        allow_delete: true
+        allow_remove: true
+        summary: '{{fields.title}}'
+      required: false
+    - label: Homepage
+      name: home
+      widget: object
+      collapsed: true
+      fields:
+      - label: Trust Strip
+        name: trust_items
+        widget: list
+        summary: '{{fields.title}}'
+        fields:
+        - label: Icon
+          name: icon
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Supporting Text
+          name: text
+          widget: string
+          required: false
+        required: false
+      - label: Certificates & Approvals Logos (6)
+        name: approval_logos
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Section Title
+          name: title
+          widget: string
+          required: false
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        - label: Six Logos (all 6 visible at once)
+          name: items
+          widget: list
+          min: 0
+          max: 6
+          allow_add: true
+          allow_remove: true
+          allow_reorder: true
+          summary: '{{fields.title}}'
+          fields:
+          - label: Logo / Certificate Image
+            name: image
+            widget: image
+            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates
+              the image reference automatically.
+            required: false
+          - label: Display Name
+            name: title
+            widget: string
+            required: false
+          - label: Alt Text
+            name: alt
+            widget: string
+            required: false
+          - label: Enable Link
+            name: link_enabled
+            widget: boolean
+            default: false
+            required: false
+          - label: Link URL
+            name: link_url
+            widget: string
+            required: false
+            hint: Optional. Used only if Enable Link is switched on and global Clickable Images is enabled.
+          - label: Show This Item
+            name: enabled
+            widget: boolean
+            default: true
+            required: false
+          allow_delete: true
+          required: false
+        required: false
+      - label: Valuable Customer Logos (5)
+        name: client_logos
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Section Title
+          name: title
+          widget: string
+          required: false
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        - label: Five Customer Logos
+          name: items
+          widget: list
+          min: 0
+          max: 5
+          allow_add: true
+          allow_remove: true
+          allow_reorder: true
+          summary: '{{fields.title}}'
+          fields:
+          - label: Customer Logo
+            name: image
+            widget: image
+            hint: Upload any PNG, JPG or WebP. You do not need to rename the file; saving the entry updates
+              the image reference automatically.
+            required: false
+          - label: Company / Display Name
+            name: title
+            widget: string
+            required: false
+          - label: Alt Text
+            name: alt
+            widget: string
+            required: false
+          - label: Enable Link
+            name: link_enabled
+            widget: boolean
+            default: false
+            required: false
+          - label: Link URL
+            name: link_url
+            widget: string
+            required: false
+            hint: Optional. Used only if Enable Link is switched on and global Clickable Images is enabled.
+          - label: Show This Item
+            name: enabled
+            widget: boolean
+            default: true
+            required: false
+          allow_delete: true
+          required: false
+        required: false
+      - label: Testimonials (3 cards shown at once)
+        name: testimonials
+        widget: object
+        collapsed: true
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Section Title
+          name: title
+          widget: string
+          required: false
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        - label: Google Reviews Link
+          name: google_link
+          widget: string
+          hint: Opens your existing Google reviews page. Keep this as your AssurIntellec Google review
+            link.
+          required: false
+        - label: Google Button Label
+          name: google_link_label
+          widget: string
+          default: Read all reviews on Google
+          required: false
+        - label: Three Testimonials
+          name: items
+          widget: list
+          min: 0
+          max: 3
+          allow_add: true
+          allow_remove: true
+          allow_reorder: true
+          summary: '{{fields.name}} — {{fields.company}}'
+          fields:
+          - label: Rating
+            name: rating
+            widget: number
+            value_type: int
+            min: 1
+            max: 5
+            default: 5
+            required: false
+          - label: Testimonial Text
+            name: text
+            widget: text
+            required: false
+          - label: Customer Name
+            name: name
+            widget: string
+            required: false
+          - label: Company Name
+            name: company
+            widget: string
+            required: false
+          - label: Customer Photo (optional)
+            name: avatar
+            widget: image
+            required: false
+            hint: Upload any PNG, JPG or WebP. The three testimonial photos are editable here and can
+              also be replaced directly in GitHub.
+          - label: Enable Link
+            name: link_enabled
+            widget: boolean
+            default: false
+            required: false
+          - label: Link URL
+            name: link_url
+            widget: string
+            required: false
+            hint: Optional. Used only if Enable Link is switched on and global Clickable Images is enabled.
+          - label: Show This Item
+            name: enabled
+            widget: boolean
+            default: true
+            required: false
+          allow_delete: true
+          required: false
+        required: false
+      - label: Homepage Why Us Copy
+        name: why_us
+        widget: object
+        fields:
+        - label: Eyebrow
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Description
+          name: description
+          widget: text
+          required: false
+        required: false
+        collapsed: true
+      required: false
+    - label: Section Visibility
+      name: section_visibility
+      widget: object
+      collapsed: true
+      fields:
+      - label: Header Social Icons
+        name: header_social
+        widget: boolean
+        default: true
+        required: false
+      - label: Footer Social Icons
+        name: footer_social
+        widget: boolean
+        default: true
+        required: false
+      - label: Homepage Trust Strip
+        name: trust_strip
+        widget: boolean
+        default: true
+        required: false
+      - label: Homepage Certificates & Approvals Logos
+        name: approval_logos_home
+        widget: boolean
+        default: true
+        required: false
+      - label: Homepage Valuable Customer Logos
+        name: client_logos_home
+        widget: boolean
+        default: true
+        required: false
+      - label: Homepage Testimonials
+        name: testimonials_home
+        widget: boolean
+        default: true
+        required: false
+      - label: Homepage About + Reel
+        name: about_reel_home
+        widget: boolean
+        default: true
+        required: false
+      - label: Homepage Services Preview
+        name: services_preview_home
+        widget: boolean
+        default: true
+        required: false
+      - label: Homepage Why Us Preview
+        name: why_preview_home
+        widget: boolean
+        default: true
+        required: false
+      - label: Homepage CTA
+        name: home_cta
+        widget: boolean
+        default: true
+        required: false
+      - label: Floating WhatsApp
+        name: floating_whatsapp
+        widget: boolean
+        default: true
+        required: false
+      required: false
+    - label: User Interface Text
+      name: ui
+      widget: object
+      collapsed: true
+      fields:
+      - label: Menu Open Label
+        name: menu_open_label
+        widget: string
+        required: false
+      - label: Menu Close Label
+        name: menu_close_label
+        widget: string
+        required: false
+      - label: Service Open ARIA Label
+        name: service_read_aria
+        widget: string
+        required: false
+      - label: Service Back Label
+        name: service_back_label
+        widget: string
+        required: false
+      - label: Instagram Viewer ARIA Label
+        name: instagram_viewer_label
+        widget: string
+        required: false
+      - label: Profile Placeholder Title
+        name: profile_placeholder_title
+        widget: string
+        required: false
+      - label: Profile Placeholder Help
+        name: profile_placeholder_help
+        widget: text
+        required: false
+      - label: Contact Service Placeholder
+        name: contact_select_placeholder
+        widget: string
+        required: false
+      required: false
+    - label: Custom CSS (Advanced)
+      name: custom_css
+      widget: code
+      default_language: css
+      required: false
+      hint: Optional advanced customization. Normal design controls are available under Theme & Layout.
+    - label: Editor Notes
+      name: editor_notes
+      widget: object
+      collapsed: true
+      fields:
+      - label: Instructions
+        name: instructions
+        widget: text
+        required: false
+      - label: Instagram Viewer Note
+        name: instagram_viewer
+        widget: text
+        required: false
+      required: false
+    - label: About Us & Expert Team
+      name: about
+      widget: object
+      required: false
+      collapsed: true
+      fields:
+      - label: Page Eyebrow
+        name: eyebrow
+        widget: string
+        required: false
+      - label: Page Title
+        name: page_title
+        widget: string
+        required: false
+      - label: Page Description
+        name: page_description
+        widget: text
+        required: false
+      - label: Main Paragraphs
+        name: main_paragraphs
+        widget: list
+        fields:
+        - label: Paragraph
+          name: paragraph
+          widget: text
+          required: false
+        required: false
+        min: 0
+        allow_add: true
+        allow_delete: true
+        allow_remove: true
+      - label: Profile Card Label
+        name: profile_card_label
+        widget: string
+        required: false
+      - label: Profile Name
+        name: profile_name
+        widget: string
+        required: false
+      - label: Profile Position
+        name: profile_position
+        widget: string
+        required: false
+      - label: Profile Phone
+        name: profile_phone
+        widget: string
+        required: false
+      - label: Profile Email
+        name: profile_email
+        widget: string
+        required: false
+      - label: Profile Photo
+        name: profile_photo
+        widget: image
+        required: false
+        hint: PNG/JPG/JPEG/WebP accepted. Recommended 600×750 px, up to 5 MB. Use a distinct file for
+          each profile.
+      - label: Profile Photo Alt Text
+        name: profile_photo_alt
+        widget: string
+        required: false
+      - label: Approach Title
+        name: approach_title
+        widget: string
+        required: false
+      - label: Approach Flow
+        name: approach_flow
+        widget: string
+        required: false
+      - label: Closing Text
+        name: closing
+        widget: text
+        required: false
+      - label: Expert Team Heading
+        name: expert_team_title
+        widget: string
+        required: false
+      - label: Expert Team Description
+        name: expert_team_description
+        widget: text
+        required: false
+      - label: Expert Profiles (up to 10 optional experts)
+        name: experts
+        widget: list
+        fields:
+        - label: Slot / Asset Name
+          name: slot
+          widget: string
+          required: false
+          default: Expert_1
+          hint: Use Expert_1 through Expert_10 for the matching image filename.
+        - label: Show This Expert
+          name: enabled
+          widget: boolean
+          default: false
+          required: false
+        - label: Name
+          name: name
+          widget: string
+          required: false
+        - label: Role / Designation
+          name: role
+          widget: string
+          required: false
+        - label: Short Card Text
+          name: card_text
+          widget: text
+          required: false
+        - label: Profile Photo
+          name: image
+          widget: image
+          required: false
+          hint: Use a unique Expert_1–Expert_10 portrait, recommended 600×750 px and up to 5 MB.
+        - label: Photo Alt Text
+          name: image_alt
+          widget: string
+          required: false
+        - label: Profile Main Heading
+          name: detail_title
+          widget: string
+          required: false
+        - label: Profile Subtitle
+          name: detail_subtitle
+          widget: string
+          required: false
+        - label: Detailed Profile Sections
+          name: details
+          widget: list
+          fields:
+          - label: Subheading
+            name: heading
+            widget: string
+            required: false
+          - label: Detail Text
+            name: text
+            widget: text
+            required: false
+          - label: Points
+            name: bullets
+            widget: list
+            fields:
+            - label: Point
+              name: point
+              widget: string
+              required: false
+            required: false
+            min: 0
+            allow_add: true
+            allow_delete: true
+            allow_remove: true
+          required: false
+          min: 0
+          allow_add: true
+          allow_delete: true
+          allow_remove: true
+          summary: '{{fields.heading}}'
+        - label: Enable Link
+          name: link_enabled
+          widget: boolean
+          default: false
+          required: false
+        - label: Link URL
+          name: link_url
+          widget: string
+          required: false
+        required: false
+        min: 0
+        max: 10
+        allow_add: true
+        allow_delete: true
+        allow_remove: true
+        summary: '{{fields.name}} — {{fields.role}}'
+    - label: Why Us Details
+      name: why_us
+      widget: object
+      required: false
+      collapsed: true
+      fields:
+      - label: Page Eyebrow
+        name: eyebrow
+        widget: string
+        required: false
+      - label: Page Title
+        name: page_title
+        widget: string
+        required: false
+      - label: Page Description
+        name: page_description
+        widget: text
+        required: false
+      - label: Close Details Label
+        name: detail_close_label
+        widget: string
+        required: false
+      - label: Why Us Points (up to 4)
+        name: cards
+        widget: list
+        fields:
+        - label: Show This Point
+          name: enabled
+          widget: boolean
+          default: true
+          required: false
+        - label: Page Slug (URL identifier)
+          name: slug
+          widget: string
+          required: false
+          hint: Use a short unique slug such as technical-focus. Keep it stable after sharing links.
+        - label: Icon Class
+          name: icon
+          widget: string
+          required: false
+        - label: Main Title
+          name: title
+          widget: string
+          required: false
+        - label: Short Home-Page Text
+          name: home_text
+          widget: text
+          required: false
+        - label: Full Detail Text
+          name: text
+          widget: text
+          required: false
+        - label: Detail Heading
+          name: detail_title
+          widget: string
+          required: false
+        - label: Detail Subtitle
+          name: detail_subtitle
+          widget: text
+          required: false
+        - label: Detail Introduction
+          name: detail_intro
+          widget: text
+          required: false
+        - label: Media Type
+          name: media_type
+          widget: select
+          options:
+          - label: Image
+            value: image
+          - label: Video
+            value: video
+          default: image
+          required: false
+        - label: Why Image
+          name: image
+          widget: image
+          required: false
+          hint: Recommended 1600×900 px (16:9), up to 5 MB; PNG/JPG/JPEG/WebP.
+        - label: Why Video (optional)
+          name: video
+          widget: file
+          required: false
+          media_folder: videos
+          public_folder: /videos
+          hint: MP4 recommended, 1920×1080 (16:9), up to about 25 MB.
+        - label: Image Alt Text
+          name: image_alt
+          widget: string
+          required: false
+        - label: Full Detail Subsections
+          name: details
+          widget: list
+          fields:
+          - label: Subheading
+            name: heading
+            widget: string
+            required: false
+          - label: Detail Text
+            name: text
+            widget: text
+            required: false
+          - label: Bullet Points
+            name: bullets
+            widget: list
+            fields:
+            - label: Point
+              name: point
+              widget: string
+              required: false
+            required: false
+            min: 0
+            allow_add: true
+            allow_delete: true
+            allow_remove: true
+          required: false
+          min: 0
+          allow_add: true
+          allow_delete: true
+          allow_remove: true
+          summary: '{{fields.heading}}'
+        - label: Enable Link
+          name: link_enabled
+          widget: boolean
+          default: false
+          required: false
+        - label: Link URL
+          name: link_url
+          widget: string
+          required: false
+        required: false
+        min: 0
+        max: 4
+        allow_add: true
+        allow_delete: true
+        allow_remove: true
+        summary: '{{fields.title}}'
+      - label: Process Steps
+        name: process
+        widget: list
+        fields:
+        - label: Step Number
+          name: number
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Description
+          name: text
+          widget: text
+          required: false
+        - label: Image
+          name: image
+          widget: image
+          required: false
+          hint: Recommended 1600×900 px (16:9), up to 5 MB.
+        - label: Alt Text
+          name: image_alt
+          widget: string
+          required: false
+        required: false
+        min: 0
+        max: 4
+        allow_add: true
+        allow_delete: true
+        allow_remove: true
+        summary: '{{fields.title}}'
+    - label: Media Assets
+      name: media_assets
+      widget: object
+      required: false
+      collapsed: true
+      fields:
+      - label: Header / Main Logo
+        name: logo
+        widget: image
+        required: false
+        hint: Recommended transparent PNG, 800×300 px, up to 5 MB.
+      - label: Google Search / Organization Logo
+        name: schema_logo
+        widget: image
+        required: false
+        hint: Square PNG, 512×512 px recommended, up to 5 MB. Used in Organization structured data unless
+          an optional URL override is set under SEO.
+      - label: Website Favicon
+        name: favicon
+        widget: image
+        required: false
+        hint: Square PNG, 192×192 px recommended. The header/browser icon links update from this CMS field
+          after the site loads.
+      - label: Footer Animated-Logo Still Image
+        name: footer_logo_image
+        widget: image
+        required: false
+        hint: Transparent PNG preferred. It will be animated inside the black footer logo panel if no
+          video is selected.
+      - label: Footer Logo Video (optional)
+        name: footer_logo_video
+        widget: file
+        required: false
+        hint: MP4, 1920×1080 or transparent/black-background export, 16:9, up to about 25 MB.
+        media_folder: videos
+        public_folder: /videos
+      - label: Footer Logo Display Mode
+        name: footer_logo_mode
+        widget: select
+        options:
+        - label: Image (animated fallback)
+          value: image
+        - label: Video
+          value: video
+        default: image
+        required: false
+      - label: Footer Logo Alt Text
+        name: footer_logo_alt
+        widget: string
+        required: false
+      - label: Footer Logo Link Enabled
+        name: footer_logo_link_enabled
+        widget: boolean
+        default: false
+        required: false
+      - label: Footer Logo Link URL
+        name: footer_logo_link_url
+        widget: string
+        required: false
+    - label: Media Options
+      name: media_options
+      widget: object
+      required: false
+      collapsed: true
+      fields:
+      - label: Clickable Images Enabled
+        name: clickable_images_enabled
+        widget: boolean
+        default: true
+        required: false
+        hint: Master switch for optional image/video links across logos, Why Us media, service media,
+          expert portraits and footer logo.
+      - label: Image Hover Zoom Enabled
+        name: image_hover_zoom_enabled
+        widget: boolean
+        default: true
+        required: false
+    - label: Animation & Motion
+      name: animation_options
+      widget: object
+      collapsed: true
+      required: false
+      fields:
+      - label: Enable Text Hover Zoom
+        name: hover_text_zoom_enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Text Hover Zoom Scale (1.01–1.10)
+        name: text_hover_zoom_scale
+        widget: number
+        value_type: float
+        min: 1.01
+        max: 1.10
+        step: 0.005
+        default: 1.035
+        required: false
+      - label: Enable Scroll Reveal Animations
+        name: reveal_animations_enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Reveal Animation Duration (milliseconds)
+        name: reveal_animation_duration_ms
+        widget: number
+        value_type: int
+        min: 200
+        max: 1200
+        default: 650
+        required: false
+      - label: Reveal Movement Distance (pixels)
+        name: reveal_animation_distance
+        widget: number
+        value_type: int
+        min: 0
+        max: 60
+        default: 18
+        required: false
+      - label: Enable Card Hover Lift
+        name: card_hover_lift_enabled
+        widget: boolean
+        default: true
+        required: false
+    - label: Instagram Reels (up to 10)
+      name: instagram_reels
+      widget: list
+      fields:
+      - label: Display Title
+        name: title
+        widget: string
+        required: false
+      - label: Public Instagram Reel URL
+        name: url
+        widget: string
+        required: false
+        hint: Paste the full public Instagram Reel URL.
+      - label: Enabled
+        name: enabled
+        widget: boolean
+        default: true
+        required: false
+      required: false
+      min: 0
+      max: 10
+      allow_add: true
+      allow_delete: true
+      allow_remove: true
+      summary: '{{fields.title}}'
+    - label: Theme & Layout
+      name: theme
+      widget: object
+      required: false
+      collapsed: true
+      fields:
+      - label: Eyebrow Letter Spacing
+        name: eyebrow_letter_spacing
+        widget: number
+        value_type: int
+        default: 2
+        required: false
+      - label: Gold
+        name: gold
+        widget: color
+        allowInput: true
+        default: '#c9a227'
+        required: false
+      - label: Header Background
+        name: header_background
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Trust Icon Size
+        name: trust_icon_size
+        widget: number
+        value_type: int
+        default: 22
+        required: false
+      - label: Card Radius
+        name: card_radius
+        widget: number
+        value_type: int
+        default: 18
+        required: false
+      - label: Font Button Family
+        name: font_button_family
+        widget: string
+        default: Inter
+        required: false
+      - label: Profile Position Size
+        name: profile_position_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: About Text Size
+        name: about_text_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Service Arrow Size
+        name: service_arrow_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: Footer Heading Size
+        name: footer_heading_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: About Point Size
+        name: about_point_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Card Padding
+        name: card_padding
+        widget: number
+        value_type: int
+        default: 24
+        required: false
+      - label: Profile Label Size
+        name: profile_label_size
+        widget: number
+        value_type: int
+        default: 11
+        required: false
+      - label: Section Title Size
+        name: section_title_size
+        widget: number
+        value_type: int
+        default: 48
+        required: false
+      - label: Footer Link Size
+        name: footer_link_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Why Image Height
+        name: why_image_height
+        widget: number
+        value_type: int
+        default: 190
+        required: false
+      - label: Hero Heading Size
+        name: hero_heading_size
+        widget: number
+        value_type: int
+        default: 66
+        required: false
+      - label: Service Arrow Color
+        name: service_arrow_color
+        widget: color
+        allowInput: true
+        default: '#1e6aa8'
+        required: false
+      - label: Process Text Size
+        name: process_text_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Base Font Size
+        name: base_font_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: About Reel Gap
+        name: about_reel_gap
+        widget: number
+        value_type: int
+        default: 44
+        required: false
+      - label: Cta Text Size
+        name: cta_text_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Instagram Arrow Size
+        name: instagram_arrow_size
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Button Font Size
+        name: button_font_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Font Heading Style
+        name: font_heading_style
+        widget: select
+        options:
+        - label: Normal
+          value: normal
+        - label: Italic
+          value: italic
+        default: normal
+        required: false
+      - label: Card Text Size
+        name: card_text_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Font Body Style
+        name: font_body_style
+        widget: select
+        options:
+        - label: Normal
+          value: normal
+        - label: Italic
+          value: italic
+        default: normal
+        required: false
+      - label: Social Gap
+        name: social_gap
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Font Nav Weight
+        name: font_nav_weight
+        widget: number
+        value_type: int
+        default: 700
+        required: false
+      - label: Header Logo Width
+        name: header_logo_width
+        widget: number
+        value_type: int
+        default: 390
+        required: false
+      - label: Hero Object Position
+        name: hero_object_position
+        widget: select
+        options:
+        - label: Center
+          value: center
+        - label: Center Top
+          value: center top
+        - label: Center Bottom
+          value: center bottom
+        - label: Left Center
+          value: left center
+        - label: Right Center
+          value: right center
+        default: center
+        required: false
+      - label: Process Image Object Fit
+        name: process_image_object_fit
+        widget: select
+        options:
+        - label: Cover
+          value: cover
+        - label: Contain
+          value: contain
+        default: cover
+        required: false
+      - label: Font Heading Weight
+        name: font_heading_weight
+        widget: number
+        value_type: int
+        default: 800
+        required: false
+      - label: Detail Text Size
+        name: detail_text_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Section Heading Margin
+        name: section_heading_margin
+        widget: number
+        value_type: int
+        default: 44
+        required: false
+      - label: Font Nav Style
+        name: font_nav_style
+        widget: select
+        options:
+        - label: Normal
+          value: normal
+        - label: Italic
+          value: italic
+        default: normal
+        required: false
+      - label: Font Body Weight
+        name: font_body_weight
+        widget: number
+        value_type: int
+        default: 400
+        required: false
+      - label: Hero Content Padding
+        name: hero_content_padding
+        widget: number
+        value_type: int
+        default: 100
+        required: false
+      - label: Header Min Height
+        name: header_min_height
+        widget: number
+        value_type: int
+        default: 132
+        required: false
+      - label: Container Max
+        name: container_max
+        widget: number
+        value_type: int
+        default: 1220
+        required: false
+      - label: Mobile Side Padding
+        name: mobile_side_padding
+        widget: number
+        value_type: int
+        default: 18
+        required: false
+      - label: Hero Left Offset
+        name: hero_left_offset
+        widget: number
+        value_type: int
+        default: 38
+        required: false
+      - label: Service Grid Gap
+        name: service_grid_gap
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Form Label Size
+        name: form_label_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Service Icon Color
+        name: service_icon_color
+        widget: color
+        allowInput: true
+        default: '#1e6aa8'
+        required: false
+      - label: Footer Social Gap
+        name: footer_social_gap
+        widget: number
+        value_type: int
+        default: 17
+        required: false
+      - label: Hero Kicker Size
+        name: hero_kicker_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Hero Company Size
+        name: hero_company_size
+        widget: number
+        value_type: int
+        default: 80
+        required: false
+      - label: Hero Description Size
+        name: hero_description_size
+        widget: number
+        value_type: int
+        default: 17
+        required: false
+      - label: Section Spacing
+        name: section_spacing
+        widget: number
+        value_type: int
+        default: 80
+        required: false
+      - label: Button Dark Text
+        name: button_dark_text
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Header Logo Height
+        name: header_logo_height
+        widget: number
+        value_type: int
+        default: 100
+        required: false
+      - label: Logo Max Width Mobile
+        name: logo_max_width_mobile
+        widget: number
+        value_type: int
+        default: 76
+        required: false
+      - label: Button Dark Background
+        name: button_dark_background
+        widget: color
+        allowInput: true
+        default: '#0b1f3a'
+        required: false
+      - label: Service Icon Background
+        name: service_icon_background
+        widget: color
+        allowInput: true
+        default: '#edf3f9'
+        required: false
+      - label: Muted
+        name: muted
+        widget: color
+        allowInput: true
+        default: '#68778a'
+        required: false
+      - label: Instagram Arrow Button Size
+        name: instagram_arrow_button_size
+        widget: number
+        value_type: int
+        default: 42
+        required: false
+      - label: Hero Company Line Height
+        name: hero_company_line_height
+        widget: number
+        value_type: int
+        default: 1
+        required: false
+      - label: Contact Label Size
+        name: contact_label_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Why Image Object Fit
+        name: why_image_object_fit
+        widget: select
+        options:
+        - label: Cover
+          value: cover
+        - label: Contain
+          value: contain
+        default: cover
+        required: false
+      - label: Border
+        name: border
+        widget: color
+        allowInput: true
+        default: '#dde6ef'
+        required: false
+      - label: Detail Heading Size
+        name: detail_heading_size
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Trust Text Size
+        name: trust_text_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Service Detail Title Size
+        name: service_detail_title_size
+        widget: number
+        value_type: int
+        default: 34
+        required: false
+      - label: Mobile Section Spacing
+        name: mobile_section_spacing
+        widget: number
+        value_type: int
+        default: 62
+        required: false
+      - label: Profile Card Width
+        name: profile_card_width
+        widget: number
+        value_type: int
+        default: 220
+        required: false
+      - label: Service Number Size
+        name: service_number_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Text
+        name: text
+        widget: color
+        allowInput: true
+        default: '#233247'
+        required: false
+      - label: Instagram Crop Bottom
+        name: instagram_crop_bottom
+        widget: number
+        value_type: int
+        default: 58
+        required: false
+      - label: Process Grid Gap
+        name: process_grid_gap
+        widget: number
+        value_type: int
+        default: 20
+        required: false
+      - label: Whatsapp Size
+        name: whatsapp_size
+        widget: number
+        value_type: int
+        default: 58
+        required: false
+      - label: Service Arrow Background
+        name: service_arrow_background
+        widget: color
+        allowInput: true
+        default: '#edf3f9'
+        required: false
+      - label: Contact Value Size
+        name: contact_value_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Profile Photo Ratio Width
+        name: profile_photo_ratio_width
+        widget: number
+        value_type: int
+        default: 35
+        required: false
+      - label: Whatsapp Right
+        name: whatsapp_right
+        widget: number
+        value_type: int
+        default: 22
+        required: false
+      - label: Service Detail Text Size
+        name: service_detail_text_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Trust Title Size
+        name: trust_title_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Mobile Logo Width
+        name: mobile_logo_width
+        widget: number
+        value_type: int
+        default: 270
+        required: false
+      - label: Footer Text Size
+        name: footer_text_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Mobile Reel Height
+        name: mobile_reel_height
+        widget: number
+        value_type: int
+        default: 585
+        required: false
+      - label: Why Icon Size
+        name: why_icon_size
+        widget: number
+        value_type: int
+        default: 25
+        required: false
+      - label: Hero Heading Line Height
+        name: hero_heading_line_height
+        widget: number
+        value_type: float
+        default: 1.05
+        required: false
+      - label: Font Nav Family
+        name: font_nav_family
+        widget: string
+        default: Inter
+        required: false
+      - label: Font Body Family
+        name: font_body_family
+        widget: string
+        default: Inter
+        required: false
+      - label: Footer Bottom Size
+        name: footer_bottom_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Footer Text
+        name: footer_text
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Form Input Size
+        name: form_input_size
+        widget: number
+        value_type: int
+        default: 14
+        required: false
+      - label: Font Heading Family
+        name: font_heading_family
+        widget: string
+        default: Inter
+        required: false
+      - label: Footer Background
+        name: footer_background
+        widget: color
+        allowInput: true
+        default: '#000000'
+        required: false
+      - label: Instagram Crop Top
+        name: instagram_crop_top
+        widget: number
+        value_type: int
+        default: 58
+        required: false
+      - label: Font Button Style
+        name: font_button_style
+        widget: select
+        options:
+        - label: Normal
+          value: normal
+        - label: Italic
+          value: italic
+        default: normal
+        required: false
+      - label: Detail List Size
+        name: detail_list_size
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Hero Overlay Right Opacity
+        name: hero_overlay_right_opacity
+        widget: number
+        value_type: float
+        default: 0.16
+        required: false
+      - label: Why Grid Gap
+        name: why_grid_gap
+        widget: number
+        value_type: int
+        default: 19
+        required: false
+      - label: Instagram Height
+        name: instagram_height
+        widget: number
+        value_type: int
+        default: 605
+        required: false
+      - label: Contact Text Size
+        name: contact_text_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Font Button Weight
+        name: font_button_weight
+        widget: number
+        value_type: int
+        default: 700
+        required: false
+      - label: Hero Border Color
+        name: hero_border_color
+        widget: color
+        allowInput: true
+        default: '#c9a227'
+        required: false
+      - label: Social Icon Size
+        name: social_icon_size
+        widget: number
+        value_type: int
+        default: 36
+        required: false
+      - label: Service Image Height
+        name: service_image_height
+        widget: number
+        value_type: int
+        default: 255
+        required: false
+      - label: Nav Font Size
+        name: nav_font_size
+        widget: number
+        value_type: int
+        default: 18
+        required: false
+      - label: Light
+        name: light
+        widget: color
+        allowInput: true
+        default: '#f5f8fc'
+        required: false
+      - label: Hero Sound Size
+        name: hero_sound_size
+        widget: number
+        value_type: int
+        default: 44
+        required: false
+      - label: Footer Logo Width
+        name: footer_logo_width
+        widget: number
+        value_type: int
+        default: 320
+        required: false
+      - label: Button Outline Border
+        name: button_outline_border
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Navy
+        name: navy
+        widget: color
+        allowInput: true
+        default: '#0b1f3a'
+        required: false
+      - label: Hero Overlay Opacity
+        name: hero_overlay_opacity
+        widget: number
+        value_type: float
+        default: 0.84
+        required: false
+      - label: Button Primary Text
+        name: button_primary_text
+        widget: color
+        allowInput: true
+        default: '#0b1f3a'
+        required: false
+      - label: Footer Logo Height
+        name: footer_logo_height
+        widget: number
+        value_type: int
+        default: 82
+        required: false
+      - label: Card Title Size
+        name: card_title_size
+        widget: number
+        value_type: int
+        default: 17
+        required: false
+      - label: Eyebrow Size
+        name: eyebrow_size
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Button Outline Text
+        name: button_outline_text
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Cta Title Size
+        name: cta_title_size
+        widget: number
+        value_type: int
+        default: 46
+        required: false
+      - label: Hero Border Width
+        name: hero_border_width
+        widget: number
+        value_type: int
+        default: 6
+        required: false
+      - label: Process Title Size
+        name: process_title_size
+        widget: number
+        value_type: int
+        default: 17
+        required: false
+      - label: Whatsapp Bottom
+        name: whatsapp_bottom
+        widget: number
+        value_type: int
+        default: 22
+        required: false
+      - label: Button Primary Background
+        name: button_primary_background
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Blue2
+        name: blue2
+        widget: color
+        allowInput: true
+        default: '#1e6aa8'
+        required: false
+      - label: Button Outline Background
+        name: button_outline_background
+        widget: string
+        default: rgba(255,255,255,.08)
+        required: false
+      - label: Hero Min Height
+        name: hero_min_height
+        widget: number
+        value_type: int
+        default: 700
+        required: false
+      - label: Page Hero Description Size
+        name: page_hero_description_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Instagram Width
+        name: instagram_width
+        widget: number
+        value_type: int
+        default: 340
+        required: false
+      - label: Hero Content Max
+        name: hero_content_max
+        widget: number
+        value_type: int
+        default: 850
+        required: false
+      - label: Blue
+        name: blue
+        widget: color
+        allowInput: true
+        default: '#123f73'
+        required: false
+      - label: About Title Size
+        name: about_title_size
+        widget: number
+        value_type: int
+        default: 52
+        required: false
+      - label: Nav Gap
+        name: nav_gap
+        widget: number
+        value_type: int
+        default: 26
+        required: false
+      - label: Process Image Height
+        name: process_image_height
+        widget: number
+        value_type: int
+        default: 150
+        required: false
+      - label: Page Hero Padding
+        name: page_hero_padding
+        widget: number
+        value_type: int
+        default: 75
+        required: false
+      - label: Light2
+        name: light2
+        widget: color
+        allowInput: true
+        default: '#edf3f9'
+        required: false
+      - label: Mobile Header Height
+        name: mobile_header_height
+        widget: number
+        value_type: int
+        default: 84
+        required: false
+      - label: About Closing Size
+        name: about_closing_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: Page Hero Title Size
+        name: page_hero_title_size
+        widget: number
+        value_type: int
+        default: 60
+        required: false
+      - label: Contact Heading Size
+        name: contact_heading_size
+        widget: number
+        value_type: int
+        default: 42
+        required: false
+      - label: Social Icon Padding
+        name: social_icon_padding
+        widget: number
+        value_type: int
+        default: 2
+        required: false
+      - label: Button Padding X
+        name: button_padding_x
+        widget: number
+        value_type: int
+        default: 22
+        required: false
+      - label: Service Icon Size
+        name: service_icon_size
+        widget: number
+        value_type: int
+        default: 21
+        required: false
+      - label: Section Description Size
+        name: section_description_size
+        widget: number
+        value_type: int
+        default: 15
+        required: false
+      - label: Button Padding Y
+        name: button_padding_y
+        widget: number
+        value_type: int
+        default: 13
+        required: false
+      - label: Profile Photo Ratio Height
+        name: profile_photo_ratio_height
+        widget: number
+        value_type: int
+        default: 45
+        required: false
+      - label: Service Image Object Fit
+        name: service_image_object_fit
+        widget: select
+        options:
+        - label: Cover
+          value: cover
+        - label: Contain
+          value: contain
+        default: cover
+        required: false
+      - label: Instagram Radius
+        name: instagram_radius
+        widget: number
+        value_type: int
+        default: 12
+        required: false
+      - label: Profile Name Size
+        name: profile_name_size
+        widget: number
+        value_type: int
+        default: 16
+        required: false
+      - label: Button Radius
+        name: button_radius
+        widget: number
+        value_type: int
+        default: 9
+        required: false
+      - label: Why Title Size
+        name: why_title_size
+        widget: number
+        value_type: int
+        default: 18
+        required: false
+    - label: Text Style Overrides (Optional)
+      name: text_style_overrides
+      widget: list
+      fields:
+      - label: Enable Override
+        name: enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: CSS Selector
+        name: selector
+        widget: string
+        required: false
+        hint: 'Examples: #heroHeading, .service-card h3, .testimonial-text, #contactHeading. Use one selector
+          per override.'
+      - label: Font Size (px)
+        name: font_size
+        widget: number
+        value_type: int
+        required: false
+      - label: Text Color
+        name: color
+        widget: color
+        allowInput: true
+        required: false
+      - label: Font Family
+        name: font_family
+        widget: string
+        required: false
+      - label: Font Weight
+        name: font_weight
+        widget: select
+        options:
+        - label: Normal
+          value: '400'
+        - label: Medium
+          value: '500'
+        - label: Semi-bold
+          value: '600'
+        - label: Bold
+          value: '700'
+        - label: Extra bold
+          value: '800'
+        required: false
+      - label: Font Style
+        name: font_style
+        widget: select
+        options:
+        - label: Normal
+          value: normal
+        - label: Italic
+          value: italic
+        required: false
+      - label: Text Alignment
+        name: text_align
+        widget: select
+        options:
+        - label: Left
+          value: left
+        - label: Center
+          value: center
+        - label: Right
+          value: right
+        - label: Justify
+          value: justify
+        required: false
+      - label: Line Height
+        name: line_height
+        widget: number
+        value_type: float
+        min: 0.8
+        max: 3
+        step: 0.1
+        required: false
+      - label: Letter Spacing (px)
+        name: letter_spacing
+        widget: number
+        value_type: float
+        min: -3
+        max: 20
+        step: 0.1
+        required: false
+      - label: Text Decoration
+        name: text_decoration
+        widget: select
+        options:
+        - label: None
+          value: none
+        - label: Underline
+          value: underline
+        - label: Line Through
+          value: line-through
+        required: false
+      required: false
+      min: 0
+      allow_add: true
+      allow_delete: true
+      allow_remove: true
+      summary: '{{fields.selector}}'
+- label: Services
+  name: services
+  files:
+  - label: All 7 Services
+    name: all_services
+    file: content/services.json
+    format: json
+    fields:
+    - label: Service List
+      name: services
+      widget: list
+      summary: '{{fields.title}}'
+      fields:
+      - label: Slug
+        name: slug
+        widget: string
+        hint: Keep the existing slug unless you also rename the matching service-*.html file.
+        required: false
+      - label: Page File
+        name: page_file
+        widget: string
+        hint: Existing service HTML file name. Keep unchanged unless you also rename the file.
+        required: false
+      - label: Title
+        name: title
+        widget: string
+        required: false
+      - label: Icon Class
+        name: icon
+        widget: string
+        required: false
+      - label: Short Description
+        name: description
+        widget: text
+        required: false
+      - label: Card Bullet Points (for future use)
+        name: card_bullets
+        widget: list
+        field:
+          label: Bullet
+          name: bullet
+          widget: string
+          required: false
+        required: false
+      - label: Page Eyebrow
+        name: page_eyebrow
+        widget: string
+        required: false
+      - label: Page Title
+        name: page_title
+        widget: string
+        required: false
+      - label: Page Description
+        name: page_description
+        widget: text
+        required: false
+      - label: Intro Heading
+        name: intro_title
+        widget: string
+        required: false
+      - label: Intro Text
+        name: intro
+        widget: text
+        required: false
+      - label: Show This Service
+        name: enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Primary Visual Type
+        name: primary_media_type
+        widget: select
+        options:
+        - label: Image
+          value: image
+        - label: Video
+          value: video
+        default: image
+        required: false
+      - label: Primary Service Image (16:9)
+        name: primary_image
+        widget: image
+        required: false
+        hint: Upload PNG/JPG/JPEG/WebP. Recommended 1600×900 px (16:9), up to 5 MB. Use the distinct filename
+          Service_1 through Service_7.
+      - label: Primary Service Video (optional)
+        name: primary_video
+        widget: file
+        required: false
+        media_folder: videos
+        public_folder: /videos
+        hint: MP4 recommended, 1920×1080 (16:9), up to about 25 MB. Select Video above to use it.
+      - label: Primary Visual Alt Text
+        name: media_alt
+        widget: string
+        required: false
+      - label: Visual Caption
+        name: caption
+        widget: string
+        required: false
+      - label: Visual Supporting Text
+        name: media_text
+        widget: text
+        required: false
+      - label: Enable Visual Link
+        name: media_link_enabled
+        widget: boolean
+        default: false
+        required: false
+      - label: Visual Link URL
+        name: media_link_url
+        widget: string
+        required: false
+        hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are
+          both enabled.
+      - label: Detail Sections
+        name: sections
+        widget: list
+        summary: '{{fields.heading}}'
+        fields:
+        - label: Section Heading
+          name: heading
+          widget: string
+          required: false
+        - label: Paragraphs
+          name: paragraphs
+          widget: list
+          field:
+            label: Paragraph
+            name: paragraph
+            widget: text
+            required: false
+          required: false
+        - label: Bullet Points
+          name: bullets
+          widget: list
+          field:
+            label: Bullet
+            name: bullet
+            widget: string
+            required: false
+          required: false
+        required: false
+      - label: Contact Button Text
+        name: cta
+        widget: string
+        required: false
+      - label: Contact Button URL
+        name: cta_url
+        widget: string
+        required: false
+        default: ./contact.html
+      required: false
