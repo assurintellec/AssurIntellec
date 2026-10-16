@@ -1,3 +1,4 @@
+publish_mode: simple
 backend:
   name: turbo-github
   turbo_site_id: 970e4e24-dfda-4ae1-beec-118e1dc52488
@@ -412,6 +413,11 @@ collections:
         name: location_title
         widget: string
         required: false
+      - label: Address Display (exact visible address)
+        name: address_display
+        widget: string
+        required: false
+        hint: Optional exact public-facing address. If set, this is displayed as written.
       - label: Address Line 1
         name: address_line_1
         widget: string
@@ -441,6 +447,11 @@ collections:
         widget: string
         required: false
         hint: Paste a Google Maps embed URL. Leave blank to hide the map.
+      - label: Google Maps Open Link
+        name: map_link_url
+        widget: string
+        required: false
+        hint: Public Google Maps link opened by the Open in Google Maps link. This can be a maps.app.goo.gl share URL.
       required: false
     - label: Hero
       name: hero
@@ -1108,6 +1119,11 @@ collections:
           widget: boolean
           default: true
           required: false
+        - label: Page Slug (URL identifier)
+          name: slug
+          widget: string
+          required: false
+          hint: Use a short unique slug such as technical-focus. Keep it stable after sharing links.
         - label: Icon Class
           name: icon
           widget: string
@@ -1318,6 +1334,52 @@ collections:
         widget: boolean
         default: true
         required: false
+    - label: Animation & Motion
+      name: animation_options
+      widget: object
+      collapsed: true
+      required: false
+      fields:
+      - label: Enable Text Hover Zoom
+        name: hover_text_zoom_enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Text Hover Zoom Scale (1.01–1.10)
+        name: text_hover_zoom_scale
+        widget: number
+        value_type: float
+        min: 1.01
+        max: 1.10
+        step: 0.005
+        default: 1.035
+        required: false
+      - label: Enable Scroll Reveal Animations
+        name: reveal_animations_enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Reveal Animation Duration (milliseconds)
+        name: reveal_animation_duration_ms
+        widget: number
+        value_type: int
+        min: 200
+        max: 1200
+        default: 650
+        required: false
+      - label: Reveal Movement Distance (pixels)
+        name: reveal_animation_distance
+        widget: number
+        value_type: int
+        min: 0
+        max: 60
+        default: 18
+        required: false
+      - label: Enable Card Hover Lift
+        name: card_hover_lift_enabled
+        widget: boolean
+        default: true
+        required: false
     - label: Instagram Reels (up to 10)
       name: instagram_reels
       widget: list
@@ -1436,7 +1498,7 @@ collections:
         name: footer_link_size
         widget: number
         value_type: int
-        default: 13
+        default: 14
         required: false
       - label: Why Image Height
         name: why_image_height
@@ -1850,7 +1912,7 @@ collections:
         name: footer_text_size
         widget: number
         value_type: int
-        default: 13
+        default: 15
         required: false
       - label: Mobile Reel Height
         name: mobile_reel_height
@@ -1884,7 +1946,7 @@ collections:
         name: footer_bottom_size
         widget: number
         value_type: int
-        default: 12
+        default: 13
         required: false
       - label: Footer Text
         name: footer_text
@@ -1907,7 +1969,7 @@ collections:
         name: footer_background
         widget: color
         allowInput: true
-        default: '#07182e'
+        default: '#000000'
         required: false
       - label: Instagram Crop Top
         name: instagram_crop_top
@@ -2298,6 +2360,46 @@ collections:
           value: normal
         - label: Italic
           value: italic
+        required: false
+      - label: Text Alignment
+        name: text_align
+        widget: select
+        options:
+        - label: Left
+          value: left
+        - label: Center
+          value: center
+        - label: Right
+          value: right
+        - label: Justify
+          value: justify
+        required: false
+      - label: Line Height
+        name: line_height
+        widget: number
+        value_type: float
+        min: 0.8
+        max: 3
+        step: 0.1
+        required: false
+      - label: Letter Spacing (px)
+        name: letter_spacing
+        widget: number
+        value_type: float
+        min: -3
+        max: 20
+        step: 0.1
+        required: false
+      - label: Text Decoration
+        name: text_decoration
+        widget: select
+        options:
+        - label: None
+          value: none
+        - label: Underline
+          value: underline
+        - label: Line Through
+          value: line-through
         required: false
       required: false
       min: 0

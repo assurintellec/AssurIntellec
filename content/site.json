@@ -51,13 +51,15 @@
     "website_display": "www.assurintellec.in",
     "location_enabled": true,
     "location_title": "Our Location",
-    "address_line_1": "88 to 92, Gate No. 3, Siddhivinayak Industrial Estate, Opp. Opera Palace",
-    "address_line_2": "Laskana - Kholvad Road",
-    "address_city": "Kholvad",
+    "address_line_1": "478, Surbhi The Royal Town",
+    "address_line_2": "Navagam, Kamrej",
+    "address_city": "Surat",
     "address_region": "Gujarat",
-    "address_postal_code": "394190",
+    "address_postal_code": "394185",
     "address_country": "India",
-    "map_embed_url": "https://www.google.com/maps?q=88%20to%2092%2C%20Gate%20No.%203%2C%20Siddhivinayak%20Industrial%20Estate%2C%20Kholvad%2C%20Gujarat%20394190&output=embed"
+    "map_embed_url": "https://www.google.com/maps?q=478%2C%20Surbhi%20The%20Royal%20Town%2C%20Navagam%2C%20Kamrej%2C%20Surat-394185&output=embed",
+    "address_display": "478, Surbhi The Royal Town, Navagam, Kamrej, Surat-394185",
+    "map_link_url": "https://maps.app.goo.gl/odtcDeFHNiY28CH59"
   },
   "pages": {
     "services": {
@@ -86,7 +88,7 @@
     "card_padding": 24,
     "profile_label_size": 11,
     "section_title_size": 48,
-    "footer_link_size": 13,
+    "footer_link_size": 14,
     "why_image_height": 190,
     "hero_heading_size": 66,
     "service_arrow_color": "#1e6aa8",
@@ -150,17 +152,17 @@
     "service_detail_text_size": 15,
     "trust_title_size": 14,
     "mobile_logo_width": 270,
-    "footer_text_size": 13,
+    "footer_text_size": 15,
     "mobile_reel_height": 585,
     "why_icon_size": 25,
     "hero_heading_line_height": 1.05,
     "font_nav_family": "Inter",
     "font_body_family": "Inter",
-    "footer_bottom_size": 12,
+    "footer_bottom_size": 13,
     "footer_text": "#ffffff",
     "form_input_size": 14,
     "font_heading_family": "Inter",
-    "footer_background": "#07182e",
+    "footer_background": "#000000",
     "instagram_crop_top": 58,
     "font_button_style": "normal",
     "detail_list_size": 13,
@@ -529,7 +531,7 @@
       }
     ]
   },
-  "tagline": "Intelligent Solutions. Assured Compliance.",
+  "tagline": "Intelligent Solutions, Assured Compliance.",
   "editor_notes": {
     "instructions": "Use Decap CMS → Site Settings to edit website text, navigation, contact details, emails, WhatsApp settings, hero content, typography, layout, media assets and Instagram Reel URLs. Navigation font size and gap are editable under Theme & Layout. Hero left offset is editable under Theme & Layout. About profile phone/email are editable under About Us. Service-page contact email is editable under Contact & Enquiry.",
     "enquiry": "Send Enquiry submits the form to the configured Google Apps Script Web App URL. The Apps Script saves the enquiry in the Enquiries Google Sheet, sends the enquiry notification to the configured recipient, generates an AI-###### reference number, and sends a branded automatic confirmation email to the customer. The confirmation email includes the customer name, company, selected requirement, requirement details, the current seven AssurIntellec™ services, website, contact phone and email, plus the current website logo. The logo and contact details are pulled from the published Site Settings / Media Assets, so changes made through Decap CMS are automatically used for future confirmation emails after the website content is published. The website then displays the centred confirmation message without clearing the visitor's entered form data. No SMS service or SMS API is used.",
@@ -584,7 +586,8 @@
             "text": "Our service scope includes pharmaceutical facility planning, GMP, cleanroom and HVAC considerations, machinery and laboratory technologies, qualification, validation and related technical support.",
             "bullets": []
           }
-        ]
+        ],
+        "slug": "technical-focus"
       },
       {
         "icon": "fa-puzzle-piece",
@@ -606,7 +609,8 @@
             "text": "Projects may involve technical, regulatory, commercial and operational questions. The service model is designed to consider these elements together.",
             "bullets": []
           }
-        ]
+        ],
+        "slug": "integrated-thinking"
       },
       {
         "icon": "fa-clipboard-check",
@@ -628,7 +632,8 @@
             "text": "We organize work around understanding the requirement, assessing the situation, developing a solution and supporting implementation.",
             "bullets": []
           }
-        ]
+        ],
+        "slug": "structured-approach"
       },
       {
         "icon": "fa-arrows-to-circle",
@@ -650,7 +655,8 @@
             "text": "The objective is to provide practical support aligned with the specific project, facility, technology, research or business requirement.",
             "bullets": []
           }
-        ]
+        ],
+        "slug": "practical-orientation"
       }
     ],
     "process": [
@@ -695,7 +701,7 @@
     "company_name": "AssurIntellec™",
     "poster": "/images/uploads/hero.jpg",
     "video_mute_label": "Mute hero video",
-    "kicker": "Intelligent Solutions. Assured Compliance.",
+    "kicker": "Intelligent Solutions, Assured Compliance.",
     "button_primary": "Explore Services",
     "video_audio_default_enabled": true,
     "button_secondary_url": "./contact.html",
@@ -951,5 +957,13 @@
     "clickable_images_enabled": true,
     "image_hover_zoom_enabled": true
   },
-  "text_style_overrides": []
+  "text_style_overrides": [],
+  "animation_options": {
+    "hover_text_zoom_enabled": true,
+    "text_hover_zoom_scale": 1.035,
+    "reveal_animations_enabled": true,
+    "reveal_animation_duration_ms": 650,
+    "reveal_animation_distance": 18,
+    "card_hover_lift_enabled": true
+  }
 }

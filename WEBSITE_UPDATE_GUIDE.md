@@ -10,7 +10,7 @@
 - Ten Instagram Reel slots are available. Paste a public Reel URL into each slot, enable it, then publish. Left/right arrows cycle through all configured links.
 - The visitor counter uses a stable CounterAPI namespace/action/key. Keep those values unchanged during routine website file replacements. `Starting Value` is an offset that can be used if you intentionally create a fresh CounterAPI key: set the key to a new value and set the starting value to the last count you want to carry forward. The displayed count is `Starting Value + CounterAPI value`.
 - The social Google icon link is set to `https://share.google/BDZ7i6bRNwF4qLD3S`; it can be changed in the Social Media list.
-- The footer currently uses `videos/footer-logo-animated.mp4` inside a black/navy panel. In Decap CMS → Media Assets, choose Video mode and replace the video, or choose Image mode to use the editable logo image with a subtle animation.
+- The footer uses `videos/footer-logo-animated.mp4` inside a pure-black panel. In Decap CMS → Media Assets, choose Video mode and replace the video, or choose Image mode to use the editable logo image with a subtle animation.
 - Theme & Layout exposes standard sizes/colors. **Text Style Overrides** can target individual selectors (for example `#heroHeading`, `.service-card h3`, or `.testimonial-text`) with font size, color, family, weight, and style.
 
 ## Maintenance mode (Cloudflare)
@@ -21,3 +21,12 @@
 
 ## Enquiry form safety
 The existing form markup IDs, submission JavaScript, Google Apps Script bridge, confirmation overlay, and Apps Script/SMTP integration have not been intentionally changed. Test a real enquiry and automatic confirmation email after deployment because this local ZIP cannot verify external account secrets or live email delivery.
+
+
+## Updates applied on 16 October 2026
+- Decap loads the stable 3.x release (not the beta CDN bundle) and explicitly uses the simple publish mode with the existing Turbo site UUID and `main` branch. Review `DECAP_TURBO_PUBLISH_CHECKLIST.md` for required account-side checks.
+- Why Us cards navigate to individual full pages at `why-us-detail.html?point=<slug>`. Unique slugs, detail media and full subsections are editable in Decap.
+- Contact display address and the external Google Maps share URL are editable in Site Settings; the map embed has its own separate URL.
+- Footer background is black, footer social icons remain on one line, bottom text is larger, and hover/scroll animations are controllable via the new Animation & Motion settings.
+
+- Why Us cards now open separate full pages via `why-us-detail.html?point=<slug>`; each card has its own editable slug, 16:9 image/video, introduction and flexible subsections.
