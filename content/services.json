@@ -1,20 +1,22 @@
 {
   "services": [
     {
-      "slug": "gmp-engineering",
-      "title": "GMP Engineering & Compliance",
-      "icon": "fa-shield-halved",
-      "description": "Technical support for GMP-focused pharmaceutical facilities, planning and compliance requirements.",
+      "cta_url": "./contact.html",
+      "enabled": true,
       "card_bullets": [
         "Facility planning",
         "GMP compliance",
         "Cleanroom & HVAC",
         "Qualification & validation"
       ],
-      "page_eyebrow": "Service 01",
-      "page_title": "GMP Engineering & Compliance",
-      "page_description": "Technical support for pharmaceutical facilities, GMP-focused planning and compliance requirements.",
+      "media_link_url": "",
       "intro_title": "Facility and compliance support",
+      "caption": "Supporting visual",
+      "page_title": "GMP Engineering & Compliance",
+      "media_text": "Visual reference for GMP Engineering & Compliance",
+      "slug": "gmp-engineering. ",
+      "page_file": "service-gmp-engineering.html",
+      "page_description": "Technical support for pharmaceutical facilities, GMP-focused planning and compliance requirements.",
       "intro": "Support can cover planning and improvement of compliant pharmaceutical facilities, facility layout considerations, cleanroom and HVAC planning, utilities, qualification and validation coordination and related technical requirements.",
       "sections": [
         {
@@ -38,34 +40,34 @@
           "bullets": []
         }
       ],
-      "cta": "Discuss GMP Requirement",
-      "page_file": "service-gmp-engineering.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_1.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for GMP Engineering & Compliance",
       "media_alt": "GMP Engineering & Compliance – technical environment",
-      "enabled": true
+      "cta": "Discuss GMP Requirement",
+      "primary_media_type": "image",
+      "media_link_enabled": false,
+      "title": "GMP Engineering & Compliance",
+      "icon": "fa-shield-halved",
+      "page_eyebrow": "Service 01",
+      "description": "Technical support for GMP-focused pharmaceutical facilities, planning and compliance requirements.",
+      "primary_image": "/images/uploads/Service_1.jpg",
+      "primary_video": ""
     },
     {
-      "slug": "advisory-transactions",
-      "title": "Advisory & Transactions",
-      "icon": "fa-handshake",
-      "description": "Technical and commercial support for pharmaceutical opportunities, facilities and transactions.",
+      "cta_url": "./contact.html",
+      "enabled": true,
       "card_bullets": [
         "Technical due diligence",
         "Facility assessment",
         "Business advisory",
         "Acquisition support"
       ],
-      "page_eyebrow": "Service 02",
-      "page_title": "Advisory & Transactions",
-      "page_description": "Technical and commercial support for pharmaceutical opportunities and transactions.",
+      "media_link_url": "",
       "intro_title": "Technical and commercial advisory",
+      "caption": "Supporting visual",
+      "page_title": "Advisory & Transactions",
+      "media_text": "Visual reference for Advisory & Transactions",
+      "slug": "advisory-transactions",
+      "page_file": "service-advisory-transactions.html",
+      "page_description": "Technical and commercial support for pharmaceutical opportunities and transactions.",
       "intro": "Support for evaluating pharmaceutical businesses, facilities, projects and transaction opportunities through a combination of technical, regulatory and commercial review.",
       "sections": [
         {
@@ -87,33 +89,33 @@
           "bullets": []
         }
       ],
-      "cta": "Discuss Advisory Requirement",
-      "page_file": "service-advisory-transactions.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_2.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Advisory & Transactions",
       "media_alt": "Advisory & Transactions – technical environment",
-      "enabled": true
+      "cta": "Discuss Advisory Requirement",
+      "primary_media_type": "image",
+      "media_link_enabled": false,
+      "title": "Advisory & Transactions",
+      "icon": "fa-handshake",
+      "page_eyebrow": "Service 02",
+      "description": "Technical and commercial support for pharmaceutical opportunities, facilities and transactions.",
+      "primary_image": "/images/uploads/Service_2.jpg",
+      "primary_video": ""
     },
     {
-      "slug": "talent-recruitment",
-      "title": "Talent & Recruitment",
-      "icon": "fa-user-group",
-      "description": "Support for connecting life-sciences organizations with relevant professional capabilities.",
+      "cta_url": "./contact.html",
+      "enabled": true,
       "card_bullets": [
         "Pharmaceutical talent",
         "Technical recruitment",
         "Specialist support"
       ],
-      "page_eyebrow": "Service 03",
-      "page_title": "Talent & Recruitment",
-      "page_description": "Support for pharmaceutical and life-sciences talent requirements.",
+      "media_link_url": "",
       "intro_title": "Talent and professional support",
+      "caption": "Supporting visual",
+      "page_title": "Talent & Recruitment",
+      "media_text": "Visual reference for Talent & Recruitment",
+      "slug": "talent-recruitment",
+      "page_file": "service-talent-recruitment.html",
+      "page_description": "Support for pharmaceutical and life-sciences talent requirements.",
       "intro": "Support focused on identifying and connecting relevant technical, scientific and operational professionals with pharmaceutical and life-sciences requirements.",
       "sections": [
         {
@@ -134,33 +136,33 @@
           "bullets": []
         }
       ],
-      "cta": "Discuss Talent Requirement",
-      "page_file": "service-talent-recruitment.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_3.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Talent & Recruitment",
       "media_alt": "Talent & Recruitment – technical environment",
-      "enabled": true
+      "cta": "Discuss Talent Requirement",
+      "primary_media_type": "image",
+      "media_link_enabled": false,
+      "title": "Talent & Recruitment",
+      "icon": "fa-user-group",
+      "page_eyebrow": "Service 03",
+      "description": "Support for connecting life-sciences organizations with relevant professional capabilities.",
+      "primary_image": "/images/uploads/Service_3.jpg",
+      "primary_video": ""
     },
     {
-      "slug": "life-sciences-trade",
-      "title": "Life Sciences Trade",
-      "icon": "fa-globe",
-      "description": "Support across pharmaceutical and life-sciences products, opportunities and trade activities.",
+      "cta_url": "./contact.html",
+      "enabled": true,
       "card_bullets": [
         "Product opportunities",
         "Market connections",
         "Business support"
       ],
-      "page_eyebrow": "Service 04",
-      "page_title": "Life Sciences Trade",
-      "page_description": "Support across pharmaceutical and life-sciences products, opportunities and trade activities.",
+      "media_link_url": "",
       "intro_title": "Life-sciences trade support",
+      "caption": "Supporting visual",
+      "page_title": "Life Sciences Trade",
+      "media_text": "Visual reference for Life Sciences Trade",
+      "slug": "life-sciences-trade",
+      "page_file": "service-life-sciences-trade.html",
+      "page_description": "Support across pharmaceutical and life-sciences products, opportunities and trade activities.",
       "intro": "Support for product opportunities, market connections and selected trade-related activities within the pharmaceutical and life-sciences ecosystem.",
       "sections": [
         {
@@ -181,34 +183,34 @@
           "bullets": []
         }
       ],
-      "cta": "Discuss Trade Requirement",
-      "page_file": "service-life-sciences-trade.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_4.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Life Sciences Trade",
       "media_alt": "Life Sciences Trade – technical environment",
-      "enabled": true
+      "cta": "Discuss Trade Requirement",
+      "primary_media_type": "image",
+      "media_link_enabled": false,
+      "title": "Life Sciences Trade",
+      "icon": "fa-globe",
+      "page_eyebrow": "Service 04",
+      "description": "Support across pharmaceutical and life-sciences products, opportunities and trade activities.",
+      "primary_image": "/images/uploads/Service_4.jpg",
+      "primary_video": ""
     },
     {
-      "slug": "pharma-laboratory-technologies",
-      "title": "Pharma & Laboratory Technologies",
-      "icon": "fa-flask",
-      "description": "Technology and equipment-oriented support for pharmaceutical and laboratory requirements.",
+      "cta_url": "./contact.html",
+      "enabled": true,
       "card_bullets": [
         "Machinery selection",
         "Equipment procurement",
         "Laboratory technologies",
         "Technical evaluation"
       ],
-      "page_eyebrow": "Service 05",
-      "page_title": "Pharma & Laboratory Technologies",
-      "page_description": "Technology and equipment-oriented support for pharmaceutical and laboratory requirements.",
+      "media_link_url": "",
       "intro_title": "Machinery and laboratory technology support",
+      "caption": "Supporting visual",
+      "page_title": "Pharma & Laboratory Technologies",
+      "media_text": "Visual reference for Pharma & Laboratory Technologies",
+      "slug": "pharma-laboratory-technologies",
+      "page_file": "service-pharma-laboratory-technologies.html",
+      "page_description": "Technology and equipment-oriented support for pharmaceutical and laboratory requirements.",
       "intro": "Support for evaluating, selecting and coordinating pharmaceutical machinery, laboratory equipment and relevant technical technologies.",
       "sections": [
         {
@@ -229,34 +231,34 @@
           "bullets": []
         }
       ],
-      "cta": "Discuss Technology Requirement",
-      "page_file": "service-pharma-laboratory-technologies.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_5.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Pharma & Laboratory Technologies",
       "media_alt": "Pharma & Laboratory Technologies – technical environment",
-      "enabled": true
+      "cta": "Discuss Technology Requirement",
+      "primary_media_type": "image",
+      "media_link_enabled": false,
+      "title": "Pharma & Laboratory Technologies",
+      "icon": "fa-flask",
+      "page_eyebrow": "Service 05",
+      "description": "Technology and equipment-oriented support for pharmaceutical and laboratory requirements.",
+      "primary_image": "/images/uploads/Service_5.jpg",
+      "primary_video": ""
     },
     {
-      "slug": "research-scientific-services",
-      "title": "Research & Scientific Services",
-      "icon": "fa-microscope",
-      "description": "Scientific and research support across formulation, development and laboratory activities.",
+      "cta_url": "./contact.html",
+      "enabled": true,
       "card_bullets": [
         "Formulation support",
         "Research projects",
         "Scientific guidance",
         "Laboratory support"
       ],
-      "page_eyebrow": "Service 06",
-      "page_title": "Research & Scientific Services",
-      "page_description": "Scientific and research support across formulation, development and laboratory activities.",
+      "media_link_url": "",
       "intro_title": "Research and scientific support",
+      "caption": "Supporting visual",
+      "page_title": "Research & Scientific Services",
+      "media_text": "Visual reference for Research & Scientific Services",
+      "slug": "research-scientific-services",
+      "page_file": "service-research-scientific-services.html",
+      "page_description": "Scientific and research support across formulation, development and laboratory activities.",
       "intro": "Support across pharmaceutical research, formulation-oriented work, laboratory activities and scientific project requirements.",
       "sections": [
         {
@@ -278,34 +280,34 @@
           "bullets": []
         }
       ],
-      "cta": "Discuss Research Requirement",
-      "page_file": "service-research-scientific-services.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_6.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Research & Scientific Services",
       "media_alt": "Research & Scientific Services – technical environment",
-      "enabled": true
+      "cta": "Discuss Research Requirement",
+      "primary_media_type": "image",
+      "media_link_enabled": false,
+      "title": "Research & Scientific Services",
+      "icon": "fa-microscope",
+      "page_eyebrow": "Service 06",
+      "description": "Scientific and research support across formulation, development and laboratory activities.",
+      "primary_image": "/images/uploads/Service_6.jpg",
+      "primary_video": ""
     },
     {
-      "slug": "pharma-solutions-manufacturing",
-      "title": "Pharma Solutions & Manufacturing",
-      "icon": "fa-industry",
-      "description": "Integrated support for pharmaceutical manufacturing projects and operational requirements.",
+      "cta_url": "./contact.html",
+      "enabled": true,
       "card_bullets": [
         "Manufacturing support",
         "Plant setup",
         "Process support",
         "Project coordination"
       ],
-      "page_eyebrow": "Service 07",
-      "page_title": "Pharma Solutions & Manufacturing",
-      "page_description": "Integrated support for pharmaceutical manufacturing projects and operational requirements.",
+      "media_link_url": "",
       "intro_title": "Manufacturing and project support",
+      "caption": "Supporting visual",
+      "page_title": "Pharma Solutions & Manufacturing",
+      "media_text": "Visual reference for Pharma Solutions & Manufacturing",
+      "slug": "pharma-solutions-manufacturing",
+      "page_file": "service-pharma-solutions-manufacturing.html",
+      "page_description": "Integrated support for pharmaceutical manufacturing projects and operational requirements.",
       "intro": "Integrated support for pharmaceutical manufacturing projects, facility establishment, process requirements and implementation activities.",
       "sections": [
         {
@@ -327,18 +329,16 @@
           "bullets": []
         }
       ],
-      "cta": "Discuss Manufacturing Requirement",
-      "page_file": "service-pharma-solutions-manufacturing.html",
-      "cta_url": "./contact.html",
-      "primary_media_type": "image",
-      "primary_image": "/images/uploads/Service_7.jpg",
-      "primary_video": "",
-      "media_link_enabled": false,
-      "media_link_url": "",
-      "caption": "Supporting visual",
-      "media_text": "Visual reference for Pharma Solutions & Manufacturing",
       "media_alt": "Pharma Solutions & Manufacturing – technical environment",
-      "enabled": true
+      "cta": "Discuss Manufacturing Requirement",
+      "primary_media_type": "image",
+      "media_link_enabled": false,
+      "title": "Pharma Solutions & Manufacturing",
+      "icon": "fa-industry",
+      "page_eyebrow": "Service 07",
+      "description": "Integrated support for pharmaceutical manufacturing projects and operational requirements.",
+      "primary_image": "/images/uploads/Service_7.jpg",
+      "primary_video": ""
     }
   ]
 }
