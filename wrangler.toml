@@ -1,8 +1,11 @@
+
 name = "assurintellec"
 main = "./maintenance-router.js"
 compatibility_date = "2026-09-01"
 workers_dev = true
 keep_vars = true
+
+previews = {}
 
 [assets]
 directory = "."
