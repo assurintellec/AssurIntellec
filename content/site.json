@@ -906,7 +906,7 @@
           "avatar": "/images/uploads/testimonial-customer-2.png",
           "link_enabled": false,
           "link_url": "",
-          "enabled": false
+          "enabled": true
         },
         {
           "name": "Customer Name",
