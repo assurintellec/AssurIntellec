@@ -10,20 +10,26 @@
     "heading": "Let's discuss your requirement",
     "phone_label": "Office No.",
     "mobile_phone_label": "Mobile No.",
+    "map_embed_url": "https://www.google.com/maps?q=478%2C%20Surbhi%20The%20Royal%20Town%2C%20Navagam%2C%20Kamrej%2C%20Surat-394185&output=embed",
     "form_phone_placeholder": "+91",
     "whatsapp_label": "WhatsApp",
     "page_title": "Contact Us",
     "form_phone_label": "Phone",
     "service_contact_label": "Contact",
+    "address_country": "India",
     "page_description": "Tell us about your pharmaceutical, life-sciences, scientific, engineering or advisory requirement.",
     "form_button": "Send Enquiry",
+    "map_link_url": "https://maps.app.goo.gl/odtcDeFHNiY28CH59",
+    "location_title": "Our Location",
     "phone": "+91 7600 666 436",
     "enquiry_success_message": "Your enquiry has been successfully received.",
     "form_service_label": "Requirement",
     "enquiry_subject": "New AssurIntellec™ website enquiry",
     "website_label": "Website",
     "email_label": "Email",
+    "address_line_1": "478, Surbhi The Royal Town",
     "mobile_phone": "7405660185",
+    "address_line_2": "Navagam, Kamrej",
     "whatsapp": "https://wa.me/message/BFANWJ2N3FWOP1",
     "customer_confirmation_email_from_email": "info@assurintellec.in",
     "service_contact_email": "contact@assurintellec.in",
@@ -32,9 +38,13 @@
     "enquiry_success_close_label": "Close confirmation message",
     "form_email_placeholder": "you@example.com",
     "form_company_placeholder": "Company name",
+    "address_postal_code": "394185",
     "form_email_label": "Email",
+    "address_city": "Surat",
     "enquiry_success_tagline": "Intelligent Solutions, Assured Compliance.",
     "form_company_label": "Company",
+    "location_enabled": true,
+    "address_display": "478, Surbhi The Royal Town, Navagam, Kamrej, Surat-394185",
     "page_eyebrow": "AssurIntellec™",
     "enquiry_success_received": "Your enquiry has been received successfully.",
     "enquiry_success_body": "Thank you for reaching out to AssurIntellec™. We appreciate your interest and have received your requirements. Our team will review your enquiry carefully and contact you shortly to discuss the most suitable solution and next steps.",
@@ -49,17 +59,19 @@
     "enquiry_success_closing": "A confirmation message has been sent to your email. We look forward to speaking with you.",
     "form_title": "Send an enquiry",
     "website_display": "www.assurintellec.in",
-    "location_enabled": true,
-    "location_title": "Our Location",
-    "address_line_1": "478, Surbhi The Royal Town",
-    "address_line_2": "Navagam, Kamrej",
-    "address_city": "Surat",
-    "address_region": "Gujarat",
-    "address_postal_code": "394185",
-    "address_country": "India",
-    "map_embed_url": "https://www.google.com/maps?q=478%2C%20Surbhi%20The%20Royal%20Town%2C%20Navagam%2C%20Kamrej%2C%20Surat-394185&output=embed",
-    "address_display": "478, Surbhi The Royal Town, Navagam, Kamrej, Surat-394185",
-    "map_link_url": "https://maps.app.goo.gl/odtcDeFHNiY28CH59"
+    "address_region": "Gujarat"
+  },
+  "animation_options": {
+    "hover_text_zoom_enabled": true,
+    "text_hover_zoom_scale": 1.035,
+    "reveal_animations_enabled": true,
+    "reveal_animation_duration_ms": 650,
+    "reveal_animation_distance": 18,
+    "card_hover_lift_enabled": true
+  },
+  "media_options": {
+    "clickable_images_enabled": true,
+    "image_hover_zoom_enabled": true
   },
   "pages": {
     "services": {
@@ -73,6 +85,7 @@
       "description": "A structured approach for pharmaceutical and life-sciences technical and business requirements."
     }
   },
+  "text_style_overrides": [],
   "theme": {
     "eyebrow_letter_spacing": 2,
     "gold": "#c9a227",
@@ -374,162 +387,162 @@
     "profile_email": "ceo@assurintellec.com",
     "profile_photo_alt": "Mr. Pratik Siddhapura (Ph.D.)",
     "page_title": "About Us",
+    "experts": [
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_1",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_1"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_2",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_2"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_3",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_3"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_4",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_4"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_5",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_5"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_6",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_6"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_7",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_7"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_8",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_8"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_9",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_9"
+      },
+      {
+        "enabled": false,
+        "details": [],
+        "image_alt": "",
+        "detail_subtitle": "",
+        "detail_title": "",
+        "link_url": "",
+        "name": "Expert_10",
+        "role": "",
+        "image": "",
+        "card_text": "",
+        "link_enabled": false,
+        "slot": "Expert_10"
+      }
+    ],
     "eyebrow": "AssurIntellec™",
     "main_paragraphs": [
       "AssurIntellec™ is a pharmaceutical and life sciences solutions platform founded on a strong foundation in Pharmaceutics, pharmaceutical research, teaching, laboratory expertise and scientific innovation.",
       "The platform is led by Mr. Pratik J. Siddhapura, with an academic background in B.Pharm, M.Pharm (Pharmaceutics) and ongoing Ph.D. research at Gujarat Technological University. His professional experience includes pharmaceutical education, research coordination, training and placement activities, and practical exposure to pharmaceutical and laboratory environments.",
       "AssurIntellec™ brings this scientific and technical foundation into practical services covering GMP & regulatory compliance, pharmaceutical facility planning, machinery and laboratory equipment, research & formulation support, manufacturing solutions, talent and recruitment, life-sciences trade, and strategic advisory."
     ],
+    "expert_team_title": "Expert Team",
     "page_description": "Scientific knowledge, practical solutions and assured compliance for pharmaceutical and life sciences requirements.",
+    "expert_team_description": "Meet the professionals supporting our pharmaceutical and life-sciences work.",
     "closing": "AssurIntellec™\nIntelligent Solutions. Assured Compliance.",
     "profile_phone": "7405660185",
     "profile_card_label": "Founder Profile",
     "profile_photo": "/images/uploads/pratik_passport_size.jpg",
-    "profile_position": "Founder & CEO AssurIntellec",
-    "expert_team_title": "Expert Team",
-    "expert_team_description": "Meet the professionals supporting our pharmaceutical and life-sciences work.",
-    "experts": [
-      {
-        "slot": "Expert_1",
-        "enabled": false,
-        "name": "Expert_1",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_2",
-        "enabled": false,
-        "name": "Expert_2",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_3",
-        "enabled": false,
-        "name": "Expert_3",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_4",
-        "enabled": false,
-        "name": "Expert_4",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_5",
-        "enabled": false,
-        "name": "Expert_5",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_6",
-        "enabled": false,
-        "name": "Expert_6",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_7",
-        "enabled": false,
-        "name": "Expert_7",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_8",
-        "enabled": false,
-        "name": "Expert_8",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_9",
-        "enabled": false,
-        "name": "Expert_9",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      },
-      {
-        "slot": "Expert_10",
-        "enabled": false,
-        "name": "Expert_10",
-        "role": "",
-        "card_text": "",
-        "image": "",
-        "image_alt": "",
-        "detail_title": "",
-        "detail_subtitle": "",
-        "details": [],
-        "link_enabled": false,
-        "link_url": ""
-      }
-    ]
+    "profile_position": "Founder & CEO AssurIntellec"
   },
   "tagline": "Intelligent Solutions, Assured Compliance.",
   "editor_notes": {
@@ -542,7 +555,7 @@
     "visitor_counter": "The website visitor count is shown in the footer and uses CounterAPI. The namespace and key are editable under Decap CMS → Site Settings → Visitor Counter.",
     "search_logo": "The site includes a 192×192 PNG favicon plus Organization structured data. Google decides when to refresh the favicon/search presentation after crawling the site."
   },
-  "brand_subtitle": "Pharmaceutical & Life Sciences Solutions",
+  "brand_subtitle": "Pharmaceutical & Life Sciences Solutions.",
   "navigation": {
     "home": "Home",
     "about": "About Us",
@@ -561,25 +574,14 @@
     "footer_home_label": "Home",
     "menu_open_label": "Open navigation"
   },
+  "custom_css": "",
   "why_us": {
     "eyebrow": "AssurIntellec™",
     "page_title": "Why Us",
     "page_description": "A structured approach for pharmaceutical and life-sciences technical and business requirements.",
     "cards": [
       {
-        "icon": "fa-certificate",
-        "title": "Technical Focus",
-        "text": "Our service scope includes pharmaceutical facility planning, GMP, cleanroom and HVAC considerations, machinery and laboratory technologies, qualification, validation and related technical support.",
-        "image": "/images/uploads/Why_1.png",
-        "image_alt": "Pharmaceutical facility",
-        "home_text": "Technical support shaped around pharmaceutical facilities, GMP and laboratory requirements.",
-        "detail_title": "Technical Focus",
-        "detail_subtitle": "How AssurIntellec can support this area",
-        "media_type": "image",
-        "video": "",
         "enabled": true,
-        "link_enabled": false,
-        "link_url": "",
         "details": [
           {
             "heading": "Scope and focus",
@@ -587,22 +589,22 @@
             "bullets": []
           }
         ],
-        "slug": "technical-focus"
+        "image_alt": "Pharmaceutical facility",
+        "detail_subtitle": "How AssurIntellec can support this area",
+        "detail_title": "Technical Focus",
+        "link_url": "",
+        "slug": "technical-focus",
+        "home_text": "Technical support shaped around pharmaceutical facilities, GMP and laboratory requirements.",
+        "text": "Our service scope includes pharmaceutical facility planning, GMP, cleanroom and HVAC considerations, machinery and laboratory technologies, qualification, validation and related technical support.",
+        "media_type": "image",
+        "title": "Technical Focus",
+        "icon": "fa-certificate",
+        "video": "",
+        "image": "/images/uploads/Why_1.png",
+        "link_enabled": false
       },
       {
-        "icon": "fa-puzzle-piece",
-        "title": "Integrated Thinking",
-        "text": "Projects may involve technical, regulatory, commercial and operational questions. The service model is designed to consider these elements together.",
-        "image": "/images/uploads/Why_2.png",
-        "image_alt": "Biotechnology laboratory",
-        "home_text": "An integrated view of technical, regulatory, commercial and operational considerations.",
-        "detail_title": "Integrated Thinking",
-        "detail_subtitle": "How AssurIntellec can support this area",
-        "media_type": "image",
-        "video": "",
         "enabled": true,
-        "link_enabled": false,
-        "link_url": "",
         "details": [
           {
             "heading": "Scope and focus",
@@ -610,22 +612,22 @@
             "bullets": []
           }
         ],
-        "slug": "integrated-thinking"
+        "image_alt": "Biotechnology laboratory",
+        "detail_subtitle": "How AssurIntellec can support this area",
+        "detail_title": "Integrated Thinking",
+        "link_url": "",
+        "slug": "integrated-thinking",
+        "home_text": "An integrated view of technical, regulatory, commercial and operational considerations.",
+        "text": "Projects may involve technical, regulatory, commercial and operational questions. The service model is designed to consider these elements together.",
+        "media_type": "image",
+        "title": "Integrated Thinking",
+        "icon": "fa-puzzle-piece",
+        "video": "",
+        "image": "/images/uploads/Why_2.png",
+        "link_enabled": false
       },
       {
-        "icon": "fa-clipboard-check",
-        "title": "Structured Approach",
-        "text": "We organize work around understanding the requirement, assessing the situation, developing a solution and supporting implementation.",
-        "image": "/images/uploads/Why_3.png",
-        "image_alt": "Scientific research laboratory",
-        "home_text": "A clear process to understand, assess, develop and support each requirement.",
-        "detail_title": "Structured Approach",
-        "detail_subtitle": "How AssurIntellec can support this area",
-        "media_type": "image",
-        "video": "",
         "enabled": true,
-        "link_enabled": false,
-        "link_url": "",
         "details": [
           {
             "heading": "Scope and focus",
@@ -633,22 +635,22 @@
             "bullets": []
           }
         ],
-        "slug": "structured-approach"
+        "image_alt": "Scientific research laboratory",
+        "detail_subtitle": "How AssurIntellec can support this area",
+        "detail_title": "Structured Approach",
+        "link_url": "",
+        "slug": "structured-approach",
+        "home_text": "A clear process to understand, assess, develop and support each requirement.",
+        "text": "We organize work around understanding the requirement, assessing the situation, developing a solution and supporting implementation.",
+        "media_type": "image",
+        "title": "Structured Approach",
+        "icon": "fa-clipboard-check",
+        "video": "",
+        "image": "/images/uploads/Why_3.png",
+        "link_enabled": false
       },
       {
-        "icon": "fa-arrows-to-circle",
-        "title": "Practical Orientation",
-        "text": "The objective is to provide practical support aligned with the specific project, facility, technology, research or business requirement.",
-        "image": "/images/uploads/Why_4.png",
-        "image_alt": "Contract manufacturing facility",
-        "home_text": "Practical project support aligned to the facility, technology, research or business need.",
-        "detail_title": "Practical Orientation",
-        "detail_subtitle": "How AssurIntellec can support this area",
-        "media_type": "image",
-        "video": "",
         "enabled": true,
-        "link_enabled": false,
-        "link_url": "",
         "details": [
           {
             "heading": "Scope and focus",
@@ -656,7 +658,19 @@
             "bullets": []
           }
         ],
-        "slug": "practical-orientation"
+        "image_alt": "Contract manufacturing facility",
+        "detail_subtitle": "How AssurIntellec can support this area",
+        "detail_title": "Practical Orientation",
+        "link_url": "",
+        "slug": "practical-orientation",
+        "home_text": "Practical project support aligned to the facility, technology, research or business need.",
+        "text": "The objective is to provide practical support aligned with the specific project, facility, technology, research or business requirement.",
+        "media_type": "image",
+        "title": "Practical Orientation",
+        "icon": "fa-arrows-to-circle",
+        "video": "",
+        "image": "/images/uploads/Why_4.png",
+        "link_enabled": false
       }
     ],
     "process": [
@@ -735,13 +749,13 @@
   "media_assets": {
     "schema_logo": "/images/uploads/Google_Search_Logo.png",
     "logo": "/images/uploads/logo_transparent_png_tm.png",
-    "favicon": "/images/uploads/Favicon.png",
-    "footer_logo_mode": "video",
-    "footer_logo_image": "/images/uploads/logo_transparent_png_tm.png",
     "footer_logo_video": "/videos/footer-logo-animated.mp4",
+    "footer_logo_image": "/images/uploads/logo_transparent_png_tm.png",
     "footer_logo_link_enabled": false,
-    "footer_logo_link_url": "",
-    "footer_logo_alt": "AssurIntellec animated logo"
+    "footer_logo_mode": "video",
+    "favicon": "/images/uploads/Favicon.png",
+    "footer_logo_alt": "AssurIntellec animated logo",
+    "footer_logo_link_url": ""
   },
   "home": {
     "services_preview": {
@@ -952,19 +966,5 @@
         "text": "Technical & commercial support"
       }
     ]
-  },
-  "media_options": {
-    "clickable_images_enabled": true,
-    "image_hover_zoom_enabled": true
-  },
-  "text_style_overrides": [],
-  "animation_options": {
-    "hover_text_zoom_enabled": true,
-    "text_hover_zoom_scale": 1.035,
-    "reveal_animations_enabled": true,
-    "reveal_animation_duration_ms": 650,
-    "reveal_animation_distance": 18,
-    "card_hover_lift_enabled": true
-  },
-  "custom_css": ""
+  }
 }
