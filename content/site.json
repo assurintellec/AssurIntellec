@@ -393,14 +393,101 @@
         "details": [
           {
             "heading": "Professional Profile",
-            "text": "Pharmaceutical Quality, Vaccine Manufacturing & Regulatory Compliance Expert\n\nMr. Srinivas Rao Chellumala — Quality Consultant & Biopharmaceutical Operations Strategist\n\nMr. Srinivas Rao Chellumala is a pharmaceutical and biopharmaceutical quality professional with over 26 years of experience in vaccine manufacturing, quality systems, regulatory compliance, manufacturing operations and audit preparedness. His professional background includes operational responsibilities across vaccine formulation, filling, visual inspection, secondary packaging, manufacturing documentation and quality-related activities.\n\nHis experience spans established biotechnology and vaccine manufacturing organisations, including Biological E. Limited, Shantha Biotechnics Pvt. Ltd., Sanofi Healthcare Pvt. Ltd. and GCBC Vaccines Pvt. Ltd. His consulting focus includes pre-audit gap assessments, quality management system development, manufacturing documentation review, validation protocols, deviation investigations, CAPA strategies and regulatory inspection preparedness.\n\nThrough AssurIntellec, his expertise can support pharmaceutical and biopharmaceutical organisations seeking practical technical guidance to strengthen manufacturing controls, improve documentation practices and prepare for demanding quality and regulatory assessments."
+            "text": "",
+            "bullets": [
+              {
+                "point": "Quality Consultant & Biopharmaceutical Operations Strategist."
+              },
+              {
+                "point": "26+ years of experience in vaccine manufacturing and quality operations."
+              }
+            ]
           },
           {
             "heading": "Areas of Expertise",
             "text": "",
             "bullets": [
               {
-                "point": "Vaccine Manufacturing & Biopharmaceutical Operations Experience across vaccine drug-substance and drug-product operations, including formulation, filling, visual inspection, secondary packaging and multiple vaccine product categories."
+                "point": "Vaccine manufacturing and aseptic operations."
+              },
+              {
+                "point": "Quality Management Systems (QMS) and CAPA."
+              },
+              {
+                "point": "Regulatory audits and inspection preparedness."
+              },
+              {
+                "point": "Batch documentation, SOPs and process validation."
+              }
+            ]
+          },
+          {
+            "heading": "Industry Experience",
+            "bullets": [
+              {
+                "point": "Biological E. Limited, Shantha Biotechnics, Sanofi Healthcare and GCBC Vaccines."
+              },
+              {
+                "point": "Experience spanning vaccine production, quality systems and manufacturing operations."
+              }
+            ]
+          },
+          {
+            "heading": "Technical & Regulatory Competencies",
+            "bullets": [
+              {
+                "point": "Audit gap assessments and compliance remediation."
+              },
+              {
+                "point": "Deviation investigations and CAPA."
+              },
+              {
+                "point": "Batch records, validation protocols and SOP review."
+              },
+              {
+                "point": "WHO-related audit activities, as stated in the supplied profile."
+              }
+            ]
+          },
+          {
+            "heading": "Qualifications",
+            "bullets": [
+              {
+                "point": "M.Sc. Biotechnology — Hyderabad Central University."
+              },
+              {
+                "point": "B.Sc. (Botany, Zoology and Chemistry) — Osmania University."
+              }
+            ]
+          },
+          {
+            "heading": "Key Achievements",
+            "bullets": [
+              {
+                "point": "Career progression from Officer to Senior Manager."
+              },
+              {
+                "point": "Manufacturing responsibility involving three drug-product suites."
+              },
+              {
+                "point": "Experience across multiple vaccine categories and manufacturing processes."
+              }
+            ]
+          },
+          {
+            "heading": "Client Support & Business Impact",
+            "bullets": [
+              {
+                "point": "Identify compliance gaps and strengthen audit readiness."
+              },
+              {
+                "point": "Improve quality documentation and corrective-action planning."
+              },
+              {
+                "point": "Support validation documentation and manufacturing quality."
+              },
+              {
+                "point": "Provide practical, risk-based recommendations for pharmaceutical operations."
               }
             ]
           }
