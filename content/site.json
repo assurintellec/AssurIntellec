@@ -63,7 +63,7 @@
   },
   "animation_options": {
     "hover_text_zoom_enabled": true,
-    "text_hover_zoom_scale": 1.035,
+    "text_hover_zoom_scale": 1.1,
     "reveal_animations_enabled": true,
     "reveal_animation_duration_ms": 650,
     "reveal_animation_distance": 18,
