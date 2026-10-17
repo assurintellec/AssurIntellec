@@ -238,7 +238,7 @@
     "namespace": "assurintellec.in",
     "action": "view",
     "key": "website-visitors",
-    "start_value": 0
+    "start_value": 1000
   },
   "section_visibility": {
     "testimonials_home": true,
