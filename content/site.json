@@ -890,7 +890,7 @@
       "items": [
         {
           "name": "Mr. Dhaval Shah",
-          "company": "Pharma Tech Engineers",
+          "company": "Pharma Tech Engineers, Ahmedabad",
           "rating": 5,
           "text": "Professional and knowledgeable team with excellent pharmaceutical consulting services. Highly recommended.",
           "avatar": "/images/uploads/testimonial-customer-1.png",
@@ -899,24 +899,24 @@
           "enabled": true
         },
         {
-          "name": "Customer Name",
-          "company": "Company Name",
+          "name": "Mr. Ravi Bambhroliya",
+          "company": "Envacare Laboratory LLP, Ahmedabad",
           "rating": 5,
-          "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
+          "text": "Exceptional service and a truly professional experience. The team is highly knowledgeable, helpful, and attentive to every detail. Highly recommended!",
           "avatar": "/images/uploads/testimonial-customer-2.png",
           "link_enabled": false,
           "link_url": "",
           "enabled": true
         },
         {
-          "name": "Customer Name",
-          "company": "Company Name",
+          "name": " Mr. Dhaval Dobariya",
+          "company": "Axelus Pharma Pvt. Ltd.,Ankleshwer,",
           "rating": 5,
-          "text": "Add your customer testimonial here. Edit this text in Decap CMS.",
+          "text": "Good service",
           "avatar": "/images/uploads/testimonial-customer-3.png",
           "link_enabled": false,
           "link_url": "",
-          "enabled": false
+          "enabled": true
         }
       ]
     },
