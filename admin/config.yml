@@ -612,8 +612,8 @@ collections:
       - label: Animated Service Titles (up to 7)
         name: service_cycle_titles
         widget: list
-        fields:
-        - label: Service Title
+        field:
+          label: Service Title
           name: title
           widget: string
           required: false
@@ -623,7 +623,6 @@ collections:
         allow_add: true
         allow_delete: true
         allow_remove: true
-        summary: '{{fields.title}}'
       required: false
     - label: Homepage
       name: home
@@ -1174,8 +1173,8 @@ collections:
       - label: Main Paragraphs
         name: main_paragraphs
         widget: list
-        fields:
-        - label: Paragraph
+        field:
+          label: Paragraph
           name: paragraph
           widget: text
           required: false
