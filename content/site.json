@@ -549,11 +549,6 @@
         "card_text": "",
         "link_enabled": false,
         "slot": "Expert_10"
-      },
-      {
-        "slot": "Expert_1",
-        "enabled": false,
-        "link_enabled": false
       }
     ],
     "eyebrow": "AssurIntellec™",
@@ -582,7 +577,7 @@
     "visitor_counter": "The website visitor count is shown in the footer and uses CounterAPI. The namespace and key are editable under Decap CMS → Site Settings → Visitor Counter.",
     "search_logo": "The site includes a 192×192 PNG favicon plus Organization structured data. Google decides when to refresh the favicon/search presentation after crawling the site."
   },
-  "brand_subtitle": "Pharmaceutical & Life Sciences Solutions",
+  "brand_subtitle": "Pharmaceutical & Life Sciences Solutions.",
   "navigation": {
     "home": "Home",
     "about": "About Us",
