@@ -390,14 +390,36 @@
     "experts": [
       {
         "enabled": true,
-        "details": [],
+        "details": [
+          {
+            "heading": "Professional Profile"
+          },
+          {
+            "heading": "Professional Profile"
+          },
+          {
+            "heading": "Industry Experience"
+          },
+          {
+            "heading": "Technical & Regulatory Competencies"
+          },
+          {
+            "heading": "Qualifications & Professional Certifications"
+          },
+          {
+            "heading": "Key Achievements & Contributions"
+          },
+          {
+            "heading": "Client Support & Business Impact"
+          }
+        ],
         "image_alt": "",
-        "detail_subtitle": "",
-        "detail_title": "",
+        "detail_subtitle": "Founder & CEO",
+        "detail_title": "Mr. Pratik Siddhapura (Ph.D.)",
         "link_url": "",
-        "name": "Expert_1",
-        "role": "",
-        "image": "",
+        "name": "Mr. Pratik Siddhapura (Ph.D.)",
+        "role": "Founder & CEO",
+        "image": "/images/uploads/pratik_passport_size.jpg",
         "card_text": "",
         "link_enabled": false,
         "slot": "Expert_1"
@@ -527,6 +549,11 @@
         "card_text": "",
         "link_enabled": false,
         "slot": "Expert_10"
+      },
+      {
+        "slot": "Expert_1",
+        "enabled": false,
+        "link_enabled": false
       }
     ],
     "eyebrow": "AssurIntellec™",
@@ -910,7 +937,7 @@
         },
         {
           "name": " Mr. Dhaval Dobariya",
-          "company": "Axelus Pharma Pvt. Ltd.,Ankleshwer,",
+          "company": "Axelus Pharma Pvt. Ltd.,Ankleshwer",
           "rating": 5,
           "text": "Good service",
           "avatar": "/images/uploads/testimonial-customer-3.png",
