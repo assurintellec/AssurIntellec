@@ -393,16 +393,25 @@
         "details": [
           {
             "heading": "Professional Profile",
-            "text": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform founded on a strong foundation in Pharmaceutics, pharmaceutical research, teaching, laboratory expertise and scientific innovation.\n\nThe platform is led by Mr. Pratik J. Siddhapura, with an academic background in B.Pharm, M.Pharm (Pharmaceutics) and ongoing Ph.D. research at Gujarat Technological University. His professional experience includes pharmaceutical education, research coordination, training and placement activities, and practical exposure to pharmaceutical and laboratory environments.\n\nAssurIntellec™ brings this scientific and technical foundation into practical services covering GMP & regulatory compliance, pharmaceutical facility planning, machinery and laboratory equipment, research & formulation support, manufacturing solutions, talent and recruitment, life-sciences trade, and strategic advisory."
+            "text": "Pharmaceutical Quality, Vaccine Manufacturing & Regulatory Compliance Expert\n\nMr. Srinivas Rao Chellumala — Quality Consultant & Biopharmaceutical Operations Strategist\n\nMr. Srinivas Rao Chellumala is a pharmaceutical and biopharmaceutical quality professional with over 26 years of experience in vaccine manufacturing, quality systems, regulatory compliance, manufacturing operations and audit preparedness. His professional background includes operational responsibilities across vaccine formulation, filling, visual inspection, secondary packaging, manufacturing documentation and quality-related activities.\n\nHis experience spans established biotechnology and vaccine manufacturing organisations, including Biological E. Limited, Shantha Biotechnics Pvt. Ltd., Sanofi Healthcare Pvt. Ltd. and GCBC Vaccines Pvt. Ltd. His consulting focus includes pre-audit gap assessments, quality management system development, manufacturing documentation review, validation protocols, deviation investigations, CAPA strategies and regulatory inspection preparedness.\n\nThrough AssurIntellec, his expertise can support pharmaceutical and biopharmaceutical organisations seeking practical technical guidance to strengthen manufacturing controls, improve documentation practices and prepare for demanding quality and regulatory assessments."
+          },
+          {
+            "heading": "Areas of Expertise",
+            "text": "",
+            "bullets": [
+              {
+                "point": "Vaccine Manufacturing & Biopharmaceutical Operations Experience across vaccine drug-substance and drug-product operations, including formulation, filling, visual inspection, secondary packaging and multiple vaccine product categories."
+              }
+            ]
           }
         ],
         "image_alt": "",
-        "detail_subtitle": "Founder & CEO",
-        "detail_title": "Mr. Pratik Siddhapura (Ph.D.)",
+        "detail_subtitle": "",
+        "detail_title": "",
         "link_url": "",
-        "name": "Mr. Pratik Siddhapura (Ph.D.)",
-        "role": "Founder & CEO",
-        "image": "/images/uploads/pratik_passport_size.jpg",
+        "name": "",
+        "role": "",
+        "image": "",
         "card_text": "",
         "link_enabled": false,
         "slot": "Expert_1"
