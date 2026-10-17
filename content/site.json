@@ -751,11 +751,11 @@
     "logo": "/images/uploads/logo_transparent_png_tm.png",
     "footer_logo_video": "/videos/footer-logo-animated.mp4",
     "footer_logo_image": "/images/uploads/logo_transparent_png_tm.png",
-    "footer_logo_link_enabled": false,
+    "footer_logo_link_enabled": true,
     "footer_logo_mode": "video",
     "favicon": "/images/uploads/Favicon.png",
     "footer_logo_alt": "AssurIntellec animated logo",
-    "footer_logo_link_url": ""
+    "footer_logo_link_url": "www.assurinetellec.in"
   },
   "home": {
     "services_preview": {
