@@ -422,7 +422,7 @@
         "image": "/images/uploads/pratik_passport_size.jpg",
         "card_text": "",
         "link_enabled": false,
-        "slot": "Expert_1"
+        "slot": "Expert_2"
       },
       {
         "enabled": false,
@@ -436,7 +436,7 @@
         "image": "",
         "card_text": "",
         "link_enabled": false,
-        "slot": "Expert_2"
+        "slot": "Expert_1"
       },
       {
         "enabled": false,
