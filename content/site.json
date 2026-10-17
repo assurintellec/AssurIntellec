@@ -389,7 +389,7 @@
     "page_title": "About Us",
     "experts": [
       {
-        "enabled": false,
+        "enabled": true,
         "details": [],
         "image_alt": "",
         "detail_subtitle": "",
