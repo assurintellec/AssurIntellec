@@ -392,25 +392,8 @@
         "enabled": true,
         "details": [
           {
-            "heading": "Professional Profile"
-          },
-          {
-            "heading": "Professional Profile"
-          },
-          {
-            "heading": "Industry Experience"
-          },
-          {
-            "heading": "Technical & Regulatory Competencies"
-          },
-          {
-            "heading": "Qualifications & Professional Certifications"
-          },
-          {
-            "heading": "Key Achievements & Contributions"
-          },
-          {
-            "heading": "Client Support & Business Impact"
+            "heading": "Professional Profile",
+            "text": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform founded on a strong foundation in Pharmaceutics, pharmaceutical research, teaching, laboratory expertise and scientific innovation.\n\nThe platform is led by Mr. Pratik J. Siddhapura, with an academic background in B.Pharm, M.Pharm (Pharmaceutics) and ongoing Ph.D. research at Gujarat Technological University. His professional experience includes pharmaceutical education, research coordination, training and placement activities, and practical exposure to pharmaceutical and laboratory environments.\n\nAssurIntellec™ brings this scientific and technical foundation into practical services covering GMP & regulatory compliance, pharmaceutical facility planning, machinery and laboratory equipment, research & formulation support, manufacturing solutions, talent and recruitment, life-sciences trade, and strategic advisory."
           }
         ],
         "image_alt": "",
@@ -422,7 +405,7 @@
         "image": "/images/uploads/pratik_passport_size.jpg",
         "card_text": "",
         "link_enabled": false,
-        "slot": "Expert_2"
+        "slot": "Expert_1"
       },
       {
         "enabled": false,
@@ -436,7 +419,7 @@
         "image": "",
         "card_text": "",
         "link_enabled": false,
-        "slot": "Expert_1"
+        "slot": "Expert_2"
       },
       {
         "enabled": false,
