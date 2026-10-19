@@ -1,7 +1,7 @@
 {
   "services": [
     {
-      "cta_url": "./contact.html",
+      "cta_url": "",
       "enabled": true,
       "card_bullets": [
         "Facility planning",
@@ -48,9 +48,9 @@
       "icon": "fa-shield-halved",
       "page_eyebrow": "Service 01",
       "description": "Technical support for GMP-focused pharmaceutical facilities, planning and compliance requirements.",
+      "contact_email": "contact@assurintellec.in",
       "primary_image": "/images/uploads/Service_1.jpg",
-      "primary_video": "",
-      "contact_email": "contact@assurintellec.in"
+      "primary_video": ""
     },
     {
       "cta_url": "./contact.html",
@@ -98,9 +98,9 @@
       "icon": "fa-handshake",
       "page_eyebrow": "Service 02",
       "description": "Technical and commercial support for pharmaceutical opportunities, facilities and transactions.",
+      "contact_email": "contact@assurintellec.in",
       "primary_image": "/images/uploads/Service_2.jpg",
-      "primary_video": "",
-      "contact_email": "contact@assurintellec.in"
+      "primary_video": ""
     },
     {
       "cta_url": "./contact.html",
@@ -146,9 +146,9 @@
       "icon": "fa-user-group",
       "page_eyebrow": "Service 03",
       "description": "Support for connecting life-sciences organizations with relevant professional capabilities.",
+      "contact_email": "contact@assurintellec.in",
       "primary_image": "/images/uploads/Service_3.jpg",
-      "primary_video": "",
-      "contact_email": "contact@assurintellec.in"
+      "primary_video": ""
     },
     {
       "cta_url": "./contact.html",
@@ -194,9 +194,9 @@
       "icon": "fa-globe",
       "page_eyebrow": "Service 04",
       "description": "Support across pharmaceutical and life-sciences products, opportunities and trade activities.",
+      "contact_email": "contact@assurintellec.in",
       "primary_image": "/images/uploads/Service_4.jpg",
-      "primary_video": "",
-      "contact_email": "contact@assurintellec.in"
+      "primary_video": ""
     },
     {
       "cta_url": "./contact.html",
@@ -243,9 +243,9 @@
       "icon": "fa-flask",
       "page_eyebrow": "Service 05",
       "description": "Technology and equipment-oriented support for pharmaceutical and laboratory requirements.",
+      "contact_email": "contact@assurintellec.in",
       "primary_image": "/images/uploads/Service_5.jpg",
-      "primary_video": "",
-      "contact_email": "contact@assurintellec.in"
+      "primary_video": ""
     },
     {
       "cta_url": "./contact.html",
@@ -293,9 +293,9 @@
       "icon": "fa-microscope",
       "page_eyebrow": "Service 06",
       "description": "Scientific and research support across formulation, development and laboratory activities.",
+      "contact_email": "contact@assurintellec.in",
       "primary_image": "/images/uploads/Service_6.jpg",
-      "primary_video": "",
-      "contact_email": "contact@assurintellec.in"
+      "primary_video": ""
     },
     {
       "cta_url": "./contact.html",
@@ -343,9 +343,9 @@
       "icon": "fa-industry",
       "page_eyebrow": "Service 07",
       "description": "Integrated support for pharmaceutical manufacturing projects and operational requirements.",
+      "contact_email": "contact@assurintellec.in",
       "primary_image": "/images/uploads/Service_7.jpg",
-      "primary_video": "",
-      "contact_email": "contact@assurintellec.in"
+      "primary_video": ""
     }
   ]
 }
