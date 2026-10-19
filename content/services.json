@@ -1,7 +1,7 @@
 {
   "services": [
     {
-      "cta_url": "",
+      "cta_url": "./contact.html",
       "enabled": true,
       "card_bullets": [
         "Facility planning",
