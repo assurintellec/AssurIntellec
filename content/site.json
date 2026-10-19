@@ -233,7 +233,7 @@
     "why_title_size": 18
   },
   "visitor_counter": {
-    "enabled": true,
+    "enabled": false,
     "label": "Website Visitors",
     "namespace": "assurintellec.in",
     "action": "view",
@@ -445,7 +445,7 @@
                 "point": "Batch records, validation protocols and SOP review."
               },
               {
-                "point": "WHO-related audit activities, as stated in the supplied profile."
+                "point": "WHO, ANVISA, ISO Audit Management &  Global Quality Audits"
               }
             ]
           },
