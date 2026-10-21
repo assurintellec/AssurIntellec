@@ -233,12 +233,12 @@
     "why_title_size": 18
   },
   "visitor_counter": {
-    "enabled": true,
+    "enabled": false,
     "label": "Website Visitors",
     "namespace": "assurintellec.in",
     "action": "view",
     "key": "website-visitors",
-    "start_value": 148154
+    "start_value": 148157
   },
   "section_visibility": {
     "testimonials_home": true,
@@ -445,7 +445,7 @@
                 "point": "Batch records, validation protocols and SOP review."
               },
               {
-                "point": "WHO-related audit activities, as stated in the supplied profile."
+                "point": "WHO, ANVISA, ISO Audit Management &  Global Quality Audits"
               }
             ]
           },
@@ -467,7 +467,7 @@
                 "point": "Career progression from Officer to Senior Manager."
               },
               {
-                "point": "Manufacturing responsibility involving three drug-product suites."
+                "point": "Manufacturing/Quality responsibility involving multiple drug-product/drug substance suites."
               },
               {
                 "point": "Experience across multiple vaccine categories and manufacturing processes."
@@ -821,7 +821,7 @@
     "video_audio_default_enabled": true,
     "button_secondary_url": "./contact.html",
     "video": "/videos/hero-60sec.mp4",
-    "description": "",
+    "description": "The World’s First All-in-One Pharmaceutical Consulting Solution — Delivering a Complete, Integrated Ecosystem for Every Client.",
     "service_cycle_enabled": true,
     "service_cycle_titles": [
       "GMP Engineering & Compliance",
@@ -842,8 +842,8 @@
     "copyright": "All rights reserved."
   },
   "seo": {
-    "title": "AssurIntellec™ | Pharmaceutical & Life Sciences Solutions",
-    "description": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform providing GMP, regulatory, engineering, scientific, research, manufacturing, talent, trade and strategic advisory support.",
+    "title": "AssurIntellec™ | Pharmaceutical & Life Sciences Solutions, “The World’s First All-in-One Pharmaceutical Consulting Solution — Delivering a Complete, Integrated Ecosystem for Every Client.”",
+    "description": "AssurIntellec™ is a pharmaceutical and life sciences solutions platform providing GMP, regulatory, engineering, scientific, research, manufacturing, talent, trade and strategic advisory support.\nThe World’s First All-in-One Pharmaceutical Consulting Solution — Delivering a Complete, Integrated Ecosystem for Every Client.",
     "canonical_base": "https://www.assurintellec.in",
     "logo_url": ""
   },
