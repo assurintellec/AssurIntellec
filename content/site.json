@@ -236,7 +236,7 @@
     "namespace": "assurintellec.in",
     "action": "view",
     "key": "website-visitors",
-    "start_value": 148157
+    "start_value": 148158
   },
   "section_visibility": {
     "testimonials_home": true,
@@ -665,15 +665,15 @@
   },
   "tagline": "Intelligent Solutions, Assured Compliance.",
   "editor_notes": {
-    "instructions": "Use Decap CMS → Site Settings to edit website text, navigation, contact details, emails, WhatsApp settings, hero content, typography, layout, media assets and Instagram Reel URLs. Navigation font size and gap are editable under Theme & Layout. Hero left offset is editable under Theme & Layout. About profile phone/email are editable under About Us. Service-page contact email is editable under Contact & Enquiry.",
-    "enquiry": "Send Enquiry submits the form to the configured Google Apps Script Web App URL. The Apps Script saves the enquiry in the Enquiries Google Sheet, sends the enquiry notification to the configured recipient, generates an AI-###### reference number, and sends a branded automatic confirmation email to the customer. The confirmation email includes the customer name, company, selected requirement, requirement details, the current seven AssurIntellec™ services, website, contact phone and email, plus the current website logo. The logo and contact details are pulled from the published Site Settings / Media Assets, so changes made through Decap CMS are automatically used for future confirmation emails after the website content is published. The website then displays the centred confirmation message without clearing the visitor's entered form data. No SMS service or SMS API is used.",
-    "instagram": "Five Instagram Reel slots are available in Decap CMS. The enabled public Reel URLs are shown one at a time with the left/right arrows. The homepage viewer hides/crops the Instagram profile/caption/comment area so the viewer presents the Reel video region only.",
     "mobile": "Responsive mobile rules keep navigation, social icons, hero, Reel viewer, service cards, contact form, footer and buttons within the phone viewport. Mobile Reel sizing is editable under Theme & Layout.",
-    "instagram_viewer": "Instagram audio on/off controls were removed. The homepage Reel viewer is configured to show the video area only; profile/caption/comment areas are visually cropped by the viewer.",
+    "search_logo": "The site includes a 192×192 PNG favicon plus Organization structured data. Google decides when to refresh the favicon/search presentation after crawling the site.",
+    "enquiry": "Send Enquiry submits the form to the configured Google Apps Script Web App URL. The Apps Script saves the enquiry in the Enquiries Google Sheet, sends the enquiry notification to the configured recipient, generates an AI-###### reference number, and sends a branded automatic confirmation email to the customer. The confirmation email includes the customer name, company, selected requirement, requirement details, the current seven AssurIntellec™ services, website, contact phone and email, plus the current website logo. The logo and contact details are pulled from the published Site Settings / Media Assets, so changes made through Decap CMS are automatically used for future confirmation emails after the website content is published. The website then displays the centred confirmation message without clearing the visitor's entered form data. No SMS service or SMS API is used.",
+    "instructions": "Use Decap CMS → Site Settings to edit website text, navigation, contact details, emails, WhatsApp settings, hero content, typography, layout, media assets and Instagram Reel URLs. Navigation font size and gap are editable under Theme & Layout. Hero left offset is editable under Theme & Layout. About profile phone/email are editable under About Us. Service-page contact email is editable under Contact & Enquiry.",
     "logos": "Homepage certificates/approvals and valuable customer logo sections each have exactly five editable image slots under Decap CMS → Site Settings → Homepage. Replace the images to update the five visible logos.",
     "visitor_counter": "The footer visitor counter uses CounterAPI with retry handling. Enable/disable it under Decap CMS → Site Settings → Visitor Counter; disabling it removes the entire counter line. Keep namespace, action and key unchanged to preserve the current count.",
-    "search_logo": "The site includes a 192×192 PNG favicon plus Organization structured data. Google decides when to refresh the favicon/search presentation after crawling the site.",
-    "social": "Header and footer social icons are managed in Decap CMS → Site Settings → Social Media. Edit the URL field to change any Instagram profile, WhatsApp Channel, Telegram Channel or other social link; enabled links appear in both locations."
+    "social": "Header and footer social icons are managed in Decap CMS → Site Settings → Social Media. Edit the URL field to change any Instagram profile, WhatsApp Channel, Telegram Channel or other social link; enabled links appear in both locations.",
+    "instagram": "Five Instagram Reel slots are available in Decap CMS. The enabled public Reel URLs are shown one at a time with the left/right arrows. The homepage viewer hides/crops the Instagram profile/caption/comment area so the viewer presents the Reel video region only.",
+    "instagram_viewer": "Instagram audio on/off controls were removed. The homepage Reel viewer is configured to show the video area only; profile/caption/comment areas are visually cropped by the viewer."
   },
   "brand_subtitle": "Pharmaceutical & Life Sciences Solutions.",
   "navigation": {
@@ -827,6 +827,7 @@
   },
   "hero": {
     "video_sound_label": "Enable hero video sound",
+    "overlay_spread": 25,
     "heading": "GMP Engineering & Compliance",
     "button_primary_url": "./services.html",
     "button_secondary": "Discuss Your Requirement",
@@ -834,13 +835,20 @@
     "video_loop": true,
     "company_name": "AssurIntellec™",
     "poster": "/images/uploads/hero.jpg",
+    "heading_text_color": "#ffffff",
+    "overlay_enabled": false,
     "video_mute_label": "Mute hero video",
     "kicker": "Intelligent Solutions, Assured Compliance.",
+    "company_text_color": "#ffffff",
+    "description_text_color": "#ffffff",
+    "overlay_color": "#c3cdd8",
     "button_primary": "Explore Services",
     "video_audio_default_enabled": true,
     "button_secondary_url": "./contact.html",
     "video": "/videos/hero-60sec.mp4",
+    "overlay_opacity": 0,
     "description": "The World’s First All-in-One Pharmaceutical Consulting Solution — Delivering a Complete, Integrated Ecosystem for Every Client.",
+    "kicker_text_color": "#e6cf74",
     "service_cycle_enabled": true,
     "service_cycle_titles": [
       "GMP Engineering & Compliance",
@@ -850,15 +858,7 @@
       "Pharma & Laboratory Technologies",
       "Research & Scientific Services",
       "Pharma Solutions & Manufacturing"
-    ],
-    "overlay_enabled": false,
-    "overlay_color": "#07182d",
-    "overlay_opacity": 0.38,
-    "overlay_spread": 45,
-    "company_text_color": "#ffffff",
-    "kicker_text_color": "#e6cf74",
-    "heading_text_color": "#ffffff",
-    "description_text_color": "#ffffff"
+    ]
   },
   "footer": {
     "description": "Pharmaceutical & life sciences solutions across engineering, compliance, advisory, scientific, technology and manufacturing support.",
