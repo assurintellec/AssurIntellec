@@ -139,6 +139,7 @@ collections:
         - label: URL
           name: url
           widget: string
+          hint: Edit this URL to change the social profile or channel link in both the header and footer.
           required: false
         - label: Font Awesome Icon Class
           name: icon
@@ -602,6 +603,61 @@ collections:
       - label: Hero Poster Alt Text
         name: poster_alt
         widget: string
+        required: false
+      - label: Hero Video Shade / Overlay Enabled
+        name: overlay_enabled
+        widget: boolean
+        default: false
+        hint: Off removes the entire dark shade from the hero video. Turn on to customize its color, opacity and spread.
+        required: false
+      - label: Hero Video Shade Color
+        name: overlay_color
+        widget: color
+        allowInput: true
+        default: '#07182d'
+        required: false
+      - label: Hero Video Shade Opacity (0–1)
+        name: overlay_opacity
+        widget: number
+        value_type: float
+        min: 0
+        max: 1
+        step: 0.05
+        default: 0.38
+        required: false
+      - label: Hero Video Shade Spread / Length (%)
+        name: overlay_spread
+        widget: number
+        value_type: int
+        min: 0
+        max: 95
+        step: 5
+        default: 45
+        hint: Controls how far the solid shade extends from the left before fading toward the right edge.
+        required: false
+      - label: Hero Company Name Text Color
+        name: company_text_color
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Hero Kicker Text Color
+        name: kicker_text_color
+        widget: color
+        allowInput: true
+        default: '#e6cf74'
+        required: false
+      - label: Hero Animated Heading Text Color
+        name: heading_text_color
+        widget: color
+        allowInput: true
+        default: '#ffffff'
+        required: false
+      - label: Hero Description Text Color
+        name: description_text_color
+        widget: color
+        allowInput: true
+        default: '#ffffff'
         required: false
       - label: Animated Service Heading Enabled
         name: service_cycle_enabled
@@ -2227,12 +2283,6 @@ collections:
         value_type: int
         default: 13
         required: false
-      - label: Hero Overlay Right Opacity
-        name: hero_overlay_right_opacity
-        widget: number
-        value_type: float
-        default: 0.16
-        required: false
       - label: Why Grid Gap
         name: why_grid_gap
         widget: number
@@ -2310,12 +2360,6 @@ collections:
         widget: color
         allowInput: true
         default: '#0b1f3a'
-        required: false
-      - label: Hero Overlay Opacity
-        name: hero_overlay_opacity
-        widget: number
-        value_type: float
-        default: 0.84
         required: false
       - label: Button Primary Text
         name: button_primary_text

@@ -179,7 +179,6 @@
     "instagram_crop_top": 58,
     "font_button_style": "normal",
     "detail_list_size": 13,
-    "hero_overlay_right_opacity": 0.16,
     "why_grid_gap": 19,
     "instagram_height": 605,
     "contact_text_size": 15,
@@ -193,7 +192,6 @@
     "footer_logo_width": 320,
     "button_outline_border": "#ffffff",
     "navy": "#0b1f3a",
-    "hero_overlay_opacity": 0.84,
     "button_primary_text": "#0b1f3a",
     "footer_logo_height": 82,
     "card_title_size": 17,
@@ -233,7 +231,7 @@
     "why_title_size": 18
   },
   "visitor_counter": {
-    "enabled": false,
+    "enabled": true,
     "label": "Website Visitors",
     "namespace": "assurintellec.in",
     "action": "view",
@@ -347,6 +345,26 @@
         "enabled": true,
         "header_color": "#FF0000",
         "footer_color": "#FF0000"
+      },
+      {
+        "key": "whatsapp-channel",
+        "label": "WhatsApp Channel",
+        "url": "https://whatsapp.com/channel/0029VbDxVgXFCCoU5fxRbo25",
+        "icon": "fa-brands fa-whatsapp",
+        "class_name": "social-whatsapp-channel",
+        "enabled": true,
+        "header_color": "#25D366",
+        "footer_color": "#25D366"
+      },
+      {
+        "key": "telegram",
+        "label": "Telegram Channel",
+        "url": "https://t.me/assurintellec",
+        "icon": "fa-brands fa-telegram",
+        "class_name": "social-telegram",
+        "enabled": true,
+        "header_color": "#0088cc",
+        "footer_color": "#0088cc"
       },
       {
         "key": "threads",
@@ -653,8 +671,9 @@
     "mobile": "Responsive mobile rules keep navigation, social icons, hero, Reel viewer, service cards, contact form, footer and buttons within the phone viewport. Mobile Reel sizing is editable under Theme & Layout.",
     "instagram_viewer": "Instagram audio on/off controls were removed. The homepage Reel viewer is configured to show the video area only; profile/caption/comment areas are visually cropped by the viewer.",
     "logos": "Homepage certificates/approvals and valuable customer logo sections each have exactly five editable image slots under Decap CMS → Site Settings → Homepage. Replace the images to update the five visible logos.",
-    "visitor_counter": "The website visitor count is shown in the footer and uses CounterAPI. The namespace and key are editable under Decap CMS → Site Settings → Visitor Counter.",
-    "search_logo": "The site includes a 192×192 PNG favicon plus Organization structured data. Google decides when to refresh the favicon/search presentation after crawling the site."
+    "visitor_counter": "The footer visitor counter uses CounterAPI with retry handling. Enable/disable it under Decap CMS → Site Settings → Visitor Counter; disabling it removes the entire counter line. Keep namespace, action and key unchanged to preserve the current count.",
+    "search_logo": "The site includes a 192×192 PNG favicon plus Organization structured data. Google decides when to refresh the favicon/search presentation after crawling the site.",
+    "social": "Header and footer social icons are managed in Decap CMS → Site Settings → Social Media. Edit the URL field to change any Instagram profile, WhatsApp Channel, Telegram Channel or other social link; enabled links appear in both locations."
   },
   "brand_subtitle": "Pharmaceutical & Life Sciences Solutions.",
   "navigation": {
@@ -831,7 +850,15 @@
       "Pharma & Laboratory Technologies",
       "Research & Scientific Services",
       "Pharma Solutions & Manufacturing"
-    ]
+    ],
+    "overlay_enabled": false,
+    "overlay_color": "#07182d",
+    "overlay_opacity": 0.38,
+    "overlay_spread": 45,
+    "company_text_color": "#ffffff",
+    "kicker_text_color": "#e6cf74",
+    "heading_text_color": "#ffffff",
+    "description_text_color": "#ffffff"
   },
   "footer": {
     "description": "Pharmaceutical & life sciences solutions across engineering, compliance, advisory, scientific, technology and manufacturing support.",

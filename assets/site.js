@@ -8,7 +8,7 @@ const FALLBACK_SITE = {
   tagline: 'Intelligent Solutions. Assured Compliance.',
   social: { items: [] },
   contact: { whatsapp: 'https://wa.me/message/BFANWJ2N3FWOP1', email: 'info@assurintellec.in', phone: '+91 7600 666 436', mobile_phone: '7405660185', website: 'https://www.assurintellec.in', website_display: 'www.assurintellec.in' },
-  hero: { video: '/videos/hero-60sec.mp4', poster: '/images/uploads/hero.jpg' },
+  hero: { video: '/videos/hero-60sec.mp4', poster: '/images/uploads/hero.jpg', overlay_enabled: false, overlay_color: '#07182d', overlay_opacity: 0.38, overlay_spread: 45, company_text_color: '#ffffff', kicker_text_color: '#e6cf74', heading_text_color: '#ffffff', description_text_color: '#ffffff' },
   home: {}, about: {}, why_us: {}, footer: {}, theme: {}, visitor_counter: { enabled: true, label: 'Website Visitors', namespace: 'assurintellec.in', action: 'view', key: 'website-visitors' }
 };
 
@@ -142,7 +142,7 @@ function applyTheme(site) {
     header_background: ['--header-bg','value'],
     container_max: ['--max','px'],
     logo_max_width_mobile: ['--logo-max-width-mobile','%'], header_logo_width: ['--logo-width','px'], header_logo_height: ['--logo-height','px'],
-    hero_min_height: ['--hero-height','px'], hero_overlay_opacity: ['--hero-overlay','value'], instagram_width: ['--instagram-width','px'], instagram_height: ['--instagram-height','px'], instagram_crop_top: ['--instagram-crop-top','px'], instagram_crop_bottom: ['--instagram-crop-bottom','px'],
+    hero_min_height: ['--hero-height','px'], instagram_width: ['--instagram-width','px'], instagram_height: ['--instagram-height','px'], instagram_crop_top: ['--instagram-crop-top','px'], instagram_crop_bottom: ['--instagram-crop-bottom','px'],
     hero_left_offset: ['--hero-left-offset','px'],
     profile_photo_ratio_width: ['--profile-photo-ratio-width','value'],
     profile_photo_ratio_height: ['--profile-photo-ratio-height','value'],
@@ -199,7 +199,6 @@ function applyTheme(site) {
     service_arrow_background: ['--service-arrow-bg','value'],
     service_arrow_color: ['--service-arrow-color','value'],
     hero_object_position: ['--hero-object-position','value'],
-    hero_overlay_right_opacity: ['--hero-overlay-right-opacity','value'],
     why_image_object_fit: ['--why-image-object-fit','value'],
     service_image_object_fit: ['--service-image-object-fit','value'],
     process_image_object_fit: ['--process-image-object-fit','value'],
@@ -619,6 +618,36 @@ function renderTestimonials(site) {
   }).join('');
 }
 
+async function requestVisitorCounter(url) {
+  let lastError = null;
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    let timeoutId = null;
+    let controller = null;
+    try {
+      if ('AbortController' in window) {
+        controller = new AbortController();
+        timeoutId = window.setTimeout(() => controller.abort(), 8000);
+      }
+      const response = await fetch(url, {
+        cache: 'no-store',
+        mode: 'cors',
+        ...(controller ? { signal: controller.signal } : {})
+      });
+      if (!response.ok) throw new Error(`CounterAPI ${response.status}`);
+      const data = await response.json();
+      const value = Number(data?.value);
+      if (!Number.isFinite(value) || value < 0) throw new Error('Invalid visitor count');
+      return value;
+    } catch (error) {
+      lastError = error;
+    } finally {
+      if (timeoutId !== null) window.clearTimeout(timeoutId);
+    }
+    if (attempt === 0) await new Promise(resolve => window.setTimeout(resolve, 400));
+  }
+  throw lastError || new Error('Visitor counter request failed');
+}
+
 async function initVisitorCounter(site) {
   const stat = document.getElementById('visitorStat');
   const countEl = document.getElementById('visitorCount');
@@ -630,31 +659,42 @@ async function initVisitorCounter(site) {
     return;
   }
 
+  // The counter is visible whenever enabled. Temporary network/API failure should
+  // not silently remove the whole footer line; only the CMS toggle hides it.
+  stat.style.display = '';
+  stat.removeAttribute('hidden');
+  countEl.textContent = 'Loading…';
+
   const namespace = encodeURIComponent(String(cfg.namespace || 'assurintellec.in').trim());
   const action = encodeURIComponent(String(cfg.action || 'view').trim());
   const key = encodeURIComponent(String(cfg.key || 'website-visitors').trim());
   const startValue = Math.max(0, Number(cfg.start_value) || 0);
   const baseUrl = `https://counterapi.com/api/${namespace}/${action}/${key}`;
-  const sessionKey = `assurintellec-counter:${namespace}:${action}:${key}`;
+  // Version the session key so a previously failed request from the older code
+  // cannot incorrectly mark this session as counted before a successful response.
+  const sessionKey = `assurintellec-counter-v2:${namespace}:${action}:${key}`;
+  let alreadyCountedThisSession = false;
+  try {
+    alreadyCountedThisSession = window.sessionStorage.getItem(sessionKey) === '1';
+  } catch (_) {
+    // Storage may be restricted in privacy modes. CounterAPI's unique modifier
+    // remains in place, and storage access must never prevent the request.
+  }
+
+  let url = `${baseUrl}?unique=true`;
+  if (alreadyCountedThisSession) url += '&readOnly=true';
 
   try {
-    let url = `${baseUrl}?unique=true`;
-    if (sessionStorage.getItem(sessionKey) === '1') {
-      url += '&readOnly=true';
-    } else {
-      sessionStorage.setItem(sessionKey, '1');
-    }
-
-    const response = await fetch(url, { cache: 'no-store', mode: 'cors' });
-    if (!response.ok) throw new Error(`CounterAPI ${response.status}`);
-    const data = await response.json();
-    const value = Number(data?.value);
-    if (!Number.isFinite(value)) throw new Error('Invalid visitor count');
-
+    const value = await requestVisitorCounter(url);
     countEl.textContent = (startValue + value).toLocaleString();
+    if (!alreadyCountedThisSession) {
+      try { window.sessionStorage.setItem(sessionKey, '1'); } catch (_) {}
+    }
+    stat.removeAttribute('data-counter-error');
   } catch (error) {
-    console.warn('Visitor counter unavailable:', error);
-    stat.style.display = 'none';
+    console.warn('Visitor counter unavailable after retry:', error);
+    countEl.textContent = 'Temporarily unavailable';
+    stat.setAttribute('data-counter-error', 'true');
   }
 }
 
@@ -737,9 +777,53 @@ function startServiceHeadingAnimation(site, services) {
   typeNext();
 }
 
+function normalizeHeroHexColor(value, fallback = '#ffffff') {
+  const raw = String(value || '').trim();
+  const match = raw.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (!match) return fallback;
+  const digits = match[1].length === 3 ? match[1].split('').map(char => char + char).join('') : match[1];
+  return `#${digits.toLowerCase()}`;
+}
+
+function heroHexToRgb(hex) {
+  const value = normalizeHeroHexColor(hex, '#07182d').slice(1);
+  return [0, 2, 4].map(offset => parseInt(value.slice(offset, offset + 2), 16));
+}
+
+function applyHeroOptions(hero) {
+  const overlay = document.querySelector('.hero-overlay');
+  if (overlay) {
+    const enabled = hero.overlay_enabled === true;
+    overlay.style.display = enabled ? 'block' : 'none';
+    if (enabled) {
+      const shade = normalizeHeroHexColor(hero.overlay_color, '#07182d');
+      const [red, green, blue] = heroHexToRgb(shade);
+      const opacityRaw = Number(hero.overlay_opacity);
+      const opacity = Number.isFinite(opacityRaw) ? Math.max(0, Math.min(1, opacityRaw)) : 0.38;
+      const spreadRaw = Number(hero.overlay_spread);
+      const spread = Number.isFinite(spreadRaw) ? Math.max(0, Math.min(95, spreadRaw)) : 45;
+      overlay.style.background = `linear-gradient(90deg, rgba(${red}, ${green}, ${blue}, ${opacity}) 0%, rgba(${red}, ${green}, ${blue}, ${opacity}) ${spread}%, rgba(${red}, ${green}, ${blue}, 0) 100%)`;
+    } else {
+      overlay.style.background = 'none';
+    }
+  }
+
+  const root = document.documentElement;
+  const colorSettings = [
+    ['--hero-company-color', hero.company_text_color, '#ffffff'],
+    ['--hero-kicker-color', hero.kicker_text_color, '#e6cf74'],
+    ['--hero-heading-color', hero.heading_text_color, '#ffffff'],
+    ['--hero-description-color', hero.description_text_color, '#ffffff']
+  ];
+  colorSettings.forEach(([property, value, fallback]) => {
+    root.style.setProperty(property, normalizeHeroHexColor(value, fallback));
+  });
+}
+
 function renderHome(site, services) {
   const h = site.hero || {};
   const home = site.home || {};
+  applyHeroOptions(h);
 
   setText('heroCompany', h.company_name || site.company_name);
   setText('heroKicker', h.kicker);
