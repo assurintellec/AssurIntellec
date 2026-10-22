@@ -827,7 +827,7 @@
   },
   "hero": {
     "video_sound_label": "Enable hero video sound",
-    "overlay_spread": 15,
+    "overlay_spread": 25,
     "heading": "GMP Engineering & Compliance",
     "button_primary_url": "./services.html",
     "button_secondary": "Discuss Your Requirement",
