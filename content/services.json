@@ -20,16 +20,19 @@
       "intro": "AssurIntellec™ provides pharmaceutical engineering and compliance consulting to support the planning, development, improvement and technical evaluation of pharmaceutical manufacturing facilities and related infrastructure. Our service focuses on aligning facility requirements, manufacturing operations, engineering considerations and applicable Good Manufacturing Practices (GMP). We help clients identify relevant technical requirements, evaluate facility and equipment needs, coordinate project considerations and plan practical approaches to facility development and compliance improvement. Whether you are planning a new pharmaceutical facility, expanding existing operations, upgrading infrastructure or reviewing facility-related compliance requirements, our support is tailored to the project's stage, product category, manufacturing processes and business objectives.",
       "sections": [
         {
-          "heading": "Typical scope",
-          "paragraphs": [],
+          "heading": "1. Pharmaceutical Facility Planning & Layout",
+          "paragraphs": [
+            "Effective facility planning is essential for safe, efficient and well-organised pharmaceutical operations. We provide technical input to help clients assess facility layouts, operational workflows, infrastructure requirements and space utilisation.",
+            "Our support may include:"
+          ],
           "bullets": [
-            "Facility planning and project coordination",
-            "GMP and regulatory requirement review",
-            "Cleanroom and HVAC planning",
-            "Utility planning",
-            "Machinery and equipment selection",
-            "Qualification and validation support",
-            "Plant construction support"
+            "Preliminary facility planning and layout review.",
+            "Assessment of manufacturing, packaging, storage and supporting-area requirements.",
+            "Personnel, material and product movement considerations.",
+            "Segregation and flow considerations based on process and contamination-control risks.",
+            "Space planning for production, quality control, warehousing and support functions.",
+            "Identification of infrastructure needs for new facilities, expansions and renovation projects.",
+            "Technical coordination between facility planning and intended manufacturing activities."
           ]
         },
         {
