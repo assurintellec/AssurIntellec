@@ -2078,7 +2078,21 @@ function renderPremiumService(service, site) {
   const arr=v=>Array.isArray(v)?v.filter(Boolean):[];
   const L=(key,fallback)=>String(service.page_labels?.[key]||fallback);
   const text=v=>String(v||'').trim();
-  const paras=(v,klass='')=>text(v).split(/\n\s*\n/).filter(Boolean).map(x=>`<p${klass?` class="${klass}"`:''}>${e(x)}</p>`).join('');
+  const paras=(v,klass='')=>{
+    // Preserve Decap multiline formatting: normal paragraphs remain paragraphs;
+    // bullet-marked/numbered lines are rendered as semantic lists, not run-on copy.
+    const chunks=text(v).replace(/\r\n?/g,'\n').split(/\n\s*\n/).filter(Boolean);
+    return chunks.map(chunk=>{
+      const lines=chunk.split('\n').map(s=>s.trim()).filter(Boolean);
+      const listLine=/^(?:[-*•✓]\s+|\d+[.)]\s+)/;
+      if(lines.length&&lines.every(s=>listLine.test(s))) {
+        const ordered=lines.every(s=>/^\d+[.)]\s+/.test(s));
+        const tag=ordered?'ol':'ul';
+        return `<${tag} class="ps2-rich-list">${lines.map(s=>`<li>${e(s.replace(listLine,''))}</li>`).join('')}</${tag}>`;
+      }
+      return `<p${klass?` class="${klass}"`:''}>${e(lines.join(' '))}</p>`;
+    }).join('');
+  };
   const image=(src,alt,klass='')=>src?`<img class="${klass}" src="${e(asset(src))}" alt="${e(alt||'AssurIntellec service reference image')}" loading="lazy" decoding="async">`:'';
   const url=href=>safeMediaHref(href)||'./contact.html';
   const icon='<span aria-hidden="true">↗</span>';
@@ -2107,7 +2121,7 @@ function renderPremiumService(service, site) {
     const hasDetails=arr(item.scope).length||text(item.overview)||text(item.outcome)||text(item.note);
     const picture=item.image||service.primary_image||heroPhoto;
     const preview=arr(item.scope).slice(0,2);
-    return `<article class="ps2-service-card ps2-animate" style="--ps2-index:${i%4}"><div class="ps2-card-photo">${image(picture,item.image_alt||item.title)}<span class="ps2-photo-index">${String(i+1).padStart(2,'0')}</span></div><div class="ps2-card-inner"><div class="ps2-card-meta">${e(item.short_label||'PHARMACEUTICAL SOLUTIONS')}</div><h3>${e(item.title)}</h3><p class="ps2-card-lead">${e(item.lead||'Explore project-specific requirements and support.')}</p>${preview.length?`<ul class="ps2-preview-list">${preview.map(s=>`<li>${e(s)}</li>`).join('')}</ul>`:''}${hasDetails?`<details class="ps2-scope"><summary><span>${e(L('card_scope_label','Explore full scope'))}</span><span class="ps2-scope-icon" aria-hidden="true">+</span></summary><div class="ps2-scope-inner">${paras(item.overview)}${arr(item.scope).length?`<h4>${e(L('card_activities_label','Our support may include'))}</h4><ul class="ps2-detail-list">${arr(item.scope).map(a=>`<li>${e(a)}</li>`).join('')}</ul>`:''}${text(item.outcome)?`<div class="ps2-outcome"><strong>${e(L('card_outcome_label','Project objective / outcome'))}</strong>${paras(item.outcome)}</div>`:''}${text(item.note)?`<p class="ps2-scope-note">${e(item.note)}</p>`:''}${text(item.image_caption)?`<p class="ps2-image-caption">${e(item.image_caption)}</p>`:''}</div></details>`:''}</div></article>`;
+    return `<article class="ps2-service-card ps2-animate" style="--ps2-index:${i%4}"><div class="ps2-card-photo">${image(picture,item.image_alt||item.title)}<span class="ps2-photo-index">${String(i+1).padStart(2,'0')}</span></div><div class="ps2-card-inner"><div class="ps2-card-meta">${e(item.short_label||'PHARMACEUTICAL SOLUTIONS')}</div><h3>${e(item.title)}</h3><p class="ps2-card-lead">${e(item.lead||'Explore project-specific requirements and support.')}</p>${preview.length?`<ul class="ps2-preview-list">${preview.map(s=>`<li>${e(s)}</li>`).join('')}</ul>`:''}${hasDetails?`<details class="ps2-scope" ${item.expanded?'open':''}><summary><span>${e(L('card_scope_label','Explore full scope'))}</span><span class="ps2-scope-icon" aria-hidden="true">+</span></summary><div class="ps2-scope-inner">${paras(item.overview)}${arr(item.scope).length?`<h4>${e(L('card_activities_label','Our support may include'))}</h4><ul class="ps2-detail-list">${arr(item.scope).map(a=>`<li>${e(a)}</li>`).join('')}</ul>`:''}${text(item.outcome)?`<div class="ps2-outcome"><strong>${e(L('card_outcome_label','Project objective / outcome'))}</strong>${paras(item.outcome)}</div>`:''}${text(item.note)?`<p class="ps2-scope-note">${e(item.note)}</p>`:''}${text(item.image_caption)?`<p class="ps2-image-caption">${e(item.image_caption)}</p>`:''}</div></details>`:''}</div></article>`;
   };
   const capabilities=`<section class="ps2-section ps2-capabilities" id="capabilities"><div class="container"><div class="ps2-section-header ps2-animate"><div>${sectionLabel('02',L('capabilities_label','WHAT WE DO'))}<h2>${e(service.capabilities_heading||'Our core capabilities')}</h2><p>${e(service.capabilities_description||'Explore our complete service portfolio.')}</p></div><div class="ps2-section-number">${String(core.length).padStart(2,'0')}<small>${e(L('capabilities_count_label','FOCUS AREAS'))}</small></div></div><div class="ps2-card-grid">${core.map(serviceCard).join('')}</div></div></section>`;
   const specialisms=focus.length?`<section class="ps2-section ps2-specialisms" id="specialisms"><div class="container"><div class="ps2-section-header ps2-animate">${sectionLabel('03',L('focus_label','SPECIALISED EXPERTISE'))}<h2>${e(service.focus_heading||'Areas of focus')}</h2><p>${e(L('focus_description','Explore the product categories, professional functions and opportunities relevant to this service.'))}</p></div><div class="ps2-specialism-grid">${focus.map((f,i)=>`<article class="ps2-specialism ps2-animate"><span>${String(i+1).padStart(2,'0')}</span><div><h3>${e(f.title)}</h3>${paras(f.description)}</div></article>`).join('')}</div></div></section>`:'';

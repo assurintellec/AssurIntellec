@@ -84,3 +84,82 @@ body.premium-service-page main .ps2-scope-note{font-size:15px!important;color:#5
 body.premium-service-page main .ps2-anchor-nav{top:var(--header-height,86px);z-index:42}
 body.premium-service-page main section[id]{scroll-margin-top:calc(var(--header-height,86px) + 74px)}
 body.premium-service-page main .ps2-output-heading{top:calc(var(--header-height,86px) + 74px)}
+
+
+/* v3 — readable, editorial, SINGLE-COLUMN layout for every service detail.
+   One item per row on mobile, tablet and desktop; never two detail columns. */
+body.premium-service-page main .container{max-width:1060px;width:calc(100% - 48px)}
+body.premium-service-page main .ps2-editorial-grid,
+body.premium-service-page main .ps2-card-grid,
+body.premium-service-page main .ps2-specialism-grid,
+body.premium-service-page main .ps2-steps,
+body.premium-service-page main .ps2-method-grid,
+body.premium-service-page main .ps2-output-layout,
+body.premium-service-page main .ps2-output-list,
+body.premium-service-page main .ps2-audience-grid,
+body.premium-service-page main .ps2-value-grid,
+body.premium-service-page main .ps2-contact-frame,
+body.premium-service-page main .ps2-related-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+body.premium-service-page main .ps2-intro-aside{display:none}
+body.premium-service-page main .ps2-section-header{max-width:100%;align-items:start}
+body.premium-service-page main .ps2-card-grid{gap:34px}
+body.premium-service-page main .ps2-service-card{width:100%;max-width:100%}
+body.premium-service-page main .ps2-card-photo{aspect-ratio:16/5;max-height:315px}
+body.premium-service-page main .ps2-card-inner{padding:clamp(26px,4vw,46px)}
+body.premium-service-page main .ps2-card-inner h3{font-size:clamp(25px,3vw,37px);max-width:830px}
+body.premium-service-page main .ps2-card-lead{max-width:850px}
+body.premium-service-page main .ps2-preview-list{gap:12px;margin:22px 0 24px}
+body.premium-service-page main .ps2-preview-list li,
+body.premium-service-page main .ps2-detail-list li{color:#24344a!important;font-size:clamp(17px,1.6vw,19px)!important;line-height:1.65!important}
+body.premium-service-page main .ps2-preview-list li{padding-left:26px}
+body.premium-service-page main .ps2-preview-list li:before{font-weight:800;font-size:25px;top:-4px}
+body.premium-service-page main .ps2-scope-inner{max-width:880px;padding:27px 0 4px}
+body.premium-service-page main .ps2-scope-inner p{font-size:var(--ps2-body-size)!important;line-height:1.8!important;margin-bottom:18px}
+body.premium-service-page main .ps2-scope-inner h4{font-size:22px;margin:28px 0 18px}
+body.premium-service-page main .ps2-detail-list{gap:12px;padding-left:30px;margin-bottom:22px;list-style:disc}
+body.premium-service-page main .ps2-intro-copy,
+body.premium-service-page main .ps2-intro-copy p{max-width:870px}
+body.premium-service-page main .ps2-intro-copy p{line-height:1.88;margin:0 0 22px}
+body.premium-service-page main .ps2-specialism{padding:23px 30px;align-items:flex-start}
+body.premium-service-page main .ps2-specialism h3{font-size:24px}
+body.premium-service-page main .ps2-specialism p{font-size:18px!important;line-height:1.72!important}
+body.premium-service-page main .ps2-step{min-height:0;padding:27px 32px}
+body.premium-service-page main .ps2-step h3{font-size:24px}
+body.premium-service-page main .ps2-step p{font-size:18px!important;line-height:1.7!important}
+body.premium-service-page main .ps2-methods{background:#eef6f8;border:1px solid #d7e9ee;color:#20394d;padding:30px}
+body.premium-service-page main .ps2-methods h3{color:#10243a!important}
+body.premium-service-page main .ps2-method-grid>div{border-bottom:1px solid #d2e5ec;padding:12px 0}
+body.premium-service-page main .ps2-method-grid strong{color:#076e83}
+body.premium-service-page main .ps2-method-grid p{color:#24344a!important;font-size:17px!important}
+body.premium-service-page main .ps2-output-heading{position:static}
+body.premium-service-page main .ps2-output-list{gap:10px}
+body.premium-service-page main .ps2-output-list li{font-size:18px!important;line-height:1.62!important;padding:18px 24px}
+body.premium-service-page main .ps2-audience{background:#eff6f8;color:#20344a}
+body.premium-service-page main .ps2-audience h2{color:#10243a!important}
+body.premium-service-page main .ps2-audience>.container p,
+body.premium-service-page main .ps2-audience-item p{color:#24344a!important}
+body.premium-service-page main .ps2-audience .ps2-overline{color:#04768a!important}
+body.premium-service-page main .ps2-audience-item{border-bottom-color:#d2e4ec}
+body.premium-service-page main .ps2-audience-item span{color:#0b7389}
+body.premium-service-page main .ps2-audience-visual{max-width:880px;aspect-ratio:16/6;margin:15px 0 12px}
+body.premium-service-page main .ps2-value{padding:28px 32px}
+body.premium-service-page main .ps2-value p{font-size:18px!important;line-height:1.75!important}
+body.premium-service-page main .ps2-contact-frame{gap:34px}
+body.premium-service-page main .ps2-contact-links{max-width:560px}
+body.premium-service-page main .ps2-related-grid>a{min-height:0;padding:22px 27px}
+body.premium-service-page main .ps2-related-grid h3{font-size:22px}
+body.premium-service-page main .ps2-rich-list{list-style:disc;padding-left:29px;margin:8px 0 24px;display:grid;gap:10px}
+body.premium-service-page main .ps2-rich-list li{line-height:1.7;color:#24344a!important;font-size:var(--ps2-body-size)!important}
+body.premium-service-page main .ps2-rich-list li::marker{color:#087e92}
+body.premium-service-page main .ps2-extra>div p{line-height:1.7!important;font-size:17px!important;margin-bottom:17px}
+body.premium-service-page main details[open]>.ps2-scope-inner,
+body.premium-service-page main details[open] .ps2-scope-inner{animation:ps2-open .22s ease}
+@media(max-width:600px){
+ body.premium-service-page main .container{width:calc(100% - 32px)}
+ body.premium-service-page main .ps2-card-photo{aspect-ratio:16/9;max-height:230px}
+ body.premium-service-page main .ps2-card-inner{padding:23px 20px}
+ body.premium-service-page main .ps2-service-card h3{font-size:25px}
+ body.premium-service-page main .ps2-section-header{display:block}
+ body.premium-service-page main .ps2-specialism{padding:20px}
+ body.premium-service-page main .ps2-audience-visual{aspect-ratio:16/9}
+}
