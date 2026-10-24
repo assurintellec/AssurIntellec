@@ -1919,6 +1919,8 @@ function renderServiceDetail(site) {
   const slug=document.body.dataset.serviceSlug||'';
   const service=SERVICES.find(item=>item.slug===slug);
   if(!service)return;
+  document.body.classList.add('premium-service-page');
+  renderPremiumService(service,site);
   setText('servicePageEyebrow',service.page_eyebrow||'Service');
   setText('servicePageTitle',service.page_title||service.title);
   setText('servicePageDescription',service.page_description||service.description);
@@ -2067,3 +2069,21 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+
+function renderPremiumService(service,site){
+ const main=document.querySelector('body[data-page="service"] main');if(!main)return;
+ const e=escapeHtml,asset=normalizeAsset;
+ const mail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(service.contact_email||'')?service.contact_email:(site.contact?.service_contact_email||'info@assurintellec.in');
+ const image=(path,alt)=>path?`<img src="${e(asset(path))}" alt="${e(alt)}" loading="lazy" decoding="async">`:'';
+ const video=service.hero_video||service.primary_video||'';
+ const photo=service.hero_image||service.primary_image||service.image_1||'';
+ const media=(service.hero_media_type==='video'&&video)?`<video controls playsinline preload="metadata" poster="${e(asset(photo))}" src="${e(asset(video))}"></video>`:image(photo,service.page_title||service.title);
+ const sections=(service.sections||[]).map((s,i)=>`<article class="ps-card ps-reveal"><div class="ps-card-visual">${image(s.image||photo,s.image_alt||s.heading)}<span class="ps-count">${String(i+1).padStart(2,'0')}</span></div><div class="ps-card-content"><details ${s.expanded?'open':''}><summary><span>${e(s.heading||'Explore our services')}</span><span class="ps-plus" aria-hidden="true">+</span></summary><div class="ps-card-body">${(s.paragraphs||[]).map(t=>`<p>${e(t)}</p>`).join('')}${(s.bullets||[]).length?`<ul>${s.bullets.map(t=>`<li>${e(t)}</li>`).join('')}</ul>`:''}${s.image_caption?`<p class="ps-caption">${e(s.image_caption)}</p>`:''}</div></details></div></article>`).join('');
+ const link=`mailto:${encodeURIComponent(mail)}?subject=${encodeURIComponent('AssurIntellec enquiry — '+(service.page_title||service.title))}`;
+ main.innerHTML=`<section class="ps-hero ps-reveal"><div class="ps-hero-media">${media||'<div class="ps-fallback"></div>'}</div><div class="ps-hero-copy"><div class="ps-eyebrow">${e(service.hero_kicker||'OUR EXPERTISE')}</div><h1>${e(service.page_title||service.title)}</h1><p>${e(service.page_description||'')}</p><a class="ps-button" href="#service-contact">${e(service.cta||'Discuss Your Project')} <span>↗</span></a></div></section><section class="ps-intro ps-reveal"><div class="container"><div class="ps-label">OVERVIEW / ${e(service.page_eyebrow||'OUR SERVICES')}</div><h2>${e(service.intro_title||service.page_title||'')}</h2>${(service.intro||'').split(/\n\s*\n/).filter(Boolean).map(t=>`<p>${e(t)}</p>`).join('')}</div></section><section class="ps-services"><div class="container"><div class="ps-section-heading ps-reveal"><div class="ps-label">OUR CAPABILITIES</div><h2>Explore our solutions</h2><p>Select any service area to discover the full scope of support.</p></div><div class="ps-grid">${sections}</div></div></section><section class="ps-contact ps-reveal" id="service-contact"><div class="container ps-contact-grid"><div><div class="ps-label">START A CONVERSATION</div><h2>${e(service.contact_heading||'Let’s discuss your project')}</h2><p>${e(service.contact_description||'Share your requirements with our team.')}</p><a class="ps-email" href="${e(link)}">${e(mail)} ↗</a></div><div class="ps-contact-actions"><a class="ps-button" href="${e(link)}">Email our team ↗</a><a class="ps-outline" href="${e(safeMediaHref(service.cta_url)||'./contact.html')}">Contact form ↗</a><a class="ps-outline" href="./services.html">Explore all 7 services ↗</a><div class="ps-tagline">Intelligent Solutions. Assured Compliance.</div></div></div></section>`;
+ main.style.setProperty('--ps-body-size',Math.min(28,Math.max(15,Number(service.body_font_size)||19))+'px');
+ main.style.setProperty('--ps-heading-size',Math.min(52,Math.max(22,Number(service.heading_font_size)||32))+'px');
+ if(/^#[0-9a-f]{3,8}$/i.test(service.text_color||''))main.style.setProperty('--ps-text',service.text_color);
+ if(service.animation_enabled!==false&&'IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('ps-visible');observer.unobserve(entry.target)}})},{threshold:.08});main.querySelectorAll('.ps-reveal').forEach(el=>observer.observe(el));}else main.querySelectorAll('.ps-reveal').forEach(el=>el.classList.add('ps-visible'));
+}

@@ -2799,11 +2799,79 @@ collections:
         widget: string
         required: false
         hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are both enabled.
+      - label: Hero Media Type (16:9)
+        name: hero_media_type
+        widget: select
+        options: [image, video]
+        default: image
+        required: false
+      - label: Hero Image (16:9)
+        name: hero_image
+        widget: image
+        required: false
+      - label: Hero Video (16:9)
+        name: hero_video
+        widget: file
+        media_folder: videos
+        public_folder: /videos
+        required: false
+      - label: Hero Kicker
+        name: hero_kicker
+        widget: string
+        required: false
+      - label: Body Font Size (px)
+        name: body_font_size
+        widget: number
+        value_type: int
+        min: 15
+        max: 28
+        required: false
+      - label: Section Heading Font Size (px)
+        name: heading_font_size
+        widget: number
+        value_type: int
+        min: 22
+        max: 52
+        required: false
+      - label: Text Color
+        name: text_color
+        widget: color
+        required: false
+      - label: Enable Service Animations
+        name: animation_enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Contact Section Heading
+        name: contact_heading
+        widget: string
+        required: false
+      - label: Contact Section Description
+        name: contact_description
+        widget: text
+        required: false
       - label: Detail Sections
         name: sections
         widget: list
         summary: '{{fields.heading}}'
         fields:
+        - label: Section Image
+          name: image
+          widget: image
+          required: false
+        - label: Image Alt Text
+          name: image_alt
+          widget: string
+          required: false
+        - label: Image Caption
+          name: image_caption
+          widget: text
+          required: false
+        - label: Initially Expanded
+          name: expanded
+          widget: boolean
+          default: false
+          required: false
         - label: Section Heading
           name: heading
           widget: string
