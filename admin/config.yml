@@ -2850,50 +2850,343 @@ collections:
         name: contact_description
         widget: text
         required: false
-      - label: Detail Sections
-        name: sections
-        widget: list
-        summary: '{{fields.heading}}'
+      # New editorial service modules, every published text field is editable in Decap Turbo.
+      - label: Page Navigation Label
+        name: page_navigation_title
+        widget: string
+        required: false
+      - label: Capabilities Heading
+        name: capabilities_heading
+        widget: string
+        required: false
+      - label: Capabilities Section Introduction
+        name: capabilities_description
+        widget: text
+        required: false
+      - label: Specialised Areas Heading
+        name: focus_heading
+        widget: string
+        required: false
+      - label: Process Heading
+        name: process_heading
+        widget: string
+        required: false
+      - label: Deliverables Heading
+        name: deliverables_heading
+        widget: string
+        required: false
+      - label: Who We Support Heading
+        name: audiences_heading
+        widget: string
+        required: false
+      - label: Why Us Heading
+        name: advantages_heading
+        widget: string
+        required: false
+      - label: Related Services Heading
+        name: related_heading
+        widget: string
+        required: false
+      - label: Bottom Tagline
+        name: micro_tagline
+        widget: string
+        required: false
+      - label: Who We Support Visual
+        name: resource_image
+        widget: image
+        required: false
+      - label: Page UI Text Labels (all editable)
+        name: page_labels
+        widget: object
+        required: false
         fields:
-        - label: Section Image
+        - label: Hero Primary Cta
+          name: hero_primary_cta
+          widget: string
+          required: false
+        - label: Hero Secondary Cta
+          name: hero_secondary_cta
+          widget: string
+          required: false
+        - label: Overview Label
+          name: overview_label
+          widget: string
+          required: false
+        - label: Overview More
+          name: overview_more
+          widget: string
+          required: false
+        - label: Overview Link Suffix
+          name: overview_link_suffix
+          widget: string
+          required: false
+        - label: Capabilities Label
+          name: capabilities_label
+          widget: string
+          required: false
+        - label: Capabilities Count Label
+          name: capabilities_count_label
+          widget: string
+          required: false
+        - label: Card Scope Label
+          name: card_scope_label
+          widget: string
+          required: false
+        - label: Card Activities Label
+          name: card_activities_label
+          widget: string
+          required: false
+        - label: Card Outcome Label
+          name: card_outcome_label
+          widget: string
+          required: false
+        - label: Focus Label
+          name: focus_label
+          widget: string
+          required: false
+        - label: Focus Description
+          name: focus_description
+          widget: string
+          required: false
+        - label: Process Label
+          name: process_label
+          widget: string
+          required: false
+        - label: Process Description
+          name: process_description
+          widget: string
+          required: false
+        - label: Approach Heading
+          name: approach_heading
+          widget: string
+          required: false
+        - label: Deliverables Label
+          name: deliverables_label
+          widget: string
+          required: false
+        - label: Deliverables Description
+          name: deliverables_description
+          widget: string
+          required: false
+        - label: Deliverables Contact Cta
+          name: deliverables_contact_cta
+          widget: string
+          required: false
+        - label: Audience Label
+          name: audience_label
+          widget: string
+          required: false
+        - label: Audience Description
+          name: audience_description
+          widget: string
+          required: false
+        - label: Advantages Label
+          name: advantages_label
+          widget: string
+          required: false
+        - label: Additional Label
+          name: additional_label
+          widget: string
+          required: false
+        - label: Additional Heading
+          name: additional_heading
+          widget: string
+          required: false
+        - label: Additional Description
+          name: additional_description
+          widget: string
+          required: false
+        - label: Contact Label
+          name: contact_label
+          widget: string
+          required: false
+        - label: Contact Email Label
+          name: contact_email_label
+          widget: string
+          required: false
+        - label: Contact Email Cta
+          name: contact_email_cta
+          widget: string
+          required: false
+        - label: Contact Form Cta
+          name: contact_form_cta
+          widget: string
+          required: false
+        - label: Contact All Cta
+          name: contact_all_cta
+          widget: string
+          required: false
+        - label: Service Note Label
+          name: service_note_label
+          widget: string
+          required: false
+        - label: Related All Label
+          name: related_all_label
+          widget: string
+          required: false
+        - label: Related Card Label
+          name: related_card_label
+          widget: string
+          required: false
+        - label: Nav Contact
+          name: nav_contact
+          widget: string
+          required: false
+      - label: Core Capabilities — Main 8 or 9 Areas
+        name: core_services
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        hint: Edit each area independently. Support Activities is an expandable editable list.
+        fields:
+        - label: Service Area Title
+          name: title
+          widget: string
+          required: false
+        - label: Short Classification Label
+          name: short_label
+          widget: string
+          required: false
+        - label: Opening Statement
+          name: lead
+          widget: text
+          required: false
+        - label: Detailed Overview
+          name: overview
+          widget: text
+          required: false
+        - label: Support Activities
+          name: scope
+          widget: list
+          required: false
+          field:
+            label: Activity
+            name: activity
+            widget: text
+            required: false
+        - label: Expected Project Outcome
+          name: outcome
+          widget: text
+          required: false
+        - label: Important Scope Qualification
+          name: note
+          widget: text
+          required: false
+        - label: Section Visual
           name: image
           widget: image
           required: false
-        - label: Image Alt Text
+        - label: Visual Alt Text
           name: image_alt
           widget: string
           required: false
-        - label: Image Caption
+        - label: Visual Caption
           name: image_caption
           widget: text
           required: false
-        - label: Initially Expanded
+        - label: Open Detail Panel on Load
           name: expanded
           widget: boolean
-          default: false
           required: false
-        - label: Section Heading
-          name: heading
+      - label: Specialised Focus / Product Categories
+        name: focus_areas
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields:
+        - label: Title
+          name: title
           widget: string
           required: false
-        - label: Paragraphs
-          name: paragraphs
-          widget: list
-          field:
-            label: Paragraph
-            name: paragraph
-            widget: text
-            required: false
+        - label: Explanation
+          name: description
+          widget: text
           required: false
-        - label: Bullet Points
-          name: bullets
-          widget: list
-          field:
-            label: Bullet
-            name: bullet
-            widget: string
-            required: false
+        - label: Optional Image
+          name: image
+          widget: image
           required: false
+      - label: Project Stages / Engagement Process
+        name: workflow
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields:
+        - label: Stage Name
+          name: title
+          widget: string
+          required: false
+        - label: Stage Explanation
+          name: description
+          widget: text
+          required: false
+      - label: Our Approach Steps
+        name: approach_steps
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields:
+        - label: Step Name
+          name: title
+          widget: string
+          required: false
+        - label: Step Explanation
+          name: description
+          widget: text
+          required: false
+      - label: Deliverable List
+        name: deliverables
+        widget: list
+        required: false
+        field:
+          label: Entry
+          name: entry
+          widget: text
+          required: false
+      - label: Who We Support (Audience List)
+        name: audiences
+        widget: list
+        required: false
+        field:
+          label: Entry
+          name: entry
+          widget: text
+          required: false
+      - label: Why AssurIntellec — Differentiators
+        name: advantages
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Explanation
+          name: description
+          widget: text
+          required: false
+      - label: Additional Information / Scope Clarifications
+        name: additional_information
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Explanation
+          name: description
+          widget: text
+          required: false
+        - label: Optional Image
+          name: image
+          widget: image
+          required: false
+      - label: Important Service Note (Expandable)
+        name: service_note
+        widget: text
         required: false
       - label: Contact Button Text
         name: cta
