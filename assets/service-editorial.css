@@ -177,3 +177,27 @@ body.premium-service-page main .ps2-unique-fallback strong{font-size:clamp(20px,
 body.premium-service-page main .ps2-card-photo .ps2-unique-fallback{min-height:100%}
 body.premium-service-page main .ps2-audience-visual .ps2-unique-fallback{min-height:240px}
 @media (max-width:600px){body.premium-service-page main .ps2-focus-photo img,body.premium-service-page main .ps2-extra-photo img{aspect-ratio:16/9}}
+
+/* 25 Oct 2026 — silent automatic repeat with a single mute/unmute control. */
+body.premium-service-page main .ps2-hero-frame .service-video-player,
+body.premium-service-page main .service-primary-media .service-video-player{
+  position:relative;width:100%;height:100%;overflow:hidden;isolation:isolate;background:#0b1f3a;
+}
+body.premium-service-page main .service-video-player > video{
+  display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;
+}
+body.premium-service-page main .service-video-sound{
+  position:absolute;right:22px;bottom:22px;z-index:3;width:51px;height:51px;
+  padding:12px;display:grid;place-items:center;border-radius:50%;
+  border:1px solid rgba(255,255,255,.55);background:rgba(5,21,37,.78);
+  color:#fff;cursor:pointer;box-shadow:0 5px 22px rgba(0,0,0,.25);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:background .2s,transform .2s;
+}
+body.premium-service-page main .service-video-sound svg{width:24px;height:24px;display:block;flex:none}
+body.premium-service-page main .service-video-sound:hover{background:rgba(4,48,72,.94);transform:scale(1.05)}
+body.premium-service-page main .service-video-sound:focus-visible{outline:3px solid #d1eefa;outline-offset:3px}
+@media(max-width:600px){
+  body.premium-service-page main .service-video-sound{right:12px;bottom:12px;width:45px;height:45px;padding:10px}
+  body.premium-service-page main .service-video-sound svg{width:22px;height:22px}
+}

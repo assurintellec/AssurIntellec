@@ -1915,6 +1915,73 @@ function renderServicesPage(site) {
   renderServiceCards(SERVICES);
 }
 
+// The same streamlined, CMS-editable player is used by all seven service details.
+// Only sound can be switched by visitors: no native play, pause, fullscreen,
+// timeline, picture-in-picture, or download controls are shown.
+function serviceVideoMarkup(source, description, poster = '', extraClass = '') {
+  const src = escapeHtml(normalizeAsset(source));
+  const label = escapeHtml(description || 'Service introduction video');
+  const posterAttr = poster ? ` poster="${escapeHtml(normalizeAsset(poster))}"` : '';
+  return `<div class="service-video-player">
+    <video class="${escapeHtml(extraClass)} service-loop-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback"${posterAttr} aria-label="${label}">
+      <source src="${src}" type="video/mp4">Your browser does not support MP4 video.
+    </video>
+    <button type="button" class="service-video-sound" aria-label="Unmute service video" aria-pressed="false" title="Unmute service video"></button>
+  </div>`;
+}
+
+function setupServiceVideoPlayers(root = document) {
+  root.querySelectorAll('.service-video-player').forEach(player => {
+    if (player.dataset.playerReady === 'true') return;
+    player.dataset.playerReady = 'true';
+    const video = player.querySelector('video');
+    const sound = player.querySelector('.service-video-sound');
+    if (!video || !sound) return;
+    // Autoplay reliably starts muted in browsers that allow inline media.
+    video.controls = false;
+    video.removeAttribute('controls');
+    video.autoplay = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.disablePictureInPicture = true;
+    video.disableRemotePlayback = true;
+    video.muted = true;
+    video.volume = 1;
+    video.addEventListener('contextmenu', event => event.preventDefault());
+
+    const icon = (muted) => muted
+      ? '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>'
+      : '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>';
+    const updateSound = () => {
+      const muted = video.muted || video.volume === 0;
+      sound.innerHTML = icon(muted);
+      const title = muted ? 'Unmute service video' : 'Mute service video';
+      sound.setAttribute('aria-label', title);
+      sound.setAttribute('aria-pressed', String(!muted));
+      sound.title = title;
+    };
+    const keepPlaying = () => {
+      if (!video.isConnected || video.error || document.hidden) return;
+      const promise = video.play();
+      if (promise && typeof promise.catch === 'function') promise.catch(() => {});
+    };
+    sound.addEventListener('click', () => {
+      video.muted = !video.muted;
+      video.volume = 1;
+      updateSound();
+      keepPlaying();
+    });
+    video.addEventListener('volumechange', updateSound);
+    // The native loop attribute handles the usual replay; recover if playback
+    // is interrupted by tab lifecycle or if an external script pauses the video.
+    video.addEventListener('pause', () => { if (!video.ended) keepPlaying(); });
+    video.addEventListener('ended', () => { video.currentTime = 0; keepPlaying(); });
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) keepPlaying(); });
+    updateSound();
+    keepPlaying();
+  });
+}
+
 function renderServiceDetail(site) {
   const slug=document.body.dataset.serviceSlug||'';
   const service=SERVICES.find(item=>item.slug===slug);
@@ -1934,13 +2001,13 @@ function renderServiceDetail(site) {
   const imagePath=service.primary_image||service.image_1||'';
   let mediaHtml='';
   if(mode==='video' && videoPath){
-    mediaHtml=`<video class="service-primary-video" controls playsinline preload="metadata" src="${escapeHtml(normalizeAsset(videoPath))}" aria-label="${escapeHtml(service.media_alt||service.title||'Service video')}"></video>`;
+    mediaHtml=serviceVideoMarkup(videoPath,service.media_alt||service.title||'Service video','', 'service-primary-video');
   }else if(imagePath){
     mediaHtml=`<img class="service-primary-image" src="${escapeHtml(normalizeAsset(imagePath))}" alt="${escapeHtml(service.media_alt||service.image_1_alt||service.title||'Service image')}" loading="lazy" decoding="async">`;
   }else{
     mediaHtml=`<div class="service-media-placeholder"><i class="fas ${escapeHtml(service.icon||'fa-circle-nodes')}"></i><span>${escapeHtml(service.title||'Service visual')}</span></div>`;
   }
-  if(stage){stage.innerHTML=mediaLinkWrap(site,{link_enabled:service.media_link_enabled,link_url:service.media_link_url},mediaHtml,service.title||'Service media');}
+  if(stage){stage.innerHTML=(mode==='video'&&videoPath)?mediaHtml:mediaLinkWrap(site,{link_enabled:service.media_link_enabled,link_url:service.media_link_url},mediaHtml,service.title||'Service media');setupServiceVideoPlayers(stage);}
   setText('serviceCaption1',service.caption||service.gallery_caption_1||'');
   setText('serviceImageText1',service.media_text||service.image_1_text||service.description||'');
   if(caption){const cap=String(service.caption||service.gallery_caption_1||'').trim();const txt=String(service.media_text||service.image_1_text||service.description||'').trim();caption.style.display=(cap||txt)?'flex':'none';}
@@ -2129,11 +2196,11 @@ function renderPremiumService(service, site) {
   const mailHref=`mailto:${mail}?subject=${encodeURIComponent(subject)}`;
   const heroPhoto=service.hero_image||service.primary_image||'';
   const heroVideo=service.hero_video||service.primary_video||'';
-  // Muted autoplay starts the video as the main visual without a required tap;
-  // native playback controls remain available, with a service-specific still poster.
+  // Service videos play on repeat; only the custom sound toggle is visible.
+  // The video URL and its optional poster remain individually editable in Decap Turbo.
   const licensedHeroPhoto=hasUniqueImageRights(heroPhoto)?heroPhoto:'';
   const heroMedia=service.hero_media_type==='video'&&heroVideo?
-    `<video class="ps2-hero-video" controls autoplay muted loop playsinline preload="metadata" ${licensedHeroPhoto?`poster="${e(asset(licensedHeroPhoto))}"`:''} aria-label="${e(service.page_title||'Service introduction video')}"><source src="${e(asset(heroVideo))}" type="video/mp4">Your browser does not support MP4 video.</video>`:
+    serviceVideoMarkup(heroVideo,service.page_title||'Service introduction video',licensedHeroPhoto,'ps2-hero-video'):
     image(licensedHeroPhoto,service.page_title,'ps2-hero-image');
   if(service.hero_media_type==='video'&&heroVideo&&licensedHeroPhoto)usedServiceImagePaths.add(asset(licensedHeroPhoto));
   const core=arr(service.core_services),focus=arr(service.focus_areas),workflow=arr(service.workflow),deliverables=arr(service.deliverables),audiences=arr(service.audiences),advantages=arr(service.advantages),extras=arr(service.additional_information),approach=arr(service.approach_steps);
@@ -2166,6 +2233,7 @@ function renderPremiumService(service, site) {
   const contact=`<section class="ps2-section ps2-contact" id="service-contact"><div class="container ps2-contact-frame"><div class="ps2-contact-content ps2-animate"><div class="ps2-contact-overline">${e(L('contact_label','NEXT STEP / START A CONVERSATION'))}</div><h2>${e(service.contact_heading||'Let’s discuss your project')}</h2><p>${e(service.contact_description||'Tell us about your requirements and project goals.')}</p><div class="ps2-contact-mail"><span>${e(L('contact_email_label','DEDICATED SERVICE EMAIL'))}</span><a href="${e(mailHref)}">${e(mail)} ${icon}</a></div></div><div class="ps2-contact-links ps2-animate"><a class="ps2-btn ps2-btn-primary" href="${e(mailHref)}">${e(L('contact_email_cta','Email the service team'))} ${icon}</a><a class="ps2-btn ps2-btn-outline" href="${e(url(service.cta_url))}">${e(L('contact_form_cta','Open enquiry form'))} ${icon}</a><a class="ps2-btn ps2-btn-outline" href="./services.html">${e(L('contact_all_cta','View all seven services'))} ${icon}</a><div class="ps2-contact-brand">${e(service.micro_tagline||'Intelligent Solutions. Assured Compliance.')}</div></div></div>${text(service.service_note)?`<div class="container ps2-legal"><details><summary>${e(L('service_note_label','Important service information'))} <span aria-hidden="true">+</span></summary><div>${paras(service.service_note)}</div></details></div>`:''}</section>`;
   const relatedSection=related.length?`<section class="ps2-related"><div class="container"><div class="ps2-related-title"><h2>${e(service.related_heading||'Explore related services')}</h2><a href="./services.html">${e(L('related_all_label','All services'))} ${icon}</a></div><div class="ps2-related-grid">${related.map(s=>`<a href="./${e(s.page_file||'services.html')}"><span>${e(L('related_card_label','ASSURINTELLEC / SERVICE'))}</span><h3>${e(s.page_title||s.title)}</h3><span class="ps2-related-arrow">↗</span></a>`).join('')}</div></div></section>`:'';
   main.innerHTML=header+navigation+overview+capabilities+specialisms+process+outputs+audience+why+more+contact+relatedSection;
+  setupServiceVideoPlayers(main);
   main.style.setProperty('--ps2-body-size',Math.min(26,Math.max(16,Number(service.body_font_size)||19))+'px');
   main.style.setProperty('--ps2-heading-size',Math.min(46,Math.max(22,Number(service.heading_font_size)||32))+'px');
   main.style.setProperty('--ps2-body-color',/^#[0-9a-f]{3,8}$/i.test(service.text_color||'')?service.text_color:'#24344a');
