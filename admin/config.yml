@@ -2762,9 +2762,9 @@ collections:
           value: image
         - label: Video
           value: video
-        default: image
+        default: video
         required: false
-      - label: Primary Service Image (16:9)
+      - label: Alternate Main Image / Video Fallback (16:9)
         name: primary_image
         widget: image
         required: false
@@ -2799,22 +2799,25 @@ collections:
         widget: string
         required: false
         hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are both enabled.
-      - label: Hero Media Type (16:9)
+      - label: Hero Media Type (16:9) — VIDEO by default
         name: hero_media_type
         widget: select
         options: [image, video]
-        default: image
+        default: video
+        hint: Set to Video for the main service banner; switch to Image only if the main video is intentionally removed.
         required: false
-      - label: Hero Image (16:9)
+      - label: Video Poster / Hero Fallback Image (16:9)
         name: hero_image
         widget: image
         required: false
-      - label: Hero Video (16:9)
+        hint: Editable image shown while this service video loads and when Video is disabled. Choose an image not assigned to any other service or section.
+      - label: Main Service Video — upload your own MP4 (16:9)
         name: hero_video
         widget: file
         media_folder: videos
         public_folder: /videos
         required: false
+        hint: Controls the full-width video at the top of this individual service page. Upload one distinct MP4 per service. The included videos are silent excerpts from the existing brand video; replace with dedicated service footage when available.
       - label: Hero Kicker
         name: hero_kicker
         widget: string
@@ -3072,7 +3075,7 @@ collections:
           name: note
           widget: text
           required: false
-        - label: Section Visual
+        - label: Section Visual — unique photograph
           name: image
           widget: image
           required: false
@@ -3102,10 +3105,11 @@ collections:
           name: description
           widget: text
           required: false
-        - label: Optional Image
+        - label: Optional Image — unique, CMS-editable
           name: image
           widget: image
           required: false
+          hint: Displayed above this item when supplied. Use a different image for each item; do not reuse service hero or capability images.
       - label: Project Stages / Engagement Process
         name: workflow
         widget: list
@@ -3180,10 +3184,11 @@ collections:
           name: description
           widget: text
           required: false
-        - label: Optional Image
+        - label: Optional Image — unique, CMS-editable
           name: image
           widget: image
           required: false
+          hint: Displayed above this item when supplied. Use a different image for each item; do not reuse service hero or capability images.
       - label: Important Service Note (Expandable)
         name: service_note
         widget: text

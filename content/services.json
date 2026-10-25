@@ -20,7 +20,7 @@
       "intro": "Pharmaceutical facilities require careful coordination of infrastructure, manufacturing processes, engineering systems and applicable quality requirements. Decisions made during planning and design can influence operational efficiency, contamination control, equipment suitability and future compliance activities.\n\nAssurIntellec™ provides pharmaceutical engineering and compliance consulting to support the planning, development, technical evaluation and improvement of pharmaceutical manufacturing facilities and related infrastructure.\n\nOur approach integrates facility planning, engineering considerations and GMP-oriented technical guidance to help clients establish clearer project requirements, evaluate suitable solutions and coordinate critical facility-related decisions.\n\nWhether you are planning a new pharmaceutical manufacturing facility, expanding an existing plant, upgrading infrastructure or evaluating facility-related compliance gaps, our support is structured around your facility's development stage, manufacturing activities, product category, applicable requirements and project objectives.\n\nWe aim to help clients make informed technical decisions, identify potential gaps early and organise the requirements necessary to progress their pharmaceutical facility projects.",
       "media_alt": "GMP Engineering & Compliance – technical environment",
       "cta": "Discuss Your Requirements",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "media_link_enabled": false,
       "title": "GMP Engineering & Compliance",
       "icon": "fa-shield-halved",
@@ -28,11 +28,11 @@
       "description": "Technical support for GMP-focused pharmaceutical facilities, planning and compliance requirements.",
       "contact_email": "gmp@assurintellec.in",
       "primary_image": "/images/uploads/Service_1.jpg",
-      "primary_video": "",
+      "primary_video": "/videos/gmp-engineering-intro.mp4",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 01",
-      "hero_media_type": "image",
-      "hero_video": "",
-      "hero_image": "/images/uploads/Service_1.jpg",
+      "hero_media_type": "video",
+      "hero_video": "/videos/gmp-engineering-intro.mp4",
+      "hero_image": "/images/uploads/ServiceVisual_gmp-engineering_01.jpg",
       "body_font_size": 19,
       "heading_font_size": 32,
       "text_color": "#17243a",
@@ -58,7 +58,7 @@
           ],
           "outcome": "Better-defined facility requirements and a more coordinated planning approach aligned with intended operations and relevant GMP considerations.",
           "note": "",
-          "image": "/images/uploads/Service_1.jpg",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_02.jpg",
           "image_alt": "01. Pharmaceutical Facility Planning & Layout",
           "image_caption": "",
           "expanded": true
@@ -80,7 +80,7 @@
           ],
           "outcome": "A clearer understanding of facility-related compliance considerations, potential technical gaps and areas requiring further investigation or improvement.",
           "note": "Formal regulatory determinations, inspections, statutory submissions and approval decisions remain subject to the relevant authorities and the responsible parties.",
-          "image": "/images/uploads/Process_1.jpg",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_03.jpg",
           "image_alt": "02. GMP & Regulatory Compliance Support",
           "image_caption": "",
           "expanded": false
@@ -104,7 +104,7 @@
           ],
           "outcome": "Better coordination of cleanroom and HVAC requirements with the intended manufacturing operations, environmental-control objectives and applicable technical standards.",
           "note": "Final cleanroom classifications, design parameters, airflow criteria and pressure differentials must be established through appropriate engineering design and risk assessment.",
-          "image": "/images/uploads/Process_2.jpg",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_04.jpg",
           "image_alt": "03. Cleanroom Planning & HVAC Systems",
           "image_caption": "",
           "expanded": false
@@ -127,7 +127,7 @@
           ],
           "outcome": "A more coordinated understanding of utility needs, engineering interfaces and supporting infrastructure requirements.",
           "note": "Utility specifications and system designs must be established by the responsible engineering professionals based on actual process needs and applicable requirements.",
-          "image": "/images/uploads/Process_3.jpg",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_05.jpg",
           "image_alt": "04. Pharmaceutical Utilities & Infrastructure",
           "image_caption": "",
           "expanded": false
@@ -151,7 +151,7 @@
           ],
           "outcome": "A clearer technical basis for equipment evaluation and procurement decisions.",
           "note": "Final equipment selection depends on the validated requirements of the client, supplier verification, applicable quality requirements and commercial evaluation.",
-          "image": "/images/uploads/Process_4.jpg",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_06.jpg",
           "image_alt": "05. Pharmaceutical Machinery & Equipment Selection",
           "image_caption": "",
           "expanded": false
@@ -174,7 +174,7 @@
           ],
           "outcome": "A clearer qualification and validation roadmap, with defined documentation considerations and coordination requirements.",
           "note": "Testing, protocol approval, execution, acceptance and release activities must be performed or authorised by appropriately qualified personnel in accordance with the client's quality system.",
-          "image": "/images/uploads/Why_1.jpg",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_07.jpg",
           "image_alt": "06. Qualification & Validation Support",
           "image_caption": "",
           "expanded": false
@@ -197,7 +197,7 @@
           ],
           "outcome": "Clearer technical coordination between project stakeholders and better visibility of outstanding engineering and facility-related requirements.",
           "note": "Construction execution, detailed engineering, certified drawings and statutory approvals are included only where specifically agreed and delivered by appropriately qualified or authorised parties.",
-          "image": "/images/uploads/Why_2.jpg",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_08.jpg",
           "image_alt": "07. Plant Construction & Project Engineering Coordination",
           "image_caption": "",
           "expanded": false
@@ -219,7 +219,7 @@
           ],
           "outcome": "A structured view of potential improvement areas and the technical requirements that may need to be addressed before implementation.",
           "note": "",
-          "image": "/images/uploads/Why_4.jpg",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_09.jpg",
           "image_alt": "08. Existing Facility Assessment & Improvement Planning",
           "image_caption": "",
           "expanded": false
@@ -325,12 +325,12 @@
         {
           "title": "Deliverables — scope notes",
           "description": "Deliverables are determined by the service scope and the level of technical involvement agreed with the client.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_11.jpg"
         },
         {
           "title": "Deliverables — scope notes",
           "description": "Detailed engineering drawings, formal design packages, certified documents, testing, qualification execution, regulatory submissions and other specialised deliverables are included only when expressly agreed and undertaken by appropriately qualified or authorised professionals.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_12.jpg"
         }
       ],
       "service_note": "The scope of consulting support is defined on a project-by-project basis. Reviews and recommendations depend on the information available and the agreed engagement. They do not independently establish GMP compliance or guarantee regulatory approval or acceptance. Final designs, engineering decisions, statutory approvals, qualification execution and release decisions remain subject to the responsibilities of the relevant qualified professionals, authorised parties, applicable authorities and the client's quality system.",
@@ -343,7 +343,7 @@
       "advantages_heading": "Why work with AssurIntellec™",
       "focus_heading": "Facility project approach",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
-      "resource_image": "/images/uploads/Service_1.jpg",
+      "resource_image": "/images/uploads/ServiceVisual_gmp-engineering_10.jpg",
       "related_heading": "Explore our integrated services",
       "page_labels": {
         "hero_primary_cta": "Discuss your requirements",
@@ -401,7 +401,7 @@
       "intro": "Pharmaceutical business acquisitions, facility transfers, industrial asset transactions and strategic business opportunities require careful evaluation of technical capabilities, infrastructure, operational requirements, compliance-related considerations and commercial objectives.\n\nA manufacturing facility may offer significant opportunities for expansion or redevelopment, but its suitability depends on factors such as existing infrastructure, installed equipment, manufacturing capabilities, available documentation, potential upgrade requirements and the intended business purpose.\n\nAssurIntellec™ provides technical and commercial advisory support to help stakeholders evaluate pharmaceutical businesses, facilities, industrial assets and transaction opportunities through a structured, project-specific approach.\n\nWe help clients organise available information, identify key technical and operational considerations, coordinate relevant discussions and establish a clearer understanding of the issues that may influence a transaction decision.\n\nWhether you are considering acquiring a pharmaceutical manufacturing unit, selling an existing facility, evaluating an industrial asset, exploring a strategic business opportunity or assessing a potential transaction, our support is tailored to the transaction stage, available information, client objectives and agreed scope of work.\n\nOur focus is on supporting informed decisions through structured evaluation, practical technical insight and coordinated stakeholder engagement.",
       "media_alt": "Advisory & Transactions – technical environment",
       "cta": "Discuss Your Requirements",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "media_link_enabled": false,
       "title": "Advisory & Transactions",
       "icon": "fa-handshake",
@@ -409,11 +409,11 @@
       "description": "Technical and commercial support for pharmaceutical opportunities, facilities and transactions.",
       "contact_email": "advisory@assurintellec.in",
       "primary_image": "/images/uploads/Service_2.jpg",
-      "primary_video": "",
+      "primary_video": "/videos/advisory-transactions-intro.mp4",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 02",
-      "hero_media_type": "image",
-      "hero_video": "",
-      "hero_image": "/images/uploads/Service_2.jpg",
+      "hero_media_type": "video",
+      "hero_video": "/videos/advisory-transactions-intro.mp4",
+      "hero_image": "/images/uploads/ServiceVisual_advisory-transactions_01.jpg",
       "body_font_size": 19,
       "heading_font_size": 32,
       "text_color": "#17243a",
@@ -440,7 +440,7 @@
           ],
           "outcome": "To help stakeholders establish a clearer understanding of the technical considerations associated with an opportunity before progressing to further evaluation or transaction discussions.",
           "note": "The scope and depth of technical due diligence depend on the documentation available, site access, verification requirements and specialist assessments included in the engagement.",
-          "image": "/images/uploads/Service_2.jpg",
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_02.jpg",
           "image_alt": "01. Technical Due Diligence",
           "image_caption": "",
           "expanded": true
@@ -464,7 +464,7 @@
           ],
           "outcome": "To help clients understand the available information about a facility or asset and identify the considerations that may affect its suitability for the intended purpose.",
           "note": "Property title, ownership, structural condition, environmental liabilities, statutory permissions and other specialised matters require verification by appropriately qualified professionals.",
-          "image": "/images/uploads/Process_1.jpg",
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_03.jpg",
           "image_alt": "02. Pharmaceutical Facility & Asset Assessment",
           "image_caption": "",
           "expanded": false
@@ -488,7 +488,7 @@
           ],
           "outcome": "To help stakeholders determine what is known, what requires further investigation and which questions should be resolved before proceeding to the next stage.",
           "note": "Preliminary opportunity reviews do not constitute a guarantee of profitability, market demand, financial viability or transaction success.",
-          "image": "/images/uploads/Process_2.jpg",
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_04.jpg",
           "image_alt": "03. Pharmaceutical Business & Opportunity Evaluation",
           "image_caption": "",
           "expanded": false
@@ -512,7 +512,7 @@
           ],
           "outcome": "To support a well-organised acquisition evaluation by helping clients understand the available technical information, potential limitations and further checks that may be appropriate.",
           "note": "Acquisition decisions, financial commitments, financing, legal documentation, regulatory approvals and transaction execution remain with the client and the relevant authorised professionals unless additional services are expressly agreed.",
-          "image": "/images/uploads/Process_3.jpg",
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_05.jpg",
           "image_alt": "04. Acquisition Advisory Support",
           "image_caption": "",
           "expanded": false
@@ -536,7 +536,7 @@
           ],
           "outcome": "To help sellers communicate the technical scope of an opportunity in a structured manner and facilitate relevant discussions with prospective parties.",
           "note": "Any representation, marketing mandate, brokerage role, transaction fee or success-based commercial arrangement must be separately agreed, documented and conducted in accordance with applicable law. A completed sale, buyer commitment or specific transaction value is not guaranteed.",
-          "image": "/images/uploads/Process_4.jpg",
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_06.jpg",
           "image_alt": "05. Divestment & Facility Sale Advisory",
           "image_caption": "",
           "expanded": false
@@ -559,7 +559,7 @@
           ],
           "outcome": "To help stakeholders understand potential improvement requirements that may affect the planned use, redevelopment or transfer of a facility or asset.",
           "note": "Any final estimate of project cost, remediation work, compliance status or technical feasibility requires appropriate investigation and may require input from specialist consultants.",
-          "image": "/images/uploads/Why_1.jpg",
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_07.jpg",
           "image_alt": "06. Technical Gap & Improvement Assessment",
           "image_caption": "",
           "expanded": false
@@ -581,7 +581,7 @@
           ],
           "outcome": "To help potential business partners develop a clearer understanding of an opportunity before moving into detailed evaluation and formal agreements.",
           "note": "Any partnership remains subject to independent due diligence, appropriate quality and regulatory assessment, commercial negotiation and formal contractual arrangements.",
-          "image": "/images/uploads/Why_2.jpg",
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_08.jpg",
           "image_alt": "07. Strategic Partnerships & Business Opportunities",
           "image_caption": "",
           "expanded": false
@@ -604,7 +604,7 @@
           ],
           "outcome": "To provide structured coordination and clearer visibility of outstanding technical information and agreed actions.",
           "note": "Transaction coordination does not imply authority to negotiate, commit, sign or otherwise bind any party unless such authority is separately and expressly granted.",
-          "image": "/images/uploads/Why_4.jpg",
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_09.jpg",
           "image_alt": "08. Project & Transaction Coordination",
           "image_caption": "",
           "expanded": false
@@ -614,32 +614,32 @@
         {
           "title": "Pharmaceutical Manufacturing Facilities",
           "description": "Preliminary technical evaluation of existing plants, manufacturing units and facilities being considered for acquisition, divestment, expansion or redevelopment.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_11.jpg"
         },
         {
           "title": "Plant, Machinery & Industrial Assets",
           "description": "Review and coordination of available information relating to pharmaceutical production equipment, laboratory equipment and selected facility assets.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_12.jpg"
         },
         {
           "title": "Business Acquisition & Divestment",
           "description": "Technical and transaction-related support for parties evaluating the purchase or sale of a pharmaceutical business, facility or defined group of assets.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_13.jpg"
         },
         {
           "title": "Facility Expansion & Redevelopment",
           "description": "Preliminary assessment of existing infrastructure and identification of areas that may require further development or technical evaluation.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_14.jpg"
         },
         {
           "title": "Strategic Business Partnerships",
           "description": "Coordination of initial discussions between organisations exploring facility use, manufacturing collaboration or other pharmaceutical business opportunities.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_15.jpg"
         },
         {
           "title": "Investment-Related Technical Review",
           "description": "Facility- and asset-related technical input to help stakeholders identify questions that may require additional investigation before making an investment decision.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_16.jpg"
         }
       ],
       "workflow": [
@@ -722,12 +722,12 @@
         {
           "title": "Deliverables — scope notes",
           "description": "The scope, level of detail, site-visit arrangements, verification procedures and reporting format are established before the engagement begins.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_17.jpg"
         },
         {
           "title": "Deliverables — scope notes",
           "description": "Financial valuation reports, legal opinions, property-title verification, audited financial assessments, environmental reports and certified engineering assessments are excluded unless separately agreed and provided by appropriately qualified professionals.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_advisory-transactions_18.jpg"
         }
       ],
       "service_note": "Advisory and transaction support is provided on a project-specific basis and depends on the agreed scope, information made available and access granted by the relevant parties. Preliminary reviews do not independently establish asset condition, regulatory compliance, financial viability, market value or transaction suitability, and do not guarantee transaction completion or regulatory approval.\n\nLegal, financial, tax, valuation, property-title, environmental and other specialist assessments should be performed by appropriately qualified professionals whenever required. Any brokerage, transaction representation, marketing mandate, agency appointment or success-based remuneration must be separately agreed and documented where applicable.",
@@ -740,7 +740,7 @@
       "advantages_heading": "Why work with AssurIntellec™",
       "focus_heading": "Opportunities we support",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
-      "resource_image": "/images/uploads/Service_2.jpg",
+      "resource_image": "/images/uploads/ServiceVisual_advisory-transactions_10.jpg",
       "related_heading": "Explore our integrated services",
       "page_labels": {
         "hero_primary_cta": "Discuss your requirements",
@@ -797,7 +797,7 @@
       "intro": "The pharmaceutical and life-sciences industries depend on skilled professionals who combine scientific knowledge, technical competencies, practical understanding and a commitment to quality.\n\nAt the same time, students, fresh graduates and experienced professionals need clear career pathways, relevant opportunities and a better understanding of the skills employers expect.\n\nAssurIntellec™ bridges these needs through pharmaceutical-focused talent and recruitment support, professional connections, internship coordination, placement assistance and career guidance.\n\nWe work to understand the requirements of pharmaceutical organisations and connect those requirements with potentially suitable candidates. We also support students and professionals in understanding relevant career options, identifying skill-development needs and exploring opportunities aligned with their qualifications, interests and experience.\n\nWhether an organisation is building a production team, recruiting quality professionals, identifying research talent or seeking specialised technical expertise, or a student is looking for an internship or an early-career opportunity, our approach focuses on understanding requirements, relevant competencies and professional objectives.\n\nOur service is tailored to the organisation's technical requirements, the role's responsibilities, the candidate's qualifications and experience, and the nature of the opportunity.",
       "media_alt": "Talent & Recruitment – technical environment",
       "cta": "Discuss Your Requirements",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "media_link_enabled": false,
       "title": "Talent & Recruitment",
       "icon": "fa-user-group",
@@ -805,11 +805,11 @@
       "description": "Support for connecting life-sciences organizations with relevant professional capabilities.",
       "contact_email": "careers@assurintellec.in",
       "primary_image": "/images/uploads/Service_3.jpg",
-      "primary_video": "",
+      "primary_video": "/videos/talent-recruitment-intro.mp4",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 03",
-      "hero_media_type": "image",
-      "hero_video": "",
-      "hero_image": "/images/uploads/Service_3.jpg",
+      "hero_media_type": "video",
+      "hero_video": "/videos/talent-recruitment-intro.mp4",
+      "hero_image": "/images/uploads/ServiceVisual_talent-recruitment_01.jpg",
       "body_font_size": 19,
       "heading_font_size": 32,
       "text_color": "#17243a",
@@ -836,7 +836,7 @@
           ],
           "outcome": "To help organisations structure their recruitment requirements and connect with candidates whose profiles may align with the intended roles.",
           "note": "",
-          "image": "/images/uploads/Service_3.jpg",
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_02.jpg",
           "image_alt": "01. Pharmaceutical Recruitment & Talent Acquisition",
           "image_caption": "",
           "expanded": true
@@ -866,7 +866,7 @@
           ],
           "outcome": "To support more focused recruitment by considering the qualifications, experience and competencies relevant to each pharmaceutical function.",
           "note": "Role availability depends on the organisation's requirements, candidate availability and the agreed recruitment scope.",
-          "image": "/images/uploads/Process_1.jpg",
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_03.jpg",
           "image_alt": "02. Technical & Scientific Recruitment",
           "image_caption": "",
           "expanded": false
@@ -889,7 +889,7 @@
           ],
           "outcome": "To help students explore relevant professional exposure and understand how their academic learning connects with potential industry roles.",
           "note": "Internship availability, eligibility, selection and the nature of practical exposure depend on the host organisation and the particular programme.",
-          "image": "/images/uploads/Process_2.jpg",
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_04.jpg",
           "image_alt": "03. Internship Opportunities & Industry Exposure",
           "image_caption": "",
           "expanded": false
@@ -912,7 +912,7 @@
           ],
           "outcome": "To help candidates approach relevant career opportunities in a more informed and structured manner while assisting employers in connecting with potentially suitable entry-level talent.",
           "note": "Placement support does not guarantee an interview, selection, employment offer or job placement. Final hiring decisions remain with the employer.",
-          "image": "/images/uploads/Process_3.jpg",
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_05.jpg",
           "image_alt": "04. Placement Support & Employer Connections",
           "image_caption": "",
           "expanded": false
@@ -935,7 +935,7 @@
           ],
           "outcome": "To help candidates better understand their career options, present their qualifications effectively and identify practical steps toward their professional goals.",
           "note": "Career guidance is advisory in nature. Career outcomes depend on individual preparation, qualifications, experience, available opportunities and employer selection decisions.",
-          "image": "/images/uploads/Process_4.jpg",
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_06.jpg",
           "image_alt": "05. Career Guidance & Professional Development",
           "image_caption": "",
           "expanded": false
@@ -958,7 +958,7 @@
           ],
           "outcome": "To help organisations clarify specialist talent requirements and coordinate access to professionals for further evaluation.",
           "note": "The availability of suitable candidates depends on the role, location, experience criteria, compensation, engagement terms and prevailing recruitment conditions.",
-          "image": "/images/uploads/Why_1.jpg",
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_07.jpg",
           "image_alt": "06. Specialist Professional Recruitment",
           "image_caption": "",
           "expanded": false
@@ -980,7 +980,7 @@
           ],
           "outcome": "To create a clearer basis for recruitment, candidate evaluation and communication between employers and applicants.",
           "note": "",
-          "image": "/images/uploads/Why_2.jpg",
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_08.jpg",
           "image_alt": "07. Role Definition & Competency Mapping",
           "image_caption": "",
           "expanded": false
@@ -1002,7 +1002,7 @@
           ],
           "outcome": "To provide structured coordination and help employers and candidates understand the information and actions relevant to their recruitment engagement.",
           "note": "",
-          "image": "/images/uploads/Why_4.jpg",
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_09.jpg",
           "image_alt": "08. Recruitment Coordination & Talent Support",
           "image_caption": "",
           "expanded": false
@@ -1012,52 +1012,52 @@
         {
           "title": "Production & Manufacturing",
           "description": "Manufacturing operations, process support, packaging",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_11.jpg"
         },
         {
           "title": "Quality Assurance",
           "description": "GMP systems, documentation, compliance support",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_12.jpg"
         },
         {
           "title": "Quality Control",
           "description": "Analytical testing, laboratory operations, instrumentation",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_13.jpg"
         },
         {
           "title": "Research & Development",
           "description": "Formulation research, preformulation, analytical development",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_14.jpg"
         },
         {
           "title": "Regulatory Affairs",
           "description": "Regulatory documentation and coordination",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_15.jpg"
         },
         {
           "title": "Engineering & Validation",
           "description": "Equipment, utilities, HVAC, qualification and validation",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_16.jpg"
         },
         {
           "title": "Laboratory Operations",
           "description": "Research support, testing and laboratory activities",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_17.jpg"
         },
         {
           "title": "Procurement & Supply Chain",
           "description": "Sourcing, vendor coordination and purchasing support",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_18.jpg"
         },
         {
           "title": "Technical & Project Support",
           "description": "Facility development and technical coordination",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_19.jpg"
         },
         {
           "title": "Internships & Early Careers",
           "description": "Student internships, graduate opportunities and entry-level roles",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_talent-recruitment_20.jpg"
         }
       ],
       "workflow": [
@@ -1157,7 +1157,7 @@
       "advantages_heading": "Why work with AssurIntellec™",
       "focus_heading": "Professional areas we support",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
-      "resource_image": "/images/uploads/Service_3.jpg",
+      "resource_image": "/images/uploads/ServiceVisual_talent-recruitment_10.jpg",
       "related_heading": "Explore our integrated services",
       "page_labels": {
         "hero_primary_cta": "Discuss your requirements",
@@ -1214,7 +1214,7 @@
       "intro": "The pharmaceutical and life-sciences industries depend on reliable sourcing networks, suitable product specifications and well-coordinated commercial relationships. Identifying potential suppliers, understanding product requirements and establishing relevant connections are important steps in developing effective supply relationships.\n\nAssurIntellec™ supports pharmaceutical and life-sciences trade opportunities through product sourcing coordination, supplier and buyer connections, market opportunity identification and commercial communication.\n\nWe help businesses define their sourcing requirements, explore potential product opportunities and coordinate discussions with relevant industry participants. Our approach considers the product category, intended application, technical requirements, target geography and commercial objectives of each assignment.\n\nWhether you are seeking active pharmaceutical ingredients (APIs), pharmaceutical excipients, specialty chemicals, formulation raw materials or laboratory-related products, our support is tailored to your requirements and the scope agreed for the engagement.\n\nFor suppliers, manufacturers and other industry participants, we also support the exploration of potential business connections and product-related commercial opportunities.\n\nOur focus is on helping stakeholders organise information, explore relevant connections and establish a clearer starting point for product sourcing and trade-related discussions.",
       "media_alt": "Life Sciences Trade – technical environment",
       "cta": "Discuss Your Requirements",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "media_link_enabled": false,
       "title": "Life Sciences Trade",
       "icon": "fa-globe",
@@ -1222,11 +1222,11 @@
       "description": "Support across pharmaceutical and life-sciences products, opportunities and trade activities.",
       "contact_email": "trade@assurintellec.in",
       "primary_image": "/images/uploads/Service_4.jpg",
-      "primary_video": "",
+      "primary_video": "/videos/life-sciences-trade-intro.mp4",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 04",
-      "hero_media_type": "image",
-      "hero_video": "",
-      "hero_image": "/images/uploads/Service_4.jpg",
+      "hero_media_type": "video",
+      "hero_video": "/videos/life-sciences-trade-intro.mp4",
+      "hero_image": "/images/uploads/ServiceVisual_life-sciences-trade_01.jpg",
       "body_font_size": 19,
       "heading_font_size": 32,
       "text_color": "#17243a",
@@ -1251,7 +1251,7 @@
           ],
           "outcome": "To help pharmaceutical businesses explore relevant API sourcing opportunities and coordinate preliminary discussions with potential supply partners.",
           "note": "Supplier qualification, API authenticity, applicable manufacturing and distribution licences, regulatory documentation and material quality must be independently verified by the relevant parties before any purchase or use.",
-          "image": "/images/uploads/Service_4.jpg",
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_02.jpg",
           "image_alt": "01. API Sourcing & Supply Connections",
           "image_caption": "",
           "expanded": true
@@ -1275,7 +1275,7 @@
           ],
           "outcome": "To help buyers explore potential excipient sources with consideration for their stated technical, quality and commercial requirements.",
           "note": "",
-          "image": "/images/uploads/Process_1.jpg",
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_03.jpg",
           "image_alt": "02. Pharmaceutical Excipients Sourcing",
           "image_caption": "",
           "expanded": false
@@ -1298,7 +1298,7 @@
           ],
           "outcome": "To facilitate relevant sourcing discussions and help clients organise the product information needed for supplier evaluation.",
           "note": "The scope may include selected chemicals used in pharmaceutical production, formulation development, research and laboratory activities, subject to applicable legal and regulatory requirements.",
-          "image": "/images/uploads/Process_2.jpg",
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_04.jpg",
           "image_alt": "03. Pharmaceutical Chemicals & Specialty Chemicals",
           "image_caption": "",
           "expanded": false
@@ -1322,7 +1322,7 @@
           ],
           "outcome": "To help businesses explore appropriate sourcing opportunities through structured requirements, organised information and relevant commercial connections.",
           "note": "Final supplier selection remains subject to the buyer's technical, quality, regulatory and commercial evaluation.",
-          "image": "/images/uploads/Process_3.jpg",
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_05.jpg",
           "image_alt": "04. Pharmaceutical Raw Materials Sourcing",
           "image_caption": "",
           "expanded": false
@@ -1346,7 +1346,7 @@
           ],
           "outcome": "To help clients organise their sourcing process and explore potential supply relationships that merit further assessment.",
           "note": "",
-          "image": "/images/uploads/Process_4.jpg",
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_06.jpg",
           "image_alt": "05. Supplier Identification & Sourcing Coordination",
           "image_caption": "",
           "expanded": false
@@ -1369,7 +1369,7 @@
           ],
           "outcome": "To create opportunities for relevant business discussions between parties whose stated product and commercial requirements may align.",
           "note": "",
-          "image": "/images/uploads/Why_1.jpg",
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_07.jpg",
           "image_alt": "06. Buyer, Supplier & Manufacturer Connections",
           "image_caption": "",
           "expanded": false
@@ -1392,7 +1392,7 @@
           ],
           "outcome": "To help businesses explore potential market connections and product opportunities before committing resources to a wider commercial initiative.",
           "note": "",
-          "image": "/images/uploads/Why_2.jpg",
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_08.jpg",
           "image_alt": "07. Product Opportunities & Market Development",
           "image_caption": "",
           "expanded": false
@@ -1415,7 +1415,7 @@
           ],
           "outcome": "To provide structured support for product sourcing discussions and other agreed trade-related activities.",
           "note": "",
-          "image": "/images/uploads/Why_4.jpg",
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_09.jpg",
           "image_alt": "08. Commercial Coordination & Trade Support",
           "image_caption": "",
           "expanded": false
@@ -1425,27 +1425,27 @@
         {
           "title": "Active Pharmaceutical Ingredients (APIs)",
           "description": "Product identification and sourcing coordination for specified active pharmaceutical ingredients and related supply enquiries.",
-          "image": "/images/uploads/Process_1.jpg"
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_11.jpg"
         },
         {
           "title": "Pharmaceutical Excipients",
           "description": "Sourcing coordination for formulation ingredients with defined product, grade and intended-use requirements.",
-          "image": "/images/uploads/Process_2.jpg"
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_12.jpg"
         },
         {
           "title": "Pharmaceutical & Specialty Chemicals",
           "description": "Product enquiries involving selected chemicals used in pharmaceutical production, research, formulation and laboratory activities.",
-          "image": "/images/uploads/Process_3.jpg"
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_13.jpg"
         },
         {
           "title": "Pharmaceutical Raw Materials",
           "description": "Sourcing support for selected materials required by pharmaceutical manufacturers and related businesses.",
-          "image": "/images/uploads/Process_4.jpg"
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_14.jpg"
         },
         {
           "title": "Research & Laboratory Products",
           "description": "Selected chemicals, consumables and related products for pharmaceutical laboratories, analytical work and scientific research.\n\nThe availability of products and suppliers depends on the stated specifications, geographical market, applicable restrictions and the scope of each engagement.",
-          "image": "/images/uploads/Why_1.jpg"
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_15.jpg"
         }
       ],
       "workflow": [
@@ -1529,17 +1529,17 @@
         {
           "title": "Our Product Portfolio Focus",
           "description": "Our sourcing and trade support may cover the following categories, depending on the project requirements.",
-          "image": "/images/uploads/Service_4.jpg"
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_16.jpg"
         },
         {
           "title": "Deliverables — scope notes",
           "description": "Depending on the engagement, agreed deliverables may include:",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_17.jpg"
         },
         {
           "title": "Deliverables — scope notes",
           "description": "The exact deliverables depend on the product, assignment scope, information availability and the level of support agreed with the client.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_life-sciences-trade_18.jpg"
         }
       ],
       "service_note": "Life Sciences Trade support is provided according to the agreed scope, available information and authorised instructions from the parties involved. Identification or introduction of potential suppliers, buyers or manufacturers does not guarantee product availability, supplier suitability, material quality, regulatory acceptance or completion of a transaction.\n\nApplicable licences, product registrations, supplier credentials, material identity, specifications, quality documentation, storage and transportation requirements, and import/export obligations must be verified by the relevant authorised parties. Any trading, brokerage, agency, representation or commission-based arrangement must be separately agreed and conducted in accordance with applicable law.",
@@ -1552,7 +1552,7 @@
       "advantages_heading": "Why work with AssurIntellec™",
       "focus_heading": "Products and categories",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
-      "resource_image": "/images/uploads/Service_4.jpg",
+      "resource_image": "/images/uploads/ServiceVisual_life-sciences-trade_10.jpg",
       "related_heading": "Explore our integrated services",
       "page_labels": {
         "hero_primary_cta": "Discuss your requirements",
@@ -1610,7 +1610,7 @@
       "intro": "Selecting the right pharmaceutical machinery and laboratory equipment is an important decision for organisations establishing new facilities, expanding production, upgrading existing operations or strengthening their research and testing capabilities.\n\nEquipment selection involves more than comparing purchase prices. Technical specifications, intended applications, production capacity, process compatibility, installation requirements, available utilities, documentation, maintenance needs and applicable quality expectations all influence the suitability of a technology solution.\n\nAssurIntellec™ provides technical and procurement-oriented support to help pharmaceutical and life-sciences organisations identify, evaluate, compare and coordinate suitable machinery, laboratory instruments and related technologies.\n\nWe help clients clarify equipment requirements, assess available technical options, organise supplier information and coordinate discussions with potential manufacturers, vendors and technology providers.\n\nWhether you are planning a pharmaceutical manufacturing facility, procuring analytical laboratory instruments, upgrading production machinery or evaluating alternative equipment suppliers, our support is tailored to the intended application, process requirements, facility constraints, quality expectations and project budget.\n\nOur approach focuses on requirement-based equipment selection, informed technical comparison and structured procurement coordination to help clients make better-informed technology decisions.",
       "media_alt": "Pharma & Laboratory Technologies – technical environment",
       "cta": "Discuss Your Requirements",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "media_link_enabled": false,
       "title": "Pharma & Laboratory Technologies",
       "icon": "fa-flask",
@@ -1618,11 +1618,11 @@
       "description": "Technology and equipment-oriented support for pharmaceutical and laboratory requirements.",
       "contact_email": "laboratory@assurintellec.in",
       "primary_image": "/images/uploads/Service_5.jpg",
-      "primary_video": "",
+      "primary_video": "/videos/pharma-laboratory-technologies-intro.mp4",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 05",
-      "hero_media_type": "image",
-      "hero_video": "",
-      "hero_image": "/images/uploads/Service_5.jpg",
+      "hero_media_type": "video",
+      "hero_video": "/videos/pharma-laboratory-technologies-intro.mp4",
+      "hero_image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_01.jpg",
       "body_font_size": 19,
       "heading_font_size": 32,
       "text_color": "#17243a",
@@ -1655,7 +1655,7 @@
           ],
           "outcome": "To help clients establish clear machinery requirements and evaluate equipment options based on technical suitability, operational needs and project priorities.",
           "note": "",
-          "image": "/images/uploads/Service_5.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_02.jpg",
           "image_alt": "01. Pharmaceutical Machinery Selection",
           "image_caption": "",
           "expanded": true
@@ -1690,7 +1690,7 @@
           ],
           "outcome": "To help laboratories evaluate equipment options that align with their intended applications, performance requirements, available infrastructure and budget.",
           "note": "Final instrument selection must take account of the relevant analytical methods, performance qualification needs, data-integrity expectations and applicable quality requirements.",
-          "image": "/images/uploads/Process_1.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_03.jpg",
           "image_alt": "02. Laboratory Equipment & Instrumentation",
           "image_caption": "",
           "expanded": false
@@ -1715,7 +1715,7 @@
           ],
           "outcome": "To help clients manage equipment-related information and supplier communication in a more structured manner while supporting informed procurement decisions.",
           "note": "",
-          "image": "/images/uploads/Process_2.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_04.jpg",
           "image_alt": "03. Equipment Procurement & Sourcing Support",
           "image_caption": "",
           "expanded": false
@@ -1749,7 +1749,7 @@
           ],
           "outcome": "To help clients understand the material differences between equipment proposals and make more informed selection decisions.",
           "note": "Final selection remains the client's responsibility and should be based on verified specifications, application requirements, supplier evaluation and the relevant quality system.",
-          "image": "/images/uploads/Process_3.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_05.jpg",
           "image_alt": "04. Technical Comparison & Equipment Evaluation",
           "image_caption": "",
           "expanded": false
@@ -1773,7 +1773,7 @@
           ],
           "outcome": "To establish a clearer technical basis for equipment evaluation and improve communication of the client's requirements to potential suppliers.",
           "note": "",
-          "image": "/images/uploads/Process_4.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_06.jpg",
           "image_alt": "05. User Requirement Specifications & Technical Documentation",
           "image_caption": "",
           "expanded": false
@@ -1797,7 +1797,7 @@
           ],
           "outcome": "To help clients coordinate their laboratory equipment requirements with the intended activities, available infrastructure and project objectives.",
           "note": "Final laboratory layouts, engineering designs, safety provisions and specialist infrastructure requirements should be established by appropriately qualified professionals.",
-          "image": "/images/uploads/Why_1.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_07.jpg",
           "image_alt": "06. New Laboratory & Equipment Planning Support",
           "image_caption": "",
           "expanded": false
@@ -1821,7 +1821,7 @@
           ],
           "outcome": "To help clients assess potential equipment alternatives and identify the technical considerations associated with an upgrade or replacement decision.",
           "note": "",
-          "image": "/images/uploads/Why_2.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_08.jpg",
           "image_alt": "07. Equipment Upgrades, Replacement & Technology Modernisation",
           "image_caption": "",
           "expanded": false
@@ -1844,7 +1844,7 @@
           ],
           "outcome": "To help clients account for post-procurement requirements and coordinate the relevant information needed for equipment implementation.",
           "note": "",
-          "image": "/images/uploads/Why_4.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_09.jpg",
           "image_alt": "08. Installation, Commissioning & Qualification Coordination",
           "image_caption": "",
           "expanded": false
@@ -1866,7 +1866,7 @@
           ],
           "outcome": "To help clients consider relevant lifecycle and support requirements alongside the initial equipment purchase.",
           "note": "Service availability, spare-parts supply, warranty coverage and instrument performance remain subject to the supplier's terms and the final purchase agreement.",
-          "image": "/images/uploads/Service_5.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_10.jpg",
           "image_alt": "09. After-Sales Support, Maintenance & Lifecycle Considerations",
           "image_caption": "",
           "expanded": false
@@ -1956,7 +1956,7 @@
         {
           "title": "Scope of deliverables",
           "description": "Depending on the assignment, deliverables may include:\n\nThe exact deliverables depend on the equipment category, project requirements and agreed scope of work.\n\nFormal equipment approvals, certified design packages, supplier audits, equipment testing, calibration, qualification execution and regulatory submissions are not implied unless specifically agreed and performed by appropriately qualified or authorised parties.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_12.jpg"
         }
       ],
       "service_note": "Equipment and technology support is provided according to the agreed engagement, available information and client requirements. Equipment identification, supplier introductions, technical comparisons and procurement coordination do not guarantee product suitability, equipment performance, supplier reliability, delivery, regulatory acceptance or successful commissioning.\n\nFinal purchasing decisions, supplier qualification, equipment acceptance and compliance with applicable technical and quality requirements remain the responsibility of the client and relevant authorised parties. Equipment design, installation, servicing, calibration, testing and qualification must be undertaken by appropriately qualified personnel whenever required.",
@@ -1969,7 +1969,7 @@
       "advantages_heading": "Why work with AssurIntellec™",
       "focus_heading": "Equipment requirements",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
-      "resource_image": "/images/uploads/Service_5.jpg",
+      "resource_image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_11.jpg",
       "related_heading": "Explore our integrated services",
       "page_labels": {
         "hero_primary_cta": "Discuss your requirements",
@@ -2027,7 +2027,7 @@
       "intro": "Pharmaceutical research requires a systematic approach to scientific questions, formulation challenges, experimental planning, data interpretation and technical documentation. From early-stage formulation concepts to organised research projects, each stage benefits from a clear scientific objective, an appropriate methodology and careful interpretation of the available evidence.\n\nAssurIntellec™ provides research-oriented scientific and technical support across pharmaceutical formulation, development activities, laboratory-related projects and scientific documentation.\n\nOur approach focuses on understanding the research objective, organising the scientific requirements, evaluating relevant technical information and supporting the development of structured research plans and documentation.\n\nWhether you are exploring a new formulation concept, evaluating excipient selection, planning laboratory experiments, interpreting experimental results or preparing scientific project documentation, our support is tailored to the research question, formulation characteristics, available resources and intended outcome.\n\nWe aim to help clients approach scientific challenges systematically, organise their research activities and develop a clearer technical foundation for research and formulation-related decisions.",
       "media_alt": "Research & Scientific Services – technical environment",
       "cta": "Discuss Your Requirements",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "media_link_enabled": false,
       "title": "Research & Scientific Services",
       "icon": "fa-microscope",
@@ -2035,11 +2035,11 @@
       "description": "Scientific and research support across formulation, development and laboratory activities.",
       "contact_email": "research@assurintellec.in",
       "primary_image": "/images/uploads/Service_6.jpg",
-      "primary_video": "",
+      "primary_video": "/videos/research-scientific-services-intro.mp4",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 06",
-      "hero_media_type": "image",
-      "hero_video": "",
-      "hero_image": "/images/uploads/Service_6.jpg",
+      "hero_media_type": "video",
+      "hero_video": "/videos/research-scientific-services-intro.mp4",
+      "hero_image": "/images/uploads/ServiceVisual_research-scientific-services_01.jpg",
       "body_font_size": 19,
       "heading_font_size": 32,
       "text_color": "#17243a",
@@ -2068,7 +2068,7 @@
           ],
           "outcome": "To help clients establish a structured scientific approach to formulation development and identify the key variables and evaluation requirements relevant to the research objective.",
           "note": "",
-          "image": "/images/uploads/Service_6.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_02.jpg",
           "image_alt": "01. Pharmaceutical Formulation Research & Development Support",
           "image_caption": "",
           "expanded": true
@@ -2092,7 +2092,7 @@
           ],
           "outcome": "To help establish a scientific basis for ingredient selection and identify relevant preformulation considerations before advancing to further development activities.",
           "note": "",
-          "image": "/images/uploads/Process_1.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_03.jpg",
           "image_alt": "02. Preformulation & Excipient Selection Support",
           "image_caption": "",
           "expanded": false
@@ -2118,7 +2118,7 @@
           ],
           "outcome": "To help researchers establish a systematic and clearly documented experimental approach aligned with the research question.",
           "note": "",
-          "image": "/images/uploads/Process_2.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_04.jpg",
           "image_alt": "03. Research Planning & Experimental Design",
           "image_caption": "",
           "expanded": false
@@ -2143,7 +2143,7 @@
           ],
           "outcome": "To help clients understand the available scientific evidence and use it to inform research planning and technical decisions.",
           "note": "",
-          "image": "/images/uploads/Process_3.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_05.jpg",
           "image_alt": "04. Scientific Literature Review & Research Guidance",
           "image_caption": "",
           "expanded": false
@@ -2169,7 +2169,7 @@
           ],
           "outcome": "To support well-organised laboratory research with clearly defined objectives, methods and documentation requirements.",
           "note": "",
-          "image": "/images/uploads/Process_4.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_06.jpg",
           "image_alt": "05. Laboratory Research & Experimental Support",
           "image_caption": "",
           "expanded": false
@@ -2195,7 +2195,7 @@
           ],
           "outcome": "To help researchers organise their results and interpret them systematically in relation to the research question.",
           "note": "",
-          "image": "/images/uploads/Why_1.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_07.jpg",
           "image_alt": "06. Scientific Data Analysis & Interpretation Support",
           "image_caption": "",
           "expanded": false
@@ -2221,7 +2221,7 @@
           ],
           "outcome": "To help clients communicate research activities and findings through clear, consistent and technically appropriate documentation.",
           "note": "All scientific documents must accurately represent the underlying work and data. Research authorship, source acknowledgement, institutional policies and applicable publication requirements must be respected.",
-          "image": "/images/uploads/Why_2.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_08.jpg",
           "image_alt": "07. Scientific Documentation & Technical Writing",
           "image_caption": "",
           "expanded": false
@@ -2246,7 +2246,7 @@
           ],
           "outcome": "To help researchers establish a structured approach to formulation evaluation and identify evidence-based opportunities for further development.",
           "note": "",
-          "image": "/images/uploads/Why_4.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_09.jpg",
           "image_alt": "08. Formulation Evaluation & Development Optimisation",
           "image_caption": "",
           "expanded": false
@@ -2270,7 +2270,7 @@
           ],
           "outcome": "To help clients organise research-related work around clearly defined objectives, documented activities and appropriate next steps.",
           "note": "",
-          "image": "/images/uploads/Service_6.jpg",
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_10.jpg",
           "image_alt": "09. Research Project Support & Scientific Coordination",
           "image_caption": "",
           "expanded": false
@@ -2360,7 +2360,7 @@
         {
           "title": "Scope of deliverables",
           "description": "Depending on the agreed engagement, deliverables may include:\n\nSpecific deliverables depend on the available resources, study design, information supplied and the nature of the scientific work agreed with the client.\n\nExperimental validation, analytical testing, stability studies, specialised laboratory investigations and other practical research activities require suitable facilities, methods and qualified personnel and are included only where explicitly agreed.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_research-scientific-services_12.jpg"
         }
       ],
       "service_note": "Research and scientific support is defined on a project-by-project basis and depends on the agreed scope, available evidence, resources and information supplied. Scientific guidance does not independently establish product safety, efficacy, stability, regulatory suitability or commercial readiness.\n\nExperimental findings must be generated through appropriate methods and accurately reported. Research integrity, data integrity, ethical requirements, institutional approvals, intellectual property and applicable regulatory obligations must be respected. Practical laboratory work, testing, validation and specialised investigations are included only where explicitly agreed and undertaken by appropriately qualified personnel using suitable facilities.",
@@ -2373,7 +2373,7 @@
       "advantages_heading": "Why work with AssurIntellec™",
       "focus_heading": "Scientific capabilities",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
-      "resource_image": "/images/uploads/Service_6.jpg",
+      "resource_image": "/images/uploads/ServiceVisual_research-scientific-services_11.jpg",
       "related_heading": "Explore our integrated services",
       "page_labels": {
         "hero_primary_cta": "Discuss your requirements",
@@ -2431,7 +2431,7 @@
       "intro": "Developing a pharmaceutical product or establishing manufacturing operations involves a series of interconnected technical, operational and commercial decisions. Product requirements, dosage form, manufacturing capabilities, facility infrastructure, equipment selection, process requirements and applicable regulatory expectations must be considered together to establish a practical manufacturing approach.\n\nAssurIntellec™ provides integrated technical and project coordination support for pharmaceutical product development, third-party manufacturing opportunities, manufacturing planning, facility establishment and operational improvement.\n\nWe help businesses define their manufacturing requirements, explore potential manufacturing arrangements, coordinate discussions with relevant service providers and organise the technical considerations needed to progress their projects.\n\nWhether you are exploring the development of a new pharmaceutical product, seeking a third-party manufacturing partner, planning a new manufacturing facility, improving existing operations or coordinating a manufacturing-related project, our support is tailored to the product, dosage form, manufacturing model, facility stage and business objectives.\n\nOur approach brings together product-related requirements, manufacturing considerations, facility planning and stakeholder coordination to help clients make informed decisions throughout their projects.",
       "media_alt": "Pharma Solutions & Manufacturing – technical environment",
       "cta": "Discuss Your Requirements",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "media_link_enabled": false,
       "title": "Pharma Solutions & Manufacturing",
       "icon": "fa-industry",
@@ -2439,11 +2439,11 @@
       "description": "Integrated support for pharmaceutical manufacturing projects and operational requirements.",
       "contact_email": "manufacturing@assurintellec.in",
       "primary_image": "/images/uploads/Service_7.jpg",
-      "primary_video": "",
+      "primary_video": "/videos/pharma-solutions-manufacturing-intro.mp4",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 07",
-      "hero_media_type": "image",
-      "hero_video": "",
-      "hero_image": "/images/uploads/Service_7.jpg",
+      "hero_media_type": "video",
+      "hero_video": "/videos/pharma-solutions-manufacturing-intro.mp4",
+      "hero_image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_01.jpg",
       "body_font_size": 19,
       "heading_font_size": 32,
       "text_color": "#17243a",
@@ -2471,7 +2471,7 @@
           ],
           "outcome": "To help businesses explore potential third-party manufacturing arrangements and organise the technical and commercial requirements for further evaluation.",
           "note": "Final manufacturing-partner selection depends on independent facility assessment, applicable licences and approvals, product requirements, quality-system evaluation and formal agreements between the parties.",
-          "image": "/images/uploads/Service_7.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_02.jpg",
           "image_alt": "01. Third-Party Manufacturing Coordination",
           "image_caption": "",
           "expanded": true
@@ -2497,7 +2497,7 @@
           ],
           "outcome": "To help clients establish a structured product development scope and coordinate relevant technical activities.",
           "note": "",
-          "image": "/images/uploads/Process_1.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_03.jpg",
           "image_alt": "02. Pharmaceutical Product Development Support",
           "image_caption": "",
           "expanded": false
@@ -2522,7 +2522,7 @@
           ],
           "outcome": "To help clients develop a clearer understanding of the manufacturing model, resources and technical requirements that may be appropriate for their project.",
           "note": "",
-          "image": "/images/uploads/Process_2.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_04.jpg",
           "image_alt": "03. Manufacturing Model & Project Planning",
           "image_caption": "",
           "expanded": false
@@ -2548,7 +2548,7 @@
           ],
           "outcome": "To help clients organise key technical requirements and coordinate relevant stakeholders during pharmaceutical facility establishment.",
           "note": "",
-          "image": "/images/uploads/Process_3.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_05.jpg",
           "image_alt": "04. Pharmaceutical Plant Setup & Establishment Support",
           "image_caption": "",
           "expanded": false
@@ -2572,7 +2572,7 @@
           ],
           "outcome": "To help clients clarify manufacturing needs and identify the technical considerations that require further assessment before implementation.",
           "note": "Final manufacturing parameters, process validation, batch approval, product release and quality decisions remain subject to the approved manufacturing process and the responsibilities of the authorised parties.",
-          "image": "/images/uploads/Process_4.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_06.jpg",
           "image_alt": "05. Manufacturing Process & Operational Requirement Support",
           "image_caption": "",
           "expanded": false
@@ -2597,7 +2597,7 @@
           ],
           "outcome": "To help clients identify areas for further technical evaluation and organise practical steps for manufacturing improvement.",
           "note": "",
-          "image": "/images/uploads/Why_1.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_07.jpg",
           "image_alt": "06. Plant Expansion, Upgradation & Manufacturing Improvement",
           "image_caption": "",
           "expanded": false
@@ -2620,7 +2620,7 @@
           ],
           "outcome": "To help clients coordinate relevant parties and maintain a clearer understanding of project requirements, outstanding information and next steps.",
           "note": "",
-          "image": "/images/uploads/Why_2.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_08.jpg",
           "image_alt": "07. Manufacturing Partner & Service Provider Coordination",
           "image_caption": "",
           "expanded": false
@@ -2642,7 +2642,7 @@
           ],
           "outcome": "To help align packaging-related requirements with the product, manufacturing arrangement and project objectives.",
           "note": "Final packaging specifications, compatibility, labelling compliance and market-specific requirements must be confirmed by the responsible technical, quality and regulatory professionals.",
-          "image": "/images/uploads/Why_4.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_09.jpg",
           "image_alt": "08. Packaging & Product Presentation Requirements",
           "image_caption": "",
           "expanded": false
@@ -2666,7 +2666,7 @@
           ],
           "outcome": "To support organised communication and coordination across the agreed manufacturing project scope.",
           "note": "Project coordination does not replace the responsibilities of the project owner, authorised decision-makers, qualified technical professionals or contractors executing the work.",
-          "image": "/images/uploads/Service_7.jpg",
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_10.jpg",
           "image_alt": "09. Project Coordination & Implementation Support",
           "image_caption": "",
           "expanded": false
@@ -2756,7 +2756,7 @@
         {
           "title": "Scope of deliverables",
           "description": "Depending on the agreed engagement, deliverables may include:\n\nThe exact deliverables depend on the project type, available information, resources and agreed scope of support.\n\nDetailed formulation development, laboratory testing, manufacturing execution, facility engineering, equipment qualification, process validation and statutory approvals are included only where specifically agreed and undertaken by appropriately qualified or authorised parties.",
-          "image": ""
+          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_12.jpg"
         }
       ],
       "service_note": "Pharma Solutions & Manufacturing support is provided according to the agreed scope, available information and project requirements. Identification of potential manufacturing partners, preliminary product assessments and project coordination do not guarantee manufacturing feasibility, product performance, regulatory approval, commercial viability or successful project completion.\n\nManufacturing authorisations, product registrations, quality agreements, supplier qualification, product testing, stability assessment, process validation and other applicable regulatory or technical requirements must be addressed by the responsible authorised parties. Detailed engineering, laboratory activities, manufacturing execution and specialised professional services are included only where expressly agreed and undertaken by appropriately qualified or authorised parties.",
@@ -2769,7 +2769,7 @@
       "advantages_heading": "Why work with AssurIntellec™",
       "focus_heading": "Manufacturing models",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
-      "resource_image": "/images/uploads/Service_7.jpg",
+      "resource_image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_11.jpg",
       "related_heading": "Explore our integrated services",
       "page_labels": {
         "hero_primary_cta": "Discuss your requirements",

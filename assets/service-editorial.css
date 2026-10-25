@@ -163,3 +163,17 @@ body.premium-service-page main details[open] .ps2-scope-inner{animation:ps2-open
  body.premium-service-page main .ps2-specialism{padding:20px}
  body.premium-service-page main .ps2-audience-visual{aspect-ratio:16/9}
 }
+
+/* 24 Oct 2026 — independent CMS-editable media for every service section. */
+body.premium-service-page main .ps2-hero-frame video{background:#0b1f3a;object-fit:cover;width:100%;height:100%}
+body.premium-service-page main .ps2-focus-photo,
+body.premium-service-page main .ps2-extra-photo{margin:0 0 23px;overflow:hidden;border-radius:11px;background:#eaf2f5}
+body.premium-service-page main .ps2-focus-photo img,
+body.premium-service-page main .ps2-extra-photo img{width:100%;height:auto;max-height:320px;aspect-ratio:16/7;object-fit:cover;display:block}
+body.premium-service-page main .ps2-unique-fallback{position:relative;isolation:isolate;width:100%;height:100%;min-height:165px;display:flex;flex-direction:column;gap:19px;justify-content:center;padding:35px 8%;background:radial-gradient(circle at 85% 20%,#236a8169,transparent 48%),linear-gradient(115deg,#0b2741,#176178);color:white;overflow:hidden}
+body.premium-service-page main .ps2-unique-fallback::after{content:"";position:absolute;right:-75px;top:-95px;width:300px;height:300px;border-radius:50%;border:55px solid #ffffff14;z-index:-1}
+body.premium-service-page main .ps2-unique-fallback span{font-size:12px;letter-spacing:.2em;font-weight:850;color:#bce7ee}
+body.premium-service-page main .ps2-unique-fallback strong{font-size:clamp(20px,2.7vw,33px);line-height:1.2;max-width:700px;color:#fff}
+body.premium-service-page main .ps2-card-photo .ps2-unique-fallback{min-height:100%}
+body.premium-service-page main .ps2-audience-visual .ps2-unique-fallback{min-height:240px}
+@media (max-width:600px){body.premium-service-page main .ps2-focus-photo img,body.premium-service-page main .ps2-extra-photo img{aspect-ratio:16/9}}
