@@ -201,3 +201,85 @@ body.premium-service-page main .service-video-sound:focus-visible{outline:3px so
   body.premium-service-page main .service-video-sound{right:12px;bottom:12px;width:45px;height:45px;padding:10px}
   body.premium-service-page main .service-video-sound svg{width:22px;height:22px}
 }
+
+/* 26 Oct 2026 — all seven service pages, every service photo slot.
+   Preserve original file dimensions/bytes. Use an uncropped 16:9 viewing frame,
+   with native file opened in a new tab when the image is clicked. */
+body.premium-service-page main .ps2-hero-frame,
+body.premium-service-page main .ps2-card-photo,
+body.premium-service-page main .ps2-audience-visual,
+body.premium-service-page main .ps2-focus-photo,
+body.premium-service-page main .ps2-extra-photo {
+  width:100%;
+  height:auto;
+  max-height:none;
+  aspect-ratio:16 / 9;
+  overflow:hidden;
+  background:#e7eff4;
+}
+body.premium-service-page main .ps2-card-photo{max-height:none!important;}
+body.premium-service-page main .ps2-audience-visual{max-width:100%;max-height:none;}
+body.premium-service-page main .ps2-original-image-link{
+  width:100%;height:100%;aspect-ratio:16 / 9;
+  display:block;
+  position:relative;
+  overflow:hidden;
+  cursor:zoom-in;
+}
+body.premium-service-page main .ps2-hero-frame .ps2-original-image-link img,
+body.premium-service-page main .ps2-card-photo .ps2-original-image-link img,
+body.premium-service-page main .ps2-audience-visual .ps2-original-image-link img,
+body.premium-service-page main .ps2-focus-photo .ps2-original-image-link img,
+body.premium-service-page main .ps2-extra-photo .ps2-original-image-link img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  aspect-ratio:16 / 9;
+  object-fit:contain;
+  object-position:center;
+  image-rendering:auto;
+  transition:none;
+  transform:none;
+}
+body.premium-service-page main .ps2-service-card:hover .ps2-card-photo img,
+body.premium-service-page main .ps2-card-photo img:hover{
+  transform:none;
+  filter:none;
+}
+/* All text starts after the entire hero photograph, never overlays or hides the lower portion. */
+body.premium-service-page main .ps2-hero-panel{
+  margin:28px auto 0;
+  width:min(100%,1080px);
+  max-width:1080px;
+}
+body.premium-service-page main .ps2-focus-photo img,
+body.premium-service-page main .ps2-extra-photo img{
+  max-height:none;
+  aspect-ratio:16 / 9;
+}
+body.premium-service-page main .ps2-original-image-link:focus-visible{
+  outline:3px solid #0a91b2;
+  outline-offset:-4px;
+}
+body.premium-service-page main .ps2-original-image-link.ps2-image-unavailable{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+  text-align:center;
+  background:#163b50;
+  color:#fff;
+  font-weight:700;
+  line-height:1.5;
+  cursor:pointer;
+}
+@media (max-width:600px){
+  body.premium-service-page main .ps2-hero-panel{
+    margin:17px auto 0;
+    width:100%;
+  }
+  body.premium-service-page main .ps2-card-photo,
+  body.premium-service-page main .ps2-audience-visual{max-height:none!important;}
+}

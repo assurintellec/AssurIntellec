@@ -5,6 +5,9 @@ backend:
   branch: main
 media_folder: images/uploads
 public_folder: /images/uploads
+# Preserve image bytes, pixel dimensions, EXIF and format without browser-side CMS processing.
+media_processing:
+  enabled: false
 site_url: https://www.assurintellec.in
 display_url: https://www.assurintellec.in
 collections:
@@ -2762,14 +2765,20 @@ collections:
           value: image
         - label: Video
           value: video
-        default: video
+        default: image
         required: false
       - label: Alternate Main Image / Video Fallback (16:9)
         name: primary_image
         widget: image
         required: false
-        hint: Upload PNG/JPG/JPEG/WebP. Recommended 1600×900 px (16:9), up to 5 MB. Use the distinct filename Service_1
-          through Service_7.
+        hint: Prefer a unique 16:9 image (1920×1080, 3840×2160 or higher). JPG/JPEG, PNG, WebP, GIF, BMP, TIFF, SVG. Original file bytes, format and pixel dimensions are preserved; no 5 MB resize cap is configured. For AVIF/HEIC and other formats, use the optional original image file field instead.
+      - label: Optional Original Main Image File — AVIF / HEIC / other formats
+        name: primary_image_file
+        widget: file
+        media_folder: /images/uploads
+        public_folder: /images/uploads
+        required: false
+        hint: Optional advanced upload for AVIF, HEIC, HEIF, JPEG XL and other photo extensions. This field takes priority over the standard image above. Original files are preserved; the browser must support that format to display it. Upload images only, not documents or executables.
       - label: Primary Service Video (optional)
         name: primary_video
         widget: file
@@ -2799,18 +2808,25 @@ collections:
         widget: string
         required: false
         hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are both enabled.
-      - label: Hero Media Type (16:9) — VIDEO by default
+      - label: Hero Media Type (16:9) — IMAGE by default
         name: hero_media_type
         widget: select
         options: [image, video]
-        default: video
-        hint: Set to Video for the main service banner; switch to Image only if the main video is intentionally removed.
+        default: image
+        hint: Image is the default on all seven services. Switch to Video only if you want to show the separately uploaded video. Both options remain available.
         required: false
-      - label: Video Poster / Hero Fallback Image (16:9)
+      - label: Main Service Image (16:9) / Video Poster
         name: hero_image
         widget: image
         required: false
-        hint: Editable image shown while this service video loads and when Video is disabled. Choose an image not assigned to any other service or section.
+        hint: Main image visible after opening this service (unless Video is selected). Use a DIFFERENT image for each service and area; 16:9, preferably 4K or above. Originals are not cropped, re-encoded or resized by Decap.
+      - label: Optional Original Hero Image File — AVIF / HEIC / other formats
+        name: hero_image_file
+        widget: file
+        media_folder: /images/uploads
+        public_folder: /images/uploads
+        required: false
+        hint: Optional advanced upload for AVIF, HEIC, HEIF, JPEG XL and other photo extensions. This field takes priority over the standard image above. Original files are preserved; the browser must support that format to display it. Upload images only, not documents or executables.
       - label: Main Service Video — upload your own MP4 (16:9)
         name: hero_video
         widget: file
@@ -2898,6 +2914,14 @@ collections:
         name: resource_image
         widget: image
         required: false
+        hint: Use a different uncropped 16:9 photo, preferably 1920×1080 or 4K.
+      - label: Optional Original Audience Image File — AVIF / HEIC / other formats
+        name: resource_image_file
+        widget: file
+        media_folder: /images/uploads
+        public_folder: /images/uploads
+        required: false
+        hint: Optional advanced upload for AVIF, HEIC, HEIF, JPEG XL and other photo extensions. This field takes priority over the standard image above. Original files are preserved; the browser must support that format to display it. Upload images only, not documents or executables.
       - label: Page UI Text Labels (all editable)
         name: page_labels
         widget: object
@@ -3075,10 +3099,18 @@ collections:
           name: note
           widget: text
           required: false
-        - label: Section Visual — unique photograph
+        - label: Section Visual — unique 16:9 image (no cropping)
           name: image
           widget: image
           required: false
+          hint: Keep this photo unique for this service item. Recommended 16:9 (1920×1080 or 4K). Original bytes and dimensions are retained.
+        - label: Optional Original Section Image File — AVIF / HEIC / other formats
+          name: image_file
+          widget: file
+          media_folder: /images/uploads
+          public_folder: /images/uploads
+          required: false
+          hint: Optional advanced upload for AVIF, HEIC, HEIF, JPEG XL and other photo extensions. This field takes priority over the standard image above. Original files are preserved; the browser must support that format to display it. Upload images only, not documents or executables.
         - label: Visual Alt Text
           name: image_alt
           widget: string
@@ -3105,11 +3137,18 @@ collections:
           name: description
           widget: text
           required: false
-        - label: Optional Image — unique, CMS-editable
+        - label: Optional Image — unique 16:9, CMS-editable
           name: image
           widget: image
           required: false
-          hint: Displayed above this item when supplied. Use a different image for each item; do not reuse service hero or capability images.
+          hint: Displayed above this item when supplied. Use a separate 16:9 file (4K welcome) for every item. Full original file retained; not cropped or re-encoded. Do not reuse hero or capability images.
+        - label: Optional Original Section Image File — AVIF / HEIC / other formats
+          name: image_file
+          widget: file
+          media_folder: /images/uploads
+          public_folder: /images/uploads
+          required: false
+          hint: Optional advanced upload for AVIF, HEIC, HEIF, JPEG XL and other photo extensions. This field takes priority over the standard image above. Original files are preserved; the browser must support that format to display it. Upload images only, not documents or executables.
       - label: Project Stages / Engagement Process
         name: workflow
         widget: list
@@ -3184,11 +3223,18 @@ collections:
           name: description
           widget: text
           required: false
-        - label: Optional Image — unique, CMS-editable
+        - label: Optional Image — unique 16:9, CMS-editable
           name: image
           widget: image
           required: false
-          hint: Displayed above this item when supplied. Use a different image for each item; do not reuse service hero or capability images.
+          hint: Displayed above this item when supplied. Use a separate 16:9 file (4K welcome) for every item. Full original file retained; not cropped or re-encoded. Do not reuse hero or capability images.
+        - label: Optional Original Section Image File — AVIF / HEIC / other formats
+          name: image_file
+          widget: file
+          media_folder: /images/uploads
+          public_folder: /images/uploads
+          required: false
+          hint: Optional advanced upload for AVIF, HEIC, HEIF, JPEG XL and other photo extensions. This field takes priority over the standard image above. Original files are preserved; the browser must support that format to display it. Upload images only, not documents or executables.
       - label: Important Service Note (Expandable)
         name: service_note
         widget: text
