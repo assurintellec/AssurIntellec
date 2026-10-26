@@ -1954,41 +1954,98 @@ function serviceVideoMarkup(source, description, poster = '', extraClass = '') {
   </div>`;
 }
 
+// Opening videos are genuine inline autoplay elements, just like the homepage
+// hero. A CMS update changes their SOURCE; it must not destroy the video DOM
+// node (which would interrupt playback or undo a manual HTML override).
+function syncOpeningServiceVideo(hero, source, poster, description) {
+  const video = hero?.querySelector('.ps2-hero-frame video');
+  if (!video) return;
+  video.setAttribute('aria-label', description || 'Service opening video');
+  if (poster) video.poster = normalizeAsset(poster);
+  // Advanced manual override: editors who intentionally set data-manual-video="true"
+  // in the matching service-*.html keep the inline HTML source unchanged.
+  if (video.dataset.manualVideo === 'true') return;
+  const next = normalizeAsset(source);
+  if (!next) return; // keep immediate-play HTML default if CMS value is empty
+  const current = video.querySelector('source')?.getAttribute('src') || video.getAttribute('src') || '';
+  try {
+    if (new URL(current, location.href).href === new URL(next, location.href).href) return;
+  } catch (_) { if (current === next) return; }
+  // Never swap the actual <video> element: replace only the media URL and load.
+  video.pause();
+  video.querySelectorAll('source').forEach(el => el.remove());
+  video.src = next;
+  video.load();
+  const attempt = video.play();
+  if (attempt?.catch) attempt.catch(() => {});
+}
+
 function setupServiceVideoPlayers(root = document) {
   root.querySelectorAll('.service-video-player').forEach(player => {
-    if (player.dataset.playerReady === 'true') return;
-    player.dataset.playerReady = 'true';
     const video = player.querySelector('video');
-    const sound = player.querySelector('.service-video-sound');
-    if (!video || !sound) return;
-    // Autoplay reliably starts muted in browsers that allow inline media.
+    if (!video || player.dataset.playerReady === 'true') return;
+    player.dataset.playerReady = 'true';
+    // The static service HTML also has a player; create its controls exactly as
+    // for the CMS-rendered player, without replacing the already-loading video.
+    let sound = player.querySelector('.service-video-sound');
+    if (!sound) {
+      sound = document.createElement('button');
+      sound.className = 'service-video-sound';
+      sound.type = 'button';
+      player.append(sound);
+    }
+    sound.setAttribute('aria-label', 'Unmute service video');
+    let feedback = player.querySelector('.service-video-feedback');
+    if (!feedback) {
+      feedback = document.createElement('div');
+      feedback.className = 'service-video-feedback';
+      feedback.hidden = true;
+      feedback.innerHTML = '<p class="service-video-feedback-text" role="status"></p><button type="button" class="service-video-retry">Play video</button>';
+      player.append(feedback);
+    }
+    const retry = feedback.querySelector('.service-video-retry');
+    const message = feedback.querySelector('.service-video-feedback-text');
     video.controls = false;
     video.removeAttribute('controls');
     video.autoplay = true;
     video.loop = true;
     video.playsInline = true;
+    video.setAttribute('playsinline', '');
     video.disablePictureInPicture = true;
-    video.disableRemotePlayback = true;
-    video.muted = true;
+    video.muted = true; // required for reliable autoplay on mobile/desktop
+    video.defaultMuted = true;
     video.volume = 1;
-    video.addEventListener('contextmenu', event => event.preventDefault());
-
-    const icon = (muted) => muted
+    const icon = muted => muted
       ? '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>'
       : '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>';
     const updateSound = () => {
       const muted = video.muted || video.volume === 0;
       sound.innerHTML = icon(muted);
-      const title = muted ? 'Unmute service video' : 'Mute service video';
-      sound.setAttribute('aria-label', title);
+      sound.setAttribute('aria-label', muted ? 'Unmute service video' : 'Mute service video');
       sound.setAttribute('aria-pressed', String(!muted));
-      sound.title = title;
+      sound.title = muted ? 'Unmute service video' : 'Mute service video';
+    };
+    const showFeedback = (txt, label = 'Play video') => {
+      message.textContent = txt;
+      retry.textContent = label;
+      feedback.hidden = false;
     };
     const keepPlaying = () => {
-      if (!video.isConnected || video.error || document.hidden) return;
-      const promise = video.play();
-      if (promise && typeof promise.catch === 'function') promise.catch(() => {});
+      if (!video.isConnected || document.hidden || video.error) return;
+      const attempt = video.play();
+      if (attempt?.then) attempt.then(() => { feedback.hidden = true; }).catch(err => {
+        if (err?.name === 'NotAllowedError') showFeedback('Tap Play to start the opening video.');
+        else if (err?.name !== 'AbortError') showFeedback('Playback was interrupted. Tap Play to retry.');
+      });
     };
+    retry.addEventListener('click', () => {
+      // This call originates from the visitor gesture; supported browsers can play.
+      if (video.error) video.load();
+      const attempt = video.play();
+      if (attempt?.then) attempt.then(() => { feedback.hidden = true; }).catch(() => {
+        showFeedback('This video cannot play in your browser. Upload an H.264 MP4 in Decap Turbo.', 'Retry playback');
+      });
+    });
     sound.addEventListener('click', () => {
       video.muted = !video.muted;
       video.volume = 1;
@@ -1996,9 +2053,10 @@ function setupServiceVideoPlayers(root = document) {
       keepPlaying();
     });
     video.addEventListener('volumechange', updateSound);
-    // The native loop attribute handles the usual replay; recover if playback
-    // is interrupted by tab lifecycle or if an external script pauses the video.
-    video.addEventListener('pause', () => { if (!video.ended) keepPlaying(); });
+    video.addEventListener('canplay', () => { feedback.hidden = true; keepPlaying(); });
+    video.addEventListener('playing', () => { feedback.hidden = true; });
+    video.addEventListener('error', () => showFeedback('Video file unavailable or unsupported. Check its Decap upload path and use H.264 MP4.', 'Retry playback'));
+    video.addEventListener('pause', () => { if (!video.ended && !video.error) keepPlaying(); });
     video.addEventListener('ended', () => { video.currentTime = 0; keepPlaying(); });
     document.addEventListener('visibilitychange', () => { if (!document.hidden) keepPlaying(); });
     updateSound();
@@ -2219,7 +2277,7 @@ function renderPremiumService(service, site) {
   const subject='AssurIntellec enquiry — '+text(service.page_title||service.title);
   const mailHref=`mailto:${mail}?subject=${encodeURIComponent(subject)}`;
   const heroPhoto=serviceImageSource(service,'hero_image')||serviceImageSource(service,'primary_image')||'';
-  const heroVideo=service.hero_video||service.primary_video||'';
+  const heroVideo=service.hero_video||''; // Opening video is independent of the legacy secondary video
   // Service videos play on repeat; only the custom sound toggle is visible.
   // The video URL and its optional poster remain individually editable in Decap Turbo.
   const licensedHeroPhoto=hasUniqueImageRights(heroPhoto)?heroPhoto:'';
@@ -2256,7 +2314,23 @@ function renderPremiumService(service, site) {
   const more=extras.filter(x=>text(x.description)).length?`<section class="ps2-section ps2-resources"><div class="container"><div class="ps2-section-header ps2-animate">${sectionLabel('+',L('additional_label','ADDITIONAL DETAILS'))}<h2>${e(L('additional_heading','Further project considerations'))}</h2><p>${e(L('additional_description','More information about the scope and boundaries of available support.'))}</p></div><div class="ps2-extra-list">${extras.filter(x=>text(x.description)).map((x,i)=>`<details class="ps2-extra"><summary><span>${e(x.title)}</span><b aria-hidden="true">+</b></summary><div>${serviceImageSource(x,'image')?`<figure class="ps2-extra-photo">${image(serviceImageSource(x,'image'),x.title)||visualFallback(x.title)}</figure>`:''}${paras(x.description)}</div></details>`).join('')}</div></div></section>`:'';
   const contact=`<section class="ps2-section ps2-contact" id="service-contact"><div class="container ps2-contact-frame"><div class="ps2-contact-content ps2-animate"><div class="ps2-contact-overline">${e(L('contact_label','NEXT STEP / START A CONVERSATION'))}</div><h2>${e(service.contact_heading||'Let’s discuss your project')}</h2><p>${e(service.contact_description||'Tell us about your requirements and project goals.')}</p><div class="ps2-contact-mail"><span>${e(L('contact_email_label','DEDICATED SERVICE EMAIL'))}</span><a href="${e(mailHref)}">${e(mail)} ${icon}</a></div></div><div class="ps2-contact-links ps2-animate"><a class="ps2-btn ps2-btn-primary" href="${e(mailHref)}">${e(L('contact_email_cta','Email the service team'))} ${icon}</a><a class="ps2-btn ps2-btn-outline" href="${e(url(service.cta_url))}">${e(L('contact_form_cta','Open enquiry form'))} ${icon}</a><a class="ps2-btn ps2-btn-outline" href="./services.html">${e(L('contact_all_cta','View all seven services'))} ${icon}</a><div class="ps2-contact-brand">${e(service.micro_tagline||'Intelligent Solutions. Assured Compliance.')}</div></div></div>${text(service.service_note)?`<div class="container ps2-legal"><details><summary>${e(L('service_note_label','Important service information'))} <span aria-hidden="true">+</span></summary><div>${paras(service.service_note)}</div></details></div>`:''}</section>`;
   const relatedSection=related.length?`<section class="ps2-related"><div class="container"><div class="ps2-related-title"><h2>${e(service.related_heading||'Explore related services')}</h2><a href="./services.html">${e(L('related_all_label','All services'))} ${icon}</a></div><div class="ps2-related-grid">${related.map(s=>`<a href="./${e(s.page_file||'services.html')}"><span>${e(L('related_card_label','ASSURINTELLEC / SERVICE'))}</span><h3>${e(s.page_title||s.title)}</h3><span class="ps2-related-arrow">↗</span></a>`).join('')}</div></div></section>`:'';
-  main.innerHTML=header+navigation+overview+capabilities+specialisms+process+outputs+audience+why+more+contact+relatedSection;
+  // Keep the HTML-first opening video mounted continuously. Previously the
+  // main.innerHTML assignment destroyed it after JSON loaded, causing a restart,
+  // lost playback, and an HTML-edited URL being overwritten unpredictably.
+  const existingHero = main.querySelector(':scope > .ps2-initial-hero');
+  if (existingHero) {
+    syncOpeningServiceVideo(existingHero, heroVideo, licensedHeroPhoto, 'Opening service video: ' + (service.page_title || service.title || 'Service'));
+    const template = document.createElement('template');
+    template.innerHTML = header;
+    const updatedPanel = template.content.querySelector('.ps2-hero-panel');
+    const oldPanel = existingHero.querySelector('.ps2-hero-panel');
+    if (updatedPanel && oldPanel) oldPanel.replaceWith(updatedPanel);
+    // Discard only content AFTER the opening hero; never remove the video node.
+    while (existingHero.nextSibling) existingHero.nextSibling.remove();
+    main.insertAdjacentHTML('beforeend', navigation+overview+capabilities+specialisms+process+outputs+audience+why+more+contact+relatedSection);
+  } else {
+    main.innerHTML=header+navigation+overview+capabilities+specialisms+process+outputs+audience+why+more+contact+relatedSection;
+  }
   setupServiceVideoPlayers(main);
   main.style.setProperty('--ps2-body-size',Math.min(26,Math.max(16,Number(service.body_font_size)||19))+'px');
   main.style.setProperty('--ps2-heading-size',Math.min(46,Math.max(22,Number(service.heading_font_size)||32))+'px');

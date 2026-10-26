@@ -2777,13 +2777,13 @@ collections:
         required: false
         hint: Optional. Overrides the standard image field; selects an original file of any extension. Browser image support and backend upload limits apply. Use 16:9 for full-frame display.
 
-      - label: FIRST VIDEO ON SERVICE PAGE — Upload Opening Video (16:9)
+      - label: OPENING VIDEO (FIRST ON SERVICE PAGE) — Auto-play H.264 MP4
         name: hero_video
         widget: file
         media_folder: videos
         public_folder: /videos
         required: false
-        hint: THIS IS THE VIDEO AT THE VERY TOP after clicking any of the seven services. Upload here to replace that service opening video. Prefer MP4 H264 for broad compatibility; original 16:9 resolution is preserved. File and hosting limits apply.
+        hint: "This field controls the FIRST video after clicking a service. Use MP4 with H.264 video and AAC audio, preferably 16:9. Upload, Save, and Publish. It autoplays muted, with optional visitor sound. HEVC/MOV/AVI may not play. Hosting upload size limits apply. For manual edits, change hero_video in content/services.json; see the included guide."
       - label: HOMEPAGE SERVICE IMAGE (16:9) — unique picture with service text
         name: listing_image
         widget: image

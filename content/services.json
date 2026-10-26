@@ -2,7 +2,6 @@
   "services": [
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_1_16x9_full_clarity.png",
       "enabled": true,
       "card_bullets": [
         "Facility planning",
@@ -151,7 +150,7 @@
       "body_font_size": 19,
       "heading_font_size": 32,
       "hero_image": "/images/uploads/ServiceVisual_gmp-engineering_01.jpg",
-      "hero_video": "/videos/hero.mp4",
+      "hero_video": "/videos/gmp-engineering-intro-fast-start.mp4",
       "media_link_enabled": false,
       "deliverables_heading": "What your project can receive",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 01",
@@ -185,7 +184,6 @@
             "Preliminary review of existing layouts for expansion, renovation or operational improvement.",
             "Identification of potential layout-related issues requiring further engineering or quality assessment."
           ],
-          "image_original": "/images/uploads/servicevisual_gmp-engineering_02.png",
           "title": "Pharmaceutical Facility Planning & Layout",
           "expanded": true,
           "overview": "Effective pharmaceutical facility planning begins with understanding the intended manufacturing activities, process flows, infrastructure needs and relevant GMP considerations.\n\nAssurIntellec™ provides technical input to help clients evaluate facility layouts, space utilisation, personnel and material movement, supporting areas and overall infrastructure requirements.",
@@ -208,11 +206,10 @@
             "Technical coordination with engineering, production, quality assurance and other stakeholders.",
             "Support in organising facility-related compliance observations for further evaluation."
           ],
-          "image_original": "/images/uploads/s1.2.png",
           "title": "GMP & Regulatory Compliance Support",
           "expanded": false,
           "overview": "Facility-related GMP requirements influence the suitability of buildings, manufacturing areas, equipment, utilities and supporting systems. Considering these requirements early can help identify issues before they become more difficult or costly to address.\n\nWe provide consulting support to help clients understand applicable facility-related expectations and organise the technical considerations associated with compliance.",
-          "image": "/images/uploads/s1.2.png",
+          "image": "/images/uploads/ServiceVisual_gmp-engineering_03.jpg",
           "lead": "Integrate compliance considerations into facility planning and technical decision-making."
         },
         {
@@ -355,7 +352,7 @@
           "lead": "Identify technical improvement opportunities in existing pharmaceutical facilities."
         }
       ],
-      "primary_video": "",
+      "primary_video": "/videos/gmp-engineering-intro.mp4",
       "focus_areas": [],
       "workflow": [
         {
@@ -382,11 +379,11 @@
           "title": "Facility Improvement & Compliance Review",
           "description": "Support the evaluation of existing facilities, identify potential improvement areas and organise actions according to the project's objectives."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_1_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_2_16x9_full_clarity.png",
       "enabled": true,
       "card_bullets": [
         "Technical due diligence",
@@ -780,11 +777,11 @@
           "title": "Support the Next Decision",
           "description": "We organise the findings, outstanding questions and appropriate next steps within the engagement scope to help the client determine how to proceed."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_2_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_3_16x9_full_clarity.png",
       "enabled": true,
       "card_bullets": [
         "Pharmaceutical talent",
@@ -1198,11 +1195,11 @@
           "title": "For students & professionals · Coordinate Next Steps",
           "description": "Where an opportunity is available, we support relevant communication and follow-up within the agreed scope."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_3_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_4_16x9_full_clarity.png",
       "enabled": true,
       "card_bullets": [
         "Product opportunities",
@@ -1594,11 +1591,11 @@
           "title": "Support Follow-Up Activities",
           "description": "We help organise outstanding questions, additional information requests and the next steps relevant to the sourcing or trade opportunity.\n\nImportant: Final supplier approval, technical acceptance, quality verification, regulatory assessment and purchasing decisions remain with the authorised parties."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_4_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_5_16x9_full_clarity.png",
       "enabled": true,
       "card_bullets": [
         "Machinery selection",
@@ -2012,11 +2009,11 @@
           "title": "Support Implementation Planning",
           "description": "We help organise relevant information and follow-up requirements relating to delivery, site readiness, commissioning, calibration and qualification considerations. The scope and extent of support are defined according to the client's requirements and the specific engagement."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_5_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_6_16x9_full_clarity.png",
       "enabled": true,
       "card_bullets": [
         "Formulation support",
@@ -2417,11 +2414,11 @@
           "title": "Document & Identify Next Steps",
           "description": "We help organise findings, outstanding questions, documentation needs and potential next steps for further scientific investigation. The process is tailored to the project's stage, formulation, research question and intended outcome."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_6_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_7_16x9_full_clarity.png",
       "enabled": true,
       "card_bullets": [
         "Manufacturing support",
@@ -2814,7 +2811,8 @@
           "title": "Coordinate Follow-Up & Readiness",
           "description": "We help track outstanding actions and identify further activities required for the next project stage, including applicable commissioning, qualification or operational-readiness considerations. The process is tailored to the manufacturing model, product category, facility stage and client objectives."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_7_16x9_full_clarity.png"
     }
   ]
 }

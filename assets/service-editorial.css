@@ -226,3 +226,20 @@ body.premium-service-page main .ps2-hero-frame video{aspect-ratio:16 / 9;object-
 body.premium-service-page main .ps2-hero-frame .service-video-player{height:100%;width:100%}
 body.premium-service-page main .ps2-initial-hero .ps2-hero-frame .service-video-player video{pointer-events:none}
 @media(max-width:800px){body.premium-service-page main .ps2-hero-panel{margin:16px 0 0}}
+
+
+/* 26 Oct 2026 — persistent service opening video player, with actionable
+   playback fallback. Hidden feedback must never obstruct an active video. */
+body.premium-service-page main .service-video-feedback[hidden]{display:none!important}
+body.premium-service-page main .service-video-feedback{
+  position:absolute;z-index:4;left:50%;bottom:8%;transform:translateX(-50%);
+  max-width:min(92%,510px);width:max-content;padding:15px 20px;
+  border:1px solid rgba(255,255,255,.32);border-radius:12px;
+  background:rgba(7,24,45,.93);color:#fff;text-align:center;
+  box-shadow:0 5px 25px rgba(0,0,0,.25)
+}
+body.premium-service-page main .service-video-feedback p{margin:0 0 10px;font-size:clamp(13px,1.5vw,17px);line-height:1.45;color:#fff}
+body.premium-service-page main .service-video-retry{border:1px solid #abdbe8;border-radius:25px;background:#0a637c;color:#fff;padding:9px 21px;font-weight:700;cursor:pointer}
+body.premium-service-page main .service-video-retry:hover{background:#084e65}
+body.premium-service-page main .service-video-player > video:hover,
+body.premium-service-page main .ps2-hero-frame:hover video{transform:none!important;transition:none!important}
