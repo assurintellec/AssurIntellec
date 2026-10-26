@@ -118,7 +118,7 @@
       "text_color": "#17243a",
       "process_heading": "How we work",
       "audiences_heading": "Who we work with",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
       "capabilities_description": "Explore our specialist capabilities. Open any area to see detailed support activities, project outcomes and important scope considerations.",
       "deliverables": [
@@ -149,8 +149,8 @@
       ],
       "body_font_size": 19,
       "heading_font_size": 32,
-      "hero_image": "",
-      "hero_video": "/videos/1.gmp_service_video.mp4",
+      "hero_image": "/images/uploads/ServiceVisual_gmp-engineering_01.jpg",
+      "hero_video": "/videos/gmp-engineering-intro.mp4",
       "media_link_enabled": false,
       "deliverables_heading": "What your project can receive",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 01",
@@ -158,7 +158,7 @@
       "icon": "fa-shield-halved",
       "page_eyebrow": "Service 01",
       "capabilities_heading": "What we help you achieve",
-      "hero_media_type": "image",
+      "hero_media_type": "video",
       "focus_heading": "Facility project approach",
       "service_note": "The scope of consulting support is defined on a project-by-project basis. Reviews and recommendations depend on the information available and the agreed engagement. They do not independently establish GMP compliance or guarantee regulatory approval or acceptance. Final designs, engineering decisions, statutory approvals, qualification execution and release decisions remain subject to the responsibilities of the relevant qualified professionals, authorised parties, applicable authorities and the client's quality system.",
       "description": "Technical support for GMP-focused pharmaceutical facilities, planning and compliance requirements.",
@@ -379,7 +379,8 @@
           "title": "Facility Improvement & Compliance Review",
           "description": "Support the evaluation of existing facilities, identify potential improvement areas and organise actions according to the project's objectives."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_1.jpg"
     },
     {
       "cta_url": "./contact.html",
@@ -481,7 +482,7 @@
       "text_color": "#17243a",
       "process_heading": "How we work",
       "audiences_heading": "Who we work with",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
       "capabilities_description": "Explore our specialist capabilities. Open any area to see detailed support activities, project outcomes and important scope considerations.",
       "deliverables": [
@@ -520,7 +521,7 @@
       "icon": "fa-handshake",
       "page_eyebrow": "Service 02",
       "capabilities_heading": "What we help you achieve",
-      "hero_media_type": "image",
+      "hero_media_type": "video",
       "focus_heading": "Opportunities we support",
       "service_note": "Advisory and transaction support is provided on a project-specific basis and depends on the agreed scope, information made available and access granted by the relevant parties. Preliminary reviews do not independently establish asset condition, regulatory compliance, financial viability, market value or transaction suitability, and do not guarantee transaction completion or regulatory approval.\n\nLegal, financial, tax, valuation, property-title, environmental and other specialist assessments should be performed by appropriately qualified professionals whenever required. Any brokerage, transaction representation, marketing mandate, agency appointment or success-based remuneration must be separately agreed and documented where applicable.",
       "description": "Technical and commercial support for pharmaceutical opportunities, facilities and transactions.",
@@ -776,7 +777,8 @@
           "title": "Support the Next Decision",
           "description": "We organise the findings, outstanding questions and appropriate next steps within the engagement scope to help the client determine how to proceed."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_2.jpg"
     },
     {
       "cta_url": "./contact.html",
@@ -883,7 +885,7 @@
       "text_color": "#17243a",
       "process_heading": "How we work",
       "audiences_heading": "Who we work with",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
       "capabilities_description": "Explore our specialist capabilities. Open any area to see detailed support activities, project outcomes and important scope considerations.",
       "deliverables": [],
@@ -899,7 +901,7 @@
       "icon": "fa-user-group",
       "page_eyebrow": "Service 03",
       "capabilities_heading": "What we help you achieve",
-      "hero_media_type": "image",
+      "hero_media_type": "video",
       "focus_heading": "Professional areas we support",
       "service_note": "Talent, recruitment, internship, placement and career guidance support is provided according to the agreed scope and the availability of relevant opportunities. Candidate identification or referral does not guarantee selection, an interview, an internship, placement or employment. Employers remain responsible for final hiring decisions, credential verification, background checks, employment terms and applicable employment requirements. Career guidance is advisory in nature and does not guarantee a particular career outcome.",
       "description": "Support for connecting life-sciences organizations with relevant professional capabilities.",
@@ -1193,7 +1195,8 @@
           "title": "For students & professionals · Coordinate Next Steps",
           "description": "Where an opportunity is available, we support relevant communication and follow-up within the agreed scope."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_3.jpg"
     },
     {
       "cta_url": "./contact.html",
@@ -1295,7 +1298,7 @@
       "text_color": "#17243a",
       "process_heading": "How we work",
       "audiences_heading": "Who we work with",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
       "capabilities_description": "Explore our specialist capabilities. Open any area to see detailed support activities, project outcomes and important scope considerations.",
       "deliverables": [
@@ -1339,7 +1342,7 @@
       "icon": "fa-globe",
       "page_eyebrow": "Service 04",
       "capabilities_heading": "What we help you achieve",
-      "hero_media_type": "image",
+      "hero_media_type": "video",
       "focus_heading": "Products and categories",
       "service_note": "Life Sciences Trade support is provided according to the agreed scope, available information and authorised instructions from the parties involved. Identification or introduction of potential suppliers, buyers or manufacturers does not guarantee product availability, supplier suitability, material quality, regulatory acceptance or completion of a transaction.\n\nApplicable licences, product registrations, supplier credentials, material identity, specifications, quality documentation, storage and transportation requirements, and import/export obligations must be verified by the relevant authorised parties. Any trading, brokerage, agency, representation or commission-based arrangement must be separately agreed and conducted in accordance with applicable law.",
       "description": "Support across pharmaceutical and life-sciences products, opportunities and trade activities.",
@@ -1588,7 +1591,8 @@
           "title": "Support Follow-Up Activities",
           "description": "We help organise outstanding questions, additional information requests and the next steps relevant to the sourcing or trade opportunity.\n\nImportant: Final supplier approval, technical acceptance, quality verification, regulatory assessment and purchasing decisions remain with the authorised parties."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_4.jpg"
     },
     {
       "cta_url": "./contact.html",
@@ -1692,7 +1696,7 @@
       "text_color": "#17243a",
       "process_heading": "How we work",
       "audiences_heading": "Who we work with",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
       "capabilities_description": "Explore our specialist capabilities. Open any area to see detailed support activities, project outcomes and important scope considerations.",
       "deliverables": [
@@ -1727,7 +1731,7 @@
       "icon": "fa-flask",
       "page_eyebrow": "Service 05",
       "capabilities_heading": "What we help you achieve",
-      "hero_media_type": "image",
+      "hero_media_type": "video",
       "focus_heading": "Equipment requirements",
       "service_note": "Equipment and technology support is provided according to the agreed engagement, available information and client requirements. Equipment identification, supplier introductions, technical comparisons and procurement coordination do not guarantee product suitability, equipment performance, supplier reliability, delivery, regulatory acceptance or successful commissioning.\n\nFinal purchasing decisions, supplier qualification, equipment acceptance and compliance with applicable technical and quality requirements remain the responsibility of the client and relevant authorised parties. Equipment design, installation, servicing, calibration, testing and qualification must be undertaken by appropriately qualified personnel whenever required.",
       "description": "Technology and equipment-oriented support for pharmaceutical and laboratory requirements.",
@@ -2005,7 +2009,8 @@
           "title": "Support Implementation Planning",
           "description": "We help organise relevant information and follow-up requirements relating to delivery, site readiness, commissioning, calibration and qualification considerations. The scope and extent of support are defined according to the client's requirements and the specific engagement."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_5.jpg"
     },
     {
       "cta_url": "./contact.html",
@@ -2108,7 +2113,7 @@
       "text_color": "#17243a",
       "process_heading": "How we work",
       "audiences_heading": "Who we work with",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
       "capabilities_description": "Explore our specialist capabilities. Open any area to see detailed support activities, project outcomes and important scope considerations.",
       "deliverables": [
@@ -2144,7 +2149,7 @@
       "icon": "fa-microscope",
       "page_eyebrow": "Service 06",
       "capabilities_heading": "What we help you achieve",
-      "hero_media_type": "image",
+      "hero_media_type": "video",
       "focus_heading": "Scientific capabilities",
       "service_note": "Research and scientific support is defined on a project-by-project basis and depends on the agreed scope, available evidence, resources and information supplied. Scientific guidance does not independently establish product safety, efficacy, stability, regulatory suitability or commercial readiness.\n\nExperimental findings must be generated through appropriate methods and accurately reported. Research integrity, data integrity, ethical requirements, institutional approvals, intellectual property and applicable regulatory obligations must be respected. Practical laboratory work, testing, validation and specialised investigations are included only where explicitly agreed and undertaken by appropriately qualified personnel using suitable facilities.",
       "description": "Scientific and research support across formulation, development and laboratory activities.",
@@ -2409,7 +2414,8 @@
           "title": "Document & Identify Next Steps",
           "description": "We help organise findings, outstanding questions, documentation needs and potential next steps for further scientific investigation. The process is tailored to the project's stage, formulation, research question and intended outcome."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_6.jpg"
     },
     {
       "cta_url": "./contact.html",
@@ -2512,7 +2518,7 @@
       "text_color": "#17243a",
       "process_heading": "How we work",
       "audiences_heading": "Who we work with",
-      "primary_media_type": "image",
+      "primary_media_type": "video",
       "micro_tagline": "Intelligent Solutions. Assured Compliance.",
       "capabilities_description": "Explore our specialist capabilities. Open any area to see detailed support activities, project outcomes and important scope considerations.",
       "deliverables": [
@@ -2548,7 +2554,7 @@
       "icon": "fa-industry",
       "page_eyebrow": "Service 07",
       "capabilities_heading": "What we help you achieve",
-      "hero_media_type": "image",
+      "hero_media_type": "video",
       "focus_heading": "Manufacturing models",
       "service_note": "Pharma Solutions & Manufacturing support is provided according to the agreed scope, available information and project requirements. Identification of potential manufacturing partners, preliminary product assessments and project coordination do not guarantee manufacturing feasibility, product performance, regulatory approval, commercial viability or successful project completion.\n\nManufacturing authorisations, product registrations, quality agreements, supplier qualification, product testing, stability assessment, process validation and other applicable regulatory or technical requirements must be addressed by the responsible authorised parties. Detailed engineering, laboratory activities, manufacturing execution and specialised professional services are included only where expressly agreed and undertaken by appropriately qualified or authorised parties.",
       "description": "Integrated support for pharmaceutical manufacturing projects and operational requirements.",
@@ -2805,7 +2811,8 @@
           "title": "Coordinate Follow-Up & Readiness",
           "description": "We help track outstanding actions and identify further activities required for the next project stage, including applicable commissioning, qualification or operational-readiness considerations. The process is tailored to the manufacturing model, product category, facility stage and client objectives."
         }
-      ]
+      ],
+      "listing_image": "/images/uploads/Service_7.jpg"
     }
   ]
 }

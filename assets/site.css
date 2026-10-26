@@ -1288,64 +1288,24 @@ body.premium-service-page main{--ps-text:#17243a;--ps-body-size:19px;--ps-headin
 .service-primary-media .service-video-sound svg{display:block;width:24px;height:24px}
 .service-primary-media .service-video-sound:focus-visible{outline:3px solid #d1eefa;outline-offset:3px}
 
-/* 26 Oct 2026 — Services tab: seven separate 16:9 photographs with service descriptions.
-   CSS affects only on-screen layout; never transforms or re-encodes image uploads. */
-body[data-page="services"] #servicesGrid.service-title-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:28px;
-  align-items:stretch;
-}
-body[data-page="services"] .service-card-visual{
-  display:flex;
-  flex-direction:column;
-  align-items:stretch;
-  justify-content:flex-start;
-  padding:0;
-  gap:0;
-  overflow:hidden;
-  min-width:0;
-  border-radius:17px;
-  background:#fff;
-}
-body[data-page="services"] .service-list-image-frame{
-  position:relative;
-  aspect-ratio:16 / 9;
-  width:100%;
-  height:auto;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  background:#e9f1f5;
-}
-body[data-page="services"] .service-list-image-frame img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position:center;
-  image-rendering:auto;
-}
-body[data-page="services"] .service-list-image-placeholder{
-  display:grid;
-  place-items:center;
-  height:100%;
-  width:100%;
-  padding:24px;
-  background:linear-gradient(135deg,#102941,#12637a);
-  color:#fff;
-  text-align:center;
-}
-body[data-page="services"] .service-list-card-content{
-  padding:clamp(20px,3vw,33px);
-  display:flex;
-  flex:1;
-  flex-direction:column;
-  gap:15px;
-}
-body[data-page="services"] .service-list-card-content .service-title-content{align-items:flex-start;}
-body[data-page="services"] .service-list-card-content h3{font-size:clamp(21px,2.2vw,29px);line-height:1.26;}
-body[data-page="services"] .service-list-card-summary{color:#3c5064;line-height:1.7;font-size:16px;margin:0;flex:1;}
-body[data-page="services"] .service-list-cta{font-size:15px;font-weight:800;color:#036b84;display:inline-flex;align-items:center;gap:12px;}
-body[data-page="services"] .service-card-visual:hover img{transform:none;filter:none;}
-@media (max-width:800px){body[data-page="services"] #servicesGrid.service-title-grid{grid-template-columns:minmax(0,1fr);gap:22px;}}
+/* 26 Oct 2026 — seven service tiles: distinct original-resolution 16:9 images, with explanatory text. */
+.service-card.service-card-with-image{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:0;gap:0;overflow:hidden;min-width:0}
+.service-card-with-image .service-tile-image{display:block;position:relative;width:100%;aspect-ratio:16 / 9;flex:none;overflow:hidden;background:#e9f1f5}
+.service-card-with-image .service-tile-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;max-width:100%;max-height:100%;transition:none!important;transform:none!important;filter:none!important}
+.service-card-with-image .service-tile-image-fallback{display:grid;place-items:center;width:100%;height:100%;background:linear-gradient(125deg,#0e3354,#187187);color:#fff;font-size:52px}
+.service-card-with-image .service-tile-body{display:flex;position:relative;flex-direction:column;align-items:stretch;gap:15px;flex:1;padding:22px}
+.service-card-with-image .service-title-content{display:flex;align-items:center;gap:12px;min-width:0}
+.service-card-with-image .service-title-content h3{min-width:0;font-size:clamp(19px,1.7vw,25px);line-height:1.32}
+.service-card-with-image .service-number{flex:0 0 auto}
+.service-card-with-image .service-icon{width:43px;height:43px;flex:0 0 43px}
+.service-card-with-image .service-tile-description{display:block;color:var(--muted);font-size:15px;line-height:1.65;white-space:normal}
+.service-card-with-image .service-read{align-self:flex-end;margin-top:auto}
+.service-card-with-image:hover{transform:none!important}
+.service-card-with-image:hover .service-tile-image img,
+.service-card-with-image:focus-visible .service-tile-image img{transform:none!important;filter:none!important}
+/* Images/videos on service detail pages never zoom when pointed at. Text hover animation is untouched. */
+body[data-page="service"] .service-primary-media img,
+body[data-page="service"] .service-primary-media video{object-fit:contain;transition:none!important;transform:none!important;filter:none!important}
+body[data-page="service"] .service-primary-media img:hover,
+body[data-page="service"] .service-primary-media video:hover{transform:none!important;filter:none!important}
+@media(max-width:700px){.service-card-with-image .service-tile-body{padding:20px}.service-card-with-image .service-title-content h3{font-size:21px}}

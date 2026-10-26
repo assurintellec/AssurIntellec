@@ -422,29 +422,41 @@ function normalizeServices(data) {
   return list.filter(service => service && service.enabled !== false && (service.slug || service.title || service.page_file));
 }
 
+function serviceImageSource(item, property) {
+  // An original-file selection overrides the standard Decap image picker.
+  // The browser receives the uploaded file itself: no generated thumbnails, forced crop or recompression.
+  return item?.[`${property}_original`] || item?.[property] || '';
+}
+
+function serviceVideoMime(url) {
+  const extension = String(url || '').split(/[?#]/)[0].split('.').pop().toLowerCase();
+  // The CMS file widget accepts additional formats; the browser decides which can play.
+  return ({mp4:'video/mp4',m4v:'video/mp4',webm:'video/webm',ogv:'video/ogg',ogg:'video/ogg',mov:'video/quicktime',avi:'video/x-msvideo',mkv:'video/x-matroska'})[extension] || '';
+}
+
 function renderServiceCards(services) {
   const grid = document.getElementById('servicesGrid');
   if (!grid) return;
   const aria = SITE?.ui?.service_read_aria || 'Open service details';
+  const shownImages = new Set();
   grid.innerHTML = services.filter(service => service && service.enabled !== false && String(service.title || '').trim()).map((service, index) => {
     const file = service.page_file || `service-${service.slug}.html`;
-    // The dedicated Services tab shows seven individually managed 16:9 image-and-text cards.
-    // The existing homepage title-card layout is intentionally unchanged.
-    if (document.body.dataset.page === 'services') {
-      const photo = service.hero_image_file || service.hero_image || service.primary_image_file || service.primary_image || '';
-      const imagePath = photo ? normalizeAsset(photo) : '';
-      return `<a class="service-card service-card-visual" href="./${escapeHtml(file)}" aria-label="${escapeHtml(`${aria}: ${service.title || ''}`)}">
-        <div class="service-list-image-frame">${imagePath ? `<img src="${escapeHtml(imagePath)}" alt="${escapeHtml(service.media_alt || service.title)}" loading="lazy" decoding="async">` : `<div class="service-list-image-placeholder">${escapeHtml(service.title)}</div>`}</div>
-        <div class="service-list-card-content"><div class="service-title-content"><span class="service-number">${String(index + 1).padStart(2,'0')}.</span><span class="service-icon">${iconHtml(service.icon)}</span><h3>${escapeHtml(service.title)}</h3></div><p class="service-list-card-summary">${escapeHtml(service.description || service.page_description || '')}</p><span class="service-list-cta">Explore this service <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
-      </a>`;
-    }
-    return `<a class="service-card" href="./${escapeHtml(file)}" aria-label="${escapeHtml(`${aria}: ${service.title || ''}`)}">
-      <div class="service-title-content">
+    // Give each of the seven service tiles its own image, even if a CMS editor mistakenly reused a file.
+    const options = [serviceImageSource(service,'listing_image'),serviceImageSource(service,'primary_image'),serviceImageSource(service,'hero_image')];
+    const chosen = options.find(candidate => candidate && !shownImages.has(normalizeAsset(candidate))) || '';
+    if (chosen) shownImages.add(normalizeAsset(chosen));
+    const visual = chosen
+      ? `<img src="${escapeHtml(normalizeAsset(chosen))}" alt="${escapeHtml(service.media_alt || service.title || 'Service image')}" loading="lazy" decoding="async">`
+      : `<span class="service-tile-image-fallback" aria-hidden="true"><i class="fas ${escapeHtml(service.icon || 'fa-circle-nodes')}"></i></span>`;
+    return `<a class="service-card service-card-with-image" href="./${escapeHtml(file)}" aria-label="${escapeHtml(`${aria}: ${service.title || ''}`)}">
+      <div class="service-tile-image">${visual}</div>
+      <span class="service-tile-body"><span class="service-title-content">
         <span class="service-number">${String(index + 1).padStart(2,'0')}.</span>
         <span class="service-icon">${iconHtml(service.icon)}</span>
         <h3>${escapeHtml(service.title)}</h3>
-      </div>
-      <span class="service-read" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+      </span>
+      ${service.description ? `<span class="service-tile-description">${escapeHtml(service.description)}</span>` : ''}
+      <span class="service-read" aria-hidden="true"><i class="fas fa-arrow-right"></i></span></span>
     </a>`;
   }).join('');
 }
@@ -1932,9 +1944,11 @@ function serviceVideoMarkup(source, description, poster = '', extraClass = '') {
   const src = escapeHtml(normalizeAsset(source));
   const label = escapeHtml(description || 'Service introduction video');
   const posterAttr = poster ? ` poster="${escapeHtml(normalizeAsset(poster))}"` : '';
+  const mime = serviceVideoMime(source);
+  const typeAttr = mime ? ` type="${mime}"` : '';
   return `<div class="service-video-player">
     <video class="${escapeHtml(extraClass)} service-loop-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback"${posterAttr} aria-label="${label}">
-      <source src="${src}" type="video/mp4">Your browser does not support MP4 video.
+      <source src="${src}"${typeAttr}>Your browser does not support this video format.
     </video>
     <button type="button" class="service-video-sound" aria-label="Unmute service video" aria-pressed="false" title="Unmute service video"></button>
   </div>`;
@@ -2008,7 +2022,7 @@ function renderServiceDetail(site) {
   const caption=document.getElementById('serviceMediaCaption');
   const mode=service.primary_media_type==='video'?'video':'image';
   const videoPath=service.primary_video||service.service_video||'';
-  const imagePath=service.primary_image||service.image_1||'';
+  const imagePath=serviceImageSource(service,'primary_image')||service.image_1||'';
   let mediaHtml='';
   if(mode==='video' && videoPath){
     mediaHtml=serviceVideoMarkup(videoPath,service.media_alt||service.title||'Service video','', 'service-primary-video');
@@ -2180,10 +2194,9 @@ function renderPremiumService(service, site) {
   const serviceImageOwner=new Map();
   const fullServiceList=Array.isArray(SERVICES)?SERVICES:[];
   for(const record of fullServiceList){
-    // The advanced file override is used first if present; the standard image remains a fallback.
-    const sources=[record.hero_image_file||record.hero_image,record.primary_image_file||record.primary_image,record.resource_image_file||record.resource_image];
+    const sources=[serviceImageSource(record,'hero_image'),serviceImageSource(record,'primary_image'),serviceImageSource(record,'resource_image')];
     for(const field of ['core_services','focus_areas','additional_information']){
-      for(const entry of (Array.isArray(record[field])?record[field]:[]))sources.push(entry?.image_file||entry?.image);
+      for(const entry of (Array.isArray(record[field])?record[field]:[]))sources.push(serviceImageSource(entry,'image'));
     }
     for(const src of sources){
       if(!src)continue;
@@ -2196,10 +2209,7 @@ function renderPremiumService(service, site) {
     const path=src?asset(src):'';
     if(!path||usedServiceImagePaths.has(path)||!hasUniqueImageRights(src))return '';
     usedServiceImagePaths.add(path);
-    // Images are linked to the unchanged original file: CSS changes display only, never pixels or file quality.
-    // Eager-load the service hero, defer offscreen detail pictures.
-    const hero=klass==='ps2-hero-image';
-    return `<a class="ps2-original-image-link${hero?' ps2-original-hero-link':''}" href="${e(path)}" target="_blank" rel="noopener noreferrer" title="Open original image at full resolution" aria-label="Open original image at full resolution: ${e(alt||'Service image')}"><img class="${klass}" src="${e(path)}" alt="${e(alt||'AssurIntellec service reference image')}" loading="${hero?'eager':'lazy'}" ${hero?'fetchpriority="high"':''} decoding="async"></a>`;
+    return `<img class="${klass}" src="${e(path)}" alt="${e(alt||'AssurIntellec service reference image')}" loading="lazy" decoding="async">`;
   };
   const visualFallback=(title)=>`<div class="ps2-unique-fallback" aria-label="${e(title||'Service expertise')}"><span>ASSURINTELLEC™</span><strong>${e(title||'Service expertise')}</strong></div>`;
   const url=href=>safeMediaHref(href)||'./contact.html';
@@ -2208,7 +2218,7 @@ function renderPremiumService(service, site) {
   const mail=validMail?service.contact_email:(site.contact?.service_contact_email||'info@assurintellec.in');
   const subject='AssurIntellec enquiry — '+text(service.page_title||service.title);
   const mailHref=`mailto:${mail}?subject=${encodeURIComponent(subject)}`;
-  const heroPhoto=service.hero_image_file||service.hero_image||service.primary_image_file||service.primary_image||'';
+  const heroPhoto=serviceImageSource(service,'hero_image')||serviceImageSource(service,'primary_image')||'';
   const heroVideo=service.hero_video||service.primary_video||'';
   // Service videos play on repeat; only the custom sound toggle is visible.
   // The video URL and its optional poster remain individually editable in Decap Turbo.
@@ -2233,30 +2243,21 @@ function renderPremiumService(service, site) {
   const overview=`<section class="ps2-section ps2-intro" id="overview"><div class="container ps2-editorial-grid"><div class="ps2-intro-aside ps2-animate">${sectionLabel('01',L('overview_label','THE BIG PICTURE'))}<div class="ps2-intro-mark">01<span>/ 07</span></div></div><div class="ps2-intro-copy ps2-animate"><h2>${e(service.intro_title||'An integrated approach to your requirements')}</h2>${introParas.slice(0,2).map(t=>`<p>${e(t)}</p>`).join('')}${introParas.length>2?`<details class="ps2-extend"><summary>${e(L('overview_more','More about our approach'))} <span aria-hidden="true">+</span></summary><div>${introParas.slice(2).map(t=>`<p>${e(t)}</p>`).join('')}</div></details>`:''}<div class="ps2-intro-actions"><a href="#capabilities">View ${core.length} ${e(L('overview_link_suffix','core service areas'))} <span aria-hidden="true">↘</span></a></div></div></div></section>`;
   const serviceCard=(item,i)=>{
     const hasDetails=arr(item.scope).length||text(item.overview)||text(item.outcome)||text(item.note);
-    const picture=item.image_file||item.image||''; // No image reuse: unique service-specific section artwork.
+    const picture=serviceImageSource(item,'image'); // Deliberately NO image fallback: a fallback repeats the same photograph.
     const preview=arr(item.scope).slice(0,2);
     return `<article class="ps2-service-card ps2-animate" style="--ps2-index:${i%4}"><div class="ps2-card-photo">${image(picture,item.image_alt||item.title)||visualFallback(item.title)}<span class="ps2-photo-index">${String(i+1).padStart(2,'0')}</span></div><div class="ps2-card-inner"><div class="ps2-card-meta">${e(item.short_label||'PHARMACEUTICAL SOLUTIONS')}</div><h3>${e(item.title)}</h3><p class="ps2-card-lead">${e(item.lead||'Explore project-specific requirements and support.')}</p>${preview.length?`<ul class="ps2-preview-list">${preview.map(s=>`<li>${e(s)}</li>`).join('')}</ul>`:''}${hasDetails?`<details class="ps2-scope" ${item.expanded?'open':''}><summary><span>${e(L('card_scope_label','Explore full scope'))}</span><span class="ps2-scope-icon" aria-hidden="true">+</span></summary><div class="ps2-scope-inner">${paras(item.overview)}${arr(item.scope).length?`<h4>${e(L('card_activities_label','Our support may include'))}</h4><ul class="ps2-detail-list">${arr(item.scope).map(a=>`<li>${e(a)}</li>`).join('')}</ul>`:''}${text(item.outcome)?`<div class="ps2-outcome"><strong>${e(L('card_outcome_label','Project objective / outcome'))}</strong>${paras(item.outcome)}</div>`:''}${text(item.note)?`<p class="ps2-scope-note">${e(item.note)}</p>`:''}${text(item.image_caption)?`<p class="ps2-image-caption">${e(item.image_caption)}</p>`:''}</div></details>`:''}</div></article>`;
   };
   const capabilities=`<section class="ps2-section ps2-capabilities" id="capabilities"><div class="container"><div class="ps2-section-header ps2-animate"><div>${sectionLabel('02',L('capabilities_label','WHAT WE DO'))}<h2>${e(service.capabilities_heading||'Our core capabilities')}</h2><p>${e(service.capabilities_description||'Explore our complete service portfolio.')}</p></div><div class="ps2-section-number">${String(core.length).padStart(2,'0')}<small>${e(L('capabilities_count_label','FOCUS AREAS'))}</small></div></div><div class="ps2-card-grid">${core.map(serviceCard).join('')}</div></div></section>`;
-  const specialisms=focus.length?`<section class="ps2-section ps2-specialisms" id="specialisms"><div class="container"><div class="ps2-section-header ps2-animate">${sectionLabel('03',L('focus_label','SPECIALISED EXPERTISE'))}<h2>${e(service.focus_heading||'Areas of focus')}</h2><p>${e(L('focus_description','Explore the product categories, professional functions and opportunities relevant to this service.'))}</p></div><div class="ps2-specialism-grid">${focus.map((f,i)=>`<article class="ps2-specialism ps2-animate"><span>${String(i+1).padStart(2,'0')}</span><div>${(f.image_file||f.image)?`<figure class="ps2-focus-photo">${image(f.image_file||f.image,f.title)||visualFallback(f.title)}</figure>`:''}<h3>${e(f.title)}</h3>${paras(f.description)}</div></article>`).join('')}</div></div></section>`:'';
+  const specialisms=focus.length?`<section class="ps2-section ps2-specialisms" id="specialisms"><div class="container"><div class="ps2-section-header ps2-animate">${sectionLabel('03',L('focus_label','SPECIALISED EXPERTISE'))}<h2>${e(service.focus_heading||'Areas of focus')}</h2><p>${e(L('focus_description','Explore the product categories, professional functions and opportunities relevant to this service.'))}</p></div><div class="ps2-specialism-grid">${focus.map((f,i)=>`<article class="ps2-specialism ps2-animate"><span>${String(i+1).padStart(2,'0')}</span><div>${serviceImageSource(f,'image')?`<figure class="ps2-focus-photo">${image(serviceImageSource(f,'image'),f.title)||visualFallback(f.title)}</figure>`:''}<h3>${e(f.title)}</h3>${paras(f.description)}</div></article>`).join('')}</div></div></section>`:'';
   const process=(workflow.length||approach.length)?`<section class="ps2-section ps2-process" id="process"><div class="container"><div class="ps2-section-header ps2-animate">${sectionLabel('04',L('process_label','OUR METHOD'))}<h2>${e(service.process_heading||'A clear process from brief to next steps')}</h2><p>${e(L('process_description','Every engagement is tailored to the project objectives, information available and agreed scope.'))}</p></div><div class="ps2-steps">${workflow.map((step,i)=>`<article class="ps2-step ps2-animate"><div class="ps2-step-index">${String(i+1).padStart(2,'0')}<span class="ps2-step-line"></span></div><div><h3>${e(step.title)}</h3>${paras(step.description)}</div></article>`).join('')}</div>${approach.length?`<div class="ps2-methods"><h3>${e(L('approach_heading','Our approach to every assignment'))}</h3><div class="ps2-method-grid">${approach.map(a=>`<div><strong>${e(a.title)}</strong>${paras(a.description)}</div>`).join('')}</div></div>`:''}</div></section>`:'';
   const outputs=deliverables.length?`<section class="ps2-section ps2-deliverables" id="deliverables"><div class="container ps2-output-layout"><div class="ps2-output-heading ps2-animate">${sectionLabel('05',L('deliverables_label','PROJECT OUTPUTS'))}<h2>${e(service.deliverables_heading||'Typical deliverables')}</h2><p>${e(L('deliverables_description','Examples of possible outputs. Exact deliverables are agreed separately for each project.'))}</p><a class="ps2-inline-link" href="#service-contact">${e(L('deliverables_contact_cta','Discuss your deliverables'))} ${icon}</a></div><ul class="ps2-output-list">${deliverables.map(x=>`<li class="ps2-animate"><span aria-hidden="true">✓</span>${e(x)}</li>`).join('')}</ul></div></section>`:'';
-  const audience=audiences.length?`<section class="ps2-section ps2-audience" id="audiences"><div class="container ps2-audience-grid"><div class="ps2-animate">${sectionLabel('06',L('audience_label','WHO THIS IS FOR'))}<h2>${e(service.audiences_heading||'Who we work with')}</h2><p>${e(L('audience_description','Support for organisations and professionals with different technical, commercial and project needs.'))}</p><div class="ps2-audience-visual">${image(service.resource_image_file||service.resource_image,'Pharmaceutical and life sciences solutions')||visualFallback(service.audiences_heading||'Who we support')}</div></div><div class="ps2-audience-list">${audiences.map((x,i)=>`<div class="ps2-audience-item ps2-animate"><span>${String(i+1).padStart(2,'0')}</span><p>${e(x)}</p></div>`).join('')}</div></div></section>`:'';
+  const audience=audiences.length?`<section class="ps2-section ps2-audience" id="audiences"><div class="container ps2-audience-grid"><div class="ps2-animate">${sectionLabel('06',L('audience_label','WHO THIS IS FOR'))}<h2>${e(service.audiences_heading||'Who we work with')}</h2><p>${e(L('audience_description','Support for organisations and professionals with different technical, commercial and project needs.'))}</p><div class="ps2-audience-visual">${image(serviceImageSource(service,'resource_image'),'Pharmaceutical and life sciences solutions')||visualFallback(service.audiences_heading||'Who we support')}</div></div><div class="ps2-audience-list">${audiences.map((x,i)=>`<div class="ps2-audience-item ps2-animate"><span>${String(i+1).padStart(2,'0')}</span><p>${e(x)}</p></div>`).join('')}</div></div></section>`:'';
   const why=advantages.length?`<section class="ps2-section ps2-why" id="why-us"><div class="container"><div class="ps2-section-header ps2-animate">${sectionLabel('07',L('advantages_label','THE ASSURINTELLEC ADVANTAGE'))}<h2>${e(service.advantages_heading||'Why work with AssurIntellec™')}</h2></div><div class="ps2-value-grid">${advantages.map((x,i)=>`<article class="ps2-value ps2-animate"><div class="ps2-value-icon">${String(i+1).padStart(2,'0')}</div><h3>${e(x.title)}</h3>${paras(x.description)}</article>`).join('')}</div></div></section>`:'';
-  const more=extras.filter(x=>text(x.description)).length?`<section class="ps2-section ps2-resources"><div class="container"><div class="ps2-section-header ps2-animate">${sectionLabel('+',L('additional_label','ADDITIONAL DETAILS'))}<h2>${e(L('additional_heading','Further project considerations'))}</h2><p>${e(L('additional_description','More information about the scope and boundaries of available support.'))}</p></div><div class="ps2-extra-list">${extras.filter(x=>text(x.description)).map((x,i)=>`<details class="ps2-extra"><summary><span>${e(x.title)}</span><b aria-hidden="true">+</b></summary><div>${(x.image_file||x.image)?`<figure class="ps2-extra-photo">${image(x.image_file||x.image,x.title)||visualFallback(x.title)}</figure>`:''}${paras(x.description)}</div></details>`).join('')}</div></div></section>`:'';
+  const more=extras.filter(x=>text(x.description)).length?`<section class="ps2-section ps2-resources"><div class="container"><div class="ps2-section-header ps2-animate">${sectionLabel('+',L('additional_label','ADDITIONAL DETAILS'))}<h2>${e(L('additional_heading','Further project considerations'))}</h2><p>${e(L('additional_description','More information about the scope and boundaries of available support.'))}</p></div><div class="ps2-extra-list">${extras.filter(x=>text(x.description)).map((x,i)=>`<details class="ps2-extra"><summary><span>${e(x.title)}</span><b aria-hidden="true">+</b></summary><div>${serviceImageSource(x,'image')?`<figure class="ps2-extra-photo">${image(serviceImageSource(x,'image'),x.title)||visualFallback(x.title)}</figure>`:''}${paras(x.description)}</div></details>`).join('')}</div></div></section>`:'';
   const contact=`<section class="ps2-section ps2-contact" id="service-contact"><div class="container ps2-contact-frame"><div class="ps2-contact-content ps2-animate"><div class="ps2-contact-overline">${e(L('contact_label','NEXT STEP / START A CONVERSATION'))}</div><h2>${e(service.contact_heading||'Let’s discuss your project')}</h2><p>${e(service.contact_description||'Tell us about your requirements and project goals.')}</p><div class="ps2-contact-mail"><span>${e(L('contact_email_label','DEDICATED SERVICE EMAIL'))}</span><a href="${e(mailHref)}">${e(mail)} ${icon}</a></div></div><div class="ps2-contact-links ps2-animate"><a class="ps2-btn ps2-btn-primary" href="${e(mailHref)}">${e(L('contact_email_cta','Email the service team'))} ${icon}</a><a class="ps2-btn ps2-btn-outline" href="${e(url(service.cta_url))}">${e(L('contact_form_cta','Open enquiry form'))} ${icon}</a><a class="ps2-btn ps2-btn-outline" href="./services.html">${e(L('contact_all_cta','View all seven services'))} ${icon}</a><div class="ps2-contact-brand">${e(service.micro_tagline||'Intelligent Solutions. Assured Compliance.')}</div></div></div>${text(service.service_note)?`<div class="container ps2-legal"><details><summary>${e(L('service_note_label','Important service information'))} <span aria-hidden="true">+</span></summary><div>${paras(service.service_note)}</div></details></div>`:''}</section>`;
   const relatedSection=related.length?`<section class="ps2-related"><div class="container"><div class="ps2-related-title"><h2>${e(service.related_heading||'Explore related services')}</h2><a href="./services.html">${e(L('related_all_label','All services'))} ${icon}</a></div><div class="ps2-related-grid">${related.map(s=>`<a href="./${e(s.page_file||'services.html')}"><span>${e(L('related_card_label','ASSURINTELLEC / SERVICE'))}</span><h3>${e(s.page_title||s.title)}</h3><span class="ps2-related-arrow">↗</span></a>`).join('')}</div></div></section>`:'';
   main.innerHTML=header+navigation+overview+capabilities+specialisms+process+outputs+audience+why+more+contact+relatedSection;
   setupServiceVideoPlayers(main);
-  main.querySelectorAll('.ps2-original-image-link img').forEach(img=>{
-    img.addEventListener('error',()=>{
-      const link=img.closest('a.ps2-original-image-link');
-      if(!link)return;
-      link.classList.add('ps2-image-unavailable');
-      img.remove();
-      link.textContent='This image format cannot be previewed in your browser. Open the original file.';
-    },{once:true});
-  });
   main.style.setProperty('--ps2-body-size',Math.min(26,Math.max(16,Number(service.body_font_size)||19))+'px');
   main.style.setProperty('--ps2-heading-size',Math.min(46,Math.max(22,Number(service.heading_font_size)||32))+'px');
   main.style.setProperty('--ps2-body-color',/^#[0-9a-f]{3,8}$/i.test(service.text_color||'')?service.text_color:'#24344a');
