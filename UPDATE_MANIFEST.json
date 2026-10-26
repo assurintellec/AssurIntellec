@@ -1,0 +1,55 @@
+{
+  "approval_images": [
+    "/images/uploads/FDA.png",
+    "/images/uploads/ISO.png",
+    "/images/uploads/GLP.png",
+    "/images/uploads/WHO_GMP.png",
+    "/images/uploads/Revised_Schedule_M.png",
+    "/images/uploads/NABL.png"
+  ],
+  "client_images": [
+    "/images/uploads/Envacare.png",
+    "/images/uploads/Axelus_Pharma.jpg",
+    "/images/uploads/Client_3.png",
+    "/images/uploads/Client_4.png",
+    "/images/uploads/Client_5.png"
+  ],
+  "service_images": [
+    "/images/uploads/Service_1.jpg",
+    "/images/uploads/Service_2.jpg",
+    "/images/uploads/Service_3.jpg",
+    "/images/uploads/Service_4.jpg",
+    "/images/uploads/Service_5.jpg",
+    "/images/uploads/Service_6.jpg",
+    "/images/uploads/Service_7.jpg"
+  ],
+  "why_images": [
+    "/images/uploads/Why_1.png",
+    "/images/uploads/Why_2.png",
+    "/images/uploads/Why_3.png",
+    "/images/uploads/Why_4.png"
+  ],
+  "why_process_images": [
+    "/images/uploads/Process_1.png",
+    "/images/uploads/Process_2.png",
+    "/images/uploads/Process_3.png",
+    "/images/uploads/Process_4.png"
+  ],
+  "expert_slots": [
+    "Expert_1",
+    "Expert_2",
+    "Expert_3",
+    "Expert_4",
+    "Expert_5",
+    "Expert_6",
+    "Expert_7",
+    "Expert_8",
+    "Expert_9",
+    "Expert_10"
+  ],
+  "testimonial_avatars": [
+    "/images/uploads/testimonial-customer-1.png",
+    "/images/uploads/testimonial-customer-2.png",
+    "/images/uploads/testimonial-customer-3.png"
+  ]
+}

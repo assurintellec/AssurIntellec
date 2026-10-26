@@ -1,0 +1,5 @@
+/maintenance-router.js
+/wrangler.toml
+/cloudflare-worker/**
+/tests/**
+**/.git
