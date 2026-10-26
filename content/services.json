@@ -165,7 +165,7 @@
       "page_navigation_title": "On this page",
       "contact_description": "Connect with our specialist team to explore requirements, scope and next steps.",
       "contact_email": "gmp@assurintellec.in",
-      "primary_image": "/images/uploads/Service_1.jpg",
+      "primary_image": "",
       "core_services": [
         {
           "image_caption": "",
@@ -352,7 +352,7 @@
           "lead": "Identify technical improvement opportunities in existing pharmaceutical facilities."
         }
       ],
-      "primary_video": "/videos/gmp-engineering-intro.mp4",
+      "primary_video": "/videos/1.gmp_service_video.mp4",
       "focus_areas": [],
       "workflow": [
         {
