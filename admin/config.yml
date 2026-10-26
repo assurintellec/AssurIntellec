@@ -2757,11 +2757,38 @@ collections:
         widget: boolean
         default: true
         required: false
-      - label: Services Listing Image (16:9, individual image for this service)
+      - label: Opening Media Mode — VIDEO (first on service page)
+        name: hero_media_type
+        widget: select
+        options: [image, video]
+        default: video
+        hint: The FIRST section of each service page uses its opening video whenever a video file is set. For image-only mode, clear the opening video file first.
+        required: false
+      - label: Opening Video Poster / Fallback Image (16:9)
+        name: hero_image
+        widget: image
+        required: false
+        hint: Video poster and image-mode fallback. Use unique 16:9 original-resolution image; the video remains at the top unless you switch Hero Media Type.
+      - label: Original File Upload for hero_image (extra extensions; no recompression)
+        name: hero_image_original
+        widget: file
+        media_folder: images/uploads
+        public_folder: /images/uploads
+        required: false
+        hint: Optional. Overrides the standard image field; selects an original file of any extension. Browser image support and backend upload limits apply. Use 16:9 for full-frame display.
+
+      - label: FIRST VIDEO ON SERVICE PAGE — Upload Opening Video (16:9)
+        name: hero_video
+        widget: file
+        media_folder: videos
+        public_folder: /videos
+        required: false
+        hint: THIS IS THE VIDEO AT THE VERY TOP after clicking any of the seven services. Upload here to replace that service opening video. Prefer MP4 H264 for broad compatibility; original 16:9 resolution is preserved. File and hosting limits apply.
+      - label: HOMEPAGE SERVICE IMAGE (16:9) — unique picture with service text
         name: listing_image
         widget: image
         required: false
-        hint: Separate image shown with this service's title and description on the homepage and Services tab. Each service should use a DIFFERENT image. Original dimensions are preserved (16:9 recommended, e.g. 3840×2160).
+        hint: Shown on HOME and the Services listing with the service text. It is NOT the opening video. Each default service uses its own 16:9 PNG. For your replacements, upload 16:9 JPG, PNG or WebP at your preferred resolution; Decap processing is disabled.
       - label: Services Listing Original Image — additional extensions
         name: listing_image_original
         widget: file
@@ -2792,13 +2819,13 @@ collections:
         required: false
         hint: Optional. Overrides the standard image field; selects an original file of any extension. Browser image support and backend upload limits apply. Use 16:9 for full-frame display.
 
-      - label: Primary Service Video (optional)
+      - label: Secondary / Legacy Service Video (NOT the first video)
         name: primary_video
         widget: file
         required: false
         media_folder: videos
         public_folder: /videos
-        hint: Choose an original 16:9 video (MP4, WebM or Ogg preferred). No CMS resolution reduction. Browser playback and backend upload-size limits vary.
+        hint: This is NOT the first video on the individual service page. Use FIRST VIDEO ON SERVICE PAGE above. Original resolution is preserved; browser playback and backend limits apply.
       - label: Primary Visual Alt Text
         name: media_alt
         widget: string
@@ -2821,33 +2848,6 @@ collections:
         widget: string
         required: false
         hint: Optional. Works only when Enable Visual Link and the global Clickable Images option are both enabled.
-      - label: Hero Media Type (16:9) — VIDEO by default
-        name: hero_media_type
-        widget: select
-        options: [image, video]
-        default: video
-        hint: Set to Video for the main service banner; switch to Image only if the main video is intentionally removed.
-        required: false
-      - label: Video Poster / Hero Fallback Image (16:9)
-        name: hero_image
-        widget: image
-        required: false
-        hint: Video poster and image-mode fallback. Use unique 16:9 original-resolution image; the video remains at the top unless you switch Hero Media Type.
-      - label: Original File Upload for hero_image (extra extensions; no recompression)
-        name: hero_image_original
-        widget: file
-        media_folder: images/uploads
-        public_folder: /images/uploads
-        required: false
-        hint: Optional. Overrides the standard image field; selects an original file of any extension. Browser image support and backend upload limits apply. Use 16:9 for full-frame display.
-
-      - label: Main Service Video — original quality, browser-supported formats (16:9)
-        name: hero_video
-        widget: file
-        media_folder: videos
-        public_folder: /videos
-        required: false
-        hint: Controls the FIRST visual on the individual service page. The existing videos are preserved. Upload original-resolution MP4 / WebM / Ogg as supported by your browser. Other file extensions can upload, but may not play in all browsers.
       - label: Hero Kicker
         name: hero_kicker
         widget: string

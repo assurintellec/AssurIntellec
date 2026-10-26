@@ -1309,3 +1309,8 @@ body[data-page="service"] .service-primary-media video{object-fit:contain;transi
 body[data-page="service"] .service-primary-media img:hover,
 body[data-page="service"] .service-primary-media video:hover{transform:none!important;filter:none!important}
 @media(max-width:700px){.service-card-with-image .service-tile-body{padding:20px}.service-card-with-image .service-title-content h3{font-size:21px}}
+
+/* 26 Oct 2026 rev3: all 7 homepage/listing photos show in clear 16:9 frames; no media zoom. */
+.service-card-with-image .service-tile-image{aspect-ratio:16 / 9;overflow:hidden;background:#e8f0f5}
+.service-card-with-image .service-tile-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;image-rendering:auto;transform:none!important;filter:none!important;transition:none!important}
+.service-card-with-image:hover .service-tile-image img{transform:none!important}

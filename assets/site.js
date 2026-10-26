@@ -2223,10 +2223,10 @@ function renderPremiumService(service, site) {
   // Service videos play on repeat; only the custom sound toggle is visible.
   // The video URL and its optional poster remain individually editable in Decap Turbo.
   const licensedHeroPhoto=hasUniqueImageRights(heroPhoto)?heroPhoto:'';
-  const heroMedia=service.hero_media_type==='video'&&heroVideo?
-    serviceVideoMarkup(heroVideo,service.page_title||'Service introduction video',licensedHeroPhoto,'ps2-hero-video'):
+  const heroMedia=heroVideo?
+    serviceVideoMarkup(heroVideo,'Opening service video: '+(service.page_title||service.title||'Service'),licensedHeroPhoto,'ps2-hero-video'):
     image(licensedHeroPhoto,service.page_title,'ps2-hero-image');
-  if(service.hero_media_type==='video'&&heroVideo&&licensedHeroPhoto)usedServiceImagePaths.add(asset(licensedHeroPhoto));
+  if(heroVideo&&licensedHeroPhoto)usedServiceImagePaths.add(asset(licensedHeroPhoto));
   const core=arr(service.core_services),focus=arr(service.focus_areas),workflow=arr(service.workflow),deliverables=arr(service.deliverables),audiences=arr(service.audiences),advantages=arr(service.advantages),extras=arr(service.additional_information),approach=arr(service.approach_steps);
   const introParas=text(service.intro).split(/\n\s*\n/).filter(Boolean);
   const sectionLabel=(index,title)=>`<div class="ps2-overline"><span class="ps2-overline-index">${e(index)}</span><span>${e(title)}</span></div>`;

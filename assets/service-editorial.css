@@ -217,3 +217,12 @@ body.premium-service-page main .ps2-service-card:hover{transform:none!important}
 
 /* Video remains interactive through its mute control, but neither the button nor the video scales on hover. */
 body.premium-service-page main .service-video-sound:hover{transform:none!important}
+
+/* 26 Oct 2026 rev3: full FIRST video above all service text, with no hover zoom on images/videos. */
+body.premium-service-page main .ps2-hero{padding-top:0}
+body.premium-service-page main .ps2-hero-frame{aspect-ratio:16 / 9;border-radius:0 0 18px 18px;max-height:none}
+body.premium-service-page main .ps2-hero-panel{margin:24px auto 0;max-width:950px}
+body.premium-service-page main .ps2-hero-frame video{aspect-ratio:16 / 9;object-fit:contain;background:#0b1f3a;transform:none!important;transition:none!important}
+body.premium-service-page main .ps2-hero-frame .service-video-player{height:100%;width:100%}
+body.premium-service-page main .ps2-initial-hero .ps2-hero-frame .service-video-player video{pointer-events:none}
+@media(max-width:800px){body.premium-service-page main .ps2-hero-panel{margin:16px 0 0}}

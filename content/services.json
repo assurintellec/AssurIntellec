@@ -150,7 +150,7 @@
       "body_font_size": 19,
       "heading_font_size": 32,
       "hero_image": "/images/uploads/ServiceVisual_gmp-engineering_01.jpg",
-      "hero_video": "/videos/gmp-engineering-intro.mp4",
+      "hero_video": "/videos/gmp-engineering-intro-browser-compatible.mp4",
       "media_link_enabled": false,
       "deliverables_heading": "What your project can receive",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 01",
@@ -380,7 +380,7 @@
           "description": "Support the evaluation of existing facilities, identify potential improvement areas and organise actions according to the project's objectives."
         }
       ],
-      "listing_image": "/images/uploads/Service_1.jpg"
+      "listing_image": "/images/uploads/Service_1_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
@@ -778,7 +778,7 @@
           "description": "We organise the findings, outstanding questions and appropriate next steps within the engagement scope to help the client determine how to proceed."
         }
       ],
-      "listing_image": "/images/uploads/Service_2.jpg"
+      "listing_image": "/images/uploads/Service_2_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
@@ -1196,7 +1196,7 @@
           "description": "Where an opportunity is available, we support relevant communication and follow-up within the agreed scope."
         }
       ],
-      "listing_image": "/images/uploads/Service_3.jpg"
+      "listing_image": "/images/uploads/Service_3_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
@@ -1592,7 +1592,7 @@
           "description": "We help organise outstanding questions, additional information requests and the next steps relevant to the sourcing or trade opportunity.\n\nImportant: Final supplier approval, technical acceptance, quality verification, regulatory assessment and purchasing decisions remain with the authorised parties."
         }
       ],
-      "listing_image": "/images/uploads/Service_4.jpg"
+      "listing_image": "/images/uploads/Service_4_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
@@ -2010,7 +2010,7 @@
           "description": "We help organise relevant information and follow-up requirements relating to delivery, site readiness, commissioning, calibration and qualification considerations. The scope and extent of support are defined according to the client's requirements and the specific engagement."
         }
       ],
-      "listing_image": "/images/uploads/Service_5.jpg"
+      "listing_image": "/images/uploads/Service_5_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
@@ -2415,7 +2415,7 @@
           "description": "We help organise findings, outstanding questions, documentation needs and potential next steps for further scientific investigation. The process is tailored to the project's stage, formulation, research question and intended outcome."
         }
       ],
-      "listing_image": "/images/uploads/Service_6.jpg"
+      "listing_image": "/images/uploads/Service_6_16x9_full_clarity.png"
     },
     {
       "cta_url": "./contact.html",
@@ -2812,7 +2812,7 @@
           "description": "We help track outstanding actions and identify further activities required for the next project stage, including applicable commissioning, qualification or operational-readiness considerations. The process is tailored to the manufacturing model, product category, facility stage and client objectives."
         }
       ],
-      "listing_image": "/images/uploads/Service_7.jpg"
+      "listing_image": "/images/uploads/Service_7_16x9_full_clarity.png"
     }
   ]
 }
