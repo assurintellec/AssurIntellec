@@ -522,14 +522,226 @@
         "slot": "Expert_1"
       },
       {
-        "enabled": false,
-        "details": [],
+        "enabled": true,
+        "details": [
+          {
+            "heading": "1. Professional Profile",
+            "text": "",
+            "bullets": [
+              {
+                "point": "Accomplished Chemical Engineering and Technology Strategy Professional with over 13 years of experience in pharmaceutical, chemical, environmental, and technical consulting."
+              },
+              {
+                "point": "Expertise in pharmaceutical process engineering, API manufacturing documentation, technology transfer, Computerized System Validation (CSV), and Quality Management Systems (QMS)."
+              },
+              {
+                "point": "Professional experience with Torrent Pharmaceuticals and Gujarat Cleaner Production Centre (GCPC), including projects associated with UNIDO, GIZ Germany, and India's Ministry of Environment and Forests."
+              },
+              {
+                "point": "Experience in industrial environmental auditing, cleaner production, digital compliance, technical training, and sustainable manufacturing practices."
+              },
+              {
+                "point": "GPCB-authorized Schedule II Auditor, as stated in the professional profile."
+              }
+            ]
+          },
+          {
+            "heading": "2. Areas of Expertise",
+            "bullets": [
+              {
+                "point": "Pharmaceutical Process Engineering & API Manufacturing Support."
+              },
+              {
+                "point": "Computerized System Validation (CSV) & Quality Management Systems."
+              },
+              {
+                "point": "Pharmaceutical Documentation, Technology Transfer & Process Scale-Up."
+              },
+              {
+                "point": "Environmental Compliance, Cleaner Production & Sustainability."
+              },
+              {
+                "point": "Industrial Wastewater Treatment, ETP & STP Assessment."
+              },
+              {
+                "point": "Regulatory Compliance, Data Privacy & Digital Systems."
+              },
+              {
+                "point": "Technical Training, Research & Professional Development."
+              },
+              {
+                "point": "Pharmaceutical and Chemical Industry Advisory Services."
+              }
+            ]
+          },
+          {
+            "heading": "3. Industry Experience",
+            "bullets": [
+              {
+                "point": "Torrent Pharmaceuticals Ltd. & Torrent Research Centre (2015–2018): API production documentation, batch manufacturing records, validation protocols, equipment qualification, process engineering, material balance, and scale-up activities."
+              },
+              {
+                "point": "Gujarat Cleaner Production Centre (2012–2015): Environmental information systems, cleaner production assessments, industrial effluent treatment evaluation, environmental impact assessment, and eco-industrial development."
+              },
+              {
+                "point": "Technical Consulting (2018–Present): Pharmaceutical validation, API research support, regulatory documentation, technical training, process improvement, and industrial advisory projects."
+              },
+              {
+                "point": "International Project Exposure: Technical and environmental initiatives associated with UNIDO, GIZ Germany, and government-supported sustainability programs."
+              }
+            ]
+          },
+          {
+            "heading": "4. Technical & Regulatory Competencies",
+            "bullets": [
+              {
+                "point": "Computerized System Validation (CSV) and V-model validation methodology."
+              },
+              {
+                "point": "API production documentation, BMRs, master formula records, SOPs, and validation protocols."
+              },
+              {
+                "point": "Equipment qualification, process modification, technology transfer, and manufacturing scale-up."
+              },
+              {
+                "point": "Quality Management Systems (QMS) and controlled documentation."
+              },
+              {
+                "point": "Environmental Impact Assessment (EIA), cleaner production, and resource efficiency."
+              },
+              {
+                "point": "Effluent Treatment Plant (ETP) adequacy assessments and Zero Liquid Discharge (ZLD) concepts."
+              },
+              {
+                "point": "Data privacy, digital compliance, and document management systems."
+              },
+              {
+                "point": "Technical familiarity with SAP, GIS, Documentum, and Softsign systems."
+              }
+            ]
+          },
+          {
+            "heading": "5. Qualifications",
+            "bullets": [
+              {
+                "point": "Master's Degree in Chemical Engineering (2012) — Vishwakarma Government Engineering College, Ahmedabad."
+              },
+              {
+                "point": "Bachelor's Degree in Chemical Engineering (2009) — Government Engineering College, Valsad."
+              },
+              {
+                "point": "Leadership Essentials Program Certification — Iron Lady (2022)."
+              },
+              {
+                "point": "Certificate Course in Computerized System Validation — Company Connect Consultancy (2023)."
+              },
+              {
+                "point": "Leadership Essentials Program Certification — Iron Lady (2022)."
+              },
+              {
+                "point": "AI Expert Certification — Claim Skill (2026)."
+              },
+              {
+                "point": "Professional training in Zero Liquid Discharge, pollution prevention, and Best Available Techniques for industrial processes."
+              }
+            ]
+          },
+          {
+            "heading": "6. Key Achievements",
+            "bullets": [
+              {
+                "point": "Over 13 years of multidisciplinary experience across pharmaceutical engineering, environmental management, and industrial consulting."
+              },
+              {
+                "point": "Contributed to pharmaceutical documentation, process engineering, equipment qualification, and API manufacturing support."
+              },
+              {
+                "point": "Supported computerized validation and technical documentation assignments involving pharmaceutical and laboratory technology applications."
+              },
+              {
+                "point": "Participated in cleaner production and resource-efficient industrial development initiatives."
+              },
+              {
+                "point": "Contributed to technical publications, environmental reports, and industry-oriented research."
+              },
+              {
+                "point": "Developed and supported professional training initiatives covering CSV, technology transfer, and technical leadership."
+              }
+            ]
+          },
+          {
+            "heading": "7. Research, Publications & Technical Contributions",
+            "bullets": [
+              {
+                "point": "Research on the design of a sulfonator for sulfonation of PNCB, with journal and conference publications listed in the professional record."
+              },
+              {
+                "point": "Technical contributions on Zero Liquid Discharge in the textile industry."
+              },
+              {
+                "point": "Environmental documentation covering dyes and intermediates, chlor-alkali, petrochemicals, fertilizers, and ceramic manufacturing."
+              },
+              {
+                "point": "Contributions to cleaner production guidance, environmental information publications, and industrial sustainability assessments."
+              },
+              {
+                "point": "Patent research and methodology development related to herbal products."
+              }
+            ]
+          },
+          {
+            "heading": "8. Specialized Project Experience",
+            "bullets": [
+              {
+                "point": "API research and development setup support."
+              },
+              {
+                "point": "Pharmaceutical Computerized System Validation and documentation projects."
+              },
+              {
+                "point": "Industrial wastewater treatment and environmental process assessments."
+              },
+              {
+                "point": "Eco-industrial park development and resource-efficient cleaner production initiatives."
+              },
+              {
+                "point": "Pharmaceutical industry training programs and technical course development."
+              },
+              {
+                "point": "Industrial data privacy and digital compliance advisory."
+              }
+            ]
+          },
+          {
+            "heading": "9. Client Support & Business Impact",
+            "bullets": [
+              {
+                "point": "Support pharmaceutical manufacturers in strengthening process documentation, validation readiness, and quality compliance."
+              },
+              {
+                "point": "Provide technical guidance for API manufacturing processes, equipment qualification, and technology transfer."
+              },
+              {
+                "point": "Assist industries with cleaner production strategies, environmental assessments, and resource efficiency."
+              },
+              {
+                "point": "Support computerized systems, digital documentation, and data compliance initiatives."
+              },
+              {
+                "point": "Deliver technical training, knowledge development, and process improvement recommendations."
+              },
+              {
+                "point": "Provide multidisciplinary technical advisory support to pharmaceutical, chemical, and environmental industry clients."
+              }
+            ]
+          }
+        ],
         "image_alt": "",
         "detail_subtitle": "",
-        "detail_title": "",
+        "detail_title": "Process Engineering, Pharmaceutical Compliance, Environmental Sustainability & Technology Strategy Expert",
         "link_url": "",
         "name": "Ms. Dipali Parekh",
-        "role": "",
+        "role": "Associate Consultant",
         "image": "",
         "card_text": "",
         "link_enabled": false,
