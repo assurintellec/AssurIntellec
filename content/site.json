@@ -67,7 +67,8 @@
     "reveal_animations_enabled": true,
     "reveal_animation_duration_ms": 650,
     "reveal_animation_distance": 18,
-    "card_hover_lift_enabled": true
+    "card_hover_lift_enabled": true,
+    "homepage_service_image_hover_zoom": false
   },
   "media_options": {
     "clickable_images_enabled": true,
@@ -1281,7 +1282,7 @@
     "overlay_opacity": 0,
     "description": "The World’s First All-in-One Pharmaceutical Consulting Solution — Delivering a Complete, Integrated Ecosystem for Every Client.",
     "kicker_text_color": "#e6cf74",
-    "service_cycle_enabled": false,
+    "service_cycle_enabled": true,
     "service_cycle_titles": [
       "GMP Engineering & Compliance",
       "Advisory & Transactions",

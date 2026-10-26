@@ -2147,6 +2147,9 @@ function applyAnimationOptions(site) {
   root.dataset.textHoverZoom = hoverEnabled ? 'true' : 'false';
   root.dataset.revealAnimations = revealEnabled ? 'true' : 'false';
   root.dataset.cardHoverLift = options.card_hover_lift_enabled === false ? 'false' : 'true';
+  // Dedicated CMS control: only the seven homepage service images may zoom on hover.
+  // Treat missing/undefined values as OFF; respect the visitor's reduced-motion preference.
+  root.dataset.homeServiceImageHoverZoom = options.homepage_service_image_hover_zoom === true && !reducedMotion ? 'true' : 'false';
   root.style.setProperty('--text-hover-scale', String(Number.isFinite(scale) ? Math.min(1.10, Math.max(1.01, scale)) : 1.035));
   root.style.setProperty('--reveal-duration', `${Number.isFinite(duration) ? Math.min(1200, Math.max(200, duration)) : 650}ms`);
   root.style.setProperty('--reveal-distance', `${Number.isFinite(distance) ? Math.min(60, Math.max(0, distance)) : 18}px`);

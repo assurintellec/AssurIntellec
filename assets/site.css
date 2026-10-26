@@ -1314,3 +1314,29 @@ body[data-page="service"] .service-primary-media video:hover{transform:none!impo
 .service-card-with-image .service-tile-image{aspect-ratio:16 / 9;overflow:hidden;background:#e8f0f5}
 .service-card-with-image .service-tile-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;image-rendering:auto;transform:none!important;filter:none!important;transition:none!important}
 .service-card-with-image:hover .service-tile-image img{transform:none!important}
+
+/* 26 Oct 2026 — CMS switch: Homepage Service Image Hover Zoom.
+   OFF by default (also OFF while settings load). The 16:9 image frame, native file,
+   text hover zoom and all opening service-page videos remain unchanged.
+   This is deliberately restricted to body[data-page="home"]. */
+body[data-page="home"] .service-card-with-image .service-tile-image img {
+  transform: none !important;
+  transition: none !important;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  html[data-home-service-image-hover-zoom="true"] body[data-page="home"] .service-card-with-image .service-tile-image img {
+    transition: transform 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) !important;
+    transform: scale(1) !important;
+  }
+  html[data-home-service-image-hover-zoom="true"] body[data-page="home"] .service-card-with-image:hover .service-tile-image img,
+  html[data-home-service-image-hover-zoom="true"] body[data-page="home"] .service-card-with-image:focus-visible .service-tile-image img {
+    transform: scale(1.055) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="home"] .service-card-with-image .service-tile-image img,
+  body[data-page="home"] .service-card-with-image:hover .service-tile-image img {
+    transform: none !important;
+    transition: none !important;
+  }
+}

@@ -1673,6 +1673,12 @@ collections:
         widget: boolean
         default: true
         required: false
+      - label: Homepage Service Image Hover Zoom (7 service cards) — Default OFF
+        name: homepage_service_image_hover_zoom
+        widget: boolean
+        default: false
+        required: false
+        hint: 'OFF: the seven homepage service images stay still on hover. ON: zooms only those images on mouse hover. Text hover animation, the service page opening videos, and all other images remain unchanged.'
     - label: Instagram Reels (up to 10)
       name: instagram_reels
       widget: list
