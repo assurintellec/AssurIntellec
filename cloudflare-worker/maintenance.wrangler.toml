@@ -1,9 +1,0 @@
-name = "assurintellec-maintenance-page"
-main = "maintenance-worker.js"
-compatibility_date = "2026-09-01"
-workers_dev = true
-
-# Add route in the Cloudflare dashboard: www.assurintellec.in/* (and add a second
-# route for assurintellec.in/* if that hostname also serves the website).
-# Add variable MAINTENANCE_MODE = OFF; change it to ON to show the inlined page.
-# The HTML is embedded in the Worker, so the maintenance page works even if site files are removed.
