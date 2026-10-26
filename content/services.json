@@ -151,7 +151,7 @@
       "body_font_size": 19,
       "heading_font_size": 32,
       "hero_image": "/images/uploads/ServiceVisual_gmp-engineering_01.jpg",
-      "hero_video": "/videos/1.gmp_service_video.mp4",
+      "hero_video": "/videos/hero.mp4",
       "media_link_enabled": false,
       "deliverables_heading": "What your project can receive",
       "hero_kicker": "ASSURINTELLEC™ / SERVICE 01",
@@ -185,6 +185,7 @@
             "Preliminary review of existing layouts for expansion, renovation or operational improvement.",
             "Identification of potential layout-related issues requiring further engineering or quality assessment."
           ],
+          "image_original": "/images/uploads/servicevisual_gmp-engineering_02.png",
           "title": "Pharmaceutical Facility Planning & Layout",
           "expanded": true,
           "overview": "Effective pharmaceutical facility planning begins with understanding the intended manufacturing activities, process flows, infrastructure needs and relevant GMP considerations.\n\nAssurIntellec™ provides technical input to help clients evaluate facility layouts, space utilisation, personnel and material movement, supporting areas and overall infrastructure requirements.",
@@ -354,7 +355,7 @@
           "lead": "Identify technical improvement opportunities in existing pharmaceutical facilities."
         }
       ],
-      "primary_video": "/videos/gmp-engineering-intro.mp4",
+      "primary_video": "",
       "focus_areas": [],
       "workflow": [
         {
