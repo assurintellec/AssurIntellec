@@ -68,7 +68,8 @@
     "reveal_animation_duration_ms": 650,
     "reveal_animation_distance": 18,
     "card_hover_lift_enabled": true,
-    "homepage_service_image_hover_zoom": false
+    "homepage_service_image_hover_zoom": false,
+    "homepage_service_text_hover_zoom": false
   },
   "media_options": {
     "clickable_images_enabled": true,

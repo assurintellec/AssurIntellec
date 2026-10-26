@@ -2150,6 +2150,8 @@ function applyAnimationOptions(site) {
   // Dedicated CMS control: only the seven homepage service images may zoom on hover.
   // Treat missing/undefined values as OFF; respect the visitor's reduced-motion preference.
   root.dataset.homeServiceImageHoverZoom = options.homepage_service_image_hover_zoom === true && !reducedMotion ? 'true' : 'false';
+  // Separate CMS switch for text inside the seven homepage service tiles. Default OFF.
+  root.dataset.homeServiceTextHoverZoom = options.homepage_service_text_hover_zoom === true && !reducedMotion ? 'true' : 'false';
   root.style.setProperty('--text-hover-scale', String(Number.isFinite(scale) ? Math.min(1.10, Math.max(1.01, scale)) : 1.035));
   root.style.setProperty('--reveal-duration', `${Number.isFinite(duration) ? Math.min(1200, Math.max(200, duration)) : 650}ms`);
   root.style.setProperty('--reveal-distance', `${Number.isFinite(distance) ? Math.min(60, Math.max(0, distance)) : 18}px`);

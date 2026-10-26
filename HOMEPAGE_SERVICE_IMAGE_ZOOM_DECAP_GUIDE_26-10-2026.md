@@ -25,7 +25,7 @@ The latest AssurIntellec website ZIP now has a **working CMS switch** for zoomin
 
 - All seven opening service videos and their CMS replacement controls are **unchanged**.
 - Homepage 16:9 images, original uploads and filenames are **unchanged**; zoom is CSS-only, not an image resize.
-- Text hover zoom and other animation settings **remain independent**.
+- Text zoom now has its own **Homepage Service TEXT Hover Zoom** switch, OFF by default. Other site text animations remain unchanged.
 - Zoom on service-detail page images/videos **remains disabled**.
 - Browser preference for reduced motion disables this image zoom automatically.
 - If the Decap changes fail to publish due to a backend/GitHub permission problem, the switch cannot update the live website until publishing is fixed.

@@ -1340,3 +1340,40 @@ body[data-page="home"] .service-card-with-image .service-tile-image img {
     transition: none !important;
   }
 }
+
+
+/* 26 Oct 2026: Decap Turbo → Homepage Service TEXT Hover Zoom.
+   The seven HOME service-card text areas remain still by default; other site text
+   and the independent homepage image hover toggle are not changed.
+   A previously inherited generic SPAN transform caused card headings to clip.
+   Prevent scaling the body/title wrappers in either mode. */
+body[data-page="home"] #servicesGrid .service-card-with-image .service-tile-body,
+body[data-page="home"] #servicesGrid .service-card-with-image .service-title-content {
+  transform: none !important;
+}
+
+/* The default is OFF even before content/site.json loads. */
+html:not([data-home-service-text-hover-zoom="true"]) body[data-page="home"] #servicesGrid .service-card-with-image .service-tile-body :is(h3, span, p, strong, em, small, label, i):is(:hover, :focus-visible),
+html:not([data-home-service-text-hover-zoom="true"]) body[data-page="home"] #servicesGrid .service-card-with-image .service-tile-body:is(:hover, :focus-visible) {
+  transform: none !important;
+  transition: none !important;
+}
+
+/* If ON, animate only the actual title / description / service number,
+   and never the card's wrapping SPAN elements or its image/video media. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  html[data-home-service-text-hover-zoom="true"] body[data-page="home"] #servicesGrid .service-card-with-image .service-tile-body :is(h3, .service-tile-description, .service-number):is(:hover, :focus-visible) {
+    transform: scale(clamp(1.01, var(--text-hover-scale, 1.035), 1.06)) !important;
+    transform-origin: left center;
+    transition: transform 0.22s ease !important;
+    position: relative;
+    z-index: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="home"] #servicesGrid .service-card-with-image .service-tile-body,
+  body[data-page="home"] #servicesGrid .service-card-with-image .service-tile-body * {
+    transform: none !important;
+    transition: none !important;
+  }
+}

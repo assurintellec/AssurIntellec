@@ -1678,7 +1678,13 @@ collections:
         widget: boolean
         default: false
         required: false
-        hint: 'OFF: the seven homepage service images stay still on hover. ON: zooms only those images on mouse hover. Text hover animation, the service page opening videos, and all other images remain unchanged.'
+        hint: 'OFF: the seven homepage service images stay still on hover. ON: zooms only those images. The text hover animation is controlled separately by the setting below.'
+      - label: Homepage Service TEXT Hover Zoom (7 service cards) — Default OFF
+        name: homepage_service_text_hover_zoom
+        widget: boolean
+        default: false
+        required: false
+        hint: 'OFF (recommended): service titles, descriptions and numbers stay still when hovered over. ON: those text elements enlarge gently when hovered over. Does not affect images, videos, or text elsewhere on the website.'
     - label: Instagram Reels (up to 10)
       name: instagram_reels
       widget: list
