@@ -745,13 +745,236 @@
         "slot": "Expert_2"
       },
       {
-        "enabled": false,
-        "details": [],
+        "enabled": true,
+        "details": [
+          {
+            "heading": "1. Professional Profile",
+            "bullets": [
+              {
+                "point": "Senior pharmaceutical business and marketing professional with over three decades of documented experience in domestic and international pharmaceutical markets."
+              },
+              {
+                "point": "Extensive expertise in international business development, pharmaceutical product registration coordination, market entry strategies, brand management, sales leadership, and distribution network development."
+              },
+              {
+                "point": "Held senior leadership positions including President, Vice President, Deputy Director, General Manager, and National Sales Manager across pharmaceutical and healthcare organizations."
+              },
+              {
+                "point": "Experience across Asian, African, CIS, Central Asian, Latin American, and SAARC pharmaceutical markets."
+              },
+              {
+                "point": "Specialized experience in ethical pharmaceuticals, OTC medicines, herbal products, consumer healthcare, cosmetics, and pharmaceutical inhalation devices."
+              }
+            ]
+          },
+          {
+            "heading": "2. Areas of Expertise",
+            "bullets": [
+              {
+                "point": "International Pharmaceutical Business Development & Market Expansion."
+              },
+              {
+                "point": "Pharmaceutical Export Marketing & Product Registration Coordination."
+              },
+              {
+                "point": "Global Distribution Network Development & Strategic Partnerships."
+              },
+              {
+                "point": "Pharmaceutical Brand Management & Product Launch Strategies."
+              },
+              {
+                "point": "Domestic & International Sales Management."
+              },
+              {
+                "point": "Pharmaceutical Joint Ventures & International Business Operations."
+              },
+              {
+                "point": "OTC, Ethical, Herbal & Consumer Healthcare Marketing."
+              },
+              {
+                "point": "Pharmaceutical Inhalation Device Commercialization."
+              },
+              {
+                "point": "Sales Force Development, Recruitment & Training."
+              },
+              {
+                "point": "Strategic Business Planning & Marketing Budget Management."
+              }
+            ]
+          },
+          {
+            "heading": "3. Industry Experience",
+            "bullets": [
+              {
+                "point": "Radiant Healthcare (India) Pvt. Ltd.: Held President and Vice President – Sales & Marketing roles, managing international pharmaceutical markets, distribution networks, product commercialization, and business expansion."
+              },
+              {
+                "point": "Ajanta Pharma Ltd.: Held Zonal Manager, Export Manager, and National Sales Manager responsibilities, including international market development across CIS, African, and SAARC countries."
+              },
+              {
+                "point": "Ajanta Pharma–Turkmenistan Joint Venture: Served as Deputy Director, overseeing pharmaceutical production, sales, and marketing operations in Ashgabat, Turkmenistan."
+              },
+              {
+                "point": "Shreya Life Sciences & Lokbeta Pharmaceuticals: Managed international pharmaceutical marketing, product registration, documentation, and business development in China and Southeast Asian markets."
+              },
+              {
+                "point": "Gran Heal Pharma Ltd. & Dupen Laboratories: Led pharmaceutical marketing, brand development, and ethical, OTC, herbal, and specialty product promotion."
+              },
+              {
+                "point": "Promed Laboratories, Sterling Winthrop & Walter Bushnell: Held progressive sales and management responsibilities involving product launches, regional operations, and national sales development."
+              }
+            ]
+          },
+          {
+            "heading": "4. Technical & Regulatory Competencies",
+            "bullets": [
+              {
+                "point": "International pharmaceutical product registration and regulatory documentation coordination."
+              },
+              {
+                "point": "Pharmaceutical export market entry and commercial feasibility assessment."
+              },
+              {
+                "point": "Market-specific product positioning and distribution strategy development."
+              },
+              {
+                "point": "Pharmaceutical sales forecasting, budgeting, and performance management."
+              },
+              {
+                "point": "International distributor identification, development, and coordination."
+              },
+              {
+                "point": "Pharmaceutical product portfolio planning and commercialization."
+              },
+              {
+                "point": "Brand development, marketing strategy, and promotional campaign management."
+              },
+              {
+                "point": "International business operations, logistics coordination, and credit control."
+              }
+            ]
+          },
+          {
+            "heading": "5. Qualifications",
+            "bullets": [
+              {
+                "point": "Bachelor of Science (B.Sc.) in Physiology — University of Calcutta."
+              },
+              {
+                "point": "Attended a Brand Management Course at the Indian Institute of Management (IIM), Calcutta."
+              },
+              {
+                "point": "Attended an Advanced Marketing Program in the United States."
+              },
+              {
+                "point": "Extensive practical experience in pharmaceutical sales, international marketing, strategic business development, and commercial operations."
+              }
+            ]
+          },
+          {
+            "heading": "6. Key Achievements",
+            "bullets": [
+              {
+                "point": "Progressed through multiple senior leadership positions in pharmaceutical sales, marketing, exports, and international business operations."
+              },
+              {
+                "point": "Reported approximately 20% sales growth during National Sales Manager responsibilities at Ajanta Pharma."
+              },
+              {
+                "point": "Reported approximately 33% first-year sales growth as National Sales Manager at Promed Laboratories."
+              },
+              {
+                "point": "Supported pharmaceutical product launches and distribution development across multiple domestic and international markets."
+              },
+              {
+                "point": "Managed international pharmaceutical operations and commercial activities within an India–Turkmenistan pharmaceutical joint venture."
+              },
+              {
+                "point": "Contributed to pharmaceutical inhalation device development and commercialization initiatives."
+              },
+              {
+                "point": "Established experience in ethical, OTC, herbal, cosmetics, and consumer healthcare product categories."
+              }
+            ]
+          },
+          {
+            "heading": "7. Pharmaceutical Product Innovation & Device Development",
+            "bullets": [
+              {
+                "point": "Experience supporting pharmaceutical inhalation device development and commercial planning."
+              },
+              {
+                "point": "Involvement in compact ultrasonic nebulizer product initiatives."
+              },
+              {
+                "point": "Participation in multidose Dry Powder Inhaler (DPI) device development initiatives."
+              },
+              {
+                "point": "Experience coordinating technical expertise, product development planning, and international business opportunities for inhalation technologies."
+              },
+              {
+                "point": "Understanding of medical-device market positioning, business feasibility, and distribution development."
+              }
+            ]
+          },
+          {
+            "heading": "8. Specialized International Project Experience",
+            "bullets": [
+              {
+                "point": "Pharmaceutical market development across China, Southeast Asia, Africa, Latin America, CIS, Central Asia, and SAARC regions."
+              },
+              {
+                "point": "International pharmaceutical product registration, distributor development, and commercial market-entry assignments."
+              },
+              {
+                "point": "Pharmaceutical joint venture operational management in Turkmenistan."
+              },
+              {
+                "point": "International pharmaceutical brand launches and product portfolio expansion."
+              },
+              {
+                "point": "Cross-border commercial collaboration involving pharmaceutical products and inhalation device technologies."
+              },
+              {
+                "point": "Strategic development of international sales networks and regional business partnerships."
+              }
+            ]
+          },
+          {
+            "heading": "9. Client Support & Business Impact",
+            "bullets": [
+              {
+                "point": "Support pharmaceutical companies in identifying international market-entry and export growth opportunities."
+              },
+              {
+                "point": "Provide strategic guidance for pharmaceutical product positioning, launches, and market expansion."
+              },
+              {
+                "point": "Assist with international distributor identification, business networking, and commercial partnership development."
+              },
+              {
+                "point": "Support pharmaceutical product registration coordination and market-specific documentation planning."
+              },
+              {
+                "point": "Provide advisory support for pharmaceutical marketing strategy, branding, and sales network optimization."
+              },
+              {
+                "point": "Assist organizations with international business development, commercial negotiations, and joint venture opportunities."
+              },
+              {
+                "point": "Offer strategic input for pharmaceutical product commercialization and healthcare technology market development."
+              },
+              {
+                "point": "Support sales force planning, recruitment, training, and performance improvement initiatives."
+              }
+            ]
+          }
+        ],
         "image_alt": "",
         "detail_subtitle": "",
-        "detail_title": "",
+        "detail_title": "Pharmaceutical International Business Development, Strategic Marketing & Global Market Expansion Expert",
         "link_url": "",
-        "name": "Expert_3",
+        "name": "Mr. Sanjit Kumar Das",
         "role": "",
         "image": "",
         "card_text": "",
