@@ -2,7 +2,7 @@
   "services": [
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_1_16x9_full_clarity.png",
+      "listing_image": "/images/uploads/service_1_homepage.png",
       "enabled": true,
       "card_bullets": [
         "Facility planning",
