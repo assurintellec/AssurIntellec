@@ -141,12 +141,13 @@
         {
           "title": "Deliverables — scope notes",
           "description": "Deliverables are determined by the service scope and the level of technical involvement agreed with the client.",
-          "image": "/images/uploads/service_1_last.png"
+          "image": "/images/uploads/service_1_last.png",
+          "image_original": "/images/uploads/service_1_d1.png"
         },
         {
           "title": "Deliverables — scope notes",
           "description": "Detailed engineering drawings, formal design packages, certified documents, testing, qualification execution, regulatory submissions and other specialised deliverables are included only when expressly agreed and undertaken by appropriately qualified or authorised professionals.",
-          "image": "/images/uploads/ServiceVisual_gmp-engineering_12.jpg"
+          "image": "/images/uploads/service_1_d2.png"
         }
       ],
       "body_font_size": 19,
