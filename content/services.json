@@ -737,32 +737,38 @@
         {
           "title": "Pharmaceutical Manufacturing Facilities",
           "description": "Preliminary technical evaluation of existing plants, manufacturing units and facilities being considered for acquisition, divestment, expansion or redevelopment.",
-          "image": "/images/uploads/service_2.2.1.png"
+          "image": "/images/uploads/service_2.2.1.png",
+          "image_original": "/images/uploads/service_2.2.1.png"
         },
         {
           "title": "Plant, Machinery & Industrial Assets",
           "description": "Review and coordination of available information relating to pharmaceutical production equipment, laboratory equipment and selected facility assets.",
-          "image": "/images/uploads/service_2.2.2.png"
+          "image": "/images/uploads/service_2.2.2.png",
+          "image_original": "/images/uploads/service_2.2.2.png"
         },
         {
           "title": "Business Acquisition & Divestment",
           "description": "Technical and transaction-related support for parties evaluating the purchase or sale of a pharmaceutical business, facility or defined group of assets.",
-          "image": "/images/uploads/service_2.2.3.png"
+          "image": "/images/uploads/service_2.2.3.png",
+          "image_original": "/images/uploads/service_2.2.3.png"
         },
         {
           "title": "Facility Expansion & Redevelopment",
           "description": "Preliminary assessment of existing infrastructure and identification of areas that may require further development or technical evaluation.",
-          "image": "/images/uploads/service_2.2.4.png"
+          "image": "/images/uploads/service_2.2.4.png",
+          "image_original": "/images/uploads/service_2.2.4.png"
         },
         {
           "title": "Strategic Business Partnerships",
           "description": "Coordination of initial discussions between organisations exploring facility use, manufacturing collaboration or other pharmaceutical business opportunities.",
-          "image": "/images/uploads/service_2.2.5.png"
+          "image": "/images/uploads/service_2.2.5.png",
+          "image_original": "/images/uploads/service_2.2.5.png"
         },
         {
           "title": "Investment-Related Technical Review",
           "description": "Facility- and asset-related technical input to help stakeholders identify questions that may require additional investigation before making an investment decision.",
-          "image": "/images/uploads/service_2.2.6.png"
+          "image": "/images/uploads/service_2.2.6.png",
+          "image_original": "/images/uploads/service_2.2.6.png"
         }
       ],
       "workflow": [
