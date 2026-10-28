@@ -1653,7 +1653,7 @@
     },
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_5_16x9_full_clarity.png",
+      "listing_image": "/images/uploads/service_5_homepage.png",
       "enabled": true,
       "card_bullets": [
         "Machinery selection",
@@ -1694,7 +1694,7 @@
           "description": "The agreed responsibilities, outputs and boundaries of each engagement are established according to the client's requirements."
         }
       ],
-      "resource_image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_11.jpg",
+      "resource_image": "/images/uploads/service_5_last.png",
       "advantages_heading": "Why work with AssurIntellec™",
       "slug": "pharma-laboratory-technologies",
       "page_file": "service-pharma-laboratory-technologies.html",
@@ -1775,7 +1775,7 @@
         {
           "title": "Scope of deliverables",
           "description": "Depending on the assignment, deliverables may include:\n\nThe exact deliverables depend on the equipment category, project requirements and agreed scope of work.\n\nFormal equipment approvals, certified design packages, supplier audits, equipment testing, calibration, qualification execution and regulatory submissions are not implied unless specifically agreed and performed by appropriately qualified or authorised parties.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_12.jpg"
+          "image": "/images/uploads/service_5_scope.png"
         }
       ],
       "body_font_size": 19,
@@ -1825,7 +1825,7 @@
           "title": "Pharmaceutical Machinery Selection",
           "expanded": true,
           "overview": "Pharmaceutical machinery must be evaluated in the context of the intended product, dosage form, manufacturing process, production capacity, facility layout and applicable quality requirements.\n\nAssurIntellec™ supports clients in defining machinery requirements and evaluating potential equipment options for new installations, capacity expansion and existing-facility improvement projects.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_02.jpg",
+          "image": "/images/uploads/service_5.1.png",
           "lead": "Identify equipment options aligned with your manufacturing process and production objectives."
         },
         {
@@ -1860,7 +1860,7 @@
           "title": "Laboratory Equipment & Instrumentation",
           "expanded": false,
           "overview": "Pharmaceutical laboratories require equipment suited to their analytical methods, intended use, workload, required measurement capabilities and applicable quality-system requirements.\n\nWe support the identification and evaluation of laboratory equipment based on the intended testing, research or operational requirements.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_03.jpg",
+          "image": "/images/uploads/service_5.2.png",
           "lead": "Support the evaluation of instruments and equipment for pharmaceutical testing, research and quality operations."
         },
         {
@@ -1885,7 +1885,7 @@
           "title": "Equipment Procurement & Sourcing Support",
           "expanded": false,
           "overview": "Procurement of pharmaceutical machinery and laboratory technologies may involve multiple suppliers, technical proposals, commercial quotations, delivery conditions and supporting documentation.\n\nAssurIntellec™ helps clients organise equipment requirements and coordinate procurement-related activities within the agreed scope.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_04.jpg",
+          "image": "/images/uploads/service_5.3.png",
           "lead": "Coordinate the information and supplier interactions needed to move from requirements to procurement."
         },
         {
@@ -1919,7 +1919,7 @@
           "title": "Technical Comparison & Equipment Evaluation",
           "expanded": false,
           "overview": "Different equipment models may differ in technical specifications, operating capabilities, accessories, automation, maintenance requirements, available service support and total cost of ownership.\n\nWe help clients organise available technical and commercial information so that proposed options can be evaluated against relevant selection criteria.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_05.jpg",
+          "image": "/images/uploads/service_5.4.png",
           "lead": "Compare equipment options against defined requirements rather than price alone."
         },
         {
@@ -1943,7 +1943,7 @@
           "title": "User Requirement Specifications & Technical Documentation",
           "expanded": false,
           "overview": "Clearly documented equipment requirements can improve communication between the client, engineering team, procurement stakeholders and potential suppliers.\n\nAssurIntellec™ can support the preparation or review of equipment-related requirement documents within the agreed scope.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_06.jpg",
+          "image": "/images/uploads/service_5.5.png",
           "lead": "Define equipment requirements before finalising the technology selection."
         },
         {
@@ -1967,7 +1967,7 @@
           "title": "New Laboratory & Equipment Planning Support",
           "expanded": false,
           "overview": "Establishing a new pharmaceutical or research laboratory involves more than selecting individual instruments. Equipment placement, workflow, electrical supply, environmental conditions, safety considerations, supporting utilities and future expansion can also influence the overall arrangement.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_07.jpg",
+          "image": "/images/uploads/service_5.6.png",
           "lead": "Coordinate equipment requirements with the laboratory's purpose, space and supporting infrastructure."
         },
         {
@@ -1991,7 +1991,7 @@
           "title": "Equipment Upgrades, Replacement & Technology Modernisation",
           "expanded": false,
           "overview": "Equipment may require replacement or upgrading because of changing process needs, increased capacity, ageing instruments, maintenance limitations, changing analytical requirements or technology improvements.\n\nAssurIntellec™ supports preliminary evaluation and coordination for equipment upgrades and replacement projects.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_08.jpg",
+          "image": "/images/uploads/service_5.7.png",
           "lead": "Evaluate potential alternatives for existing machinery and laboratory systems."
         },
         {
@@ -2014,7 +2014,7 @@
           "title": "Installation, Commissioning & Qualification Coordination",
           "expanded": false,
           "overview": "Equipment procurement may require additional planning for delivery, installation, commissioning, calibration, qualification, operator training and integration with the facility.\n\nWe help clients identify relevant equipment-related requirements and coordinate information exchange with the parties responsible for implementation.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_09.jpg",
+          "image": "/images/uploads/service_5.8.png",
           "lead": "Consider equipment readiness beyond the initial purchase."
         },
         {
@@ -2036,7 +2036,7 @@
           "title": "After-Sales Support, Maintenance & Lifecycle Considerations",
           "expanded": false,
           "overview": "An equipment purchase can have ongoing requirements involving maintenance, calibration, consumables, spare parts, software, technical service and operator support. These factors can influence equipment availability and long-term operating costs.",
-          "image": "/images/uploads/ServiceVisual_pharma-laboratory-technologies_10.jpg",
+          "image": "/images/uploads/service_5.9.png",
           "lead": "Consider long-term equipment usability as part of the purchasing decision."
         }
       ],
