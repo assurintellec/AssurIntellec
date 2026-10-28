@@ -1664,6 +1664,7 @@
       "contact_heading": "Let’s discuss your project",
       "media_link_url": "",
       "intro_title": "The Right Technology for Your Pharmaceutical & Laboratory Requirements",
+      "resource_image_original": "/images/uploads/service_5_last.png",
       "animation_enabled": true,
       "caption": "Supporting visual",
       "page_title": "Pharma & Laboratory Technologies",
@@ -1750,6 +1751,7 @@
         "advantages_label": "THE ASSURINTELLEC ADVANTAGE"
       },
       "cta": "Discuss Your Requirements",
+      "listing_image_original": "/images/uploads/service_5_homepage.png",
       "approach_steps": [],
       "text_color": "#17243a",
       "process_heading": "How we work",
@@ -1775,7 +1777,8 @@
         {
           "title": "Scope of deliverables",
           "description": "Depending on the assignment, deliverables may include:\n\nThe exact deliverables depend on the equipment category, project requirements and agreed scope of work.\n\nFormal equipment approvals, certified design packages, supplier audits, equipment testing, calibration, qualification execution and regulatory submissions are not implied unless specifically agreed and performed by appropriately qualified or authorised parties.",
-          "image": "/images/uploads/service_5_scope.png"
+          "image": "/images/uploads/service_5_scope.png",
+          "image_original": "/images/uploads/service_5_scope.png"
         }
       ],
       "body_font_size": 19,
@@ -1822,6 +1825,7 @@
             "Material Handling & Supporting Equipment: Material transfer, handling and process-support equipment relevant to the intended facility.",
             "The actual equipment categories depend on the client's product, manufacturing process and project scope."
           ],
+          "image_original": "/images/uploads/service_5.1.png",
           "title": "Pharmaceutical Machinery Selection",
           "expanded": true,
           "overview": "Pharmaceutical machinery must be evaluated in the context of the intended product, dosage form, manufacturing process, production capacity, facility layout and applicable quality requirements.\n\nAssurIntellec™ supports clients in defining machinery requirements and evaluating potential equipment options for new installations, capacity expansion and existing-facility improvement projects.",
@@ -1857,6 +1861,7 @@
             "Centrifuges, water baths and related laboratory equipment.",
             "Other analytical, research and quality-control instruments."
           ],
+          "image_original": "/images/uploads/service_5.2.png",
           "title": "Laboratory Equipment & Instrumentation",
           "expanded": false,
           "overview": "Pharmaceutical laboratories require equipment suited to their analytical methods, intended use, workload, required measurement capabilities and applicable quality-system requirements.\n\nWe support the identification and evaluation of laboratory equipment based on the intended testing, research or operational requirements.",
@@ -1882,6 +1887,7 @@
             "Helping organise procurement-related follow-up activities.",
             "Supplier identification and quotation coordination do not constitute supplier approval or a guarantee of equipment quality, delivery, performance or commercial suitability."
           ],
+          "image_original": "/images/uploads/service_5.3.png",
           "title": "Equipment Procurement & Sourcing Support",
           "expanded": false,
           "overview": "Procurement of pharmaceutical machinery and laboratory technologies may involve multiple suppliers, technical proposals, commercial quotations, delivery conditions and supporting documentation.\n\nAssurIntellec™ helps clients organise equipment requirements and coordinate procurement-related activities within the agreed scope.",
@@ -1916,6 +1922,7 @@
             "Lead time and commercial terms.",
             "Initial purchase cost and relevant lifecycle costs."
           ],
+          "image_original": "/images/uploads/service_5.4.png",
           "title": "Technical Comparison & Equipment Evaluation",
           "expanded": false,
           "overview": "Different equipment models may differ in technical specifications, operating capabilities, accessories, automation, maintenance requirements, available service support and total cost of ownership.\n\nWe help clients organise available technical and commercial information so that proposed options can be evaluated against relevant selection criteria.",
@@ -1940,6 +1947,7 @@
             "Support in organising documentation needed for equipment selection and project planning.",
             "Detailed design documents, approved specifications and formal quality-system documents must be reviewed or authorised by the client's designated personnel, as applicable."
           ],
+          "image_original": "/images/uploads/service_5.5.png",
           "title": "User Requirement Specifications & Technical Documentation",
           "expanded": false,
           "overview": "Clearly documented equipment requirements can improve communication between the client, engineering team, procurement stakeholders and potential suppliers.\n\nAssurIntellec™ can support the preparation or review of equipment-related requirement documents within the agreed scope.",
@@ -1964,6 +1972,7 @@
             "Coordinating equipment-related technical questions with the relevant project stakeholders.",
             "Identifying commissioning, calibration and qualification considerations where applicable."
           ],
+          "image_original": "/images/uploads/service_5.6.png",
           "title": "New Laboratory & Equipment Planning Support",
           "expanded": false,
           "overview": "Establishing a new pharmaceutical or research laboratory involves more than selecting individual instruments. Equipment placement, workflow, electrical supply, environmental conditions, safety considerations, supporting utilities and future expansion can also influence the overall arrangement.",
@@ -1988,6 +1997,7 @@
             "Identifying commissioning, calibration, qualification and validation considerations where applicable.",
             "The feasibility of an upgrade depends on the existing system, intended use, supplier support and the relevant engineering and quality requirements."
           ],
+          "image_original": "/images/uploads/service_5.7.png",
           "title": "Equipment Upgrades, Replacement & Technology Modernisation",
           "expanded": false,
           "overview": "Equipment may require replacement or upgrading because of changing process needs, increased capacity, ageing instruments, maintenance limitations, changing analytical requirements or technology improvements.\n\nAssurIntellec™ supports preliminary evaluation and coordination for equipment upgrades and replacement projects.",
@@ -2011,6 +2021,7 @@
             "Organising outstanding installation and equipment-readiness questions.",
             "Installation, commissioning, calibration, qualification testing and formal acceptance are performed or authorised by the relevant qualified personnel and designated parties according to the agreed scope and applicable quality system."
           ],
+          "image_original": "/images/uploads/service_5.8.png",
           "title": "Installation, Commissioning & Qualification Coordination",
           "expanded": false,
           "overview": "Equipment procurement may require additional planning for delivery, installation, commissioning, calibration, qualification, operator training and integration with the facility.\n\nWe help clients identify relevant equipment-related requirements and coordinate information exchange with the parties responsible for implementation.",
@@ -2033,6 +2044,7 @@
             "Organising vendor responses relating to technical service and support.",
             "Identifying additional information the client may require before final selection."
           ],
+          "image_original": "/images/uploads/service_5.9.png",
           "title": "After-Sales Support, Maintenance & Lifecycle Considerations",
           "expanded": false,
           "overview": "An equipment purchase can have ongoing requirements involving maintenance, calibration, consumables, spare parts, software, technical service and operator support. These factors can influence equipment availability and long-term operating costs.",
