@@ -2094,6 +2094,7 @@
       "contact_heading": "Let’s discuss your project",
       "media_link_url": "",
       "intro_title": "Advancing Pharmaceutical Research Through Scientific Thinking & Technical Support",
+      "resource_image_original": "/images/uploads/service_6_last.png",
       "animation_enabled": true,
       "caption": "Supporting visual",
       "page_title": "Research & Scientific Services",
@@ -2179,6 +2180,7 @@
         "advantages_label": "THE ASSURINTELLEC ADVANTAGE"
       },
       "cta": "Discuss Your Requirements",
+      "listing_image_original": "/images/uploads/service_6_homepage.png",
       "approach_steps": [],
       "text_color": "#17243a",
       "process_heading": "How we work",
@@ -2205,7 +2207,8 @@
         {
           "title": "Scope of deliverables",
           "description": "Depending on the agreed engagement, deliverables may include:\n\nSpecific deliverables depend on the available resources, study design, information supplied and the nature of the scientific work agreed with the client.\n\nExperimental validation, analytical testing, stability studies, specialised laboratory investigations and other practical research activities require suitable facilities, methods and qualified personnel and are included only where explicitly agreed.",
-          "image": "/images/uploads/service_6_scope.png"
+          "image": "/images/uploads/service_6_scope.png",
+          "image_original": "/images/uploads/service_6_scope.png"
         }
       ],
       "body_font_size": 19,
@@ -2248,6 +2251,7 @@
             "Depending on the project, formulation-related support may cover topical, oral or other pharmaceutical dosage forms within the agreed scientific and technical scope.",
             "Formulation feasibility, product performance, stability and suitability must be established through appropriate experimentation, testing and evaluation. Specific dosage-form projects depend on the available resources and agreed scope."
           ],
+          "image_original": "/images/uploads/service_6.1.png",
           "title": "Pharmaceutical Formulation Research & Development Support",
           "expanded": true,
           "overview": "Formulation development involves the selection and evaluation of ingredients, understanding material characteristics, defining process parameters and assessing relevant product attributes. The approach depends on the intended dosage form, active ingredient, excipients, manufacturing process and target product characteristics.\n\nAssurIntellec™ provides formulation-oriented scientific support to help clients define research requirements and evaluate relevant development considerations.",
@@ -2272,6 +2276,7 @@
             "Supporting the preparation of structured preformulation summaries.",
             "Identifying information gaps that may influence subsequent formulation decisions."
           ],
+          "image_original": "/images/uploads/service_6.2.png",
           "title": "Preformulation & Excipient Selection Support",
           "expanded": false,
           "overview": "Preformulation activities help establish the physicochemical characteristics of an active ingredient and identify considerations that may influence formulation development. Excipient selection must account for the intended application, material properties, compatibility and relevant quality requirements.\n\nConclusions about compatibility, stability and performance require appropriate supporting data. Literature-based assessments should be distinguished from experimentally confirmed findings.",
@@ -2298,6 +2303,7 @@
             "Where suitable, experimental planning may incorporate Design of Experiments (DoE) approaches to evaluate the influence of selected factors and their interactions.",
             "The final experimental design, sample size, controls, acceptance criteria and statistical methods must be appropriate to the study objectives and approved by the responsible researcher or organisation."
           ],
+          "image_original": "/images/uploads/service_6.3.png",
           "title": "Research Planning & Experimental Design",
           "expanded": false,
           "overview": "A well-structured research plan identifies the objective, variables, experimental approach, evaluation criteria and intended outcomes. Appropriate planning can help researchers organise resources and generate interpretable scientific evidence.\n\nAssurIntellec™ supports research planning and experimental design activities according to the scientific question, available facilities and agreed project requirements.",
@@ -2323,6 +2329,7 @@
             "Helping researchers identify questions requiring further investigation.",
             "Literature findings depend on the sources reviewed and their quality. Published results must be accurately represented and cannot automatically be assumed to apply to a different formulation, method or experimental setting."
           ],
+          "image_original": "/images/uploads/service_6.4.png",
           "title": "Scientific Literature Review & Research Guidance",
           "expanded": false,
           "overview": "Understanding existing scientific knowledge is important when identifying research gaps, evaluating formulation approaches and planning new investigations.\n\nWe support literature-based research activities to help clients organise available evidence and identify relevant considerations for further study.",
@@ -2349,6 +2356,7 @@
             "Depending on the project, relevant activities may involve formulation studies, preliminary material evaluations, physicochemical investigations or other pharmaceutical research activities within the agreed scope.",
             "Practical experiments, analytical testing and laboratory execution are undertaken only where suitable facilities, equipment, qualified personnel and an appropriate scope of engagement are available."
           ],
+          "image_original": "/images/uploads/service_6.5.png",
           "title": "Laboratory Research & Experimental Support",
           "expanded": false,
           "overview": "Laboratory research requires appropriate methods, materials, equipment, controls, documentation and careful recording of experimental observations.\n\nAssurIntellec™ can support the planning, organisation and scientific review of laboratory-oriented activities according to the project requirements and resources available.",
@@ -2375,6 +2383,7 @@
             "Where relevant, data analysis may support formulation optimisation, experimental comparison and interpretation of response variables such as particle size, drug release, viscosity or other product-specific characteristics.",
             "Interpretations must be supported by the available data and appropriate statistical methods. Data should not be altered, selectively reported or presented as evidence for conclusions that the results do not support."
           ],
+          "image_original": "/images/uploads/service_6.6.png",
           "title": "Scientific Data Analysis & Interpretation Support",
           "expanded": false,
           "overview": "Experimental data must be organised and interpreted in the context of the study objectives, selected methods and limitations of the available evidence.\n\nWe support the review and organisation of research data to help clients understand observed patterns and determine appropriate next steps.",
@@ -2401,6 +2410,7 @@
             "Preparation of scientific presentations and project summaries.",
             "Depending on the engagement, documentation may be intended for internal research review, academic project reporting, technical communication or other agreed scientific purposes."
           ],
+          "image_original": "/images/uploads/service_6.7.png",
           "title": "Scientific Documentation & Technical Writing",
           "expanded": false,
           "overview": "Well-prepared scientific documentation helps communicate research objectives, methodology, observations, results and conclusions. It also supports traceability and the organised review of scientific work.\n\nAssurIntellec™ provides scientific documentation and technical writing support according to the intended document type and project requirements.",
@@ -2426,6 +2436,7 @@
             "Relevant evaluation parameters depend on the dosage form and research question and may include physical appearance, pH, viscosity, particle size, drug release, content uniformity or other suitable product-specific attributes.",
             "An optimised formulation or improvement in product performance can only be established through appropriate experiments and supporting data."
           ],
+          "image_original": "/images/uploads/service_6.8.png",
           "title": "Formulation Evaluation & Development Optimisation",
           "expanded": false,
           "overview": "During formulation development, researchers may need to compare alternative compositions, evaluate process variables or investigate why a formulation does not meet its intended performance requirements.\n\nWe support the organisation and review of formulation-evaluation activities according to the available evidence and agreed research scope.",
@@ -2450,6 +2461,7 @@
             "Identifying unresolved questions and potential next steps.",
             "Supporting communication among relevant project stakeholders."
           ],
+          "image_original": "/images/uploads/service_6.9.png",
           "title": "Research Project Support & Scientific Coordination",
           "expanded": false,
           "overview": "Scientific projects may involve researchers, laboratory personnel, academic supervisors, technical specialists and other stakeholders. Coordinating activities and documentation can help maintain a clear understanding of the research objectives and outstanding requirements.\n\nProject planning and coordination do not replace the scientific judgement, supervisory responsibilities or formal approvals required from the responsible researchers and institutions.",
