@@ -2500,7 +2500,7 @@
     },
     {
       "cta_url": "./contact.html",
-      "listing_image": "/images/uploads/Service_7_16x9_full_clarity.png",
+      "listing_image": "/images/uploads/service_7_homepage.png",
       "enabled": true,
       "card_bullets": [
         "Manufacturing support",
@@ -2541,7 +2541,7 @@
           "description": "We define the work to be undertaken and its expected outputs so clients understand the nature and boundaries of the engagement."
         }
       ],
-      "resource_image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_11.jpg",
+      "resource_image": "/images/uploads/service_7_last.png",
       "advantages_heading": "Why work with AssurIntellec™",
       "slug": "pharma-solutions-manufacturing",
       "page_file": "service-pharma-solutions-manufacturing.html",
@@ -2622,7 +2622,7 @@
         {
           "title": "Scope of deliverables",
           "description": "Depending on the agreed engagement, deliverables may include:\n\nThe exact deliverables depend on the project type, available information, resources and agreed scope of support.\n\nDetailed formulation development, laboratory testing, manufacturing execution, facility engineering, equipment qualification, process validation and statutory approvals are included only where specifically agreed and undertaken by appropriately qualified or authorised parties.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_12.jpg"
+          "image": "/images/uploads/service_7_scope.png"
         }
       ],
       "body_font_size": 19,
@@ -2667,7 +2667,7 @@
           "title": "Third-Party Manufacturing Coordination",
           "expanded": true,
           "overview": "Third-party manufacturing can provide a practical route for businesses seeking to develop or market pharmaceutical products without establishing all manufacturing infrastructure independently. Selecting a suitable manufacturing partner requires an understanding of product requirements, dosage form, capacity, quality expectations, documentation and commercial objectives.\n\nAssurIntellec™ supports the preliminary evaluation and coordination of third-party manufacturing opportunities according to the client's requirements.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_02.jpg",
+          "image": "/images/uploads/service_7.1.png",
           "lead": "Connect product requirements with potentially suitable manufacturing capabilities."
         },
         {
@@ -2693,7 +2693,7 @@
           "title": "Pharmaceutical Product Development Support",
           "expanded": false,
           "overview": "Developing a pharmaceutical product requires coordinated consideration of formulation objectives, ingredient selection, dosage form, process requirements, product quality attributes and available manufacturing capabilities.\n\nAssurIntellec™ provides formulation-oriented planning and technical coordination support to help clients define development requirements and identify the activities that may be needed to progress a product concept.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_03.jpg",
+          "image": "/images/uploads/service_7.2.png",
           "lead": "Structure product development requirements around the intended formulation and target product characteristics."
         },
         {
@@ -2718,7 +2718,7 @@
           "title": "Manufacturing Model & Project Planning",
           "expanded": false,
           "overview": "A pharmaceutical project may involve third-party manufacturing, expansion of existing capacity, establishment of a new facility or improvement of current operations. Each approach involves different technical requirements, resource considerations and project dependencies.\n\nWe support preliminary manufacturing-model discussions and project requirement definition according to the client's objectives.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_04.jpg",
+          "image": "/images/uploads/service_7.3.png",
           "lead": "Define a practical manufacturing approach aligned with your business objectives."
         },
         {
@@ -2744,7 +2744,7 @@
           "title": "Pharmaceutical Plant Setup & Establishment Support",
           "expanded": false,
           "overview": "Establishing a pharmaceutical manufacturing facility requires planning across buildings, process areas, equipment, utilities, personnel, quality systems, documentation and project implementation. These requirements need to be aligned with the intended products and manufacturing activities.\n\nAssurIntellec™ provides technical and project coordination support for facility establishment, according to the stage and scope of the project.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_05.jpg",
+          "image": "/images/uploads/service_7.4.png",
           "lead": "Coordinate the major requirements involved in establishing pharmaceutical manufacturing operations."
         },
         {
@@ -2768,7 +2768,7 @@
           "title": "Manufacturing Process & Operational Requirement Support",
           "expanded": false,
           "overview": "Manufacturing operations depend on suitable processes, equipment, materials, personnel, operating procedures and quality controls. Clearly defined requirements can help businesses coordinate product manufacturing with available capabilities.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_06.jpg",
+          "image": "/images/uploads/service_7.5.png",
           "lead": "Align manufacturing requirements with the intended product, process and production objectives."
         },
         {
@@ -2793,7 +2793,7 @@
           "title": "Plant Expansion, Upgradation & Manufacturing Improvement",
           "expanded": false,
           "overview": "Existing pharmaceutical operations may require expansion, equipment replacement, infrastructure improvements, workflow changes or adjustments to support new products and increased production capacity.\n\nAssurIntellec™ helps clients organise preliminary technical requirements and coordinate relevant improvement activities.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_07.jpg",
+          "image": "/images/uploads/service_7.6.png",
           "lead": "Support businesses looking to strengthen existing manufacturing operations."
         },
         {
@@ -2816,7 +2816,7 @@
           "title": "Manufacturing Partner & Service Provider Coordination",
           "expanded": false,
           "overview": "Pharmaceutical projects can involve product developers, contract manufacturers, equipment suppliers, laboratories, engineering consultants, packaging providers and other technical service organisations. Coordination between these stakeholders can help clarify requirements and project dependencies.\n\nThe suitability, qualifications and regulatory status of each service provider must be independently verified by the client and relevant authorised parties.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_08.jpg",
+          "image": "/images/uploads/service_7.7.png",
           "lead": "Bring relevant expertise together to progress manufacturing projects."
         },
         {
@@ -2838,7 +2838,7 @@
           "title": "Packaging & Product Presentation Requirements",
           "expanded": false,
           "overview": "Pharmaceutical packaging requirements can influence equipment selection, material sourcing, manufacturing coordination, product presentation and compatibility with intended market requirements.\n\nDepending on the engagement, AssurIntellec™ can support the coordination of preliminary packaging-related requirements.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_09.jpg",
+          "image": "/images/uploads/service_7.8.png",
           "lead": "Consider packaging needs as part of the broader manufacturing project."
         },
         {
@@ -2862,7 +2862,7 @@
           "title": "Project Coordination & Implementation Support",
           "expanded": false,
           "overview": "Pharmaceutical manufacturing projects often involve several technical and commercial workstreams that must progress together. Coordinating information, responsibilities and outstanding decisions can help maintain visibility throughout the agreed engagement.",
-          "image": "/images/uploads/ServiceVisual_pharma-solutions-manufacturing_10.jpg",
+          "image": "/images/uploads/service_7.9.png",
           "lead": "Bring project requirements, stakeholders and milestones into a structured workflow."
         }
       ],
