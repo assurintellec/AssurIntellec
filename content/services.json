@@ -508,12 +508,14 @@
         {
           "title": "Deliverables — scope notes",
           "description": "The scope, level of detail, site-visit arrangements, verification procedures and reporting format are established before the engagement begins.",
-          "image": "/images/uploads/service_2_d1.png"
+          "image": "/images/uploads/service_2_d1.png",
+          "image_original": "/images/uploads/service_2_d1.png"
         },
         {
           "title": "Deliverables — scope notes",
           "description": "Financial valuation reports, legal opinions, property-title verification, audited financial assessments, environmental reports and certified engineering assessments are excluded unless separately agreed and provided by appropriately qualified professionals.",
-          "image": "/images/uploads/service_2_d2.png"
+          "image": "/images/uploads/service_2_d2.png",
+          "image_original": "/images/uploads/service_2_d2.png"
         }
       ],
       "body_font_size": 19,
