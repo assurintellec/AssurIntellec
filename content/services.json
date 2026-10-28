@@ -1251,6 +1251,7 @@
       "contact_heading": "Let’s discuss your project",
       "media_link_url": "",
       "intro_title": "Connecting Pharmaceutical Products with Business Opportunities",
+      "resource_image_original": "/images/uploads/service_4_last.png",
       "animation_enabled": true,
       "caption": "Supporting visual",
       "page_title": "Life Sciences Trade",
@@ -1410,6 +1411,7 @@
             "Organising supplier information for comparison against the client's stated criteria.",
             "Coordinating follow-up discussions concerning product availability and potential supply arrangements."
           ],
+          "image_original": "/images/uploads/service_4.1.png",
           "title": "API Sourcing & Supply Connections",
           "expanded": true,
           "overview": "Active pharmaceutical ingredients are critical components of pharmaceutical products. Sourcing decisions may involve considerations such as material specifications, intended application, quality documentation, supplier suitability, availability and commercial terms.\n\nAssurIntellec™ supports sourcing-related coordination for API requirements according to the client's product specifications and business objectives.",
@@ -1434,6 +1436,7 @@
             "Relevant product categories may include binders, diluents, fillers, disintegrants, lubricants, preservatives, coating ingredients, solvents and other formulation-related excipients, depending on the intended application.",
             "The suitability of an excipient for a particular formulation must be established through the client's technical evaluation, quality processes and applicable regulatory requirements."
           ],
+          "image_original": "/images/uploads/service_4.2.png",
           "title": "Pharmaceutical Excipients Sourcing",
           "expanded": false,
           "overview": "Excipients play important roles in pharmaceutical formulations, including product stability, manufacturability, performance and dosage-form characteristics. Sourcing requirements can vary according to the formulation, intended application, required grade and applicable quality standards.\n\nWe support clients in defining excipient requirements and coordinating connections with potentially relevant suppliers.",
@@ -1457,6 +1460,7 @@
             "Helping identify further technical or regulatory information required before procurement.",
             "Product identity, purity, grade, safe handling requirements, applicable restrictions and suitability must be verified before procurement and use."
           ],
+          "image_original": "/images/uploads/service_4.3.png",
           "title": "Pharmaceutical Chemicals & Specialty Chemicals",
           "expanded": false,
           "overview": "Pharmaceutical manufacturing, formulation development, analytical testing and research activities may require different types of chemicals with specific purity, grade, documentation and handling requirements.\n\nAssurIntellec™ supports product-related sourcing coordination for selected pharmaceutical and specialty chemical requirements.",
@@ -1481,6 +1485,7 @@
             "Supporting follow-up communication for potential supply arrangements.",
             "Depending on the assignment, requirements may include APIs, excipients, formulation ingredients, selected chemicals and other pharmaceutical manufacturing materials."
           ],
+          "image_original": "/images/uploads/service_4.4.png",
           "title": "Pharmaceutical Raw Materials Sourcing",
           "expanded": false,
           "overview": "Access to suitable raw materials is an important consideration for pharmaceutical manufacturers, formulation developers and other businesses operating in the life-sciences sector.\n\nWe help clients structure their raw material requirements and explore potential supplier connections according to the intended application and commercial objectives.",
@@ -1505,6 +1510,7 @@
             "Supporting the comparison of available supplier information against agreed criteria.",
             "Supplier identification is not equivalent to supplier qualification or approval. Audits, quality agreements, technical assessments and formal vendor approval must be completed through the client's applicable quality and procurement procedures."
           ],
+          "image_original": "/images/uploads/service_4.5.png",
           "title": "Supplier Identification & Sourcing Coordination",
           "expanded": false,
           "overview": "Identifying a potential supplier requires an understanding of the product, required specifications, purchasing expectations, geographical preferences and other relevant conditions.\n\nAssurIntellec™ helps clients establish a structured basis for sourcing discussions and coordinate preliminary connections with potentially relevant suppliers.",
@@ -1528,6 +1534,7 @@
             "Helping clarify the next steps required for further commercial evaluation.",
             "The suitability of a connection depends on the information available and each party's independent evaluation. Introductions do not guarantee a purchase order, supply contract or completed transaction."
           ],
+          "image_original": "/images/uploads/service_4.6.png",
           "title": "Buyer, Supplier & Manufacturer Connections",
           "expanded": false,
           "overview": "Pharmaceutical trade depends on relationships between manufacturers, raw material suppliers, buyers, distributors and other relevant participants. Finding a suitable business connection begins with understanding the requirements and objectives of each party.\n\nWe support preliminary business connections between stakeholders where a relevant product or commercial opportunity exists.",
@@ -1551,6 +1558,7 @@
             "Identifying matters requiring separate regulatory, market or commercial verification.",
             "Market demand, pricing, competition, profitability and commercial feasibility require appropriate evidence and independent assessment. Product registration, licensing and import or export requirements vary according to the product and jurisdiction."
           ],
+          "image_original": "/images/uploads/service_4.7.png",
           "title": "Product Opportunities & Market Development",
           "expanded": false,
           "overview": "Businesses may seek new product lines, additional suppliers, alternative sourcing options or opportunities in geographical markets beyond their existing commercial network.\n\nAssurIntellec™ supports preliminary product and market opportunity exploration based on the client's objectives and the agreed geographical and commercial scope.",
@@ -1574,6 +1582,7 @@
             "Helping organise the requirements for further negotiation or procurement.",
             "Purchase commitments, payments, contracts, logistics, customs documentation and transaction execution remain subject to the responsibilities and agreements of the relevant parties."
           ],
+          "image_original": "/images/uploads/service_4.8.png",
           "title": "Commercial Coordination & Trade Support",
           "expanded": false,
           "overview": "Trade-related opportunities often involve several stages of communication and information exchange before the parties decide whether to proceed.\n\nWe support agreed commercial coordination activities to help stakeholders understand the requirements, available information and next steps.",
@@ -1586,27 +1595,32 @@
         {
           "title": "Active Pharmaceutical Ingredients (APIs)",
           "description": "Product identification and sourcing coordination for specified active pharmaceutical ingredients and related supply enquiries.",
-          "image": "/images/uploads/service_4.1.1.png"
+          "image": "/images/uploads/service_4.1.1.png",
+          "image_original": "/images/uploads/service_4.1.1.png"
         },
         {
           "title": "Pharmaceutical Excipients",
           "description": "Sourcing coordination for formulation ingredients with defined product, grade and intended-use requirements.",
-          "image": "/images/uploads/service_4.1.2..png"
+          "image": "/images/uploads/service_4.1.2..png",
+          "image_original": "/images/uploads/service_4.1.2..png"
         },
         {
           "title": "Pharmaceutical & Specialty Chemicals",
           "description": "Product enquiries involving selected chemicals used in pharmaceutical production, research, formulation and laboratory activities.",
-          "image": "/images/uploads/service_4.1.3..png"
+          "image": "/images/uploads/service_4.1.3..png",
+          "image_original": "/images/uploads/service_4.1.3..png"
         },
         {
           "title": "Pharmaceutical Raw Materials",
           "description": "Sourcing support for selected materials required by pharmaceutical manufacturers and related businesses.",
-          "image": "/images/uploads/service_4.1.4.png"
+          "image": "/images/uploads/service_4.1.4.png",
+          "image_original": "/images/uploads/service_4.1.4.png"
         },
         {
           "title": "Research & Laboratory Products",
           "description": "Selected chemicals, consumables and related products for pharmaceutical laboratories, analytical work and scientific research.\n\nThe availability of products and suppliers depends on the stated specifications, geographical market, applicable restrictions and the scope of each engagement.",
-          "image": "/images/uploads/service_4.1.5.png"
+          "image": "/images/uploads/service_4.1.5.png",
+          "image_original": "/images/uploads/service_4.1.5.png"
         }
       ],
       "workflow": [
