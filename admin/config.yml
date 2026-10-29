@@ -19,6 +19,104 @@ collections:
     file: content/site.json
     format: json
     fields:
+    - label: Newsletter & Subscriptions
+      name: newsletter
+      widget: object
+      collapsed: true
+      required: false
+      fields:
+      - label: Enable Newsletter Section
+        name: enabled
+        widget: boolean
+        required: false
+        default: true
+      - label: Eyebrow
+        name: eyebrow
+        widget: string
+        required: false
+        default: NEWSLETTER & SERVICE UPDATES
+      - label: Title
+        name: title
+        widget: string
+        required: false
+        default: Stay connected with AssurIntellec™
+      - label: Description
+        name: description
+        widget: string
+        required: false
+        default: Choose the service updates you want to receive, including news, insights and opportunities.
+      - label: Email Label
+        name: email_label
+        widget: string
+        required: false
+        default: Email address
+      - label: Email Placeholder
+        name: email_placeholder
+        widget: string
+        required: false
+        default: you@example.com
+      - label: Interest Label
+        name: interest_label
+        widget: string
+        required: false
+        default: Updates you are interested in
+      - label: Interest Placeholder
+        name: interest_placeholder
+        widget: string
+        required: false
+        default: Choose your interest
+      - label: All Services Label
+        name: all_services_label
+        widget: string
+        required: false
+        default: All service updates
+      - label: Include All Service Updates Option
+        name: include_all_services
+        widget: boolean
+        required: false
+        default: true
+      - label: Consent Label
+        name: consent_label
+        widget: string
+        required: false
+        default: I agree to receive the selected updates from AssurIntellec. I can unsubscribe at any time.
+      - label: Submit Label
+        name: submit_label
+        widget: string
+        required: false
+        default: Subscribe
+      - label: Submitting Label
+        name: submitting_label
+        widget: string
+        required: false
+        default: Saving…
+      - label: Success Message
+        name: success_message
+        widget: string
+        required: false
+        default: Thank you! Your email and selected interest have been saved.
+      - label: Error Message
+        name: error_message
+        widget: string
+        required: false
+        default: We could not confirm your subscription. Please try again or contact us.
+      - label: Setup Message
+        name: setup_message
+        widget: string
+        required: false
+        default: Newsletter subscriptions will open soon.
+      - label: Privacy Note
+        name: privacy_note
+        widget: text
+        required: false
+        default: We use your email for the updates you select. You can unsubscribe or contact our team to opt out.
+      - label: Newsletter Google Apps Script Web App URL
+        name: google_apps_script_url
+        widget: string
+        required: false
+        default: ''
+        hint: Deploy integrations/newsletter/Code.gs in your dedicated newsletter Google Sheet, then paste the public
+          /exec URL here. This is separate from the enquiry form URL.
     - label: Website Search & Chatbot
       name: site_tools
       widget: object

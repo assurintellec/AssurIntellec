@@ -97,6 +97,9 @@
       add(card.title, publicText(card), './why-us.html', 'Company');
     }
     const contact = site.contact || {};
+    if (site.newsletter?.enabled !== false) {
+      add(site.newsletter?.title || 'Newsletter & service updates', site.newsletter?.description || 'Choose your service interest and subscribe to AssurIntellec updates by email.', './index.html#assurNewsletter', 'Newsletter', 'newsletter subscribe subscription mailing list service updates');
+    }
     const address = contact.address_display || [contact.address_line_1, contact.address_line_2, contact.address_city, contact.address_region, contact.address_postal_code, contact.address_country].filter(Boolean).join(', ');
     add(contact.page_title || 'Contact Us', [contact.description, contact.email, contact.phone, contact.mobile_phone, address].filter(Boolean).join(' · '), './contact.html', 'Contact', 'contact email phone telephone call whatsapp address location office enquiry quote quotation pricing price cost');
     for (const service of records) {
@@ -141,6 +144,12 @@
       const raw = text(question).slice(0, 500);
       const q = normal(raw);
       if (!q || /^(hi|hello|hey|namaste|good morning|good evening|good afternoon)$/.test(q)) return { text: settings.chatbot_welcome, links: [] };
+      if (/\bunsubscribe\b|opt out|stop (?:updates|emails)/.test(q)) {
+        return { text: 'Use the individual unsubscribe link provided with your newsletter, or contact the team to ask to be removed from the mailing list. This chat does not change your subscription status.', links: [{ label: contact.page_title || 'Contact Us', url: './contact.html' }] };
+      }
+      if (/\b(newsletter|subscribe|subscription|updates)\b|mailing list/.test(q) && site.newsletter?.enabled !== false) {
+        return { text: 'Use the newsletter form to enter your email, choose the service updates you want, and agree to receive those updates. The form saves your selected interest when the subscription is confirmed.', links: [{ label: site.newsletter?.submit_label || 'Subscribe to updates', url: './index.html#assurNewsletter' }] };
+      }
       for (const faq of list(settings.chatbot_faqs).filter(f => f.enabled !== false && text(f.answer))) {
         const keywords = text(faq.keywords).split(',').map(normal).filter(Boolean);
         const fq = normal(faq.question);
