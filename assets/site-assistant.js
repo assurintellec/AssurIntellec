@@ -260,7 +260,8 @@
       form.append(label, input, submit, popup);
       inner.append(form);
       strip.append(inner);
-      header.prepend(strip);
+      // Keep search below the navigation, in the white header beside the logo.
+      (header.querySelector('.navbar') || header).append(strip);
       let matches = [];
       let selected = -1;
       const close = () => { popup.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); };

@@ -2,6 +2,8 @@
 
 The website now includes a newsletter section above the footer. A visitor enters an email address, selects an interest, checks the consent box, and presses Subscribe. Google Sheets stores the record in the Google account you use for the setup below.
 
+**Already working?** Follow **THANK_YOU_EMAIL_AND_SEARCH_UPDATE_29-10-2026.md** to update the SAME Google project and deployment, enable welcome emails, and retain your existing subscriber list and website settings. The steps below describe a new setup.
+
 ## Dropdown choices
 
 | Choice | Updates the subscriber is selecting |
@@ -43,7 +45,7 @@ Use this NEW newsletter project. Keep the existing enquiry Apps Script project a
 
 ## 4. Prepare the subscriber tab
 
-1. In the function dropdown at the top of the Apps Script editor, choose **setupNewsletterSheet**.
+1. In the function dropdown at the top of the Apps Script editor, choose **setupNewsletterEmail**. This also prepares the Sheet and installs the hourly welcome-email retry job.
 2. Click **Run**.
 3. Review and approve Google's permission request for the script you just created. Use the same Google account that owns the spreadsheet.
 4. Return to the spreadsheet. A tab named **NewsletterSubscribers** will be present with these columns:
@@ -60,6 +62,9 @@ Use this NEW newsletter project. Keep the existing enquiry Apps Script project a
 | Source Page | Website page where the visitor subscribed |
 | Unsubscribe URL | Individual unsubscribe link for personalized emails |
 | Unsubscribe Token | Hidden technical column; keep it unchanged |
+| Welcome Email Status | Sent, Pending, Cancelled, or Skipped for pre-existing subscribers |
+| Welcome Email Sent At | Date/time Google accepted the welcome email |
+| Welcome Email Error | Last sending error, if a message is Pending |
 
 Keep the generated headers unchanged. The setup uses the spreadsheet's ID internally and sets the spreadsheet time zone to Asia/Kolkata. You do not need to paste a Sheet ID or Gmail password into the website.
 
@@ -95,6 +100,7 @@ This newsletter URL is separate from **Contact & Enquiry → Google Apps Script 
 5. Open **NewsletterSubscribers** and confirm the new row and its **Active** status.
 6. Subscribe with the same email and a different service. The existing row should update its interest rather than create a duplicate. Select **All service updates** to receive updates about all seven categories.
 7. Open that row's individual Unsubscribe URL in your browser and press **Unsubscribe**. The row's status should become **Unsubscribed**. Opening the link alone does not change the status.
+8. Check the new subscriber's mailbox for the automatic thank-you email, selected service and personal unsubscribe link. Column K should show Sent. Check the Spam/Promotions folders too.
 
 The website shows success only after receiving the script's saved-result response. An iframe loading by itself is never treated as successful storage. If the response cannot be confirmed, the visitor sees an error and can retry; duplicate emails still update a single row.
 
@@ -107,7 +113,7 @@ The website shows success only after receiving the script's saved-result respons
 5. Include a clear opt-out instruction, for example **“To stop receiving these updates, reply UNSUBSCRIBE.”** Mark those addresses **Unsubscribed** in the Sheet before your next mailing.
 6. If you send personalized messages, include each recipient's own **Unsubscribe URL** from their row. Do not put one person's individual unsubscribe link into a shared Bcc campaign.
 
-Google Sheets supports filtering by selected values; see [Google's filter instructions](https://support.google.com/docs/answer/3540681?hl=en). Follow your account's [current Gmail sending limits](https://support.google.com/mail/answer/22839?hl=en). This integration collects subscribers; it does not send automatic marketing campaigns or confirmation emails.
+Google Sheets supports filtering by selected values; see [Google's filter instructions](https://support.google.com/docs/answer/3540681?hl=en). Follow your account's [current Gmail sending limits](https://support.google.com/mail/answer/22839?hl=en). This integration sends automatic welcome emails with personal unsubscribe links. Future marketing campaigns are sent separately. Welcome emails use the script owner's Google account and are subject to [Apps Script email quotas](https://developers.google.com/apps-script/guides/services/quotas).
 
 ## Updating the script later
 
