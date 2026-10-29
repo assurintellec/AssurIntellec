@@ -997,6 +997,10 @@ function renderInstagram(site) {
   const holder = document.getElementById('instagramReel');
   if (!holder) return;
 
+  // Connect navigation on initial render; the binding guard prevents duplicate
+  // listeners when an arrow renders the next/previous reel.
+  bindInstagramButtons();
+
   const section = site.home?.instagram_section || {};
   const prev = document.getElementById('instagramPrev');
   const next = document.getElementById('instagramNext');
