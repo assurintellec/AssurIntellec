@@ -942,52 +942,6 @@ function renderHome(site, services) {
   applyVisibility(site);
 }
 
-let instagramEmbedScriptPromise = null;
-
-/*
-  Loads Instagram's official public embed.js library exactly once and
-  caches the loading promise so every render just re-uses it. This
-  function was previously called but never defined anywhere in this
-  file, which threw a JavaScript error on every homepage load and
-  stopped the Reel (and any code after it) from working at all.
-*/
-function ensureInstagramEmbedScript() {
-  if (window.instgrm?.Embeds) {
-    return Promise.resolve();
-  }
-
-  if (instagramEmbedScriptPromise) {
-    return instagramEmbedScriptPromise;
-  }
-
-  instagramEmbedScriptPromise = new Promise((resolve, reject) => {
-    const existing = document.querySelector(
-      'script[data-instagram-embed]'
-    );
-
-    if (existing) {
-      existing.addEventListener('load', () => resolve());
-      existing.addEventListener('error', () => reject(new Error('Failed to load Instagram embed script.')));
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://www.instagram.com/embed.js';
-    script.async = true;
-    script.defer = true;
-    script.dataset.instagramEmbed = '1';
-    script.addEventListener('load', () => resolve());
-    script.addEventListener('error', () => {
-      instagramEmbedScriptPromise = null;
-      reject(new Error('Failed to load Instagram embed script.'));
-    });
-
-    document.head.appendChild(script);
-  });
-
-  return instagramEmbedScriptPromise;
-}
-
 function instagramId(url) {
   const match = String(url || '').match(/instagram\.com\/(?:reel|reels|p)\/([^/?#]+)/i);
   return match ? match[1] : '';
@@ -1004,6 +958,15 @@ function renderInstagram(site) {
   const section = site.home?.instagram_section || {};
   const prev = document.getElementById('instagramPrev');
   const next = document.getElementById('instagramNext');
+  const carousel = holder.closest('.instagram-carousel');
+  let audioHelp = carousel?.querySelector('.instagram-audio-help');
+  if (carousel && !audioHelp) {
+    audioHelp = document.createElement('div');
+    audioHelp.className = 'instagram-audio-help';
+    audioHelp.id = 'instagramSoundHelp';
+    carousel.appendChild(audioHelp);
+  }
+  if (audioHelp) audioHelp.hidden = true;
 
   if (section.enabled === false) {
     holder.innerHTML = '';
@@ -1040,23 +1003,24 @@ function renderInstagram(site) {
   const item = list[instagramIndex];
   const id = instagramId(item.url);
 
-  /*
-    Use the official public Instagram Reel embed path.
-    The non-captioned /embed/ path is used instead of /embed/captioned/.
-    The outer viewer is a fixed portrait viewport; the external Instagram
-    iframe remains untouched because it is cross-origin.
-  */
-  const embedUrl =
-    `https://www.instagram.com/reel/${encodeURIComponent(id)}/embed/`;
-
+  // Set audio/autoplay permission BEFORE the frame loads. The native player
+  // owns playback and sound; the parent cannot unmute a cross-origin video.
+  const reelUrl = `https://www.instagram.com/reel/${encodeURIComponent(id)}/`;
+  const embedUrl = `${reelUrl}embed/`;
   holder.innerHTML = `
-    <blockquote
-      class="instagram-media"
-      data-instgrm-permalink="https://www.instagram.com/reel/${encodeURIComponent(id)}/"
-      data-instgrm-version="14"
-      style="background:#fff;border:0;border-radius:0;box-shadow:none;margin:0;padding:0;width:100%;"
-    ></blockquote>
+    <iframe
+      class="instagram-media instagram-reel-frame"
+      allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+      allowfullscreen
+      title="${escapeHtml(item.title || 'Instagram Reel')}"
+      aria-describedby="instagramSoundHelp"
+      src="${escapeHtml(embedUrl)}"
+    ></iframe>
   `;
+  if (audioHelp) {
+    audioHelp.innerHTML = `<span>${escapeHtml(section.sound_hint || 'Tap Play inside the reel to hear sound.')}</span> <a href="${escapeHtml(reelUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(section.open_label || 'Open on Instagram')}</a>`;
+    audioHelp.hidden = false;
+  }
 
   if (prev) {
     prev.style.display = 'inline-flex';
@@ -1080,32 +1044,8 @@ function renderInstagram(site) {
       section.next_label || 'Next Instagram Reel';
   }
 
-  /*
-    The visible media is created by Instagram's official embed.js.
-    The embedUrl is retained as a data attribute for diagnostics and
-    future CMS-compatible integrations without changing the public URL.
-  */
   holder.dataset.embedUrl = embedUrl;
 
-  ensureInstagramEmbedScript()
-    .then(() => {
-      try {
-        window.instgrm?.Embeds?.process();
-      } catch (_) {}
-    })
-    .catch(() => {
-      // If Instagram's script cannot be reached (offline, blocked, etc.)
-      // show a friendly fallback instead of leaving an empty box.
-      if (holder.dataset.embedUrl === embedUrl) {
-        holder.innerHTML = `
-          <div class="instagram-placeholder">
-            <i class="fab fa-instagram"></i>
-            <strong>Instagram Reel</strong>
-            <span>Unable to load the Reel right now. <a href="${holder.dataset.embedUrl.replace('/embed/', '/')}" target="_blank" rel="noopener">View it on Instagram</a>.</span>
-          </div>
-        `;
-      }
-    });
 }
 
 function bindInstagramButtons() {

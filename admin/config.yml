@@ -1063,6 +1063,17 @@ collections:
           name: empty_message
           widget: string
           required: false
+        - label: Reel Sound Hint
+          name: sound_hint
+          widget: string
+          required: false
+          default: Tap Play inside the reel to hear sound.
+          hint: Instagram controls the sound inside its player. Browsers may require a tap before audio can play.
+        - label: Open Reel Link Label
+          name: open_label
+          widget: string
+          required: false
+          default: Open on Instagram
         required: false
       required: false
     - label: Section Visibility

@@ -745,6 +745,32 @@ nav a{
   max-width:220px;
 }
 
+/* Keep the native Instagram playback/sound controls interactive. The help line
+   sits below the existing frame, without moving or covering the Reel. */
+.instagram-reel-wrap .instagram-reel-frame{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  border:0!important;
+  pointer-events:auto;
+}
+.instagram-audio-help{
+  position:absolute;
+  top:100%;
+  left:48px;
+  right:48px;
+  padding-top:8px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.45;
+}
+.instagram-audio-help[hidden]{display:none!important}
+.instagram-audio-help span{display:block}
+.instagram-audio-help a{color:var(--navy);font-weight:700;text-decoration:underline}
+@media(max-width:700px){.instagram-audio-help{left:34px;right:34px;font-size:11px}}
+
 @media(min-width:1021px){
   .instagram-reel-wrap{
     height:var(--instagram-height);
