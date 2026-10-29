@@ -1259,6 +1259,11 @@
     ],
     "detail_close_label": "Close details"
   },
+  "newsletter": {
+    "enabled": true,
+    "include_all_services": true,
+    "google_apps_script_url": "https://script.google.com/macros/s/AKfycbw9pGFgJ35cRBkP1TZIYdR9VsHJDBwNwlGqwje2p_sf-O84R3zN-xwxabCN3ZaHAJmeJA/exec"
+  },
   "hero": {
     "video_sound_label": "Enable hero video sound",
     "overlay_spread": 25,
