@@ -233,7 +233,7 @@
     "why_title_size": 18
   },
   "visitor_counter": {
-    "enabled": false,
+    "enabled": true,
     "label": "Website Visitors",
     "namespace": "assurintellec.in",
     "action": "view",
