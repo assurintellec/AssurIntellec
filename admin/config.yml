@@ -19,6 +19,174 @@ collections:
     file: content/site.json
     format: json
     fields:
+    - label: Website Search & Chatbot
+      name: site_tools
+      widget: object
+      collapsed: true
+      required: false
+      fields:
+      - label: Enable Top Search Bar
+        name: search_enabled
+        widget: boolean
+        required: false
+        default: true
+      - label: Search Caption
+        name: search_caption
+        widget: string
+        required: false
+        default: Find your solution
+      - label: Search Label
+        name: search_label
+        widget: string
+        required: false
+        default: Search website
+      - label: Search Placeholder
+        name: search_placeholder
+        widget: string
+        required: false
+        default: Search services, expertise or contact…
+      - label: Search Button Label
+        name: search_button_label
+        widget: string
+        required: false
+        default: Search
+      - label: Search Empty
+        name: search_empty
+        widget: string
+        required: false
+        default: No matching pages found. Try a service name or contact us.
+      - label: Maximum Search Results
+        name: search_result_limit
+        widget: number
+        required: false
+        default: 6
+        value_type: int
+        min: 3
+        max: 10
+      - label: Enable Floating Chatbot
+        name: chatbot_enabled
+        widget: boolean
+        required: false
+        default: true
+      - label: Chatbot Title
+        name: chatbot_title
+        widget: string
+        required: false
+        default: AssurIntellec™ Assistant
+      - label: Chatbot Subtitle
+        name: chatbot_subtitle
+        widget: string
+        required: false
+        default: Website service guide
+      - label: Chatbot Launcher Label
+        name: chatbot_launcher_label
+        widget: string
+        required: false
+        default: Chat with AssurIntellec
+      - label: Chatbot Welcome
+        name: chatbot_welcome
+        widget: text
+        required: false
+        default: Hello! I can help you explore our services, find information and contact the right team. What would
+          you like to know?
+      - label: Chatbot Placeholder
+        name: chatbot_placeholder
+        widget: string
+        required: false
+        default: Ask about services or your requirement…
+      - label: Chatbot Send Label
+        name: chatbot_send_label
+        widget: string
+        required: false
+        default: Send
+      - label: Chatbot Close Label
+        name: chatbot_close_label
+        widget: string
+        required: false
+        default: Close chat
+      - label: Chatbot Reset Label
+        name: chatbot_reset_label
+        widget: string
+        required: false
+        default: New chat
+      - label: Chatbot Enquiry Label
+        name: chatbot_enquiry_label
+        widget: string
+        required: false
+        default: Send an enquiry
+      - label: Chatbot Topics Label
+        name: chatbot_topics_label
+        widget: string
+        required: false
+        default: Popular questions
+      - label: Chatbot Footer Note
+        name: chatbot_footer_note
+        widget: string
+        required: false
+        default: Use the enquiry form to send your requirement to our team.
+      - label: Chatbot Not Found
+        name: chatbot_not_found
+        widget: text
+        required: false
+        default: I couldn’t find an answer in the website information. Please use the enquiry form so the team can assist
+          with your requirement.
+      - label: Chatbot Pricing Answer
+        name: chatbot_pricing_answer
+        widget: text
+        required: false
+        default: Prices are not listed in the website information. Please send your project requirements through the
+          enquiry form to request a quotation.
+      - label: Chatbot Hours Answer
+        name: chatbot_hours_answer
+        widget: text
+        required: false
+        default: Working hours are not listed in the website information. Please contact the team to confirm availability.
+      - label: Chatbot Quick Questions
+        name: chatbot_quick_questions
+        widget: list
+        required: false
+        min: 0
+        max: 6
+        default:
+        - question: What services do you offer?
+        - question: Help with cleanroom and HVAC planning
+        - question: How can I contact you?
+        - question: I need a quotation
+        fields:
+        - label: Question
+          name: question
+          widget: string
+      - label: Custom Chatbot Answers
+        name: chatbot_faqs
+        widget: list
+        required: false
+        summary: '{{fields.question}}'
+        fields:
+        - label: Enabled
+          name: enabled
+          widget: boolean
+          default: true
+          required: false
+        - label: Question
+          name: question
+          widget: string
+        - label: Matching Keywords
+          name: keywords
+          widget: string
+          required: false
+          hint: Optional comma-separated words or phrases. A matching phrase uses this answer.
+        - label: Answer
+          name: answer
+          widget: text
+        - label: Link Label
+          name: link_label
+          widget: string
+          required: false
+        - label: Link URL
+          name: link_url
+          widget: string
+          required: false
+          hint: 'Use a website .html page path, a full https:// URL, mailto: or tel: link.'
     - label: Company Name
       name: company_name
       widget: string

@@ -2198,6 +2198,7 @@ async function init() {
   applyVisibility(SITE);
   applyTextStyleOverrides(SITE);
   applyAnimationOptions(SITE);
+  window.AssurDiscovery?.init(SITE, SERVICES);
   if (SITE.media_options?.image_hover_zoom_enabled === false) document.documentElement.classList.add('disable-image-zoom');
   if (SITE.visitor_counter?.enabled === false) {
     const stat=document.getElementById('visitorStat');
