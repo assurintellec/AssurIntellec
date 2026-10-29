@@ -1,4 +1,5 @@
 /maintenance-router.js
+/visitor-counter.js
 /wrangler.toml
 /cloudflare-worker/**
 /tests/**

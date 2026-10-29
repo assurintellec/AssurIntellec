@@ -640,84 +640,73 @@ function renderTestimonials(site) {
   }).join('');
 }
 
-async function requestVisitorCounter(url) {
-  let lastError = null;
-  for (let attempt = 0; attempt < 2; attempt += 1) {
-    let timeoutId = null;
-    let controller = null;
-    try {
-      if ('AbortController' in window) {
-        controller = new AbortController();
-        timeoutId = window.setTimeout(() => controller.abort(), 8000);
-      }
-      const response = await fetch(url, {
-        cache: 'no-store',
-        mode: 'cors',
-        ...(controller ? { signal: controller.signal } : {})
-      });
-      if (!response.ok) throw new Error(`CounterAPI ${response.status}`);
-      const data = await response.json();
-      const value = Number(data?.value);
-      if (!Number.isFinite(value) || value < 0) throw new Error('Invalid visitor count');
-      return value;
-    } catch (error) {
-      lastError = error;
-    } finally {
-      if (timeoutId !== null) window.clearTimeout(timeoutId);
-    }
-    if (attempt === 0) await new Promise(resolve => window.setTimeout(resolve, 400));
-  }
-  throw lastError || new Error('Visitor counter request failed');
-}
-
 async function initVisitorCounter(site) {
   const stat = document.getElementById('visitorStat');
   const countEl = document.getElementById('visitorCount');
   if (!stat || !countEl) return;
-
   const cfg = site.visitor_counter || {};
-  if (cfg.enabled === false) {
-    stat.style.display = 'none';
-    return;
+  if (cfg.enabled === false) { stat.style.display = 'none'; return; }
+  const offset = Number.isSafeInteger(Number(cfg.start_value)) && Number(cfg.start_value) >= 0 ? Number(cfg.start_value) : 0;
+  const identity = JSON.stringify([cfg.namespace || 'assurintellec.in', cfg.action || 'view', cfg.key || 'website-visitors']);
+  const cacheKey = `assurintellec-visits-v3:${identity}`;
+  const tokenKey = 'assurintellec-visit-token-v3';
+  let confirmed = null;
+  let visitId = '';
+  try {
+    const cached = JSON.parse(localStorage.getItem(cacheKey));
+    if (cached && Number.isSafeInteger(cached.value) && cached.value >= 0) confirmed = cached.value;
+  } catch (_) {}
+  try { visitId = sessionStorage.getItem(tokenKey) || ''; } catch (_) {}
+  if (!/^[a-zA-Z0-9_-]{20,100}$/.test(visitId)) {
+    visitId = window.crypto?.randomUUID?.() || Array.from(window.crypto.getRandomValues(new Uint8Array(24)), n => n.toString(16).padStart(2, '0')).join('');
+    try { sessionStorage.setItem(tokenKey, visitId); } catch (_) {}
   }
-
-  // The counter is visible whenever enabled. Temporary network/API failure should
-  // not silently remove the whole footer line; only the CMS toggle hides it.
   stat.style.display = '';
   stat.removeAttribute('hidden');
-  countEl.textContent = 'Loading…';
-
-  const namespace = encodeURIComponent(String(cfg.namespace || 'assurintellec.in').trim());
-  const action = encodeURIComponent(String(cfg.action || 'view').trim());
-  const key = encodeURIComponent(String(cfg.key || 'website-visitors').trim());
-  const startValue = Math.max(0, Number(cfg.start_value) || 0);
-  const baseUrl = `https://counterapi.com/api/${namespace}/${action}/${key}`;
-  // Version the session key so a previously failed request from the older code
-  // cannot incorrectly mark this session as counted before a successful response.
-  const sessionKey = `assurintellec-counter-v2:${namespace}:${action}:${key}`;
-  let alreadyCountedThisSession = false;
-  try {
-    alreadyCountedThisSession = window.sessionStorage.getItem(sessionKey) === '1';
-  } catch (_) {
-    // Storage may be restricted in privacy modes. CounterAPI's unique modifier
-    // remains in place, and storage access must never prevent the request.
-  }
-
-  let url = `${baseUrl}?unique=true`;
-  if (alreadyCountedThisSession) url += '&readOnly=true';
-
-  try {
-    const value = await requestVisitorCounter(url);
-    countEl.textContent = (startValue + value).toLocaleString();
-    if (!alreadyCountedThisSession) {
-      try { window.sessionStorage.setItem(sessionKey, '1'); } catch (_) {}
-    }
+  const show = state => {
+    // During an outage keep the last confirmed raw count plus the CURRENT CMS
+    // offset. Never fabricate increments or add the starting value twice.
+    countEl.textContent = (offset + (confirmed ?? 0)).toLocaleString('en-IN');
+    stat.dataset.counterState = state;
+    stat.title = state === 'live' ? 'Visits, counted once per browser visit (30 minutes of inactivity starts a new visit).' : confirmed === null ? 'Configured starting total. Live visits will be added when the connection is restored.' : 'Last confirmed total. Live visits will refresh when the connection is restored.';
     stat.removeAttribute('data-counter-error');
-  } catch (error) {
-    console.warn('Visitor counter unavailable after retry:', error);
-    countEl.textContent = 'Temporarily unavailable';
-    stat.setAttribute('data-counter-error', 'true');
-  }
+  };
+  show(confirmed === null ? 'baseline' : 'cached');
+  let busy = false;
+  let registered = false;
+  let failures = 0;
+  let retryTimer = null;
+  const refresh = async () => {
+    if (busy) return;
+    busy = true;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch('./api/visitor-count', {
+        method: registered ? 'GET' : 'POST',
+        credentials: 'same-origin', cache: 'no-store', signal: controller.signal,
+        ...(!registered ? { headers: { 'content-type': 'application/json' }, body: JSON.stringify({ visit_id: visitId }) } : {})
+      });
+      if (!response.ok) throw new Error(`Visitor counter ${response.status}`);
+      const data = await response.json();
+      if (data.enabled === false) { stat.style.display = 'none'; return; }
+      if (!Number.isSafeInteger(data.value) || data.value < 0) throw new Error('Invalid visitor count');
+      confirmed = data.value;
+      registered = true;
+      failures = 0;
+      try { localStorage.setItem(cacheKey, JSON.stringify({ value: confirmed })); } catch (_) {}
+      show('live');
+    } catch (_) {
+      show(confirmed === null ? 'baseline' : 'cached');
+      failures += 1;
+      // POST is idempotent for this visit, including a lost successful response.
+      if (failures <= 2) retryTimer = window.setTimeout(refresh, failures * 3000);
+    } finally { window.clearTimeout(timeout); busy = false; }
+  };
+  window.addEventListener('online', () => { failures = 0; window.clearTimeout(retryTimer); refresh(); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  window.setInterval(() => { if (!document.hidden) refresh(); }, 60000);
+  await refresh();
 }
 
 function startServiceHeadingAnimation(site, services) {
@@ -2138,42 +2127,92 @@ function applyTextStyleOverrides(site) {
 function applyAnimationOptions(site) {
   const options = site.animation_options || {};
   const root = document.documentElement;
-  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hoverEnabled = options.hover_text_zoom_enabled !== false && !reducedMotion;
-  const revealEnabled = options.reveal_animations_enabled !== false && !reducedMotion;
+  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const service = document.body.dataset.page === 'service' ? SERVICES.find(x => x.slug === document.body.dataset.serviceSlug) : null;
+  const reduced = preference.matches;
+  const premium = options.premium_motion_enabled !== false && !reduced && service?.animation_enabled !== false;
+  const reveal = options.reveal_animations_enabled !== false && !reduced && service?.animation_enabled !== false;
   const scale = Number(options.text_hover_zoom_scale);
   const duration = Number(options.reveal_animation_duration_ms);
   const distance = Number(options.reveal_animation_distance);
-  root.dataset.textHoverZoom = hoverEnabled ? 'true' : 'false';
-  root.dataset.revealAnimations = revealEnabled ? 'true' : 'false';
-  root.dataset.cardHoverLift = options.card_hover_lift_enabled === false ? 'false' : 'true';
-  // Dedicated CMS control: only the seven homepage service images may zoom on hover.
-  // Treat missing/undefined values as OFF; respect the visitor's reduced-motion preference.
-  root.dataset.homeServiceImageHoverZoom = options.homepage_service_image_hover_zoom === true && !reducedMotion ? 'true' : 'false';
-  // Separate CMS switch for text inside the seven homepage service tiles. Default OFF.
-  root.dataset.homeServiceTextHoverZoom = options.homepage_service_text_hover_zoom === true && !reducedMotion ? 'true' : 'false';
+  const ms = Number.isFinite(duration) ? Math.min(1200, Math.max(200, duration)) : 650;
+  const px = Number.isFinite(distance) ? Math.min(60, Math.max(0, distance)) : 18;
+  root.dataset.textHoverZoom = options.hover_text_zoom_enabled !== false && !reduced ? 'true' : 'false';
+  root.dataset.revealAnimations = reveal ? 'true' : 'false';
+  root.dataset.cardHoverLift = options.card_hover_lift_enabled !== false && !reduced ? 'true' : 'false';
+  root.dataset.homeServiceImageHoverZoom = options.homepage_service_image_hover_zoom === true && !reduced ? 'true' : 'false';
+  root.dataset.homeServiceTextHoverZoom = options.homepage_service_text_hover_zoom === true && !reduced ? 'true' : 'false';
+  root.dataset.premiumMotion = premium ? 'true' : 'false';
   root.style.setProperty('--text-hover-scale', String(Number.isFinite(scale) ? Math.min(1.10, Math.max(1.01, scale)) : 1.035));
-  root.style.setProperty('--reveal-duration', `${Number.isFinite(duration) ? Math.min(1200, Math.max(200, duration)) : 650}ms`);
-  root.style.setProperty('--reveal-distance', `${Number.isFinite(distance) ? Math.min(60, Math.max(0, distance)) : 18}px`);
-  if (!revealEnabled) return;
-
-  const targets = Array.from(document.querySelectorAll(
-    '.hero-content > *, .section-heading, .about-content, .instagram-carousel, .service-card, .why-card, .logo-showcase-card, .testimonial-card, .process-card, .expert-card, .contact-info, .contact-form, .contact-location-copy, .contact-map-frame, .cta-inner, .footer-grid > div'
-  ));
-  if (!targets.length) return;
-  if (!('IntersectionObserver' in window)) { targets.forEach(el => el.classList.add('animate-in', 'is-visible')); return; }
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+  root.style.setProperty('--reveal-duration', `${ms}ms`);
+  root.style.setProperty('--reveal-distance', `${px}px`);
+  const running = new Set();
+  let observer = null;
+  let progress = null;
+  let frame = 0;
+  const updateProgress = () => {
+    frame = 0;
+    const length = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.transform = `scaleX(${length > 0 ? Math.min(1, Math.max(0, window.scrollY / length)) : 0})`;
+    root.dataset.motionScrolled = window.scrollY > 24 ? 'true' : 'false';
+  };
+  const scheduleProgress = () => { if (!frame) frame = requestAnimationFrame(updateProgress); };
+  const play = (el, delay = 0, details = false) => {
+    if (preference.matches || !el.animate) return;
+    const animation = el.animate([
+      { opacity: .12, transform: `translate3d(0,${details ? Math.min(px, 10) : px}px,0)` },
+      { opacity: 1, transform: 'translate3d(0,0,0)' }
+    ], { duration: details ? Math.min(ms, 380) : ms, delay, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
+    running.add(animation);
+    animation.finished.catch(() => {}).finally(() => running.delete(animation));
+  };
+  if (reveal && 'IntersectionObserver' in window) {
+    const targets = Array.from(document.querySelectorAll(
+      '.hero-content > *, .page-hero .container > *, .section-heading, .about-content, .service-tile-body, .why-card, .logo-showcase-card, .testimonial-card, .process-card, .expert-card, .contact-info, .contact-form, .contact-location-copy, .cta-inner, .footer-grid > div, .ps2-animate, .ps2-related-title, .ps2-related-grid > a'
+    ));
+    // Observe only the outer target, avoiding stacked animations on descendants.
+    const selected = targets.filter(el => !targets.some(parent => parent !== el && parent.contains(el)));
+    observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
       observer.unobserve(entry.target);
+      if (entry.target.contains(document.activeElement)) return;
+      play(entry.target, Number(entry.target.dataset.motionDelay) || 0);
+    }), { threshold: 0, rootMargin: '0px 0px -12px 0px' });
+    selected.forEach(el => {
+      const siblings = Array.from(el.parentElement.children).filter(x => selected.includes(x));
+      el.dataset.motionDelay = String(Math.min(3, siblings.indexOf(el)) * 65);
+      observer.observe(el);
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
-  targets.forEach((el, index) => {
-    el.classList.add('animate-in');
-    el.style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 55}ms`);
-    observer.observe(el);
-  });
+  }
+  if (premium) {
+    progress = document.createElement('div');
+    progress.className = 'ai-scroll-progress';
+    progress.setAttribute('aria-hidden', 'true');
+    document.body.append(progress);
+    window.addEventListener('scroll', scheduleProgress, { passive: true });
+    window.addEventListener('resize', scheduleProgress, { passive: true });
+    updateProgress();
+    document.querySelectorAll('details').forEach(details => details.addEventListener('toggle', () => {
+      if (details.open) Array.from(details.children).filter(el => el.tagName !== 'SUMMARY').forEach(el => play(el, 0, true));
+    }));
+  }
+  // Changing the OS preference takes effect immediately; no reload is needed.
+  const stopForReducedMotion = event => {
+    if (!event.matches) return;
+    observer?.disconnect();
+    running.forEach(animation => animation.cancel());
+    root.dataset.premiumMotion = 'false';
+    root.dataset.revealAnimations = 'false';
+    root.dataset.textHoverZoom = 'false';
+    root.dataset.cardHoverLift = 'false';
+    root.dataset.homeServiceImageHoverZoom = 'false';
+    root.dataset.homeServiceTextHoverZoom = 'false';
+    progress?.remove();
+    window.removeEventListener('scroll', scheduleProgress);
+    window.removeEventListener('resize', scheduleProgress);
+    if (frame) cancelAnimationFrame(frame);
+  };
+  preference.addEventListener?.('change', stopForReducedMotion);
 }
 
 function applyVisibility(site) {
@@ -2340,10 +2379,9 @@ function renderPremiumService(service, site) {
   main.style.setProperty('--ps2-body-size',Math.min(26,Math.max(16,Number(service.body_font_size)||19))+'px');
   main.style.setProperty('--ps2-heading-size',Math.min(46,Math.max(22,Number(service.heading_font_size)||32))+'px');
   main.style.setProperty('--ps2-body-color',/^#[0-9a-f]{3,8}$/i.test(service.text_color||'')?service.text_color:'#24344a');
-  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealTargets=main.querySelectorAll('.ps2-animate');
-  if(service.animation_enabled===false||reduced||!('IntersectionObserver' in window))revealTargets.forEach(x=>x.classList.add('ps2-shown'));
-  else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('ps2-shown');observer.unobserve(entry.target)}}),{threshold:.06,rootMargin:'0px 0px -14px 0px'});revealTargets.forEach(x=>observer.observe(x));}
+  // Content is always readable, even if motion is disabled or the observer
+  // cannot start. The shared motion controller supplies the optional reveals.
+  main.querySelectorAll('.ps2-animate').forEach(el => el.classList.add('ps2-shown'));
   const anchors=main.querySelectorAll('.ps2-anchor-track a');
   if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)anchors.forEach(a=>a.classList.toggle('ps2-active',a.getAttribute('href')==='#'+entry.target.id));});},{rootMargin:'-22% 0px -65% 0px'});main.querySelectorAll('section[id]').forEach(x=>observer.observe(x));}
 }

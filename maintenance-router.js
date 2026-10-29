@@ -1,3 +1,6 @@
+import { handleVisitorCounter } from './visitor-counter.js';
+export { VisitorCounter } from './visitor-counter.js';
+
 export default {
   async fetch(request, env) {
     const enabled =
@@ -7,6 +10,9 @@ export default {
 
     // Normal operation: serve the existing website files.
     if (!enabled) {
+      if (new URL(request.url).pathname === '/api/visitor-count') {
+        return handleVisitorCounter(request, env);
+      }
       return env.ASSETS.fetch(request);
     }
 

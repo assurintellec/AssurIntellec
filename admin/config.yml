@@ -90,10 +90,11 @@ collections:
         name: start_value
         widget: number
         value_type: int
+        min: 0
         default: 0
         required: false
-        hint: Added to the live CounterAPI count. Keep the current namespace/key during normal site updates. If
-          intentionally starting with a fresh key, set this to the last count to carry forward.
+        hint: Added to the persistent live visit count. For example 148160 plus 12 new visits displays 148172.
+          Keep namespace, action and key unchanged to retain visits after website updates. A fresh key starts at this value.
       required: false
     - label: Navigation
       name: navigation
@@ -1633,6 +1634,12 @@ collections:
       collapsed: true
       required: false
       fields:
+      - label: Enable Enhanced Motion
+        name: premium_motion_enabled
+        widget: boolean
+        default: true
+        required: false
+        hint: Adds button sheen, card lighting, navigation accents and a reading-progress line. Existing reveal, text, media and card switches remain independent.
       - label: Enable Text Hover Zoom
         name: hover_text_zoom_enabled
         widget: boolean
