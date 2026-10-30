@@ -20,7 +20,8 @@
     privacy_note: 'We use your email for the updates you select. You can unsubscribe or contact our team to opt out.',
     google_apps_script_url: ''
   };
-  function endpoint(value) { return /^https:\/\/script\.google\.com\/macros\/s\/[a-zA-Z0-9_-]+\/exec$/.test(String(value || '').trim()); }
+  function canonicalEndpoint(value) { return String(value || '').trim().replace(/\/macros\/u\/\d+\/s\//, '/macros/s/'); }
+  function endpoint(value) { return /^https:\/\/script\.google\.com\/macros\/s\/[a-zA-Z0-9_-]+\/exec$/.test(canonicalEndpoint(value)); }
   function options(services, cfg) {
     const records = (Array.isArray(services) ? services : []).filter(s => s && s.enabled !== false && s.slug && s.title);
     return [...(cfg.include_all_services !== false ? [{ value: 'all', label: cfg.all_services_label }] : []), ...records.map(s => ({ value: s.slug, label: s.title }))];
@@ -37,7 +38,7 @@
       frame.title = 'Newsletter subscription response';
       frame.hidden = true;
       frame.setAttribute('aria-hidden', 'true');
-      form.method = 'POST'; form.action = url; form.target = frame.name; form.hidden = true;
+      form.method = 'POST'; form.action = canonicalEndpoint(url); form.target = frame.name; form.hidden = true;
       const cleanup = () => { clearTimeout(timer); window.removeEventListener('message', onMessage); form.remove(); frame.remove(); };
       const onMessage = event => {
         const data = event.data || {};
@@ -58,18 +59,26 @@
   function subscribe(url, payload) { return bridgeRequest(url, payload, 'subscribe'); }
   async function unsubscribe(url, token) {
     if (!/^[a-f0-9]{64}$/.test(token)) throw new Error('Invalid unsubscribe link.');
-    const response = await fetch('./api/newsletter', {
-      method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ action: 'unsubscribe', token }), signal: AbortSignal.timeout(35000)
-    });
-    // Static-only hosts can still use the existing Apps Script bridge. The
-    // included Cloudflare Worker handles the normal production path directly.
-    if ([404, 405, 501].includes(response.status) && endpoint(url)) return bridgeRequest(url, { token }, 'unsubscribe');
-    const result = await response.json();
-    if (typeof result.success !== 'boolean') throw new Error('Unsubscribe could not be confirmed.');
-    return result;
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'same-origin',
+        body: JSON.stringify({ action: 'unsubscribe', token }), signal: AbortSignal.timeout(30000)
+      });
+      const result = await response.json();
+      if (typeof result.success !== 'boolean') throw new Error('Unsubscribe could not be confirmed.');
+      if (response.ok || response.status === 400) return result;
+      throw new Error(result.message || 'Unsubscribe could not be confirmed.');
+    } catch (error) {
+      // Static hosts sometimes return a 200 HTML page for /api/*; failures also
+      // include network errors and an older Worker. Retry this idempotent action
+      // through the existing bridge, requiring a verified server response.
+      if (endpoint(url)) return bridgeRequest(url, { token }, 'unsubscribe');
+      throw error;
+    }
   }
-  function initUnsubscribe(site) {
+  let unsubscribeEndpoint = '';
+  function initUnsubscribe(site = {}) {
+    if (endpoint(site.newsletter?.google_apps_script_url)) unsubscribeEndpoint = canonicalEndpoint(site.newsletter.google_apps_script_url);
     const form = document.getElementById('unsubscribeForm');
     if (!form || form.dataset.bound) return;
     form.dataset.bound = 'true';
@@ -87,13 +96,21 @@
       if (button.disabled) return;
       button.disabled = true; button.textContent = 'Updating…'; status.textContent = 'Confirming your request…';
       try {
-        const result = await unsubscribe(String(site.newsletter?.google_apps_script_url || ''), token);
+        const result = await unsubscribe(unsubscribeEndpoint, token);
         if (!result.success) throw new Error(result.message);
         status.textContent = 'You have been unsubscribed. You will no longer receive service updates from this list.';
         status.dataset.success = 'true'; button.textContent = 'Unsubscribed';
+        document.getElementById('unsubscribeAlternative')?.remove();
       } catch (_) {
         status.textContent = 'We could not confirm your unsubscribe request. Please try again, or email info@assurintellec.in for help.';
         button.disabled = false; button.textContent = 'Try unsubscribe again';
+        if (endpoint(unsubscribeEndpoint) && !document.getElementById('unsubscribeAlternative')) {
+          const alternative = document.createElement('a');
+          alternative.id = 'unsubscribeAlternative'; alternative.textContent = 'Use alternative unsubscribe form';
+          alternative.href = unsubscribeEndpoint + '?action=unsubscribe&token=' + encodeURIComponent(token);
+          alternative.target = '_blank'; alternative.rel = 'noopener noreferrer';
+          alternative.style.cssText = 'display:block;margin-top:16px;text-decoration:underline'; form.append(alternative);
+        }
       }
     });
   }
@@ -147,5 +164,16 @@
     });
     container.append(copy, form); section.append(container); holder.prepend(section);
   }
-  return { init, defaults, endpoint, options, googleOrigin, unsubscribe };
+  // The unsubscribe control must still work if an unrelated page component
+  // (header, services, video or animation) fails while the main site initializes.
+  if (typeof document !== 'undefined') {
+    const bindUnsubscribe = () => {
+      if (!document.getElementById('unsubscribeForm')) return;
+      initUnsubscribe();
+      fetch('./content/site.json', { cache: 'no-store' }).then(response => response.json()).then(initUnsubscribe).catch(() => {});
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindUnsubscribe);
+    else bindUnsubscribe();
+  }
+  return { init, initUnsubscribe, defaults, endpoint, options, googleOrigin, unsubscribe };
 });

@@ -60,6 +60,19 @@ function sanitizeMimeType(value) {
     : 'image/png';
 }
 
+function normalizeInlineImages(items) {
+  if (items == null) return [];
+  if (!Array.isArray(items) || items.length > 9) throw new Error('Invalid inline images.');
+  const seen = new Set();
+  return items.map(item => {
+    const cid = String(item?.cid || '');
+    const encoded = String(item?.base64 || '');
+    if (!/^assur_social_(instagram|facebook|linkedin|youtube|whatsapp_channel|telegram|threads|x|google)$/.test(cid) || seen.has(cid) || item.contentType !== 'image/png' || encoded.length > 12000 || !/^iVBORw0KGgo[A-Za-z0-9+/]*={0,2}$/.test(encoded) || encoded.length % 4 !== 0) throw new Error('Invalid inline image data.');
+    seen.add(cid);
+    return { cid, filename: cid + '.png', contentType: 'image/png', bodyBase64: (encoded.match(/.{1,76}/g) || []).join('\r\n') };
+  });
+}
+
 async function fetchInlineLogo(url) {
   const logoUrl = cleanHeader(url || '');
   if (!/^https?:\/\//i.test(logoUrl)) return null;
@@ -119,9 +132,12 @@ function buildMimeBody(message, inlineLogo) {
         cleanHeader(message.logoUrl || ''),
       );
 
+  const images = (message.inlineImages || []).filter(item => html.includes('cid:' + item.cid));
+  const hasRelatedImages = !!inlineLogo || images.length > 0;
+
   const lines = [];
 
-  if (inlineLogo) {
+  if (hasRelatedImages) {
     lines.push(
       `--${relatedBoundary}`,
       `Content-Type: multipart/alternative; boundary="${altBoundary}"`,
@@ -152,12 +168,17 @@ function buildMimeBody(message, inlineLogo) {
       `Content-Disposition: inline; filename="${inlineLogo.filename}"`,
       '',
       inlineLogo.bodyBase64,
-      `--${relatedBoundary}--`,
     );
   }
+  for (const item of images) {
+    lines.push(`--${relatedBoundary}`, `Content-Type: ${item.contentType}; name="${item.filename}"`,
+      'Content-Transfer-Encoding: base64', `Content-ID: <${item.cid}>`,
+      `Content-Disposition: inline; filename="${item.filename}"`, '', item.bodyBase64);
+  }
+  if (hasRelatedImages) lines.push(`--${relatedBoundary}--`);
 
   return {
-    contentType: inlineLogo
+    contentType: hasRelatedImages
       ? `multipart/related; boundary="${relatedBoundary}"`
       : `multipart/alternative; boundary="${altBoundary}"`,
     body: lines.join('\r\n'),
@@ -312,6 +333,7 @@ export default {
         subject: cleanHeader(body.subject),
         body: String(body.body ?? ''),
         html: String(body.html ?? ''),
+        inlineImages: normalizeInlineImages(body.inlineImages),
         logoUrl: cleanHeader(body.logoUrl || ''),
         replyTo: cleanHeader(body.replyTo || env.TITAN_SMTP_USER),
         fromName: cleanHeader(body.fromName || 'AssurIntellec™'),

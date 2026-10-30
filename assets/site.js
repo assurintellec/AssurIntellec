@@ -1,6 +1,7 @@
 let SITE = null;
 let SERVICES = [];
 let instagramIndex = 0;
+let VIDEO_COMPATIBILITY = {};
 let heroAudioEnabled = true;
 
 const FALLBACK_SITE = {
@@ -430,6 +431,16 @@ function serviceImageSource(item, property) {
   return item?.[`${property}_original`] || item?.[property] || '';
 }
 
+// Compatible copies retain the same scene, audio, resolution and CMS choice.
+function playableVideoAsset(value) {
+  const asset = normalizeAsset(value);
+  try {
+    const url = new URL(asset, location.href);
+    if (url.origin === location.origin && VIDEO_COMPATIBILITY[url.pathname]) return normalizeAsset(VIDEO_COMPATIBILITY[url.pathname]);
+  } catch (_) {}
+  return asset;
+}
+
 function serviceVideoMime(url) {
   const extension = String(url || '').split(/[?#]/)[0].split('.').pop().toLowerCase();
   // The CMS file widget accepts additional formats; the browser decides which can play.
@@ -675,7 +686,6 @@ async function initVisitorCounter(site) {
   };
   show(confirmed === null ? 'baseline' : 'cached');
   let busy = false;
-  let registered = false;
   let failures = 0;
   let retryTimer = null;
   const refresh = async () => {
@@ -684,17 +694,16 @@ async function initVisitorCounter(site) {
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 8000);
     try {
-      const response = await fetch('./api/visitor-count', {
-        method: registered ? 'GET' : 'POST',
+      const response = await fetch('/api/visitor-count', {
+        method: 'POST',
         credentials: 'same-origin', cache: 'no-store', signal: controller.signal,
-        ...(!registered ? { headers: { 'content-type': 'application/json' }, body: JSON.stringify({ visit_id: visitId }) } : {})
+        headers: { 'content-type': 'application/json' }, body: JSON.stringify({ visit_id: visitId })
       });
       if (!response.ok) throw new Error(`Visitor counter ${response.status}`);
       const data = await response.json();
       if (data.enabled === false) { stat.style.display = 'none'; return; }
       if (!Number.isSafeInteger(data.value) || data.value < 0) throw new Error('Invalid visitor count');
       confirmed = data.value;
-      registered = true;
       failures = 0;
       try { localStorage.setItem(cacheKey, JSON.stringify({ value: confirmed })); } catch (_) {}
       show('live');
@@ -856,7 +865,7 @@ function renderHome(site, services) {
     heroAudioEnabled = h.video_audio_default_enabled !== false;
     video.volume = 1;
     video.muted = !heroAudioEnabled;
-    video.innerHTML = `<source src="${escapeHtml(normalizeAsset(h.video || '/videos/hero-60sec.mp4'))}" type="video/mp4">`;
+    video.innerHTML = `<source src="${escapeHtml(playableVideoAsset(h.video || '/videos/hero-60sec.mp4'))}" type="video/mp4">`;
     video.setAttribute('aria-label', h.video_alt || 'AssurIntellec hero video');
     video.load();
   }
@@ -944,147 +953,85 @@ function renderHome(site, services) {
   applyVisibility(site);
 }
 
-function instagramId(url) {
-  const match = String(url || '').match(/instagram\.com\/(?:reel|reels|p)\/([^/?#]+)/i);
-  return match ? match[1] : '';
+function instagramId(value) {
+  try {
+    const url = new URL(String(value || '').trim());
+    if (url.protocol !== 'https:' || !['instagram.com','www.instagram.com','m.instagram.com'].includes(url.hostname.toLowerCase())) return '';
+    return url.pathname.match(/^\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)(?:\/|$)/)?.[1] || '';
+  } catch (_) { return ''; }
 }
 
+let instagramSite = null;
+function configuredInstagramReels(site) {
+  const ids = new Set();
+  return (site?.instagram_reels || []).filter(item => {
+    if (!item || item.enabled === false) return false;
+    const id = instagramId(item.url);
+    if (!id || ids.has(id)) return false;
+    ids.add(id); return true;
+  });
+}
 function renderInstagram(site) {
   const holder = document.getElementById('instagramReel');
   if (!holder) return;
-
-  // Connect navigation on initial render; the binding guard prevents duplicate
-  // listeners when an arrow renders the next/previous reel.
+  instagramSite = site;
   bindInstagramButtons();
-
   const section = site.home?.instagram_section || {};
   const prev = document.getElementById('instagramPrev');
   const next = document.getElementById('instagramNext');
   const carousel = holder.closest('.instagram-carousel');
   let audioHelp = carousel?.querySelector('.instagram-audio-help');
   if (carousel && !audioHelp) {
-    audioHelp = document.createElement('div');
-    audioHelp.className = 'instagram-audio-help';
-    audioHelp.id = 'instagramSoundHelp';
-    carousel.appendChild(audioHelp);
+    audioHelp = document.createElement('div'); audioHelp.className = 'instagram-audio-help';
+    audioHelp.id = 'instagramSoundHelp'; carousel.appendChild(audioHelp);
   }
   if (audioHelp) audioHelp.hidden = true;
-
-  if (section.enabled === false) {
-    holder.innerHTML = '';
-    if (prev) prev.style.display = 'none';
-    if (next) next.style.display = 'none';
-    return;
-  }
-
-  const list = (site.instagram_reels || []).filter(
-    item => item && item.enabled !== false && item.url && instagramId(item.url)
-  );
-
+  const enabled = section.enabled !== false;
+  const list = enabled ? configuredInstagramReels(site) : [];
+  [prev,next].forEach((button,index) => {
+    if(!button)return;
+    const label = index ? (section.next_label || 'Next Instagram Reel') : (section.prev_label || 'Previous Instagram Reel');
+    button.style.display=enabled?'inline-flex':'none'; button.disabled=list.length<2;
+    button.setAttribute('aria-label',label); button.title=label;
+    button.setAttribute('aria-controls','instagramReel');
+  });
+  if (!enabled) { holder.replaceChildren(); delete holder.dataset.embedUrl; return; }
   if (!list.length) {
-    holder.innerHTML = `
-      <div class="instagram-placeholder">
-        <i class="fab fa-instagram"></i>
-        <strong>Instagram Reel</strong>
-        <span>${escapeHtml(
-          section.empty_message ||
-          'Add public Instagram Reel URLs in Decap CMS.'
-        )}</span>
-      </div>
-    `;
-    if (prev) prev.disabled = true;
-    if (next) next.disabled = true;
-    return;
+    holder.innerHTML = `<div class="instagram-placeholder"><i class="fab fa-instagram"></i><strong>Instagram Reel</strong><span>${escapeHtml(section.empty_message || 'Add public Instagram Reel URLs in Decap CMS.')}</span></div>`;
+    delete holder.dataset.embedUrl; return;
   }
-
-  instagramIndex = Math.max(
-    0,
-    Math.min(instagramIndex, list.length - 1)
-  );
-
+  instagramIndex = ((instagramIndex % list.length) + list.length) % list.length;
   const item = list[instagramIndex];
-  const id = instagramId(item.url);
-
-  // Set audio/autoplay permission BEFORE the frame loads. The native player
-  // owns playback and sound; the parent cannot unmute a cross-origin video.
-  const reelUrl = `https://www.instagram.com/reel/${encodeURIComponent(id)}/`;
+  const reelUrl = `https://www.instagram.com/reel/${encodeURIComponent(instagramId(item.url))}/`;
   const embedUrl = `${reelUrl}embed/`;
-  holder.innerHTML = `
-    <iframe
-      class="instagram-media instagram-reel-frame"
-      allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-      allowfullscreen
-      title="${escapeHtml(item.title || 'Instagram Reel')}"
-      aria-describedby="instagramSoundHelp"
-      src="${escapeHtml(embedUrl)}"
-    ></iframe>
-  `;
-  if (audioHelp) {
-    audioHelp.innerHTML = `<span>${escapeHtml(section.sound_hint || 'Tap Play inside the reel to hear sound.')}</span> <a href="${escapeHtml(reelUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(section.open_label || 'Open on Instagram')}</a>`;
-    audioHelp.hidden = false;
+  // Replacing the previous iframe stops its audio. Playback and mute controls
+  // remain Instagram's own controls; sound starts through a visitor's gesture.
+  holder.innerHTML = `<iframe class="instagram-media instagram-reel-frame" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen title="${escapeHtml(item.title || 'Instagram Reel')}" aria-describedby="instagramSoundHelp" src="${escapeHtml(embedUrl)}"></iframe>`;
+  if(audioHelp){
+    audioHelp.innerHTML=`<span>${escapeHtml(section.sound_hint || 'Tap Play inside the reel to hear sound.')}</span> <a href="${escapeHtml(reelUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(section.open_label || 'Open on Instagram')}</a>`;
+    audioHelp.hidden=false;
   }
-
-  if (prev) {
-    prev.style.display = 'inline-flex';
-    prev.disabled = list.length < 2;
-    prev.setAttribute(
-      'aria-label',
-      section.prev_label || 'Previous Instagram Reel'
-    );
-    prev.title =
-      section.prev_label || 'Previous Instagram Reel';
-  }
-
-  if (next) {
-    next.style.display = 'inline-flex';
-    next.disabled = list.length < 2;
-    next.setAttribute(
-      'aria-label',
-      section.next_label || 'Next Instagram Reel'
-    );
-    next.title =
-      section.next_label || 'Next Instagram Reel';
-  }
-
-  holder.dataset.embedUrl = embedUrl;
-
+  holder.dataset.embedUrl=embedUrl;
+  holder.setAttribute('aria-label',`${item.title || 'Instagram Reel'} (${instagramIndex+1} / ${list.length})`);
 }
-
+function stepInstagram(direction) {
+  const list=configuredInstagramReels(instagramSite);
+  if(list.length<2)return;
+  instagramIndex=(instagramIndex+direction+list.length)%list.length;
+  renderInstagram(instagramSite);
+}
 function bindInstagramButtons() {
-  const prev = document.getElementById('instagramPrev');
-  const next = document.getElementById('instagramNext');
-
-  if (prev && !prev.dataset.bound) {
-    prev.dataset.bound = '1';
-
-    prev.addEventListener('click', () => {
-      const list = (SITE?.instagram_reels || []).filter(
-        item => item && item.enabled !== false && item.url && instagramId(item.url)
-      );
-
-      if (list.length < 2) return;
-
-      instagramIndex =
-        (instagramIndex - 1 + list.length) % list.length;
-
-      renderInstagram(SITE);
-    });
-  }
-
-  if (next && !next.dataset.bound) {
-    next.dataset.bound = '1';
-
-    next.addEventListener('click', () => {
-      const list = (SITE?.instagram_reels || []).filter(
-        item => item && item.enabled !== false && item.url && instagramId(item.url)
-      );
-
-      if (list.length < 2) return;
-
-      instagramIndex =
-        (instagramIndex + 1) % list.length;
-
-      renderInstagram(SITE);
+  [['instagramPrev',-1],['instagramNext',1]].forEach(([id,direction])=>{
+    const button=document.getElementById(id);
+    if(button&&!button.dataset.bound){button.dataset.bound='1';button.addEventListener('click',()=>stepInstagram(direction));}
+  });
+  const carousel=document.getElementById('instagramReel')?.closest('.instagram-carousel');
+  if(carousel&&!carousel.dataset.keyboardBound){
+    carousel.dataset.keyboardBound='1';
+    carousel.addEventListener('keydown',event=>{
+      if(event.altKey||event.ctrlKey||event.metaKey||!['ArrowLeft','ArrowRight'].includes(event.key))return;
+      if(event.target.closest('input,textarea,select'))return;
+      event.preventDefault();stepInstagram(event.key==='ArrowLeft'?-1:1);
     });
   }
 }
@@ -1886,7 +1833,7 @@ function renderServicesPage(site) {
 // Only sound can be switched by visitors: no native play, pause, fullscreen,
 // timeline, picture-in-picture, or download controls are shown.
 function serviceVideoMarkup(source, description, poster = '', extraClass = '') {
-  const src = escapeHtml(normalizeAsset(source));
+  const src = escapeHtml(playableVideoAsset(source));
   const label = escapeHtml(description || 'Service introduction video');
   const posterAttr = poster ? ` poster="${escapeHtml(normalizeAsset(poster))}"` : '';
   const mime = serviceVideoMime(source);
@@ -1910,7 +1857,7 @@ function syncOpeningServiceVideo(hero, source, poster, description) {
   // Advanced manual override: editors who intentionally set data-manual-video="true"
   // in the matching service-*.html keep the inline HTML source unchanged.
   if (video.dataset.manualVideo === 'true') return;
-  const next = normalizeAsset(source);
+  const next = playableVideoAsset(source);
   if (!next) return; // keep immediate-play HTML default if CMS value is empty
   const current = video.querySelector('source')?.getAttribute('src') || video.getAttribute('src') || '';
   try {
@@ -2193,6 +2140,7 @@ async function init() {
   SITE = await readJson('./content/site.json', FALLBACK_SITE);
   window.AssurPreloader?.configure(SITE);
   SERVICES = normalizeServices(await readJson('./content/services.json', { services: FALLBACK_SERVICES }));
+  VIDEO_COMPATIBILITY = await readJson('./content/video-compatibility.json', {});
   applyTheme(SITE);
   updateMeta(SITE);
   renderHeader(SITE);

@@ -26,7 +26,7 @@
     // Fail open even if a media request or the main script fails.
     timer = setTimeout(hide, 7000);
   };
-  const finish = () => { if (appReady && loaded) hide(); };
+  const finish = () => { if (appReady) hide(); };
   window.AssurPreloader = {
     configure(site) {
       const cfg = site.preloader || {}; enabled = cfg.enabled !== false;

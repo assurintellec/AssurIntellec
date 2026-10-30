@@ -120,3 +120,22 @@ html[data-reveal-animations="false"] .ps2-animate {
   .ai-scroll-progress { display: none; }
   .ps2-animate, .animate-in { opacity: 1 !important; transform: none !important; }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-premium-motion="true"] .instagram-reel-frame { animation: ai-reel-reveal .24s ease-out; }
+  html[data-premium-motion="true"] .instagram-arrow { transition: background-color .25s ease, color .25s ease, box-shadow .25s ease; }
+  html[data-premium-motion="true"] .instagram-arrow:not(:disabled):is(:hover,:focus-visible) { box-shadow: 0 0 0 4px #c9a22724, 0 8px 24px #0b1f3a1a; }
+  html[data-premium-motion="true"] .ps2-anchor-track a { transition: color .25s ease, border-color .25s ease, background-color .25s ease; }
+  html[data-premium-motion="true"] :is(.contact-form input,.contact-form textarea,.contact-form select):focus { border-color: var(--gold,#c9a227); }
+}
+@keyframes ai-reel-reveal { from { opacity: .35; } to { opacity: 1; } }
+.instagram-arrow:focus-visible { outline: 2px solid var(--gold,#c9a227); outline-offset: 3px; }
+/* Grid children may shrink to the phone viewport without clipping the copy. */
+@media (max-width: 1020px) {
+  .about-reel-grid { grid-template-columns: minmax(0,1fr); }
+  .about-reel-grid > * { min-width: 0; max-width: 100%; }
+  .about-home-copy { overflow-wrap: break-word; }
+}
+@media (max-width: 700px) {
+  .footer-social { flex-wrap: wrap; }
+}
