@@ -1482,6 +1482,7 @@ window.addEventListener('message', event => {
 
   const pending = pendingEnquiries.get(bridgeToken);
   if (!pending) return;
+  if (pending.confirmedOnly && !window.AssurNewsletter?.googleOrigin(event.origin)) return;
 
   if (pending.settled) return;
 
@@ -1538,7 +1539,7 @@ function submitEnquiryPost(url, payload, bridgeToken, frame) {
   }
 }
 
-function sendToGoogleAppsScript(url, data, site, callback) {
+function sendToGoogleAppsScript(url, data, site, callback, confirmedOnly = false) {
   if (!url || !/^https?:\/\//i.test(url)) {
     callback(
       false,
@@ -1574,6 +1575,9 @@ function sendToGoogleAppsScript(url, data, site, callback) {
   // The postMessage response remains the preferred path when it is available.
   const onTransportLoad = () => {
     if (frame.dataset.enquirySubmitted !== '1') return;
+    // An opted-in newsletter request starts only after the server confirms
+    // the enquiry. A Google error page loading is not a successful enquiry.
+    if (confirmedOnly) return;
 
     // Give the Apps Script HTML response a brief chance to deliver its
     // postMessage first. Whichever signal arrives first settles the request.
@@ -1611,6 +1615,7 @@ function sendToGoogleAppsScript(url, data, site, callback) {
     callback,
     timeoutId,
     frame,
+    confirmedOnly,
     settled: false
   });
 
@@ -1701,6 +1706,7 @@ function hideEnquirySuccess() {
   overlay.classList.remove('show');
   overlay.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('success-open');
+  window.AssurEnquiryNewsletter?.restore();
 }
 
 function bindEnquirySuccessOverlay(site) {
@@ -1746,6 +1752,8 @@ function handleEnquirySubmit(event, site) {
 
   const sendButton =
     form.querySelector('button[type="submit"]');
+  if (sendButton?.disabled) return;
+  const newsletterSelection = window.AssurEnquiryNewsletter?.capture(form);
 
   const originalButtonText =
     sendButton?.textContent ||
@@ -1759,7 +1767,7 @@ function handleEnquirySubmit(event, site) {
       'Sending…';
   }
 
-  const finish = (ok, errorMessage) => {
+  const finish = (ok, errorMessage, result) => {
     if (sendButton) {
       sendButton.disabled = false;
       sendButton.textContent = originalButtonText;
@@ -1769,6 +1777,7 @@ function handleEnquirySubmit(event, site) {
       // Keep all visitor-entered values so they can close the confirmation
       // and use "Send on WhatsApp" without retyping the enquiry.
       showEnquirySuccess(site, data.name);
+      if (newsletterSelection && result?.success === true) window.AssurEnquiryNewsletter.complete(newsletterSelection);
     } else {
       showToast(
         errorMessage ||
@@ -1784,7 +1793,8 @@ function handleEnquirySubmit(event, site) {
       c.google_apps_script_url,
       data,
       site,
-      finish
+      finish,
+      !!newsletterSelection
     );
     return;
   }
@@ -2203,6 +2213,7 @@ async function init() {
   applyAnimationOptions(SITE);
   window.AssurDiscovery?.init(SITE, SERVICES);
   window.AssurNewsletter?.init(SITE, SERVICES);
+  window.AssurEnquiryNewsletter?.init(SITE, SERVICES);
   if (SITE.media_options?.image_hover_zoom_enabled === false) document.documentElement.classList.add('disable-image-zoom');
   if (SITE.visitor_counter?.enabled === false) {
     const stat=document.getElementById('visitorStat');

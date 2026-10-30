@@ -138,6 +138,56 @@ collections:
         default: ''
         hint: Deploy integrations/newsletter/Code.gs in your dedicated newsletter Google Sheet, then paste the public
           /exec URL here. This is separate from the enquiry form URL.
+      - label: Enable Newsletter Checkbox In Enquiry Form
+        name: enquiry_optin_enabled
+        widget: boolean
+        required: false
+        default: true
+      - label: Enquiry Newsletter Checkbox Label
+        name: enquiry_optin_label
+        widget: string
+        required: false
+        default: "Yes, email me service updates and the AssurIntellec™ newsletter."
+      - label: Enquiry Newsletter Consent Note
+        name: enquiry_optin_note
+        widget: string
+        required: false
+        default: "Optional. You can unsubscribe at any time. You can send your enquiry without subscribing."
+      - label: Enquiry Newsletter Interest Label
+        name: enquiry_interest_label
+        widget: string
+        required: false
+        default: "Send me updates about"
+      - label: Enquiry Newsletter Email Note
+        name: enquiry_email_note
+        widget: string
+        required: false
+        default: "We’ll use the email address entered above."
+      - label: Combined Enquiry And Subscribe Button
+        name: enquiry_combined_button
+        widget: string
+        required: false
+        default: "Send enquiry & subscribe"
+      - label: Enquiry Newsletter Pending Message
+        name: enquiry_newsletter_pending
+        widget: string
+        required: false
+        default: "Your enquiry is sent. Confirming your newsletter subscription…"
+      - label: Enquiry Newsletter Success Message
+        name: enquiry_newsletter_success
+        widget: string
+        required: false
+        default: "Your newsletter preferences have been saved. You can unsubscribe at any time."
+      - label: Enquiry Newsletter Retry Message
+        name: enquiry_newsletter_error
+        widget: string
+        required: false
+        default: "Your enquiry was sent successfully. We couldn’t confirm your newsletter subscription."
+      - label: Enquiry Newsletter Retry Button
+        name: enquiry_newsletter_retry
+        widget: string
+        required: false
+        default: "Retry subscription"
     - label: Website Search & Chatbot
       name: site_tools
       widget: object
