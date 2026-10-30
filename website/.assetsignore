@@ -1,0 +1,7 @@
+/maintenance-router.js
+/visitor-counter.js
+/newsletter-proxy.js
+/wrangler.toml
+/cloudflare-worker/**
+/tests/**
+**/.git

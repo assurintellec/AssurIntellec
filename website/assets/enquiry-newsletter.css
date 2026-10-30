@@ -1,0 +1,24 @@
+.ai-enquiry-optin{padding:17px 18px;border:1px solid #dce5ee;border-radius:12px;background:#f8fafc;gap:0;transition:border-color .2s,background .2s}
+.ai-enquiry-optin[data-selected="true"]{border-color:#c4ab5b;background:#fffcf3}
+.contact-form .ai-enquiry-optin-label{display:flex;align-items:flex-start;gap:11px;cursor:pointer;font-size:13px;font-weight:650;line-height:1.65;color:var(--navy)}
+.contact-form .ai-enquiry-optin-label input[type="checkbox"]{appearance:auto;width:18px;height:18px;min-height:18px;flex:0 0 18px;padding:0;margin:2px 0 0;border:0;border-radius:3px;accent-color:var(--navy);box-shadow:none}
+.contact-form .ai-enquiry-optin-note{margin:7px 0 0;padding-left:29px;font-size:11px;line-height:1.65;color:#67788a}
+.ai-enquiry-optin-preferences{display:grid;gap:7px;margin:16px 0 0 29px;padding-top:14px;border-top:1px solid #e8dfc6}
+.ai-enquiry-optin-preferences[hidden],.ai-enquiry-newsletter-result[hidden]{display:none!important}
+.contact-form .ai-enquiry-optin-preferences label{font-size:12px;color:var(--navy)}
+.contact-form .ai-enquiry-optin-preferences select{padding:10px 12px;background:#fff;font-size:13px;min-height:44px}
+.contact-form .ai-enquiry-optin-preferences .ai-enquiry-optin-note{margin:0;padding:0}
+.ai-enquiry-optin :is(input,select):focus-visible,.ai-enquiry-newsletter-retry:focus-visible{outline:3px solid #c9a22780;outline-offset:3px}
+.ai-enquiry-newsletter-result{padding:15px 17px;background:#f3f7fb;border:1px solid #d6e2ed;border-radius:12px;text-align:left;gap:7px;margin-top:3px;overflow-wrap:anywhere}
+.enquiry-success-card .ai-enquiry-newsletter-result{margin-top:20px}
+.ai-enquiry-newsletter-result>strong{font-size:12px;color:var(--navy);font-weight:800}
+.contact-form .ai-enquiry-newsletter-result>p,.enquiry-success-card .ai-enquiry-newsletter-result>p{font-size:13px;line-height:1.65;margin:0;color:#435b73}
+.ai-enquiry-newsletter-interest{font-size:11px;line-height:1.6;color:#62788a}
+.ai-enquiry-newsletter-result[data-state="success"]{background:#f0faf5;border-color:#b8dfca}
+.ai-enquiry-newsletter-result[data-state="success"]>strong{color:#176443}
+.ai-enquiry-newsletter-result[data-state="error"]{background:#fffbf2;border-color:#e8d6a0}
+.ai-enquiry-newsletter-retry{justify-self:start;width:auto;padding:8px 12px;min-height:40px;border:1px solid #bdab70;border-radius:8px;background:white;color:var(--navy);font-size:12px;font-weight:700;cursor:pointer}
+.ai-enquiry-newsletter-result[data-state="pending"]>strong::after{content:"";display:inline-block;width:10px;height:10px;border:2px solid #b9c9d6;border-top-color:var(--navy);border-radius:50%;margin-left:8px;vertical-align:-2px;animation:ai-newsletter-pending .9s linear infinite}
+@keyframes ai-newsletter-pending{to{transform:rotate(360deg)}}
+@media(max-width:650px){.ai-enquiry-optin{padding:14px}.contact-form .ai-enquiry-optin-preferences select{font-size:16px}.ai-enquiry-optin-preferences{margin-left:0}.contact-form .ai-enquiry-optin-note{padding-left:0}.ai-enquiry-optin-label span{min-width:0}}
+@media(prefers-reduced-motion:reduce){.ai-enquiry-optin{transition:none}.ai-enquiry-newsletter-result[data-state="pending"]>strong::after{animation:none}}

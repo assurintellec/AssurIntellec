@@ -1,0 +1,25 @@
+.ai-newsletter{padding:54px 0;background:linear-gradient(120deg,#0b1f3a,#153959);color:#fff;border-top:1px solid #c9a22750}
+.ai-newsletter-grid{display:grid;grid-template-columns:.9fr 1.4fr;gap:clamp(28px,5vw,65px);align-items:center}
+.ai-newsletter-eyebrow{display:block;font-size:11px!important;letter-spacing:.13em;color:#e2cc8a!important;font-weight:750;margin-bottom:12px}
+.ai-newsletter-copy h2{margin:0 0 13px!important;color:#fff!important;font-size:clamp(25px,3vw,37px)!important;line-height:1.17!important}
+.ai-newsletter-copy p{margin:0!important;font-size:14px!important;line-height:1.75!important;color:#cfdae6!important}
+.ai-newsletter-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) auto;gap:10px;align-items:end}
+.ai-newsletter-field{min-width:0;display:grid;gap:7px}
+.ai-newsletter-field label{font-size:12px!important;line-height:1.4!important;font-weight:700;color:#e6edf5!important}
+.ai-newsletter-field :is(input,select){width:100%;min-width:0;min-height:47px;border:1px solid #ffffff40;border-radius:9px;padding:11px 12px;background:#fff;color:#20354e;font:inherit;font-size:14px!important;line-height:1.4;outline:none}
+.ai-newsletter-field input::placeholder{color:#758295}
+.ai-newsletter-field option{color:#20354e;background:#fff}
+.ai-newsletter-submit{min-height:47px;padding:11px 17px;border:1px solid #e4cb7c;border-radius:9px;background:#d4b34c;color:#11263d;font:inherit;font-size:14px!important;font-weight:800;cursor:pointer}
+.ai-newsletter-submit:hover:not(:disabled){background:#e6cd82}
+.ai-newsletter-submit:disabled{opacity:.55;cursor:not-allowed}
+.ai-newsletter-consent{display:flex;gap:9px;align-items:flex-start;margin:14px 0 0;color:#d6e0ec;font-size:12px!important;line-height:1.6!important;cursor:pointer}
+.ai-newsletter-consent input{appearance:auto!important;flex:0 0 16px;width:16px;height:16px;margin:2px 0 0;accent-color:#d4b34c}
+.ai-newsletter-status{margin:8px 0 0!important;min-height:0;color:#f0d78f!important;font-size:12px!important;line-height:1.6!important}
+.ai-newsletter-status:empty{display:none}
+.ai-newsletter-status[data-success="true"]{color:#a4edbf!important}
+.ai-newsletter-note{margin:9px 0 0!important;color:#b3c4d7!important;font-size:10px!important;line-height:1.6!important}
+.ai-newsletter-trap{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.ai-newsletter :is(input,select,button):focus-visible{outline:3px solid #e4cb7c;outline-offset:3px}
+.ai-newsletter :is(label,p,span,h2,button):is(:hover,:focus-visible){transform:none!important}
+@media(max-width:1050px){.ai-newsletter-grid{grid-template-columns:1fr;gap:25px}.ai-newsletter-copy{max-width:620px}}
+@media(max-width:650px){.ai-newsletter{padding:38px 0}.ai-newsletter-controls{grid-template-columns:1fr}.ai-newsletter-field :is(input,select){font-size:16px!important}.ai-newsletter-submit{width:100%}}

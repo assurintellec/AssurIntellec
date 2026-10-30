@@ -1,0 +1,141 @@
+/* AssurIntellec motion layer — no layout, media source or text changes. */
+:root {
+  --motion-ease: cubic-bezier(.16, 1, .3, 1);
+  --motion-gold: var(--gold, #c9a227);
+}
+.ai-scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 5000;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, #b08b22, #f4dfa1, #c9a227);
+  box-shadow: 0 0 10px #c9a22760;
+}
+
+/* No hidden-by-default reveal styles: content survives script/API failure. */
+.ps2-animate.ps2-shown { opacity: 1; transform: none; }
+html[data-reveal-animations="false"] .ps2-animate {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-premium-motion="true"] :is(.btn, .ps2-btn, .ps-button, .ps-outline) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition: box-shadow .35s var(--motion-ease), background-color .35s ease,
+                transform .35s var(--motion-ease), border-color .35s ease;
+  }
+  html[data-premium-motion="true"] :is(.btn, .ps2-btn, .ps-button, .ps-outline)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 15%, #ffffff2e 45%, #ffffff00 70%);
+    transform: translateX(-130%);
+    transition: transform .65s var(--motion-ease);
+  }
+  html[data-premium-motion="true"] :is(.btn, .ps2-btn, .ps-button, .ps-outline):is(:hover, :focus-visible)::after {
+    transform: translateX(130%);
+  }
+  html[data-premium-motion="true"] :is(.btn, .ps2-btn):active { transform: translateY(1px); }
+  html[data-premium-motion="true"] :is(.btn, .ps2-btn):focus-visible {
+    outline: 2px solid var(--motion-gold);
+    outline-offset: 4px;
+  }
+  html[data-premium-motion="true"] .navbar {
+    transition: box-shadow .45s ease;
+  }
+  html[data-premium-motion="true"][data-motion-scrolled="true"] .navbar {
+    box-shadow: 0 12px 36px #0b1f3a14;
+  }
+  html[data-premium-motion="true"] :is(nav a:not(.btn), .footer-links a, .ps2-inline-link) {
+    background-image: linear-gradient(90deg, var(--motion-gold), var(--motion-gold));
+    background-size: 0% 1px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    transition: background-size .4s var(--motion-ease), color .3s ease;
+  }
+  html[data-premium-motion="true"] :is(nav a:not(.btn), .footer-links a, .ps2-inline-link):is(:hover, :focus-visible) {
+    background-size: 100% 1px;
+  }
+  html[data-premium-motion="true"] :is(.service-card, .why-card, .process-card, .testimonial-card, .expert-card, .logo-showcase-card, .ps2-service-card, .ps2-specialism, .ps2-value, .ps2-related-grid > a) {
+    transition: box-shadow .45s var(--motion-ease), border-color .45s ease;
+  }
+  html[data-premium-motion="true"][data-card-hover-lift="true"] :is(.service-card, .why-card, .process-card, .testimonial-card, .expert-card, .logo-showcase-card, .ps2-service-card, .ps2-specialism, .ps2-value, .ps2-related-grid > a):is(:hover, :focus-within) {
+    border-color: #c9a22780;
+    box-shadow: 0 18px 48px #0b1f3a16, 0 0 0 1px #c9a22716;
+  }
+  /* The image frames remain still, including hover/focus interactions. */
+  html[data-premium-motion="true"] .service-card-with-image:is(:hover, :focus-within),
+  html[data-premium-motion="true"] .ps2-service-card:is(:hover, :focus-within) {
+    transform: none;
+  }
+  html[data-card-hover-lift="false"] :is(.ps2-service-card, .ps2-specialism, .ps2-value, .ps2-related-grid > a):hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  html[data-premium-motion="true"] :is(.contact-form input, .contact-form textarea, .contact-form select) {
+    transition: border-color .25s ease, box-shadow .3s ease;
+  }
+  html[data-premium-motion="true"] :is(.contact-form input, .contact-form textarea, .contact-form select):focus {
+    box-shadow: 0 0 0 4px #c9a22717;
+  }
+  html[data-premium-motion="true"] :is(.footer-social a, .social-top a) {
+    transition: color .3s ease, filter .3s ease, transform .3s var(--motion-ease);
+  }
+  html[data-premium-motion="true"] :is(.footer-social a, .social-top a):is(:hover, :focus-visible) {
+    filter: drop-shadow(0 4px 7px #c9a22740);
+  }
+  html[data-premium-motion="true"] :is(.ps2-extra, .ps2-legal details) {
+    transition: border-color .3s ease, box-shadow .35s ease;
+  }
+  html[data-premium-motion="true"] :is(.ps2-extra, .ps2-legal details)[open] {
+    border-color: #c9a22770;
+    box-shadow: 0 8px 24px #0b1f3a0a;
+  }
+  html[data-premium-motion="true"] :is(.ps2-extra summary b, .ps2-legal summary > span) {
+    transition: transform .35s var(--motion-ease);
+  }
+  html[data-premium-motion="true"] details[open] > summary > :is(b, span:last-child:not(:first-child)) {
+    transform: rotate(45deg);
+  }
+}
+
+/* Accessibility applies to the original motion layers as well as new effects. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .ai-scroll-progress { display: none; }
+  .ps2-animate, .animate-in { opacity: 1 !important; transform: none !important; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-premium-motion="true"] .instagram-reel-frame { animation: ai-reel-reveal .24s ease-out; }
+  html[data-premium-motion="true"] .instagram-arrow { transition: background-color .25s ease, color .25s ease, box-shadow .25s ease; }
+  html[data-premium-motion="true"] .instagram-arrow:not(:disabled):is(:hover,:focus-visible) { box-shadow: 0 0 0 4px #c9a22724, 0 8px 24px #0b1f3a1a; }
+  html[data-premium-motion="true"] .ps2-anchor-track a { transition: color .25s ease, border-color .25s ease, background-color .25s ease; }
+  html[data-premium-motion="true"] :is(.contact-form input,.contact-form textarea,.contact-form select):focus { border-color: var(--gold,#c9a227); }
+}
+@keyframes ai-reel-reveal { from { opacity: .35; } to { opacity: 1; } }
+.instagram-arrow:focus-visible { outline: 2px solid var(--gold,#c9a227); outline-offset: 3px; }
+/* Grid children may shrink to the phone viewport without clipping the copy. */
+@media (max-width: 1020px) {
+  .about-reel-grid { grid-template-columns: minmax(0,1fr); }
+  .about-reel-grid > * { min-width: 0; max-width: 100%; }
+  .about-home-copy { overflow-wrap: break-word; }
+}
+@media (max-width: 700px) {
+  .footer-social { flex-wrap: wrap; }
+}

@@ -1,0 +1,32 @@
+{
+  "release": "Service Information Editorial Redesign \u2014 24 October 2026",
+  "service_count": 7,
+  "core_capabilities": {
+    "gmp-engineering": 8,
+    "advisory-transactions": 8,
+    "talent-recruitment": 8,
+    "life-sciences-trade": 8,
+    "pharma-laboratory-technologies": 9,
+    "research-scientific-services": 9,
+    "pharma-solutions-manufacturing": 9
+  },
+  "process_stages": {
+    "gmp-engineering": 6,
+    "advisory-transactions": 6,
+    "talent-recruitment": 10,
+    "life-sciences-trade": 6,
+    "pharma-laboratory-technologies": 6,
+    "research-scientific-services": 6,
+    "pharma-solutions-manufacturing": 6
+  },
+  "backup": "content/services_legacy_24-10-2026.backup.json",
+  "new_stylesheet": "assets/service-editorial.css",
+  "local_checks": [
+    "JavaScript syntax",
+    "YAML parsing",
+    "JSON parsing",
+    "Seven page render smoke tests",
+    "Local image paths"
+  ],
+  "live_tests": "Not performed; staging validation required"
+}
