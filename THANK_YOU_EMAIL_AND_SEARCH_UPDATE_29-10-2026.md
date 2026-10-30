@@ -1,5 +1,7 @@
 # Thank-you email and search placement update
 
+**Superseded for the latest update:** use `WEBSITE_UPDATE_30-10-2026.md` for the new website unsubscribe flow and both email-footer upgrades.
+
 This update adds an automatic, branded thank-you email for new newsletter subscriptions. It includes the selected service, a website link, and that subscriber's own unsubscribe link in both the HTML and plain-text message. The search bar now sits in the white header below the navigation and social icons, beside the logo, as marked in your screenshot. On mobile, it sits below the logo/menu row.
 
 ## Update your working Google newsletter project

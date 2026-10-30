@@ -1,5 +1,7 @@
 # AssurIntellec newsletter — step-by-step setup
 
+**30 October update:** for an already working installation, follow `WEBSITE_UPDATE_30-10-2026.md`. New unsubscribe links open the website confirmation page.
+
 The website now includes a newsletter section above the footer. A visitor enters an email address, selects an interest, checks the consent box, and presses Subscribe. Google Sheets stores the record in the Google account you use for the setup below.
 
 **Already working?** Follow **THANK_YOU_EMAIL_AND_SEARCH_UPDATE_29-10-2026.md** to update the SAME Google project and deployment, enable welcome emails, and retain your existing subscriber list and website settings. The steps below describe a new setup.

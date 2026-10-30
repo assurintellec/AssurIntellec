@@ -249,11 +249,13 @@ function renderHeader(site) {
       <div class="brand-fallback">${escapeHtml(site.company_name || 'AssurIntellec™')}</div>
     </a>
     <nav id="mainNav">
+      <div class="nav-links">
       <a href="./index.html">${escapeHtml(n.home || 'Home')}</a>
       <a href="./about.html">${escapeHtml(n.about || 'About Us')}</a>
       <a href="./services.html">${escapeHtml(n.services || 'Services')}</a>
       <a href="./why-us.html">${escapeHtml(n.why_us || 'Why Us')}</a>
       <a href="./contact.html">${escapeHtml(n.contact || 'Contact Us')}</a>
+      </div>
       ${social}
     </nav>
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="${escapeHtml(ui.menu_open_label || 'Open navigation')}" title="${escapeHtml(ui.menu_open_label || 'Open navigation')}"><i class="fas fa-bars"></i></button>
@@ -363,7 +365,7 @@ function renderWhatsApp(site) {
 }
 
 function updateMeta(site) {
-  document.title = site.seo?.title || site.company_name || 'AssurIntellec™';
+  document.title = document.body.dataset.page === 'unsubscribe' ? 'Unsubscribe | AssurIntellec™' : (site.seo?.title || site.company_name || 'AssurIntellec™');
 
   const meta = document.querySelector('meta[name="description"]');
   if (meta) meta.content = site.seo?.description || '';
@@ -2179,6 +2181,7 @@ function applyVisibility(site) {
 
 async function init() {
   SITE = await readJson('./content/site.json', FALLBACK_SITE);
+  window.AssurPreloader?.configure(SITE);
   SERVICES = normalizeServices(await readJson('./content/services.json', { services: FALLBACK_SERVICES }));
   applyTheme(SITE);
   updateMeta(SITE);
@@ -2207,7 +2210,10 @@ async function init() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+  init().catch(error => console.error('Website setup:', error))
+    .finally(() => window.AssurPreloader?.ready());
+});
 
 
 function renderPremiumService(service, site) {

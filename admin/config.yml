@@ -19,6 +19,27 @@ collections:
     file: content/site.json
     format: json
     fields:
+    - label: Animated Logo Preloader
+      name: preloader
+      widget: object
+      collapsed: true
+      required: false
+      fields:
+      - label: Enable Logo Preloader
+        name: enabled
+        widget: boolean
+        default: true
+        required: false
+      - label: Preloader Logo
+        name: logo
+        widget: image
+        required: false
+        hint: Optional. The existing compact company logo is used by default. Choose a small image for fast loading.
+      - label: Loading Label
+        name: loading_label
+        widget: string
+        default: Loading your experience
+        required: false
     - label: Newsletter & Subscriptions
       name: newsletter
       widget: object
@@ -2616,7 +2637,7 @@ collections:
         name: social_icon_size
         widget: number
         value_type: int
-        default: 36
+        default: 42
         required: false
       - label: Service Image Height
         name: service_image_height
@@ -2628,7 +2649,7 @@ collections:
         name: nav_font_size
         widget: number
         value_type: int
-        default: 18
+        default: 21
         required: false
       - label: Light
         name: light

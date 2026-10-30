@@ -28,7 +28,7 @@
   function googleOrigin(origin) {
     try { const url = new URL(origin); return url.protocol === 'https:' && (url.hostname === 'script.google.com' || url.hostname === 'script.googleusercontent.com' || /^[a-z0-9-]+-script\.googleusercontent\.com$/.test(url.hostname)); } catch (_) { return false; }
   }
-  function subscribe(url, payload) {
+  function bridgeRequest(url, payload, action) {
     return new Promise((resolve, reject) => {
       const token = window.crypto.randomUUID();
       const frame = document.createElement('iframe');
@@ -46,7 +46,7 @@
       };
       const timer = setTimeout(() => { cleanup(); reject(new Error('Subscription confirmation timed out.')); }, 45000);
       window.addEventListener('message', onMessage);
-      for (const [name, value] of Object.entries({ ...payload, action: 'subscribe', _bridge_format: 'html', _bridge_token: token, _bridge_origin: window.location.origin })) {
+      for (const [name, value] of Object.entries({ ...payload, action, _bridge_format: 'html', _bridge_token: token, _bridge_origin: window.location.origin })) {
         const input = document.createElement('input'); input.type = 'hidden'; input.name = name; input.value = String(value); form.append(input);
       }
       document.body.append(frame, form);
@@ -55,8 +55,52 @@
       // validated server reply above can display a successful subscription.
     });
   }
+  function subscribe(url, payload) { return bridgeRequest(url, payload, 'subscribe'); }
+  async function unsubscribe(url, token) {
+    if (!/^[a-f0-9]{64}$/.test(token)) throw new Error('Invalid unsubscribe link.');
+    const response = await fetch('./api/newsletter', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ action: 'unsubscribe', token }), signal: AbortSignal.timeout(35000)
+    });
+    // Static-only hosts can still use the existing Apps Script bridge. The
+    // included Cloudflare Worker handles the normal production path directly.
+    if ([404, 405, 501].includes(response.status) && endpoint(url)) return bridgeRequest(url, { token }, 'unsubscribe');
+    const result = await response.json();
+    if (typeof result.success !== 'boolean') throw new Error('Unsubscribe could not be confirmed.');
+    return result;
+  }
+  function initUnsubscribe(site) {
+    const form = document.getElementById('unsubscribeForm');
+    if (!form || form.dataset.bound) return;
+    form.dataset.bound = 'true';
+    const status = document.getElementById('unsubscribeStatus');
+    const button = document.getElementById('unsubscribeSubmit');
+    const token = new URLSearchParams(window.location.hash.slice(1)).get('token') || new URLSearchParams(window.location.search).get('token') || '';
+    if (!/^[a-f0-9]{64}$/.test(token)) {
+      status.textContent = 'This link is incomplete. Open the personal unsubscribe link from your email, or contact info@assurintellec.in.';
+      button.disabled = true; return;
+    }
+    status.textContent = 'Select Unsubscribe below to stop receiving service updates.';
+    button.disabled = false;
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (button.disabled) return;
+      button.disabled = true; button.textContent = 'Updating…'; status.textContent = 'Confirming your request…';
+      try {
+        const result = await unsubscribe(String(site.newsletter?.google_apps_script_url || ''), token);
+        if (!result.success) throw new Error(result.message);
+        status.textContent = 'You have been unsubscribed. You will no longer receive service updates from this list.';
+        status.dataset.success = 'true'; button.textContent = 'Unsubscribed';
+      } catch (_) {
+        status.textContent = 'We could not confirm your unsubscribe request. Please try again, or email info@assurintellec.in for help.';
+        button.disabled = false; button.textContent = 'Try unsubscribe again';
+      }
+    });
+  }
   function init(site, services) {
     if (typeof document === 'undefined') return;
+    initUnsubscribe(site);
+    if (document.getElementById('unsubscribeForm')) return;
     document.getElementById('assurNewsletter')?.remove();
     const cfg = { ...defaults, ...(site.newsletter || {}) };
     if (cfg.enabled === false) return;
@@ -103,5 +147,5 @@
     });
     container.append(copy, form); section.append(container); holder.prepend(section);
   }
-  return { init, defaults, endpoint, options, googleOrigin };
+  return { init, defaults, endpoint, options, googleOrigin, unsubscribe };
 });

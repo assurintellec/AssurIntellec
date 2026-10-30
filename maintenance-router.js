@@ -1,4 +1,5 @@
 import { handleVisitorCounter } from './visitor-counter.js';
+import { handleNewsletterRequest } from './newsletter-proxy.js';
 export { VisitorCounter } from './visitor-counter.js';
 
 export default {
@@ -12,6 +13,9 @@ export default {
     if (!enabled) {
       if (new URL(request.url).pathname === '/api/visitor-count') {
         return handleVisitorCounter(request, env);
+      }
+      if (new URL(request.url).pathname === '/api/newsletter') {
+        return handleNewsletterRequest(request, env);
       }
       return env.ASSETS.fetch(request);
     }
