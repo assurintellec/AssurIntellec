@@ -1,6 +1,0 @@
-Icons adapted from Font Awesome Free 6.7.2 by Fonticons, Inc.
-Icon artwork: Creative Commons Attribution 4.0 International (CC BY 4.0).
-https://fontawesome.com/license/free
-https://creativecommons.org/licenses/by/4.0/
-The supplied icons are rendered PNG versions, in the website brand colours.
-Brand names and logos remain trademarks of their respective owners.
