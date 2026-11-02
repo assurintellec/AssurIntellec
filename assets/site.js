@@ -1581,7 +1581,7 @@ function sendToGoogleAppsScript(url, data, site, callback, confirmedOnly = true)
   }
 }
 
-function showEnquirySuccess(site, customerName = "") {
+function showEnquirySuccess(site, customerName = "", submittedData = null, reference = "") {
   document.dispatchEvent(new CustomEvent("assurintellec:enquiry-success"));
   const c = site.contact || {};
 
@@ -1637,6 +1637,29 @@ function showEnquirySuccess(site, customerName = "") {
     close.title = label;
   }
 
+  let actions = document.getElementById('enquirySuccessActions');
+  if (!actions) {
+    actions = document.createElement('div');
+    actions.id = 'enquirySuccessActions';
+    actions.className = 'enquiry-success-actions';
+    const button = document.createElement('a');
+    button.id = 'enquirySuccessWhatsApp';
+    button.className = 'btn whatsapp-form-button';
+    button.target = '_blank';
+    button.rel = 'noopener noreferrer';
+    const note = document.createElement('p');
+    note.id = 'enquirySuccessWhatsAppNote';
+    actions.append(button, note);
+    const tagline = document.getElementById('enquirySuccessTagline');
+    if (tagline) tagline.before(actions); else card.append(actions);
+  }
+  const whatsapp = document.getElementById('enquirySuccessWhatsApp');
+  const url = buildWhatsAppEnquiryUrl(site, submittedData || {}, reference);
+  actions.hidden = c.enquiry_success_whatsapp_enabled === false || !url;
+  whatsapp.href = url || '#';
+  whatsapp.textContent = c.enquiry_success_whatsapp_label || 'Send on WhatsApp';
+  setText('enquirySuccessWhatsAppNote', c.enquiry_success_whatsapp_note || 'Your enquiry opens in WhatsApp. Tap Send there to start the conversation.');
+
   overlay.classList.add('show');
   overlay.setAttribute('aria-hidden', 'false');
   document.body.classList.add('success-open');
@@ -1676,6 +1699,12 @@ function bindEnquirySuccessOverlay(site) {
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && overlay.classList.contains('show')) {
       hideEnquirySuccess();
+    }
+    if (event.key === 'Tab' && overlay.classList.contains('show')) {
+      const buttons = [...card.querySelectorAll('button,a[href]')].filter(el => !el.closest('[hidden]') && !el.disabled);
+      const first = buttons[0], last = buttons[buttons.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === card)) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
     }
   });
 }
@@ -1725,7 +1754,7 @@ function handleEnquirySubmit(event, site) {
     if (ok) {
       // Keep all visitor-entered values so they can close the confirmation
       // and use "Send on WhatsApp" without retyping the enquiry.
-      showEnquirySuccess(site, data.name);
+      showEnquirySuccess(site, data.name, data, result?.reference || '');
       if (newsletterSelection && result?.success === true) window.AssurEnquiryNewsletter.complete(newsletterSelection);
     } else {
       showToast(
@@ -1772,6 +1801,16 @@ function handleEnquirySubmit(event, site) {
   }, 500);
 }
 
+function buildWhatsAppEnquiryUrl(site, data, reference = '') {
+  const c = site.contact || {};
+  const template = c.whatsapp_prefill_template ||
+    `New AssurIntellec™ website enquiry\nName: {name}\nCompany: {company}\nEmail: {email}\nPhone: {phone}\nRequirement: {service}\nMessage: {message}`;
+  let message = templateMessage(template, data);
+  if (reference) message += '\nEnquiry Reference: ' + String(reference).replace(/[\r\n]/g, ' ');
+  const phone = String(c.whatsapp_phone || '917600666436').replace(/\D/g, '');
+  return /^[1-9][0-9]{7,14}$/.test(phone) ? `https://wa.me/${phone}?text=${encodeURIComponent(message)}` : '';
+}
+
 function handleWhatsAppEnquiry(site) {
   const form = document.getElementById('contactForm');
   if (!form) return;
@@ -1791,30 +1830,14 @@ function handleWhatsAppEnquiry(site) {
     new FormData(form).entries()
   );
 
-  const template =
-    c.whatsapp_prefill_template ||
-    `New AssurIntellec™ website enquiry\nName: {name}\nCompany: {company}\nEmail: {email}\nPhone: {phone}\nRequirement: {service}\nMessage: {message}`;
-
-  const message = templateMessage(
-    template,
-    data
-  );
-
-  const phoneNumber = String(
-    c.whatsapp_phone ||
-    '917600666436'
-  ).replace(/\D/g, '');
-
-  if (!phoneNumber) {
+  const url = buildWhatsAppEnquiryUrl(site, data);
+  if (!url) {
     showToast(
       'WhatsApp phone number is not configured.',
       false
     );
     return;
   }
-
-  const url =
-    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   window.open(
     url,

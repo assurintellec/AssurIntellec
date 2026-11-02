@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { webcrypto } from 'node:crypto';
 import { handleNewsletterRequest, NEWSLETTER_PROTOCOL } from '../newsletter-proxy.js';
-import { normalizeAnalytics, handleAnalyticsRequest } from '../visitor-analytics.js';
+import { normalizeAnalytics, handleAnalyticsRequest, ANALYTICS_PROTOCOL } from '../visitor-analytics.js';
 const require = createRequire(import.meta.url);
 const newsletterUI = require('../assets/newsletter.js');
 const source = path => fs.readFileSync(new URL('../' + path, import.meta.url), 'utf8');
@@ -22,7 +22,16 @@ class Range {
 }
 class Sheet {
   constructor(name,book,data=[]) {Object.assign(this,{name,book,data,formulas:[]});}
-  getRange(r,c,rs,cs) {if(typeof r==='string')return new Range(this,1,1);return new Range(this,r,c,rs,cs);}
+  getRange(r,c,rs,cs) {
+    if(typeof r==='string') {
+      const m=r.match(/^([A-Z]+)(\d*)?(?::([A-Z]+)(\d*)?)?$/);
+      if(!m)throw new Error('Bad A1 range '+r);
+      const col=x=>[...x].reduce((v,c)=>v*26+c.charCodeAt(0)-64,0);
+      const first=Number(m[2])||1,last=m[3]?(Number(m[4])||this.getMaxRows()):first;
+      return new Range(this,first,col(m[1]),last-first+1,(m[3]?col(m[3]):col(m[1]))-col(m[1])+1);
+    }
+    return new Range(this,r,c,rs,cs);
+  }
   getLastRow(){let n=this.data.length;while(n&&this.data[n-1].every(v=>v===''))n--;return n;}
   getLastColumn(){return Math.max(1,...this.data.map(r=>r.length));}
   appendRow(row){this.data.push([...row]);}
@@ -110,20 +119,23 @@ test('Analytics writes one row per page, ignores repeated/out-of-order updates, 
   payload.sequence=3;payload.active_seconds=55;g.context.input.payload=JSON.stringify(payload);g.run('vaRecord_(input)');
   payload.sequence=2;payload.active_seconds=1;g.context.input.payload=JSON.stringify(payload);g.run('vaRecord_(input)');assert.equal(sheet.getLastRow(),2);assert.equal(sheet.data[1][6],55);assert.equal(sheet.data[1][16],3);
   g.context.input.bridge_secret='wrong';assert.throws(()=>g.run('vaRecord_(input)'));
-  const dashboard=g.book.getSheetByName('Visitor Dashboard');assert.equal(dashboard.data.slice(1,8).length,7);assert.equal(dashboard.data[7][0],'Last 365 days');assert.match(dashboard.data[7][5],/=NOW\(\)-365/);assert.match(dashboard.data[1][2],/COUNTUNIQUE/);
+  const dashboard=g.book.getSheetByName('Visitor Dashboard');assert.equal(dashboard.data[1][0],'All recorded visits');assert.equal(dashboard.data.slice(2,9).length,7);assert.equal(dashboard.data[8][0],'Last 365 days');assert.match(dashboard.data[8][5],/=NOW\(\)-365/);assert.match(dashboard.data[1][2],/COUNTUNIQUE/);assert.match(dashboard.data[5][1],/F6/);assert.equal(dashboard.data[5][0],'Last 24 hours');
 });
 test('Analytics proxy requires configured shared secret and matching origin',async()=>{
   const env=configEnv({newsletter:{google_apps_script_url:endpoint},visitor_analytics:{enabled:true}});
   assert.equal((await handleAnalyticsRequest(post('/api/visitor-analytics',analyticsData()),env)).status,503);
   assert.equal((await handleAnalyticsRequest(post('/api/visitor-analytics',analyticsData(),'https://evil.example'),env)).status,403);
 });
-test('WhatsApp queues only new rows and consented customer replies; self-alert is rejected before sending',()=>{
+test('Free mode disables old API jobs and never calls the WhatsApp API, even with saved credentials',()=>{
   const g=gas(['integrations/Code.gs','integrations/WhatsApp.gs']);g.properties.set('WA_ENABLED','true');
-  const sheet=g.book.insertSheet('Enquiries');g.context.sheet=sheet;g.run('ensureSheetHeaders(sheet)');sheet.appendRow(Array(13).fill(''));
-  g.run('waQueue_(sheet,2,{whatsappConsent:false})');const headers=g.run('ensureSheetHeaders(sheet)');assert.equal(sheet.data[1][headers['Customer WhatsApp Status']-1],'Not requested');assert.equal(sheet.data[1][headers['Admin WhatsApp Status']-1],'Pending');
-  for(const [key,value] of Object.entries({WA_API_VERSION:'v99.0',WA_PHONE_NUMBER_ID:'12345678',WA_ACCESS_TOKEN:'x'.repeat(40),WA_SENDER_NUMBER:'917600666436'}))g.properties.set(key,value);
-  assert.throws(()=>g.run('waSend_(PropertiesService.getScriptProperties(),"917600666436",true,[])'),/DIFFERENT/);
-  const payload=g.run('waPayload_("7600666436","assurintellec_enquiry_received","en",["Client","AI000001","GMP"])');assert.equal(payload.to,'917600666436');assert.equal(payload.type,'template');assert.equal(payload.template.components[0].parameters.length,3);
+  let removed=0;
+  g.context.ScriptApp.getProjectTriggers=()=>[{getHandlerFunction:()=> 'sendPendingEnquiryWhatsApp'},{getHandlerFunction:()=> 'anotherJob'}];
+  g.context.ScriptApp.deleteTrigger=()=>removed++;
+  g.run('setupFreeWhatsAppMode();sendPendingEnquiryWhatsApp()');
+  assert.equal(g.properties.get('WA_ENABLED'),'false');assert.equal(removed,1);
+  assert.doesNotMatch(source('integrations/Code.gs'),/waQueue_\(/);
+  assert.doesNotMatch(source('integrations/WhatsApp.gs'),/graph\.facebook\.com/);
+  assert.doesNotMatch(source('assets/enquiry-popup.js'),/whatsapp_consent/);
 });
 test('Enquiry SMTP MIME contains each CID image as inline PNG',()=>{
   const context=vm.createContext({crypto:webcrypto,TextEncoder,Uint8Array,btoa,console,Buffer});
@@ -135,4 +147,70 @@ test('Enquiry SMTP MIME contains each CID image as inline PNG',()=>{
   assert.match(result.contentType,/multipart\/related/);
   for(const image of inline)assert.ok(result.body.includes('Content-ID: <'+image.cid+'>'));
   assert.equal(inline.length,9);
+});
+
+test('Old SMTP Worker gets public PNG URLs; upgraded Worker receives the matching CID attachments, with one email send',()=>{
+  for(const upgraded of [false,true]){
+    const g=gas(['integrations/Code.gs']);const sends=[];let health=0;
+    g.properties.set('EMAIL_WORKER_URL','https://mail.example/send');g.properties.set('EMAIL_WORKER_TOKEN','private-test');
+    g.context.UrlFetchApp.fetch=(url,options)=>{
+      assert.equal(options.headers.Authorization,'Bearer private-test');
+      if(url.endsWith('/health')){health++;return {getResponseCode:()=>200,getContentText:()=>JSON.stringify(upgraded?{ok:true,protocol:'2026-11-02-inline-v2',features:['inline-social-png']}:{ok:true})};}
+      sends.push(JSON.parse(options.payload));return {getResponseCode:()=>200,getContentText:()=>JSON.stringify({success:true})};
+    };
+    g.run('sendAssurIntellecEmail({recipient:"test@example.com",subject:"Received",body:"Thanks",htmlBody:aiEmailFooterHtml_(aiEmailFallbackBranding_())})');
+    assert.equal(health,1);assert.equal(sends.length,1);assert.equal(sends[0].inlineImages.length,upgraded?9:0);
+    if(upgraded)assert.match(sends[0].html,/cid:assur_social_instagram/);
+    else {assert.doesNotMatch(sends[0].html,/cid:assur_social_/);assert.match(sends[0].html,/images\/email-icons\/whatsapp-channel.png/);}
+  }
+});
+test('Analytics setup preserves existing private secret, makes all-time and 24h formulas, and saves counter snapshot alongside IP',()=>{
+  const g=gas();g.properties.set('ANALYTICS_BRIDGE_TOKEN','z'.repeat(40));g.run('setupNewsletterSheet();setupVisitorAnalytics()');
+  assert.equal(g.properties.get('ANALYTICS_BRIDGE_TOKEN'),'z'.repeat(40));
+  g.context.input={bridge_secret:'z'.repeat(40)};assert.equal(g.run('vaHealth_(input)').ready,true);
+  g.context.input.bridge_secret='wrong';assert.equal(g.run('vaHealth_(input)').code,'BRIDGE_AUTH_FAILED');
+  const payload=analyticsData();payload.ip='203.0.113.10';payload.counter={total:148170,start_value:148160,new_visits:10};
+  g.context.input={bridge_secret:'z'.repeat(40),payload:JSON.stringify(payload)};g.run('vaRecord_(input)');
+  const sheet=g.book.getSheetByName('Website Visits'),dash=g.book.getSheetByName('Visitor Dashboard');
+  assert.equal(sheet.data[1][7],'203.0.113.10');assert.equal(dash.data[1][10],148170);assert.equal(dash.data[2][10],148160);assert.equal(dash.data[3][10],10);
+  assert.match(dash.data[1][1],/COUNTIF\('Website Visits'!A2:A/);
+  assert.equal(dash.data[5][0],'Last 24 hours');assert.equal(dash.data[5][5],'=NOW()-1');
+  g.run('setupVisitorAnalytics()');assert.equal(dash.data[1][10],148170);
+});
+test('Analytics public health identifies missing token, stale deployment, mismatched token and ready state without exposing private values',async()=>{
+  const env=configEnv({newsletter:{google_apps_script_url:endpoint},visitor_analytics:{enabled:true}});
+  const request=new Request('https://www.assurintellec.in/api/visitor-analytics?action=health');
+  let result=await (await handleAnalyticsRequest(request,env)).json();assert.equal(result.code,'MISSING_BRIDGE_SECRET');
+  env.ANALYTICS_BRIDGE_TOKEN='secret'.repeat(8);const original=globalThis.fetch;
+  try{
+    for(const [backend,code] of [[{success:true},'UPDATE_GOOGLE_DEPLOYMENT'],[{ready:false,protocol:ANALYTICS_PROTOCOL,code:'BRIDGE_AUTH_FAILED'},'BRIDGE_AUTH_FAILED'],[{ready:true,protocol:ANALYTICS_PROTOCOL},'READY']]){
+      globalThis.fetch=async(url,options)=>{assert.equal(options.body.get('action'),'analytics_health');return new Response(JSON.stringify({...backend,ip:'private-ip'}));};
+      result=await (await handleAnalyticsRequest(request,env)).json();assert.equal(result.code,code);assert.ok(!JSON.stringify(result).includes('private-ip'));assert.ok(!JSON.stringify(result).includes(env.ANALYTICS_BRIDGE_TOKEN));
+    }
+  }finally{globalThis.fetch=original;}
+});
+test('Analytics forwarding ignores forged browser counter totals and uses the existing counter binding without incrementing it',async()=>{
+  const env=configEnv({newsletter:{google_apps_script_url:endpoint},visitor_analytics:{enabled:true,collect_ip:true},visitor_counter:{start_value:148160}});env.ANALYTICS_BRIDGE_TOKEN='secret'.repeat(8);
+  let counterMethod,recorded;
+  env.VISITOR_COUNTER={idFromName:x=>x,get:()=>({fetch:async request=>{counterMethod=request.method;return new Response(JSON.stringify({value:10}));}})};
+  const original=globalThis.fetch;globalThis.fetch=async(url,options)=>{recorded=JSON.parse(options.body.get('payload'));return new Response(JSON.stringify({success:true}));};
+  try{
+    const payload=analyticsData();payload.counter={total:999999999,start_value:0,new_visits:999999999};
+    const request=post('/api/visitor-analytics',payload);request.headers.set('cf-connecting-ip','203.0.113.10');
+    const response=await handleAnalyticsRequest(request,env);assert.equal(response.status,200);assert.equal(counterMethod,'GET');
+    assert.equal(recorded.counter.total,148170);assert.equal(recorded.counter.start_value,148160);assert.equal(recorded.ip,'203.0.113.10');
+  }finally{globalThis.fetch=original;}
+});
+test('Success WhatsApp URL uses submitted fields and reference without executing supplied text',()=>{
+  const code=source('assets/site.js');const template=code.slice(code.indexOf('function templateMessage('),code.indexOf('function showToast('));const builder=code.slice(code.indexOf('function buildWhatsAppEnquiryUrl('),code.indexOf('function handleWhatsAppEnquiry('));
+  const context=vm.createContext({encodeURIComponent});vm.runInContext(template+builder,context);
+  context.site={contact:{whatsapp_phone:'917600666436'}};context.data={name:'Client & Co',company:'Test',email:'test@example.com',phone:'9000000000',service:'GMP',message:'A <script> string\nNext line'};
+  const url=new URL(vm.runInContext('buildWhatsAppEnquiryUrl(site,data,"AI-000123")',context));
+  assert.equal(url.origin,'https://wa.me');assert.equal(url.pathname,'/917600666436');assert.match(url.searchParams.get('text'),/Name: Client & Co/);assert.match(url.searchParams.get('text'),/Enquiry Reference: AI-000123/);assert.match(url.searchParams.get('text'),/<script>/);
+});
+test('Scheduled total-counter refresh uses a read-only request and retains the last confirmed total on failure',()=>{
+  const g=gas();g.run('setupNewsletterSheet();setupVisitorAnalytics()');let method;
+  g.context.UrlFetchApp.fetch=(url,options)=>{assert.equal(url,'https://www.assurintellec.in/api/visitor-count');method=options.method;return {getResponseCode:()=>200,getContentText:()=>JSON.stringify({total:148200,value:40,start_value:148160})};};
+  g.run('syncWebsiteCounterSnapshot()');const dash=g.book.getSheetByName('Visitor Dashboard');assert.equal(method,'get');assert.equal(dash.data[1][10],148200);
+  g.context.UrlFetchApp.fetch=()=>{throw new Error('offline');};g.run('syncWebsiteCounterSnapshot()');assert.equal(dash.data[1][10],148200);assert.match(dash.data[5][10],/previous confirmed total retained/);
 });

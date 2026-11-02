@@ -2,9 +2,12 @@
    Set ANALYTICS_BRIDGE_TOKEN privately in both this project's Script Properties
    and the main website Worker's secrets. Never put that token in site.json. */
 const VA_SHEET = 'Website Visits';
+const VA_PROTOCOL = '2026-11-02-v4';
 const VA_HEADERS = ['Page View ID', 'Session ID', 'Started At', 'Last Seen At', 'Page Path', 'Page Title', 'Active Seconds', 'IP Address', 'City', 'Region', 'Country', 'Timezone', 'Referrer Origin', 'Device', 'Sections Viewed', 'Consent', 'Sequence'];
 function setupVisitorAnalytics() {
-  const book = SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty(NL_SHEET_PROPERTY));
+  const properties = PropertiesService.getScriptProperties();
+  const book = SpreadsheetApp.openById(properties.getProperty(NL_SHEET_PROPERTY));
+  if (!properties.getProperty('ANALYTICS_BRIDGE_TOKEN')) properties.setProperty('ANALYTICS_BRIDGE_TOKEN', (Utilities.getUuid() + Utilities.getUuid()).replace(/-/g, ''));
   const sheet = book.getSheetByName(VA_SHEET) || book.insertSheet(VA_SHEET);
   if (sheet.getMaxColumns() < VA_HEADERS.length) sheet.insertColumnsAfter(sheet.getMaxColumns(), VA_HEADERS.length - sheet.getMaxColumns());
   const existing = sheet.getRange(1, 1, 1, VA_HEADERS.length).getValues()[0];
@@ -19,10 +22,17 @@ function setupVisitorAnalytics() {
   book.setRecalculationInterval(SpreadsheetApp.RecalculationInterval.MINUTE);
   const dashboard = book.getSheetByName('Visitor Dashboard') || book.insertSheet('Visitor Dashboard');
   dashboard.getRange('A1:G1').setValues([['Period', 'Page Views', 'Sessions', 'Active Minutes', 'Average Seconds / Page', 'From (IST)', 'To (IST)']]);
-  const periods = [['Last 1 hour', 1 / 24], ['Last 2 hours', 2 / 24], ['Last 12 hours', 12 / 24], ['Last 24 hours', 1], ['Last 15 days', 15], ['Last 30 days', 30], ['Last 365 days', 365]];
   const r = "'" + VA_SHEET + "'!";
+  dashboard.getRange('A2').setValue('All recorded visits');
+  dashboard.getRange(2, 2).setFormula('=COUNTIF(' + r + 'A2:A,"<>")');
+  dashboard.getRange(2, 3).setFormula('=IFERROR(COUNTUNIQUE(FILTER(' + r + 'B2:B,' + r + 'B2:B<>"")),0)');
+  dashboard.getRange(2, 4).setFormula('=SUM(' + r + 'G2:G)/60');
+  dashboard.getRange(2, 5).setFormula('=IFERROR(SUM(' + r + 'G2:G)/B2,0)');
+  dashboard.getRange(2, 6).setFormula('=IFERROR(MIN(FILTER(' + r + 'C2:C,' + r + 'C2:C<>"")),"")');
+  dashboard.getRange(2, 7).setFormula('=NOW()');
+  const periods = [['Last 1 hour', 1 / 24], ['Last 2 hours', 2 / 24], ['Last 12 hours', 12 / 24], ['Last 24 hours', 1], ['Last 15 days', 15], ['Last 30 days', 30], ['Last 365 days', 365]];
   periods.forEach((period, i) => {
-    const n = i + 2;
+    const n = i + 3;
     dashboard.getRange(n, 1).setValue(period[0]);
     dashboard.getRange(n, 6).setFormula('=NOW()-' + period[1]);
     dashboard.getRange(n, 7).setFormula('=NOW()');
@@ -32,11 +42,16 @@ function setupVisitorAnalytics() {
     dashboard.getRange(n, 4).setFormula('=SUMIFS(' + r + 'G2:G,' + condition + ')/60');
     dashboard.getRange(n, 5).setFormula('=IFERROR(SUMIFS(' + r + 'G2:G,' + condition + ')/B' + n + ',0)');
   });
-  dashboard.getRange('D2:E8').setNumberFormat('0.0'); dashboard.getRange('F2:G8').setNumberFormat('dd-mmm-yyyy hh:mm:ss');
+  dashboard.getRange('D2:E9').setNumberFormat('0.0'); dashboard.getRange('F2:G9').setNumberFormat('dd-mmm-yyyy hh:mm:ss');
   dashboard.getRange('A10').setValue('Counts use page views started within each rolling period. Sessions group pages from the same browser tab (reset after a 30-minute gap between recorded updates).');
   dashboard.getRange('A11').setValue('Active time counts visible pages with activity in the last 60 seconds; it is an estimate. Hidden and idle time is excluded.');
   dashboard.getRange('A12').setValue('Only tracked visits are included; consent choices, blockers and failed requests can reduce totals. IP location is approximate.');
   dashboard.getRange('A13').setValue('Use the date filters on Website Visits for any date/time range. All timestamps display in India Standard Time.');
+  dashboard.getRange('A14').setValue('All recorded visits includes the retained detailed records only. The website counter at the right includes the configured starting value; its old baseline has no historical dates/IPs.');
+  dashboard.getRange(1, 10, 1, 2).setValues([['Website counter snapshot', 'Value']]);
+  dashboard.getRange(2, 10, 5, 1).setValues([['Total website visitors'], ['Configured starting value'], ['New counted visits'], ['Last synced at (IST)'], ['Counter sync status']]);
+  dashboard.getRange(5, 11).setNumberFormat('dd-mmm-yyyy hh:mm:ss');
+  if (!dashboard.getRange(6, 11).getValues()[0][0]) dashboard.getRange(6, 11).setValue('Waiting for the next allowed visit');
   vaStyle_(dashboard, 7); dashboard.setFrozenRows(1); dashboard.autoResizeColumns(1, 7);
   const areas = book.getSheetByName('Visits By Area') || book.insertSheet('Visits By Area');
   areas.getRange('A1').setValue('Visits by country, region and city — all recorded dates');
@@ -46,7 +61,40 @@ function setupVisitorAnalytics() {
   pages.getRange('A1').setValue('Visits by page — all recorded dates');
   pages.getRange('A2').setFormula('=IFERROR(QUERY(\'' + VA_SHEET + '\'!A2:Q,"select E,count(A),sum(G),avg(G) where A is not null group by E order by count(A) desc label E \'Page\',count(A) \'Page Views\',sum(G) \'Active Seconds\',avg(G) \'Average Seconds\'",0),"No visits yet")');
   vaStyle_(pages, 4); pages.setFrozenRows(2); pages.autoResizeColumns(1, 4);
+  properties.setProperty('VA_SETUP_VERSION', VA_PROTOCOL);
   SpreadsheetApp.flush();
+  if (!ScriptApp.getProjectTriggers().some(trigger => trigger.getHandlerFunction() === 'syncWebsiteCounterSnapshot')) ScriptApp.newTrigger('syncWebsiteCounterSnapshot').timeBased().everyMinutes(5).create();
+  syncWebsiteCounterSnapshot();
+  console.log('Visitor reports installed. Copy the private ANALYTICS_BRIDGE_TOKEN from Project Settings to the MAIN website Worker secret with the same name. Deploy a new version of the newsletter web app. Open /admin/visitor-check.html on your website to verify.');
+}
+function vaSaveCounterSnapshot_(dashboard, counter, now) {
+  if (!dashboard || !counter || !['total', 'new_visits', 'start_value'].every(key => Number.isSafeInteger(counter[key]) && counter[key] >= 0) || counter.total !== counter.start_value + counter.new_visits) return false;
+  dashboard.getRange(2, 11, 5, 1).setValues([[counter.total], [counter.start_value], [counter.new_visits], [now], ['Synced from website counter']]);
+  return true;
+}
+/** Read-only counter refresh. It never creates a visit or collects an IP. */
+function syncWebsiteCounterSnapshot() {
+  const book = SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty(NL_SHEET_PROPERTY));
+  const dashboard = book.getSheetByName('Visitor Dashboard');
+  if (!dashboard) throw new Error('Run setupVisitorAnalytics first.');
+  const lock = LockService.getScriptLock();
+  if (!lock.tryLock(5000)) return;
+  try {
+    const response = UrlFetchApp.fetch('https://www.assurintellec.in/api/visitor-count', { method: 'get', muteHttpExceptions: true });
+    const data = JSON.parse(response.getContentText());
+    if (response.getResponseCode() !== 200 || !vaSaveCounterSnapshot_(dashboard, { total: data.total, new_visits: data.value, start_value: data.start_value }, new Date())) throw new Error('Counter connection unavailable.');
+  } catch (_) {
+    // Keep the previous confirmed total; never replace an outage with a zero.
+    dashboard.getRange(6, 11).setValue('Check main website Worker / VISITOR_COUNTER binding; previous confirmed total retained');
+  } finally { lock.releaseLock(); }
+}
+function vaHealth_(data) {
+  const properties = PropertiesService.getScriptProperties(), secret = properties.getProperty('ANALYTICS_BRIDGE_TOKEN') || '';
+  if (secret.length < 32 || String(data.bridge_secret || '') !== secret) return { ready: false, code: 'BRIDGE_AUTH_FAILED', protocol: VA_PROTOCOL };
+  const book = SpreadsheetApp.openById(properties.getProperty(NL_SHEET_PROPERTY));
+  const visits = book.getSheetByName(VA_SHEET), dashboard = book.getSheetByName('Visitor Dashboard');
+  const ready = properties.getProperty('VA_SETUP_VERSION') === VA_PROTOCOL && !!visits && !!dashboard && VA_HEADERS.every((header, i) => visits.getRange(1, 1, 1, VA_HEADERS.length).getValues()[0][i] === header);
+  return { ready: ready, code: ready ? 'READY' : 'RUN_ANALYTICS_SETUP', protocol: VA_PROTOCOL };
 }
 function vaStyle_(sheet, columns) { sheet.getRange(1, 1, 1, columns).setFontWeight('bold').setBackground('#0b1f3a').setFontColor('#ffffff'); }
 function vaSafeCell_(value) { const text = String(value || '').replace(/[\x00-\x1f\x7f]/g, '').slice(0, 3500); return /^[=+\-@]/.test(text) ? "'" + text : text; }
@@ -81,6 +129,7 @@ function vaRecord_(data) {
       sheet.appendRow([p.page_id, p.session_id, started, now, vaSafeCell_(p.path.split(/[?#]/)[0]), vaSafeCell_(p.title), seconds, vaSafeCell_(p.ip), vaSafeCell_(p.city), vaSafeCell_(p.region), vaSafeCell_(p.country), vaSafeCell_(p.timezone), vaSafeCell_(p.referrer), vaSafeCell_(p.device), vaSafeCell_(sections), 'Yes', p.sequence]);
     }
     SpreadsheetApp.flush();
+    vaSaveCounterSnapshot_(book.getSheetByName('Visitor Dashboard'), p.counter, now);
     return { success: true };
   } finally { lock.releaseLock(); }
 }

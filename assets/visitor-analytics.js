@@ -42,7 +42,7 @@
   }
   function track(cfg) {
     const visit = session(), pageId = id(), started = Date.now();
-    let activeMs = 0, lastTick = performance.now(), lastInteraction = performance.now(), sequence = 0, stopped = false, inFlight = false;
+    let activeMs = 0, lastTick = performance.now(), lastInteraction = performance.now(), sequence = 0, stopped = false, inFlight = false, failures = 0, retry;
     const sections = new Set(), disposals = [];
     const on = (object, type, callback, options) => { object.addEventListener(type, callback, options); disposals.push(() => object.removeEventListener(type, callback, options)); };
     const tick = () => {
@@ -67,8 +67,17 @@
       // No name, email, telephone, enquiry, URL query or fragment is collected.
       inFlight = true;
       try {
-        await fetch('/api/visitor-analytics', { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), keepalive: final, signal: AbortSignal.timeout(25000) });
-      } catch (_) {} finally { inFlight = false; }
+        const response = await fetch('/api/visitor-analytics', { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), keepalive: final, signal: AbortSignal.timeout(25000) });
+        let result = {}; try { result = await response.json(); } catch (_) {}
+        if (!response.ok || result.success !== true) throw new Error(result.code || 'ANALYTICS_NOT_CONFIRMED');
+        failures = 0; clearTimeout(retry);
+        document.dispatchEvent(new CustomEvent('assurintellec:analytics-status', { detail: { ready: true, code: 'RECORDED' } }));
+      } catch (error) {
+        failures++;
+        document.dispatchEvent(new CustomEvent('assurintellec:analytics-status', { detail: { ready: false, code: error.message || 'CONNECTION_FAILED' } }));
+        // The same page id is reused: a lost response cannot duplicate a row.
+        if (!final && !stopped && failures <= 3) { clearTimeout(retry); retry = setTimeout(() => send(), Math.min(45000, failures * 5000)); }
+      } finally { inFlight = false; }
       visit.last = Date.now(); try { sessionStorage.setItem(sessionKey, JSON.stringify(visit)); } catch (_) {}
     }
     const clock = setInterval(tick, 1000);
@@ -76,7 +85,8 @@
     on(document, 'visibilitychange', () => { tick(); if (document.hidden) send(true); else { lastTick = performance.now(); lastInteraction = lastTick; } });
     on(root, 'pagehide', () => send(true));
     send();
-    return () => { stopped = true; clearInterval(clock); clearInterval(heartbeat); observer?.disconnect(); disposals.forEach(dispose => dispose()); };
+    on(root, 'online', () => { if (!stopped) { failures = 0; clearTimeout(retry); send(); } });
+    return () => { stopped = true; clearTimeout(retry); clearInterval(clock); clearInterval(heartbeat); observer?.disconnect(); disposals.forEach(dispose => dispose()); };
   }
   root.AssurVisitorAnalytics = { init, defaults };
 })(window);

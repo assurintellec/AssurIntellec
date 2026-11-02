@@ -143,6 +143,13 @@ function doGet(e) {
 
 function doPost(e) {
   const data = e && e.parameter ? e.parameter : {};
+  // Diagnostics return configuration flags only, never visit rows or IPs.
+  if (data.action === 'analytics_health') {
+    let health;
+    try { health = vaHealth_(data); }
+    catch (_) { health = { ready: false, code: 'RUN_ANALYTICS_SETUP', protocol: '2026-11-02-v4' }; }
+    return ContentService.createTextOutput(JSON.stringify(health)).setMimeType(ContentService.MimeType.JSON);
+  }
   // Analytics is accepted only from the Worker with the matching private secret.
   if (data.action === 'analytics') {
     let analytics;

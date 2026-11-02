@@ -393,6 +393,16 @@ body.success-open{
   letter-spacing:.35px;
 }
 
+.enquiry-success-actions{margin:24px auto 0;max-width:480px}
+.enquiry-success-actions[hidden]{display:none}
+.enquiry-success-actions .whatsapp-form-button{display:inline-flex;justify-content:center;min-height:48px;width:100%;background:#fff;color:#137a3b;border-color:#137a3b;text-decoration:none;white-space:normal}
+.enquiry-success-actions .whatsapp-form-button:hover{background:#137a3b;color:#fff}
+.enquiry-success-actions .whatsapp-form-button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.enquiry-success-actions p{font-size:13px;line-height:1.6;color:var(--muted);margin:10px 0 0}
+/* Global hover zoom must not push dialog copy outside its scrollable card. */
+html[data-text-hover-zoom] .enquiry-success-card :is(h2,p,a,span){transform:none!important;overflow-wrap:anywhere;max-width:100%}
+.enquiry-success-card{overflow-x:hidden}
+
 @keyframes enquiryOverlayIn{
   from{opacity:0}
   to{opacity:1}

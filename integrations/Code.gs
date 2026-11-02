@@ -102,11 +102,7 @@ function processEnquiry(data) {
     "Pending"
   );
 
-  // Optional add-on. The enquiry and email flow continue even before API setup.
-  if (typeof waQueue_ === 'function') {
-    try { waQueue_(sheet, rowNumber, normalized); }
-    catch (_) { console.warn('WhatsApp queue unavailable; enquiry remains saved.'); }
-  }
+  // Free WhatsApp mode. Never queue a business-initiated API message.
   let adminSent = false;
   let customerSent = false;
 
@@ -308,7 +304,6 @@ function normalizeEnquiryData(data) {
     phone: cleanText(data.phone, 60),
     service: cleanText(data.service, 200),
     message: cleanText(data.message, 5000),
-    whatsappConsent: String(data.whatsapp_consent || "") === "yes",
     confirmationEmailEnabled:
       data.confirmation_email_enabled !== false &&
       String(data.confirmation_email_enabled).toLowerCase() !== "false",
@@ -418,12 +413,14 @@ function sendAssurIntellecEmail(options) {
     );
   }
 
+  const inlineSupported = aiEmailWorkerSupportsInline_(workerUrl, workerToken);
+  const emailHtml = inlineSupported ? String(options.htmlBody || '') : aiEmailExternalSocialImages_(options.htmlBody);
   const payload = {
     to: recipient,
     subject: subject,
     body: body,
-    html: String(options.htmlBody || ""),
-    inlineImages: aiEmailInlinePayload_(options.htmlBody),
+    html: emailHtml,
+    inlineImages: inlineSupported ? aiEmailInlinePayload_(emailHtml) : [],
     logoUrl: String(options.logoUrl || ""),
     replyTo: replyTo,
     fromName: senderName
@@ -460,6 +457,36 @@ function sendAssurIntellecEmail(options) {
   }
 
   return result;
+}
+
+// Old mail Workers accepted the email but ignored inlineImages, leaving broken
+// cid: icons. Negotiate support BEFORE sending; never resend a delivered email.
+const AI_MAIL_PROTOCOL = '2026-11-02-inline-v2';
+let aiEmailWorkerCapability_ = null;
+function aiEmailWorkerSupportsInline_(workerUrl, token) {
+  if (aiEmailWorkerCapability_ !== null) return aiEmailWorkerCapability_;
+  aiEmailWorkerCapability_ = false;
+  try {
+    const healthUrl = workerUrl.replace(/\/send\/?(?:\?.*)?$/, '/health');
+    if (healthUrl === workerUrl) return false;
+    const response = UrlFetchApp.fetch(healthUrl, { method: 'get', headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true });
+    const result = JSON.parse(response.getContentText());
+    aiEmailWorkerCapability_ = response.getResponseCode() === 200 && result.ok === true && result.protocol === AI_MAIL_PROTOCOL && result.features && result.features.indexOf('inline-social-png') >= 0;
+  } catch (_) {}
+  return aiEmailWorkerCapability_;
+}
+function aiEmailExternalSocialImages_(html) {
+  return String(html || '').replace(/cid:assur_social_(instagram|facebook|linkedin|youtube|whatsapp_channel|telegram|threads|x|google)(?=["'])/g,
+    function (_, key) { return 'https://www.assurintellec.in/images/email-icons/' + key.replace(/_/g, '-') + '.png'; });
+}
+
+/** Run once in the EXISTING enquiry spreadsheet project after this update. */
+function setupFreeWhatsAppMode() {
+  PropertiesService.getScriptProperties().setProperty('WA_ENABLED', 'false');
+  ScriptApp.getProjectTriggers().forEach(function (trigger) {
+    if (trigger.getHandlerFunction() === 'sendPendingEnquiryWhatsApp') ScriptApp.deleteTrigger(trigger);
+  });
+  console.log('Free WhatsApp mode enabled. Paid API sending is disabled. Website visitors use Send on WhatsApp and press Send in their app.');
 }
 
 function appendEnquiryRow(

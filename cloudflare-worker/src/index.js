@@ -314,7 +314,7 @@ export default {
       if (auth !== `Bearer ${env.WORKER_BRIDGE_TOKEN}`) {
         return json({ ok: false, message: 'Unauthorized' }, 401);
       }
-      return json({ ok: true, service: 'AssurIntellec Titan SMTP Worker' });
+      return json({ ok: true, service: 'AssurIntellec Titan SMTP Worker', protocol: '2026-11-02-inline-v2', features: ['inline-social-png'] });
     }
 
     if (url.pathname !== '/send' || request.method !== 'POST') {

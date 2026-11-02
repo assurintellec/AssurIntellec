@@ -1,37 +1,35 @@
-ASSURINTELLEC WEBSITE UPDATE — 2 NOVEMBER 2026
+ASSURINTELLEC — WORD DOCUMENT 8 UPDATE — 2 NOVEMBER 2026
 
-The website source has been updated for the seven points in your Word document.
-Keep your existing photographs/videos. This ZIP does not contain those large media files.
+READ WEBSITE_UPDATE_02-11-2026_REV8.md FIRST.
+It supersedes the paid WhatsApp and visitor/email-icon setup in the older guide.
 
-IMPORTANT: Uploading only the HTML/JS files cannot update your Google Apps Script deployments or activate automatic WhatsApp messages.
+CHANGES
+1. Paid WhatsApp confirmation checkbox removed; no API sends are queued.
+2. Send on WhatsApp added inside the enquiry success dialog with submitted data.
+3. Enquiry email icons now support both old and updated mail Workers.
+4. Visitor dashboard has all-time + seven rolling periods, a separate total
+   counter snapshot, automatic read-only refresh and a connection checker.
 
-Read WEBSITE_UPDATE_02-11-2026.md for the complete steps.
+KEEP YOUR EXISTING LARGE IMAGES AND VIDEOS.
+Upload the included small images/email-icons PNGs.
 
-REQUIRED UPDATES
-1. Merge this folder into the current website source and deploy the existing main website Worker. Keep its visitor counter binding and all secrets.
-2. NEWSLETTER Google project: replace Code.gs with integrations/newsletter/Code.gs, add VisitorAnalytics.gs from the same folder, run setupWebsiteUpdate, then edit the SAME web-app deployment to a New version (Me / Anyone).
-3. ENQUIRY Google project: replace Code.gs with integrations/Code.gs, keep Bridge.html, add integrations/WhatsApp.gs, run setupWhatsAppIntegration, then update the SAME deployment. Keep existing email-worker properties.
-4. If the email Worker is still an older version, update cloudflare-worker/src/index.js while keeping its SMTP secrets and URL.
-5. Visitor reports: put the same private ANALYTICS_BRIDGE_TOKEN (at least 32 random characters) into the newsletter project's Script Properties and the main website Worker's secrets.
-6. Automatic WhatsApp: configure the Business Platform sender, credentials and approved templates. Template drafts and required private property names are in the detailed guide. Number 7600666436 needs a second sender if it is also the recipient of office alerts.
+REQUIRED ACTIVATION
+A. Merge and deploy the main website Worker; preserve bindings, secrets and media.
+B. ENQUIRY Apps Script: replace integrations/Code.gs and WhatsApp.gs, keep Bridge,
+   run setupFreeWhatsAppMode, update the SAME web-app deployment (Me / Anyone).
+   Preserve EMAIL_WORKER_URL / EMAIL_WORKER_TOKEN and existing email settings.
+C. For embedded enquiry icons, update the separate mail Worker from
+   cloudflare-worker/src/index.js. Preserve its URL and SMTP/bridge secrets.
+   An older mail Worker uses public PNG icon URLs as a compatibility fallback.
+D. NEWSLETTER Apps Script: replace Code.gs and VisitorAnalytics.gs from the
+   integrations/newsletter folder, run setupWebsiteUpdate, update the SAME
+   deployment. Copy the generated/preserved ANALYTICS_BRIDGE_TOKEN into the MAIN
+   website Worker's secret of the same name. Do not publish the token.
+E. Open /admin/visitor-check.html on your website; both checks should be Connected.
+F. In WhatsApp Business, enable Tools > Greeting message and select Everyone.
+   Customer must open WhatsApp and press Send. Greeting applies on first contact
+   or after 14 days of inactivity, not every website enquiry.
 
-QUICK CMS CONTROLS
-Decap > Site Settings > Complete Website Settings:
-- Timed Enquiry Popup: enabled, delay_seconds = 180 by default, editable wording.
-- WhatsApp Enquiry Confirmations: optional customer confirmation checkbox.
-- Visitor Analytics & Google Sheets: enabled, permission, IP inclusion and update interval.
-
-GOOGLE SHEET OUTPUT
-- One master subscriber row per email; every deliberate signup attempts a fresh thank-you email.
-- Seven numbered service tabs show active subscribers only.
-- Website Visits, Visitor Dashboard, Visits By Area, Visits By Page.
-- Dashboard windows: 1, 2, 12, 24 hours; 15, 30 and 365 days.
-
-UNSUBSCRIBE
-New emails link to your website, independent of the visitor's Google login.
-Old Google links that show the screenshot error can be pasted into the recovery field at https://www.assurintellec.in/unsubscribe.html, then confirmed.
-
-VERIFICATION
-12 isolated automated tests passed, including email MIME/CID images, subscriptions, unsubscribe, visitor records/formulas and WhatsApp safeguards.
-Desktop/mobile browser review passed for popup centering/closing, retained contact form values, opt-in controls and unsubscribe recovery.
-Actual Google writes, real email delivery and WhatsApp messaging require the above account-side deployment and a controlled live test. They were not activated from this package.
+18 isolated automated checks and desktop/mobile/popup reviews passed.
+No live accounts were changed and no real emails or WhatsApp messages were sent.
+Historical dates or IPs cannot be recovered from a configured starting count.

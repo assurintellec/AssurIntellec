@@ -1,43 +1,12 @@
-WHATSAPP TEMPLATE DRAFTS — submit for approval in Meta WhatsApp Manager
+SUPERSEDED — FREE WHATSAPP MODE, WORD DOCUMENT 8
 
-Customer template name: assurintellec_enquiry_received
-Language: choose the same exact code as WA_TEMPLATE_LANGUAGE (e.g. en)
-Body parameters, IN THIS ORDER: {{1}} customer name, {{2}} reference, {{3}} service.
+No paid API templates are needed for this update.
+Use the WhatsApp Business app's Tools > Greeting message > Send greeting message.
+Choose Everyone as recipients and save your thank-you wording.
+The customer must open WhatsApp and send their enquiry first.
+A greeting is sent on first contact or after 14 days of inactivity, not for every
+message. The app requires an internet connection.
 
-Dear {{1}}, thank you for contacting AssurIntellec. Your enquiry {{2}} about {{3}} has been received. Our team will review it and contact you shortly.
-Website: https://www.assurintellec.in
-Email: info@assurintellec.in
-
-Connect with AssurIntellec:
-Instagram: https://www.instagram.com/assurintellec?utm_source=qr&igsi=MW43Z3M2anZpbHo1
-Facebook: https://www.facebook.com/Intellegentsolution
-LinkedIn: https://www.linkedin.com/in/assurintellec
-YouTube: https://www.youtube.com/@AssurIntellec
-WhatsApp Channel: https://whatsapp.com/channel/0029VbDxVgXFCCoU5fxRbo25
-Telegram Channel: https://t.me/assurintellec
-Threads: https://www.threads.com/@assurintellec
-X: https://x.com/AssurIntellec
-Google: https://share.google/BDZ7i6bRNwF4qLD3S
-
-Intelligent Solutions. Assured Compliance.
-
-Office template name: assurintellec_new_enquiry
-Body parameters, IN THIS ORDER:
-{{1}} enquiry reference
-{{2}} name
-{{3}} phone
-{{4}} email
-{{5}} service
-{{6}} requirement summary (single line, at most 1000 characters)
-
-New AssurIntellec website enquiry: {{1}}.
-Name: {{2}}
-Phone: {{3}}
-Email: {{4}}
-Service: {{5}}
-Requirement: {{6}}
-Review the Enquiries sheet for the full submitted requirement and email status.
-
-Approval, language, category and messaging charges are determined by Meta.
-No template is submitted or activated by this source package.
-A template containing social/promotional links may need a different category or revision.
+Replace the old enquiry Code.gs and WhatsApp.gs and run setupFreeWhatsAppMode
+once to disable any old paid API timer. Preserve the existing email properties.
+See WEBSITE_UPDATE_02-11-2026_REV8.md for installation and tests.

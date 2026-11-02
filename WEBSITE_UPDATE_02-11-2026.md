@@ -1,3 +1,5 @@
+> UPDATE: Read WEBSITE_UPDATE_02-11-2026_REV8.md first. It supersedes this guide for WhatsApp, enquiry email icons and visitor reports. Do not activate the old paid WhatsApp API instructions below.
+
 # AssurIntellec website update — 2 November 2026
 
 Read this guide first. It supersedes older setup instructions for the seven changes in `7.Website_Update_02-11-2026.docx`.

@@ -1,0 +1,180 @@
+{
+  "source": "8.Website_Update_02-11-2026_2.docx",
+  "date": "2026-11-02",
+  "revision": 8,
+  "mode": "free visitor-initiated WhatsApp",
+  "checks": {
+    "automated_tests_passed": 18,
+    "syntax": "pass",
+    "CMS_YAML": "pass",
+    "preserved_existing_content_and_media": "pass",
+    "browser": [
+      "desktop contact",
+      "390px mobile contact",
+      "generated popup"
+    ],
+    "live_external_delivery": "not activated or tested"
+  },
+  "changes": [
+    {
+      "file": "START_HERE_02-11-2026.txt",
+      "change": "modified",
+      "sha256": "4e7778f98006953d7a9aec26fe8abcbf5af72f37a06f147a16d0735c8713338a"
+    },
+    {
+      "file": "WEBSITE_UPDATE_02-11-2026.md",
+      "change": "modified",
+      "sha256": "1d29d38589afea612076d31c35f706b06a83ba98f26ba330ec9dee47934b2535"
+    },
+    {
+      "file": "WEBSITE_UPDATE_02-11-2026_REV8.md",
+      "change": "added",
+      "sha256": "052740e31248aa0cceb815e2e60daec47e28e96165e39b2f9c8c13fe083b7535"
+    },
+    {
+      "file": "about.html",
+      "change": "modified",
+      "sha256": "a2b93fc57d064325d797e9d46b415970c81b56cb814c8900189bd1734667c6de"
+    },
+    {
+      "file": "admin/config.yml",
+      "change": "modified",
+      "sha256": "0005aa4b632a13db135ec8e9f827dded4851fddf52ab380a8f68d69ed8df39aa"
+    },
+    {
+      "file": "admin/visitor-check.html",
+      "change": "added",
+      "sha256": "f2fddd1b2ddf2ba74e5721b2eafae8740a45f154fd99231f324aa76e09e44612"
+    },
+    {
+      "file": "assets/enquiry-popup.js",
+      "change": "modified",
+      "sha256": "39a8ccd187398d2fae9b1e45e9f14cc37f7f28835502bb4e7a1a6c099390ec88"
+    },
+    {
+      "file": "assets/site.css",
+      "change": "modified",
+      "sha256": "6e3c442a09d71a5487b2f54f001802f5d7dfee0a6de66133e94f4b34d0895198"
+    },
+    {
+      "file": "assets/site.js",
+      "change": "modified",
+      "sha256": "c7afa5663e07112ba49981347c65769dc55e0886133fb045bd68e7292aa48596"
+    },
+    {
+      "file": "assets/visitor-analytics.js",
+      "change": "modified",
+      "sha256": "d011f2130b88a540664c02e6aafba0632aa29f6b446e2d319058bdad17982e06"
+    },
+    {
+      "file": "cloudflare-worker/src/index.js",
+      "change": "modified",
+      "sha256": "c471102ab459bd39198b6ee98ae6b0c5f8ef2ffde5ed7c10a2fa6891219a0eca"
+    },
+    {
+      "file": "contact.html",
+      "change": "modified",
+      "sha256": "613662498a25f5948ab26faa009a84347fd4c41db593ad3f2b3444203fd9f406"
+    },
+    {
+      "file": "content/site.json",
+      "change": "modified",
+      "sha256": "1452a13dfbef8fd1d9415dd972d5bcc8efe3789f6c893310e42e8d98d92a1d81"
+    },
+    {
+      "file": "index.html",
+      "change": "modified",
+      "sha256": "81a63073374bdaf0547150d3bf9f83ad8dcae0fda07485eae68a93130a578e2b"
+    },
+    {
+      "file": "integrations/Code.gs",
+      "change": "modified",
+      "sha256": "f551a5e3d262205968744d5bddccf76359da636d50ed186b9654383a4f5a9829"
+    },
+    {
+      "file": "integrations/WHATSAPP_TEMPLATE_DRAFTS.txt",
+      "change": "modified",
+      "sha256": "a85c7933a18919856d8b8ae1515f5d33af2da305ce357446db04d5efffec6e08"
+    },
+    {
+      "file": "integrations/WhatsApp.gs",
+      "change": "modified",
+      "sha256": "122d1f51f1ef23d1b44066cf22e5da11e56b3930ba670bfb02a2ca6fb158cf8c"
+    },
+    {
+      "file": "integrations/newsletter/Code.gs",
+      "change": "modified",
+      "sha256": "3366e95587525be8a6453016dc57f5f2f9b9115ced820da0277ab7adc8ef8e10"
+    },
+    {
+      "file": "integrations/newsletter/VisitorAnalytics.gs",
+      "change": "modified",
+      "sha256": "658a49cc324ee7c848df691bc07e558314334fd23cde4bf441f53081d9afd119"
+    },
+    {
+      "file": "service-advisory-transactions.html",
+      "change": "modified",
+      "sha256": "adecbf67b7e7faf258e1e574e74179814c7eb9048cd78b834bd8f23ba559bae0"
+    },
+    {
+      "file": "service-gmp-engineering.html",
+      "change": "modified",
+      "sha256": "32e0ab39f54cda03a0b09aeb800947d3b4d58651ff5f46fe64bca9c2c308081e"
+    },
+    {
+      "file": "service-life-sciences-trade.html",
+      "change": "modified",
+      "sha256": "6ee091e0b8e0158ae3d238fbfd93cff5827e0923f3b551dcfac16c5a29a8cd29"
+    },
+    {
+      "file": "service-pharma-laboratory-technologies.html",
+      "change": "modified",
+      "sha256": "a17dad0af006d9ff3fc0adebaed7ace28b360cc9e7b4aa5252a16e30ad3f463c"
+    },
+    {
+      "file": "service-pharma-solutions-manufacturing.html",
+      "change": "modified",
+      "sha256": "61fe90e64ba3a14a295fd6d536855793b177de4ddcf87a86c93b0439989707e3"
+    },
+    {
+      "file": "service-research-scientific-services.html",
+      "change": "modified",
+      "sha256": "d65343f51374dccb1ef140df17ab9ff3a0bf23511bc75b40c379f1687705dced"
+    },
+    {
+      "file": "service-talent-recruitment.html",
+      "change": "modified",
+      "sha256": "89ffb094a0ca2b1112c0a8428e10f549e26be5c36cd5e89eb43f4c399a51a52a"
+    },
+    {
+      "file": "services.html",
+      "change": "modified",
+      "sha256": "1f18b818b97d3468c04cbb2321f2b11c2d3d61be5a0dd192258c2c41960cbed2"
+    },
+    {
+      "file": "tests/update-20261102.test.mjs",
+      "change": "modified",
+      "sha256": "c40b195ae8e29e6c7f01224292c4cbff355685e135420f6ba4729db1b8dd0650"
+    },
+    {
+      "file": "unsubscribe.html",
+      "change": "modified",
+      "sha256": "6a4c836a2e03d07f591f28d3d7d58b9232872ade2ebeb99e88cb428669db45a2"
+    },
+    {
+      "file": "visitor-analytics.js",
+      "change": "modified",
+      "sha256": "3c4e9b96e39eb7f85492271e2462d3eae84f6124082a2da9dbee07f286f3ff7b"
+    },
+    {
+      "file": "why-us-detail.html",
+      "change": "modified",
+      "sha256": "900552974e3c9a6da7ab7d101edb4b5ee8d3598d3402b85fec11b7071a822791"
+    },
+    {
+      "file": "why-us.html",
+      "change": "modified",
+      "sha256": "7ed77086567b1e8ad60b258526fb88ef69d18cd47ddd8258ab4372a7e0116c7e"
+    }
+  ]
+}

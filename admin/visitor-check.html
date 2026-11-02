@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Visitor reporting check | AssurIntellec</title>
+<style>body{margin:0;background:#f4f7fb;color:#17324f;font:16px/1.65 Arial,sans-serif}main{max-width:820px;margin:48px auto;padding:32px;background:white;border:1px solid #dce5ee;border-top:4px solid #c9a227;border-radius:16px}h1{font-size:28px;color:#0b1f3a}section{padding:20px 0;border-top:1px solid #dce5ee}button{background:#0b1f3a;color:white;border:0;border-radius:8px;padding:12px 20px;font:inherit;cursor:pointer}.status{font-weight:bold}.ok{color:#16703c}.error{color:#9a2939}code{overflow-wrap:anywhere}a{color:#123f73}@media(max-width:600px){main{margin:16px;padding:22px}}</style></head>
+<body><main><a href="/admin/">← Back to website editor</a><h1>Visitor reporting connection</h1><p>This page checks configuration without recording a visit. Visitor IPs and private credentials are never displayed here.</p><button id="check" type="button">Check connections</button><div id="results" aria-live="polite"></div><p>Detailed reports are in your newsletter spreadsheet: <strong>Visitor Dashboard</strong> and <strong>Website Visits</strong>. To test recording, open the public website and choose <strong>Allow insights</strong>. The configured starting count cannot recreate old visit dates or IP addresses.</p></main>
+<script>
+const button=document.getElementById('check'),results=document.getElementById('results');
+async function check(){button.disabled=true;results.replaceChildren();
+for(const [title,url,type] of [['Website visitor counter','/api/visitor-count','counter'],['Google Sheets visitor reports','/api/visitor-analytics?action=health','analytics']]){
+const section=document.createElement('section'),heading=document.createElement('h2'),status=document.createElement('p'),message=document.createElement('p');heading.textContent=title;status.className='status';section.append(heading,status,message);results.append(section);
+try{const response=await fetch(url,{cache:'no-store',credentials:'same-origin',signal:AbortSignal.timeout(20000)});let data;try{data=await response.json();}catch(_){throw new Error('This address is not serving the website API. Deploy the root maintenance-router.js Worker, not only the HTML files.');}
+if(type==='counter'){
+if(!response.ok||!Number.isSafeInteger(data.total))throw new Error(data.enabled===false?'Enable Visitor Counter in Decap.':data.error||'Check the VISITOR_COUNTER binding and deploy the main website Worker.');
+status.textContent='Connected';status.classList.add('ok');message.textContent='Total: '+data.total.toLocaleString('en-IN')+' = starting value '+data.start_value.toLocaleString('en-IN')+' + new visits '+data.value.toLocaleString('en-IN')+'.';
+}else{status.textContent=data.ready?'Connected':data.code||'Needs setup';status.classList.add(data.ready?'ok':'error');message.textContent=data.message||'Update and redeploy the main website Worker and newsletter Apps Script.';}
+}catch(error){status.textContent='Needs setup';status.classList.add('error');message.textContent=error.message;}}
+button.disabled=false;}
+button.addEventListener('click',check);check();
+</script></body></html>

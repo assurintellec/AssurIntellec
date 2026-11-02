@@ -80,31 +80,6 @@ collections:
         widget: string
         required: false
         default: Close enquiry form
-    - label: WhatsApp Enquiry Confirmations
-      name: whatsapp_notifications
-      widget: object
-      collapsed: true
-      required: false
-      fields:
-      - label: Show WhatsApp Confirmation Choice
-        name: enabled
-        widget: boolean
-        required: false
-        default: true
-        hint: The server also requires WA_ENABLED=true, API credentials and approved templates. Configure secrets in
-          the enquiry Apps Script, never here.
-      - label: Registered Sender Number (Reference)
-        name: sender_number
-        widget: string
-        required: false
-        default: '917600666436'
-        hint: Reference only. Set the same WA_SENDER_NUMBER and the matching Meta phone number ID privately in the enquiry
-          script. This number cannot send office alerts to itself.
-      - label: WhatsApp Consent Label
-        name: consent_label
-        widget: text
-        required: false
-        default: Yes, send me an enquiry confirmation on WhatsApp from AssurIntellec.
     - label: Visitor Analytics & Google Sheets
       name: visitor_analytics
       widget: object
@@ -922,6 +897,21 @@ collections:
         widget: text
         hint: 'Available fields: {name}, {company}, {email}, {phone}, {service}, {message}'
         required: false
+      - label: Show WhatsApp Button In Enquiry Thank You
+        name: enquiry_success_whatsapp_enabled
+        widget: boolean
+        required: false
+        default: true
+      - label: Thank You WhatsApp Button Text
+        name: enquiry_success_whatsapp_label
+        widget: string
+        required: false
+        default: Send on WhatsApp
+      - label: Thank You WhatsApp Help Text
+        name: enquiry_success_whatsapp_note
+        widget: text
+        required: false
+        default: Your enquiry opens in WhatsApp. Tap Send there to start the conversation.
       - label: Form Service Placeholder
         name: form_service_placeholder
         widget: string

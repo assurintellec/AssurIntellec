@@ -8,17 +8,8 @@
     const cfg = { ...defaults, ...(site.enquiry_popup || {}) };
     if (document.getElementById('enquiryPopup') || document.body.dataset.page === 'unsubscribe') return;
     let form = document.getElementById('contactForm');
-    // WhatsApp permission is separate from the newsletter checkbox.
-    function whatsappChoice() {
-      if (!form || form.querySelector('[name="whatsapp_consent"]') || site.whatsapp_notifications?.enabled === false) return;
-      const group = document.createElement('div'); group.className = 'form-group full ai-whatsapp-consent';
-      const label = document.createElement('label'), input = document.createElement('input'), text = document.createElement('span');
-      input.type = 'checkbox'; input.name = 'whatsapp_consent'; input.value = 'yes';
-      text.textContent = site.whatsapp_notifications?.consent_label || 'Yes, send me an enquiry confirmation on WhatsApp from AssurIntellec.';
-      label.append(input, text); group.append(label);
-      form.querySelector('.form-grid').insertBefore(group, form.querySelector('.contact-form-actions'));
-    }
-    if (cfg.enabled === false) { whatsappChoice(); return; }
+    // Free mode: the visitor sends via WhatsApp; no paid API opt-in is added.
+    if (cfg.enabled === false) return;
     const dialog = document.createElement('dialog'); dialog.id = 'enquiryPopup'; dialog.className = 'ai-enquiry-popup';
     dialog.setAttribute('aria-labelledby', 'enquiryPopupTitle'); dialog.setAttribute('aria-describedby', 'enquiryPopupDescription');
     const close = document.createElement('button'); close.type = 'button'; close.className = 'ai-popup-close'; close.textContent = '×'; close.setAttribute('aria-label', cfg.close_label);
@@ -50,7 +41,6 @@
     } else {
       marker = document.createComment('Original enquiry form location'); form.before(marker);
     }
-    whatsappChoice();
     let state = read();
     if (!Number.isFinite(state.started)) { state.started = Date.now(); save(state); }
     let previousFocus, timer;

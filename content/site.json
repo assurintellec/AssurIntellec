@@ -1,5 +1,8 @@
 {
   "contact": {
+    "enquiry_success_whatsapp_enabled": true,
+    "enquiry_success_whatsapp_label": "Send on WhatsApp",
+    "enquiry_success_whatsapp_note": "Your enquiry opens in WhatsApp. Tap Send there to start the conversation.",
     "enquiry_success_title": "Thank You, {name}!",
     "whatsapp_prefill_template": "New AssurIntellec™ website enquiry\nName: {name}\nCompany: {company}\nEmail: {email}\nPhone: {phone}\nRequirement: {service}\nMessage: {message}",
     "form_message_placeholder": "Describe your requirement...",
@@ -1541,11 +1544,6 @@
     "title": "How can we help your business?",
     "description": "Share your requirement and our team will get in touch.",
     "close_label": "Close enquiry form"
-  },
-  "whatsapp_notifications": {
-    "enabled": true,
-    "sender_number": "917600666436",
-    "consent_label": "Yes, send me an enquiry confirmation on WhatsApp from AssurIntellec."
   },
   "visitor_analytics": {
     "enabled": true,
