@@ -1533,5 +1533,29 @@
         "text": "Technical & commercial support"
       }
     ]
+  },
+  "enquiry_popup": {
+    "enabled": true,
+    "delay_seconds": 180,
+    "eyebrow": "LET’S CONNECT",
+    "title": "How can we help your business?",
+    "description": "Share your requirement and our team will get in touch.",
+    "close_label": "Close enquiry form"
+  },
+  "whatsapp_notifications": {
+    "enabled": true,
+    "sender_number": "917600666436",
+    "consent_label": "Yes, send me an enquiry confirmation on WhatsApp from AssurIntellec."
+  },
+  "visitor_analytics": {
+    "enabled": true,
+    "require_consent": true,
+    "collect_ip": true,
+    "heartbeat_seconds": 60,
+    "google_apps_script_url": "",
+    "notice": "Help us improve your experience. With your permission, we record pages and sections viewed, active time, IP address and approximate city/country. We do not record form entries.",
+    "accept_label": "Allow insights",
+    "decline_label": "No thanks",
+    "preferences_label": "Visitor privacy"
   }
 }

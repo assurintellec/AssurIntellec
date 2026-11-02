@@ -102,6 +102,11 @@ function processEnquiry(data) {
     "Pending"
   );
 
+  // Optional add-on. The enquiry and email flow continue even before API setup.
+  if (typeof waQueue_ === 'function') {
+    try { waQueue_(sheet, rowNumber, normalized); }
+    catch (_) { console.warn('WhatsApp queue unavailable; enquiry remains saved.'); }
+  }
   let adminSent = false;
   let customerSent = false;
 
@@ -303,6 +308,7 @@ function normalizeEnquiryData(data) {
     phone: cleanText(data.phone, 60),
     service: cleanText(data.service, 200),
     message: cleanText(data.message, 5000),
+    whatsappConsent: String(data.whatsapp_consent || "") === "yes",
     confirmationEmailEnabled:
       data.confirmation_email_enabled !== false &&
       String(data.confirmation_email_enabled).toLowerCase() !== "false",
@@ -559,7 +565,7 @@ function setRowValue(
 
   if (!column) return;
 
-  row[column - 1] = value;
+  row[column - 1] = typeof value === 'string' && /^[=+\-@]/.test(value) ? "'" + value : value;
 }
 
 function ensureSheetHeaders(sheet) {
@@ -573,7 +579,10 @@ function ensureSheetHeaders(sheet) {
     "Requirement",
     "Enquiry Reference",
     "Admin Email Status",
-    "Customer Email Status"
+    "Customer Email Status",
+    "WhatsApp Consent",
+    "Customer WhatsApp Status",
+    "Admin WhatsApp Status"
   ];
 
   let lastColumn = Math.max(
@@ -1140,7 +1149,7 @@ function aiEmailFooterText_(branding) {
 function aiEmailFooterHtml_(branding, logoSource) {
   const e = aiEmailEscape_;
   const logo = logoSource || aiEmailSafeUrl_(branding.logoUrl);
-  const social = (branding.social || []).map(item => '<a href="' + e(item.url) + '" target="_blank" title="Open ' + e(item.label) + '" style="display:inline-block;margin:0 14px 12px 0;text-decoration:none;color:#123f73;font:600 12px Arial,Helvetica,sans-serif;white-space:nowrap"><img src="cid:' + e(aiEmailIconCid_(item.key)) + '" alt="" width="32" height="32" style="display:inline-block;vertical-align:middle;border:0;border-radius:8px;width:32px;height:32px;margin-right:6px"><span style="display:inline-block;vertical-align:middle;color:#123f73">' + e(item.label) + '</span></a>').join('');
+  const social = (branding.social || []).map(item => '<a href="' + e(item.url) + '" target="_blank" title="Open ' + e(item.label) + '" style="display:inline-block;margin:0 14px 12px 0;text-decoration:none;color:#123f73;font:600 12px Arial,Helvetica,sans-serif;white-space:nowrap"><img src="cid:' + e(aiEmailIconCid_(item.key)) + '" alt="' + e(item.label) + '" width="32" height="32" style="display:inline-block;vertical-align:middle;border:0;border-radius:8px;width:32px;height:32px;margin-right:6px"><span style="display:inline-block;vertical-align:middle;color:#123f73">' + e(item.label) + '</span></a>').join('');
   const phone = String(branding.phone || '').replace(/[^+0-9]/g, '');
   const mobile = String(branding.mobilePhone || '').replace(/[^+0-9]/g, '');
   return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f7f9fc;border-top:3px solid #c9a227"><tr><td style="padding:26px 28px;line-height:1.7;font-family:Arial,Helvetica,sans-serif">' +

@@ -21,10 +21,12 @@ const NL_INTERESTS = {
   'pharma-solutions-manufacturing': 'Pharma Solutions & Manufacturing'
 };
 const NL_BASE_HEADERS = ['Subscribed At', 'Email', 'Service Interest', 'Status', 'Last Updated', 'Consent', 'Consent Version', 'Source Page', 'Unsubscribe URL', 'Unsubscribe Token'];
-const NL_HEADERS = NL_BASE_HEADERS.concat(['Welcome Email Status', 'Welcome Email Sent At', 'Welcome Email Error']);
+const NL_HEADERS = NL_BASE_HEADERS.concat(['Welcome Email Status', 'Welcome Email Sent At', 'Welcome Email Error', 'Service Keys', 'Previous Tokens']);
 
 /** Run ONCE from the Apps Script editor, before deploying the web app. */
 function setupNewsletterSheet() {
+  const setupLock = LockService.getScriptLock(); setupLock.waitLock(20000);
+  try {
   const book = SpreadsheetApp.getActiveSpreadsheet();
   if (!book) throw new Error('Open this script from your newsletter Google Sheet: Extensions > Apps Script.');
   PropertiesService.getScriptProperties().setProperty(NL_SHEET_PROPERTY, book.getId());
@@ -44,7 +46,12 @@ function setupNewsletterSheet() {
     }
     sheet.getRange(1, 11, 1, 3).setValues([NL_HEADERS.slice(10)]);
   }
+  const extra = sheet.getRange(1, 14, 1, 2).getValues()[0];
+  if (extra.some((value, i) => value && value !== NL_HEADERS[i + 13])) throw new Error('Columns N:O must be available for Service Keys and Previous Tokens.');
+  sheet.getRange(1, 14, 1, 2).setValues([NL_HEADERS.slice(13)]);
   nlCheckHeaders_(sheet);
+  nlMigrateSubscribers_(sheet);
+  nlSetupServiceSheets_(book);
   book.setSpreadsheetTimeZone('Asia/Kolkata');
   sheet.setFrozenRows(1);
   sheet.getRange(1, 1, 1, NL_HEADERS.length).setFontWeight('bold').setBackground('#0b1f3a').setFontColor('#ffffff');
@@ -56,11 +63,13 @@ function setupNewsletterSheet() {
   sheet.getRange('M:M').setNumberFormat('@');
   sheet.autoResizeColumns(1, NL_HEADERS.length);
   sheet.hideColumns(10);
+  sheet.hideColumns(14, 2);
   const filter = sheet.getFilter();
   if (filter && filter.getRange().getNumColumns() < NL_HEADERS.length) filter.remove();
   if (!sheet.getFilter()) sheet.getRange(1, 1, sheet.getMaxRows(), NL_HEADERS.length).createFilter();
   SpreadsheetApp.flush();
   console.log('NewsletterSubscribers is ready in your Google account. Deploy this script as a web app next.');
+  } finally { setupLock.releaseLock(); }
 }
 
 /** Run once after pasting this update. Authorizes mail and installs one retry job.
@@ -115,7 +124,7 @@ function doGet(e) {
   if (data.action === 'health') {
     let ready = false;
     try { nlGetSheet_(); ready = true; } catch (_) {}
-    return ContentService.createTextOutput(JSON.stringify({ service: 'assurintellec-newsletter', protocol: '2026-10-30-v2', ready: ready, features: ['confirmed-unsubscribe', 'embedded-social-icons'] })).setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({ service: 'assurintellec-newsletter', protocol: '2026-11-02-v3', ready: ready, features: ['confirmed-unsubscribe', 'embedded-social-icons', 'repeat-welcome', 'seven-service-sheets', 'visitor-analytics'] })).setMimeType(ContentService.MimeType.JSON);
   }
   if (data.action === 'unsubscribe') {
     const token = String(data.token || '');
@@ -134,6 +143,13 @@ function doGet(e) {
 
 function doPost(e) {
   const data = e && e.parameter ? e.parameter : {};
+  // Analytics is accepted only from the Worker with the matching private secret.
+  if (data.action === 'analytics') {
+    let analytics;
+    try { analytics = vaRecord_(data); }
+    catch (_) { analytics = { success: false, message: 'Analytics not accepted.' }; }
+    return ContentService.createTextOutput(JSON.stringify(analytics)).setMimeType(ContentService.MimeType.JSON);
+  }
   let result;
   if (data.action === 'unsubscribe') {
     try {
@@ -177,9 +193,11 @@ function nlSaveSubscriber_(data) {
     const now = new Date();
     const token = previous && /^[a-f0-9]{64}$/.test(String(previous[9] || '')) ? String(previous[9]) : Utilities.getUuid().replace(/-/g, '') + Utilities.getUuid().replace(/-/g, '');
     const source = String(data.source_page || '/').slice(0, 200);
-    const welcomeDue = !previous || previous[3] !== 'Active';
-    const tracking = welcomeDue ? ['Pending', '', ''] : [previous[10] || 'Skipped (existing subscriber)', previous[11] || '', previous[12] || ''];
-    const row = [previous ? previous[0] : now, nlCell_(email), NL_INTERESTS[interest], 'Active', now, 'Yes', 'newsletter-v1', nlCell_(source), nlUnsubscribeUrl_(token), token].concat(tracking);
+    // Each deliberate signup sends a fresh acknowledgement; the email row is reused.
+    const tracking = ['Pending', '', ''];
+    const keys = nlMergeKeys_(previous && previous[3] === 'Active' ? nlRowKeys_(previous) : [], [interest]);
+    const row = [previous ? previous[0] : now, nlCell_(email), NL_INTERESTS[interest], 'Active', now, 'Yes', 'newsletter-v1', nlCell_(source), nlUnsubscribeUrl_(token), token].concat(tracking, [keys.join('|'), previous ? String(previous[14] || '') : '']);
+    row[2] = nlKeysLabel_(keys);
     const rowNumber = index >= 0 ? index + 2 : sheet.getLastRow() + 1;
     if (index >= 0) sheet.getRange(rowNumber, 1, 1, NL_HEADERS.length).setValues([row]);
     else sheet.appendRow(row);
@@ -240,7 +258,7 @@ function nlUnsubscribe_(token) {
   try {
     const sheet = nlGetSheet_();
     const rows = sheet.getLastRow() > 1 ? sheet.getRange(2, 1, sheet.getLastRow() - 1, NL_HEADERS.length).getValues() : [];
-    const index = rows.findIndex(row => String(row[9]) === token);
+    const index = rows.findIndex(row => String(row[9]) === token || String(row[14] || '').split('|').indexOf(token) >= 0);
     if (index < 0) throw new Error('This subscription was not found. Please contact info@assurintellec.in.');
     if (rows[index][3] !== 'Unsubscribed') {
       sheet.getRange(index + 2, 4).setValue('Unsubscribed');
@@ -272,6 +290,70 @@ function nlPage_(title, message, extra) {
   return HtmlService.createHtmlOutput('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + nlEscape_(title) + '</title><style>body{margin:0;padding:32px;font-family:Arial,sans-serif;background:#f4f7fb;color:#233247}main{max-width:560px;margin:40px auto;background:white;border:1px solid #dce5ee;border-radius:18px;padding:32px;line-height:1.7}h1{font-size:24px;color:#0b1f3a}button{padding:12px 20px;background:#0b1f3a;color:white;border:0;border-radius:8px;font-weight:bold;cursor:pointer}</style></head><body><main><strong>AssurIntellec™</strong><h1>' + nlEscape_(title) + '</h1><p>' + nlEscape_(message) + '</p>' + (extra || '') + '</main></body></html>');
 }
 
+
+
+/** Run after pasting Code.gs and VisitorAnalytics.gs in the SAME newsletter project. */
+function setupWebsiteUpdate() {
+  setupNewsletterEmail();
+  setupVisitorAnalytics();
+  console.log('Website update ready. Update the SAME web-app deployment to a new version (Me / Anyone).');
+}
+function nlMergeKeys_(a, b) {
+  const keys = [...new Set(a.concat(b).filter(key => Object.prototype.hasOwnProperty.call(NL_INTERESTS, key)))];
+  return keys.indexOf('all') >= 0 ? ['all'] : Object.keys(NL_INTERESTS).filter(key => keys.indexOf(key) >= 0);
+}
+function nlRowKeys_(row) {
+  const stored = String(row[13] || '').split('|').filter(key => Object.prototype.hasOwnProperty.call(NL_INTERESTS, key));
+  if (stored.length) return stored;
+  const text = String(row[2] || '');
+  return Object.keys(NL_INTERESTS).filter(key => text === NL_INTERESTS[key] || text.split(' | ').indexOf(NL_INTERESTS[key]) >= 0);
+}
+function nlKeysLabel_(keys) { return keys.map(key => NL_INTERESTS[key]).join(' | '); }
+function nlMigrateSubscribers_(sheet) {
+  if (sheet.getLastRow() < 2) return;
+  const rows = sheet.getRange(2, 1, sheet.getLastRow() - 1, NL_HEADERS.length).getValues();
+  const grouped = new Map();
+  let duplicates = false;
+  rows.forEach(row => {
+    const email = String(row[1] || '').replace(/^'/, '').trim().toLowerCase();
+    if (!email) return;
+    row[13] = nlRowKeys_(row).join('|');
+    if (!grouped.has(email)) { grouped.set(email, row); return; }
+    duplicates = true;
+    const first = grouped.get(email);
+    const latest = new Date(row[4]).getTime() >= new Date(first[4]).getTime() ? row : first;
+    const keys = latest[3] === 'Active' ? nlMergeKeys_(nlRowKeys_(first), nlRowKeys_(row)) : nlRowKeys_(latest);
+    const tokens = [...new Set([first[9], row[9]].concat(String(first[14] || '').split('|'), String(row[14] || '').split('|')))]
+      .filter(token => /^[a-f0-9]{64}$/.test(String(token)) && token !== latest[9]);
+    const merged = latest.slice();
+    merged[0] = new Date(first[0]).getTime() < new Date(row[0]).getTime() ? first[0] : row[0];
+    merged[13] = keys.join('|'); merged[2] = nlKeysLabel_(keys); merged[14] = tokens.join('|');
+    grouped.set(email, merged);
+  });
+  if (!duplicates) {
+    sheet.getRange(2, 14, rows.length, 1).setValues(rows.map(row => [row[13]]));
+    return;
+  }
+  // A full backup retains original records before consolidating historical duplicates.
+  sheet.copyTo(sheet.getParent()).setName('Newsletter backup ' + Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyyMMdd HHmmss'));
+  const result = Array.from(grouped.values());
+  sheet.getRange(2, 1, rows.length, NL_HEADERS.length).clearContent();
+  if (result.length) sheet.getRange(2, 1, result.length, NL_HEADERS.length).setValues(result);
+}
+function nlSetupServiceSheets_(book) {
+  Object.keys(NL_INTERESTS).filter(key => key !== 'all').forEach((key, i) => {
+    const name = (i + 1) + '. ' + NL_INTERESTS[key];
+    const tab = book.getSheetByName(name) || book.insertSheet(name);
+    if (tab.getLastRow() && tab.getRange(1, 1, 1, 4).getValues()[0].join('|') !== 'Email|Subscribed At|Last Updated|Status') throw new Error('The tab ' + name + ' already contains other data. Rename it before setup.');
+    tab.getRange(1, 1, 1, 4).setValues([['Email', 'Subscribed At', 'Last Updated', 'Status']]);
+    tab.getRange(1, 1, 1, 4).setFontWeight('bold').setBackground('#0b1f3a').setFontColor('#ffffff');
+    // Live views of the master sheet: no duplicated database records, tokens or stale unsubscribed contacts.
+    const master = "'" + NL_SHEET_NAME + "'!";
+    tab.getRange(2, 1).setFormula('=IFERROR(FILTER({' + master + 'B2:B,' + master + 'A2:A,' + master + 'E2:E,' + master + 'D2:D},' + master + 'D2:D="Active",REGEXMATCH(' + master + 'N2:N,"(^|\\|)(all|' + key + ')(\\||$)")),"")');
+    tab.setFrozenRows(1); tab.getRange('B:C').setNumberFormat('dd-mmm-yyyy hh:mm:ss');
+    tab.autoResizeColumns(1, 4);
+  });
+}
 
 function aiEmailFallbackBranding_() {
   const branding = {"companyName": "AssurIntellec™", "tagline": "Intelligent Solutions, Assured Compliance.", "website": "https://www.assurintellec.in", "websiteDisplay": "www.assurintellec.in", "phone": "+91 7600 666 436", "mobilePhone": "7405660185", "email": "info@assurintellec.in", "address": "478, Surbhi The Royal Town, Navagam, Kamrej, Surat-394185", "logoUrl": "https://www.assurintellec.in/images/uploads/logo_transparent_png_tm.png"};
@@ -318,7 +400,7 @@ function aiEmailFooterText_(branding) {
 function aiEmailFooterHtml_(branding, logoSource) {
   const e = aiEmailEscape_;
   const logo = logoSource || aiEmailSafeUrl_(branding.logoUrl);
-  const social = (branding.social || []).map(item => '<a href="' + e(item.url) + '" target="_blank" title="Open ' + e(item.label) + '" style="display:inline-block;margin:0 14px 12px 0;text-decoration:none;color:#123f73;font:600 12px Arial,Helvetica,sans-serif;white-space:nowrap"><img src="cid:' + e(aiEmailIconCid_(item.key)) + '" alt="" width="32" height="32" style="display:inline-block;vertical-align:middle;border:0;border-radius:8px;width:32px;height:32px;margin-right:6px"><span style="display:inline-block;vertical-align:middle;color:#123f73">' + e(item.label) + '</span></a>').join('');
+  const social = (branding.social || []).map(item => '<a href="' + e(item.url) + '" target="_blank" title="Open ' + e(item.label) + '" style="display:inline-block;margin:0 14px 12px 0;text-decoration:none;color:#123f73;font:600 12px Arial,Helvetica,sans-serif;white-space:nowrap"><img src="cid:' + e(aiEmailIconCid_(item.key)) + '" alt="' + e(item.label) + '" width="32" height="32" style="display:inline-block;vertical-align:middle;border:0;border-radius:8px;width:32px;height:32px;margin-right:6px"><span style="display:inline-block;vertical-align:middle;color:#123f73">' + e(item.label) + '</span></a>').join('');
   const phone = String(branding.phone || '').replace(/[^+0-9]/g, '');
   const mobile = String(branding.mobilePhone || '').replace(/[^+0-9]/g, '');
   return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f7f9fc;border-top:3px solid #c9a227"><tr><td style="padding:26px 28px;line-height:1.7;font-family:Arial,Helvetica,sans-serif">' +

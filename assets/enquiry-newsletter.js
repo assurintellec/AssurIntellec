@@ -26,7 +26,7 @@
     if (payload.consent !== 'yes') throw new Error('Newsletter consent is required.');
     const response = await fetch('./api/newsletter', {
       method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ action: 'subscribe', email: payload.email, interest: payload.interest, consent: 'yes', company_site_confirm: payload.company_site_confirm || '' }),
+      body: JSON.stringify({ action: 'subscribe', email: payload.email, interest: payload.interest, consent: 'yes', company_site_confirm: payload.company_site_confirm || '', source: 'enquiry', source_page: window.location.pathname }),
       signal: AbortSignal.timeout(35000)
     });
     const result = await response.json();

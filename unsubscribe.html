@@ -22,6 +22,8 @@
   <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="./assets/site-enhancements.css?v=20261030-1">
   <link rel="stylesheet" href="./assets/enquiry-newsletter.css?v=20261030-2">
+  <link rel="stylesheet" href="./assets/enquiry-popup.css?v=20261102-1">
+  <link rel="stylesheet" href="./assets/visitor-analytics.css?v=20261102-1">
 </head>
 <body data-page="unsubscribe">
 <script src="./assets/site-preloader.js?v=20261030-private3"></script>
@@ -32,6 +34,10 @@
     <h1 id="unsubscribeTitle">Unsubscribe from service updates</h1>
     <p>You can stop receiving AssurIntellec™ newsletter and service updates here. Your subscription changes only after you confirm below.</p>
     <form id="unsubscribeForm">
+      <div id="unsubscribeRecovery" hidden>
+        <label for="unsubscribeRecoveryLink">Unsubscribe link from your email</label>
+        <input id="unsubscribeRecoveryLink" type="text" autocomplete="off" spellcheck="false" placeholder="Paste your personal unsubscribe link" style="width:100%;box-sizing:border-box;padding:12px;margin:10px 0 16px;border:1px solid #b9c9d9;border-radius:8px">
+      </div>
       <p id="unsubscribeStatus" role="status" aria-live="polite">Preparing your unsubscribe link…</p>
       <button id="unsubscribeSubmit" type="submit" disabled>Unsubscribe</button>
     </form>
@@ -77,8 +83,10 @@
 <div id="whatsappFloat"></div>
 <div id="siteToast" class="site-toast" role="status" aria-live="polite"></div>
 <script src="./assets/site-assistant.js?v=20261029-6"></script>
-<script src="./assets/newsletter.js?v=20261030-unsubscribe2"></script>
-<script src="./assets/enquiry-newsletter.js?v=20261030-2"></script>
-<script src="./assets/site.js?v=20261030-private3"></script>
+<script src="./assets/newsletter.js?v=20261102-1"></script>
+<script src="./assets/enquiry-newsletter.js?v=20261102-1"></script>
+<script src="./assets/enquiry-popup.js?v=20261102-1"></script>
+<script src="./assets/visitor-analytics.js?v=20261102-1"></script>
+<script src="./assets/site.js?v=20261102-1"></script>
 </body>
 </html>

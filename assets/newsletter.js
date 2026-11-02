@@ -56,25 +56,30 @@
       // validated server reply above can display a successful subscription.
     });
   }
-  function subscribe(url, payload) { return bridgeRequest(url, payload, 'subscribe'); }
-  async function unsubscribe(url, token) {
-    if (!/^[a-f0-9]{64}$/.test(token)) throw new Error('Invalid unsubscribe link.');
+  async function websiteRequest(payload) {
+    const response = await fetch('/api/newsletter', {
+      method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'same-origin',
+      body: JSON.stringify(payload), signal: AbortSignal.timeout(35000)
+    });
+    let result;
+    try { result = await response.json(); }
+    catch (_) { throw new Error('The newsletter website integration must be deployed. Please contact info@assurintellec.in.'); }
+    if (!response.ok || typeof result.success !== 'boolean') throw new Error(result.message || 'This request could not be confirmed.');
+    return result;
+  }
+  function subscribe(url, payload) { return websiteRequest({ ...payload, action: 'subscribe', source: 'newsletter' }); }
+  function unsubscribe(url, token) {
+    if (!/^[a-f0-9]{64}$/.test(token)) return Promise.reject(new Error('Invalid unsubscribe link.'));
+    return websiteRequest({ action: 'unsubscribe', token });
+  }
+  function extractToken(value) {
+    const raw = String(value || '').trim();
+    if (/^[a-f0-9]{64}$/.test(raw)) return raw;
     try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'same-origin',
-        body: JSON.stringify({ action: 'unsubscribe', token }), signal: AbortSignal.timeout(30000)
-      });
-      const result = await response.json();
-      if (typeof result.success !== 'boolean') throw new Error('Unsubscribe could not be confirmed.');
-      if (response.ok || response.status === 400) return result;
-      throw new Error(result.message || 'Unsubscribe could not be confirmed.');
-    } catch (error) {
-      // Static hosts sometimes return a 200 HTML page for /api/*; failures also
-      // include network errors and an older Worker. Retry this idempotent action
-      // through the existing bridge, requiring a verified server response.
-      if (endpoint(url)) return bridgeRequest(url, { token }, 'unsubscribe');
-      throw error;
-    }
+      const url = new URL(raw, 'https://www.assurintellec.in');
+      let token = new URLSearchParams(url.hash.slice(1)).get('token') || url.searchParams.get('token') || '';
+      return /^[a-f0-9]{64}$/.test(token) ? token : '';
+    } catch (_) { return ''; }
   }
   let unsubscribeEndpoint = '';
   function initUnsubscribe(site = {}) {
@@ -84,13 +89,19 @@
     form.dataset.bound = 'true';
     const status = document.getElementById('unsubscribeStatus');
     const button = document.getElementById('unsubscribeSubmit');
-    const token = new URLSearchParams(window.location.hash.slice(1)).get('token') || new URLSearchParams(window.location.search).get('token') || '';
-    if (!/^[a-f0-9]{64}$/.test(token)) {
-      status.textContent = 'This link is incomplete. Open the personal unsubscribe link from your email, or contact info@assurintellec.in.';
-      button.disabled = true; return;
+    let token = new URLSearchParams(window.location.hash.slice(1)).get('token') || new URLSearchParams(window.location.search).get('token') || '';
+    if (!/^[a-f0-9]{64}$/.test(token)) token = '';
+    const recover = document.getElementById('unsubscribeRecovery');
+    const recoveryInput = document.getElementById('unsubscribeRecoveryLink');
+    if (!token && recover) {
+      recover.hidden = false;
+      status.textContent = 'Paste the unsubscribe link from your email below. This also accepts older Google links.';
+      button.disabled = true;
+      recoveryInput.addEventListener('input', () => { token = extractToken(recoveryInput.value); button.disabled = !token; });
+    } else {
+      status.textContent = 'Select Unsubscribe below to stop receiving service updates.';
+      button.disabled = !token;
     }
-    status.textContent = 'Select Unsubscribe below to stop receiving service updates.';
-    button.disabled = false;
     form.addEventListener('submit', async event => {
       event.preventDefault();
       if (button.disabled) return;
@@ -101,16 +112,9 @@
         status.textContent = 'You have been unsubscribed. You will no longer receive service updates from this list.';
         status.dataset.success = 'true'; button.textContent = 'Unsubscribed';
         document.getElementById('unsubscribeAlternative')?.remove();
-      } catch (_) {
-        status.textContent = 'We could not confirm your unsubscribe request. Please try again, or email info@assurintellec.in for help.';
+      } catch (error) {
+        status.textContent = error.message || 'We could not confirm your unsubscribe request. Please try again or email info@assurintellec.in.';
         button.disabled = false; button.textContent = 'Try unsubscribe again';
-        if (endpoint(unsubscribeEndpoint) && !document.getElementById('unsubscribeAlternative')) {
-          const alternative = document.createElement('a');
-          alternative.id = 'unsubscribeAlternative'; alternative.textContent = 'Use alternative unsubscribe form';
-          alternative.href = unsubscribeEndpoint + '?action=unsubscribe&token=' + encodeURIComponent(token);
-          alternative.target = '_blank'; alternative.rel = 'noopener noreferrer';
-          alternative.style.cssText = 'display:block;margin-top:16px;text-decoration:underline'; form.append(alternative);
-        }
       }
     });
   }
@@ -175,5 +179,5 @@
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindUnsubscribe);
     else bindUnsubscribe();
   }
-  return { init, initUnsubscribe, defaults, endpoint, options, googleOrigin, unsubscribe };
+  return { init, initUnsubscribe, defaults, endpoint, options, googleOrigin, unsubscribe, subscribe, extractToken };
 });

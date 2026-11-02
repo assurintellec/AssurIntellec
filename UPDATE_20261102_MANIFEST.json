@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-02",
+  "source_document": "7.Website_Update_02-11-2026.docx",
+  "summary": "Seven requested website and integration updates; account-side activation required.",
+  "added": [
+    "START_HERE_02-11-2026.txt",
+    "WEBSITE_UPDATE_02-11-2026.md",
+    "assets/enquiry-popup.css",
+    "assets/enquiry-popup.js",
+    "assets/visitor-analytics.css",
+    "assets/visitor-analytics.js",
+    "integrations/WHATSAPP_TEMPLATE_DRAFTS.txt",
+    "integrations/WhatsApp.gs",
+    "integrations/newsletter/VisitorAnalytics.gs",
+    "tests/update-20261102.test.mjs",
+    "visitor-analytics.js"
+  ],
+  "modified": [
+    ".assetsignore",
+    "about.html",
+    "admin/config.yml",
+    "assets/enquiry-newsletter.js",
+    "assets/newsletter.js",
+    "assets/site.js",
+    "contact.html",
+    "content/site.json",
+    "index.html",
+    "integrations/Code.gs",
+    "integrations/newsletter/Code.gs",
+    "maintenance-router.js",
+    "newsletter-proxy.js",
+    "service-advisory-transactions.html",
+    "service-gmp-engineering.html",
+    "service-life-sciences-trade.html",
+    "service-pharma-laboratory-technologies.html",
+    "service-pharma-solutions-manufacturing.html",
+    "service-research-scientific-services.html",
+    "service-talent-recruitment.html",
+    "services.html",
+    "unsubscribe.html",
+    "why-us-detail.html",
+    "why-us.html"
+  ],
+  "unchanged_file_count": 64,
+  "checks": {
+    "automated_tests": 12,
+    "syntax_files": 17,
+    "original_site_settings_preserved": true,
+    "service_content_preserved": true,
+    "existing_decap_fields_preserved": true,
+    "browser_checks": [
+      "desktop popup",
+      "390px mobile popup",
+      "close/restored form values",
+      "newsletter opt-in controls",
+      "old-link unsubscribe recovery"
+    ]
+  },
+  "live_services_tested": false,
+  "activation_guide": "WEBSITE_UPDATE_02-11-2026.md"
+}

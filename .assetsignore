@@ -5,3 +5,10 @@
 /cloudflare-worker/**
 /tests/**
 **/.git
+
+/visitor-analytics.js
+/integrations/**
+/*.md
+/*.json
+/dist/**
+/.openai/**

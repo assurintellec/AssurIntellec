@@ -1486,7 +1486,7 @@ function submitEnquiryPost(url, payload, bridgeToken, frame) {
   }
 }
 
-function sendToGoogleAppsScript(url, data, site, callback, confirmedOnly = false) {
+function sendToGoogleAppsScript(url, data, site, callback, confirmedOnly = true) {
   if (!url || !/^https?:\/\//i.test(url)) {
     callback(
       false,
@@ -1495,6 +1495,7 @@ function sendToGoogleAppsScript(url, data, site, callback, confirmedOnly = false
     return;
   }
 
+  url = String(url).replace(/\/macros\/u\/\d+\/s\//, '/macros/s/');
   const c = site.contact || {};
   const frame = createEnquiryTransportFrame();
   const bridgeToken = makeEnquiryBridgeToken();
@@ -1581,6 +1582,7 @@ function sendToGoogleAppsScript(url, data, site, callback, confirmedOnly = false
 }
 
 function showEnquirySuccess(site, customerName = "") {
+  document.dispatchEvent(new CustomEvent("assurintellec:enquiry-success"));
   const c = site.contact || {};
 
   const overlay = document.getElementById('enquirySuccessOverlay');
@@ -1741,7 +1743,7 @@ function handleEnquirySubmit(event, site) {
       data,
       site,
       finish,
-      !!newsletterSelection
+      true
     );
     return;
   }
@@ -2161,7 +2163,9 @@ async function init() {
   applyAnimationOptions(SITE);
   window.AssurDiscovery?.init(SITE, SERVICES);
   window.AssurNewsletter?.init(SITE, SERVICES);
+  window.AssurEnquiryPopup?.init(SITE, SERVICES, () => renderContact(SITE, SERVICES));
   window.AssurEnquiryNewsletter?.init(SITE, SERVICES);
+  window.AssurVisitorAnalytics?.init(SITE);
   if (SITE.media_options?.image_hover_zoom_enabled === false) document.documentElement.classList.add('disable-image-zoom');
   if (SITE.visitor_counter?.enabled === false) {
     const stat=document.getElementById('visitorStat');

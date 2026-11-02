@@ -40,6 +40,130 @@ collections:
         widget: string
         default: Loading your experience
         required: false
+    - label: Timed Enquiry Popup
+      name: enquiry_popup
+      widget: object
+      collapsed: true
+      required: false
+      fields:
+      - label: Enable Timed Enquiry Popup
+        name: enabled
+        widget: boolean
+        required: false
+        default: true
+      - label: Delay In Seconds
+        name: delay_seconds
+        widget: number
+        required: false
+        default: 180
+        hint: 180 seconds = 3 minutes. Timing continues across pages in the same tab; shown once per browser session.
+        value_type: int
+        min: 0
+        max: 86400
+      - label: Eyebrow
+        name: eyebrow
+        widget: string
+        required: false
+        default: LET’S CONNECT
+      - label: Popup Title
+        name: title
+        widget: string
+        required: false
+        default: How can we help your business?
+      - label: Description
+        name: description
+        widget: text
+        required: false
+        default: Share your requirement and our team will get in touch.
+      - label: Close Button Label
+        name: close_label
+        widget: string
+        required: false
+        default: Close enquiry form
+    - label: WhatsApp Enquiry Confirmations
+      name: whatsapp_notifications
+      widget: object
+      collapsed: true
+      required: false
+      fields:
+      - label: Show WhatsApp Confirmation Choice
+        name: enabled
+        widget: boolean
+        required: false
+        default: true
+        hint: The server also requires WA_ENABLED=true, API credentials and approved templates. Configure secrets in
+          the enquiry Apps Script, never here.
+      - label: Registered Sender Number (Reference)
+        name: sender_number
+        widget: string
+        required: false
+        default: '917600666436'
+        hint: Reference only. Set the same WA_SENDER_NUMBER and the matching Meta phone number ID privately in the enquiry
+          script. This number cannot send office alerts to itself.
+      - label: WhatsApp Consent Label
+        name: consent_label
+        widget: text
+        required: false
+        default: Yes, send me an enquiry confirmation on WhatsApp from AssurIntellec.
+    - label: Visitor Analytics & Google Sheets
+      name: visitor_analytics
+      widget: object
+      collapsed: true
+      required: false
+      fields:
+      - label: Enable Visitor Analytics
+        name: enabled
+        widget: boolean
+        required: false
+        default: true
+      - label: Ask Permission Before Recording
+        name: require_consent
+        widget: boolean
+        required: false
+        default: true
+        hint: No analytics requests are sent until the visitor accepts. Do Not Track and Global Privacy Control are
+          respected.
+      - label: Include IP Address
+        name: collect_ip
+        widget: boolean
+        required: false
+        default: true
+        hint: Approximate location is supplied by Cloudflare. Neither IP nor location identifies a visitor by name.
+      - label: Update Interval In Seconds
+        name: heartbeat_seconds
+        widget: number
+        required: false
+        default: 60
+        value_type: int
+        min: 30
+        max: 300
+      - label: Optional Analytics Apps Script URL
+        name: google_apps_script_url
+        widget: string
+        required: false
+        hint: Leave empty to use the newsletter URL. Install VisitorAnalytics.gs in that newsletter project and set
+          the matching private ANALYTICS_BRIDGE_TOKEN on both sides.
+      - label: Visitor Privacy Notice
+        name: notice
+        widget: text
+        required: false
+        default: Help us improve your experience. With your permission, we record pages and sections viewed, active
+          time, IP address and approximate city/country. We do not record form entries.
+      - label: Allow Button
+        name: accept_label
+        widget: string
+        required: false
+        default: Allow insights
+      - label: Decline Button
+        name: decline_label
+        widget: string
+        required: false
+        default: No thanks
+      - label: Preferences Link
+        name: preferences_label
+        widget: string
+        required: false
+        default: Visitor privacy
     - label: Newsletter & Subscriptions
       name: newsletter
       widget: object

@@ -1,0 +1,10 @@
+.ai-enquiry-popup{position:fixed;inset:0;margin:auto;border:1px solid #d5dfeb;border-radius:22px;background:#fff;color:#142c49;padding:0;width:min(700px,calc(100% - 28px));max-height:90dvh;overflow:auto;box-shadow:0 28px 100px #03132770}
+.ai-enquiry-popup::backdrop{background:#04152cb3;backdrop-filter:blur(5px)}
+.ai-popup-intro{position:relative;top:auto;z-index:0;backdrop-filter:none;padding:32px 60px 24px 32px;background:linear-gradient(120deg,#0b1f3a,#143c61);color:#fff;border-bottom:3px solid #c9a227}
+.ai-popup-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:1.8px;color:#e6ce84;margin-bottom:10px}
+.ai-popup-intro h2{font-size:clamp(23px,4vw,31px);line-height:1.2;color:#fff;margin:0 0 10px}.ai-popup-intro p{margin:0;color:#d8e3ef;font-size:15px;line-height:1.6}
+.ai-popup-close{position:absolute;z-index:2;right:15px;top:15px;border:1px solid #ffffff60;background:#ffffff16;color:#fff;border-radius:50%;width:36px;height:36px;font-size:26px;line-height:1;cursor:pointer}.ai-popup-close:focus-visible{outline:3px solid #e6ce84;outline-offset:3px}
+.ai-popup-form{padding:26px 32px 32px}.ai-popup-form .contact-form{border:0;padding:0;box-shadow:none;background:transparent}.ai-popup-form #contactFormTitle{font-size:18px;margin:0 0 18px}.ai-popup-form .form-grid{gap:15px}.ai-popup-form textarea{min-height:95px}
+.ai-whatsapp-consent label{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.6;font-weight:400}.ai-whatsapp-consent input[type=checkbox]{width:18px;height:18px;flex:0 0 18px;margin:2px 0 0;accent-color:#0b1f3a}.ai-popup-open{overflow:hidden}
+@media(max-width:520px){.ai-popup-intro{padding:27px 50px 22px 22px}.ai-popup-form{padding:22px}.ai-popup-form .form-grid{grid-template-columns:1fr}.ai-popup-form .contact-form-actions{flex-direction:column}.ai-popup-form .contact-form-actions .btn{width:100%}}
+@media(prefers-reduced-motion:no-preference){.ai-enquiry-popup[open]{animation:ai-popup-in .25s ease-out}@keyframes ai-popup-in{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}}
