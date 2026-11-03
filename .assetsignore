@@ -1,6 +1,7 @@
 /maintenance-router.js
 /visitor-counter.js
 /newsletter-proxy.js
+/email-footer-status.js
 /wrangler.toml
 /cloudflare-worker/**
 /tests/**

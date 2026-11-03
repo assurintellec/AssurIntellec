@@ -121,6 +121,9 @@ function retryPendingNewsletterEmails() {
 
 function doGet(e) {
   const data = e && e.parameter ? e.parameter : {};
+  if (data.action === 'email_footer_status') {
+    return ContentService.createTextOutput(JSON.stringify({ service: 'assurintellec-newsletter', footer: aiEmailFooterStatus_() })).setMimeType(ContentService.MimeType.JSON);
+  }
   if (data.action === 'health') {
     let ready = false;
     try { nlGetSheet_(); ready = true; } catch (_) {}
@@ -404,18 +407,27 @@ function aiEmailFooterText_(branding) {
     'Office: ' + branding.phone, branding.mobilePhone ? 'Mobile: ' + branding.mobilePhone : '', branding.email, branding.address,
     '', 'Connect with AssurIntellec', ...(branding.social || []).map(item => item.label + ': ' + item.url)].filter(Boolean).join('\n');
 }
+function aiEmailFooterStatus_() {
+  return { version: '2026-11-03-icons-only-v4', rows: 3, columns: 3, icons: 9, visible_labels: false };
+}
+// Read-only inspection: no messages sent and no spreadsheet data returned.
+function inspectEmailFooterLayout() {
+  const result = aiEmailFooterStatus_();
+  Logger.log(JSON.stringify(result));
+  return result;
+}
 function aiEmailSocialGrid_(items) {
   const e = aiEmailEscape_;
   const visible = (items || []).slice(0, 9);
   const rows = [];
   for (let i = 0; i < visible.length; i += 3) {
     const cells = visible.slice(i, i + 3).map(function (item) {
-      return '<td width="72" align="center" valign="middle" style="width:72px;padding:6px 10px 6px 0"><a href="' + e(item.url) + '" target="_blank" title="Open ' + e(item.label) + '" style="display:inline-block;text-decoration:none"><img src="cid:' + e(aiEmailIconCid_(item.key)) + '" alt="' + e(item.label) + '" width="48" height="48" style="display:block;width:48px;height:48px;border:0;outline:none;text-decoration:none"></a></td>';
+      return '<td width="72" align="center" valign="middle" style="width:72px;padding:6px 10px 6px 0"><a href="' + e(item.url) + '" target="_blank" title="Open ' + e(item.label) + '" aria-label="Open ' + e(item.label) + '" style="display:inline-block;text-decoration:none"><img src="cid:' + e(aiEmailIconCid_(item.key)) + '" alt="" role="presentation" width="48" height="48" style="display:block;width:48px;height:48px;border:0;outline:none;text-decoration:none;font-size:0;line-height:0;color:transparent"></a></td>';
     });
     while (cells.length < 3) cells.push('<td width="72" style="width:72px;padding:6px 10px 6px 0"></td>');
     rows.push('<tr>' + cells.join('') + '</tr>');
   }
-  return rows.length ? '<table role="presentation" class="assur-social-grid" width="216" cellspacing="0" cellpadding="0" border="0" style="width:216px;border-collapse:collapse;table-layout:fixed">' + rows.join('') + '</table>' : '';
+  return rows.length ? '<table role="presentation" class="assur-social-grid" data-footer-version="2026-11-03-icons-only-v4" width="216" cellspacing="0" cellpadding="0" border="0" style="width:216px;border-collapse:collapse;table-layout:fixed">' + rows.join('') + '</table>' : '';
 }
 function aiEmailFooterHtml_(branding, logoSource) {
   const e = aiEmailEscape_;

@@ -1,0 +1,51 @@
+/* Document 10: keep the desktop visual hierarchy on wide tablets while
+   retaining every feature and readable controls on smaller screens. */
+.section-heading h2, .about-content h2 { text-wrap: balance; }
+.service-card-with-image .service-tile-body { border-top: 1px solid rgba(201, 162, 39, .28); }
+
+@media (min-width: 1000px) and (max-width: 1180px) {
+  body[data-page="home"] .hero { display: block; }
+  body[data-page="home"] .hero-stage { display: block; position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; }
+  .hero-stage :is(.hero-bg-video, .hero-bg-fallback) { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; aspect-ratio: auto; object-fit: contain; }
+  body[data-page="home"] .hero-content {
+    position: absolute; top: calc((100% - 116px) / 2); left: 0; right: auto;
+    transform: translateY(-50%); width: 86%; max-width: 980px; margin: 0;
+    padding: 16px var(--device-right-gutter, 22px) 16px var(--device-left-gutter, 22px);
+    background: transparent;
+  }
+  body[data-page="home"] .hero-company { font-size: 48px; line-height: 1.1; margin-bottom: 12px; }
+  body[data-page="home"] .hero-kicker { font-size: 12px; margin-bottom: 12px; }
+  body[data-page="home"] .hero h1 {
+    font-size: clamp(30px, 3.4vw, 40px) !important; min-height: 1.2em !important;
+    line-height: 1.15; margin-bottom: 16px; white-space: nowrap;
+  }
+  body[data-page="home"] .hero-typed-text { white-space: nowrap; }
+  body[data-page="home"] .hero p { font-size: 17px; line-height: 1.65; margin-bottom: 22px; }
+  body[data-page="home"] .hero-buttons .btn { min-height: 50px; font-size: 15px; }
+  .hero-stage .trust-strip { position: absolute; inset: auto 0 0; padding-block: 0; background: transparent; text-shadow: 0 2px 7px #07182de6; }
+  .hero-stage .trust-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 0; }
+  .hero-stage .trust-item { padding-block: 16px; }
+  .hero-stage .trust-item + .trust-item { border-left: 0; }
+  .hero-stage .trust-item i { font-size: 28px; }
+  .hero-stage .trust-item strong { font-size: 13px; }
+  .hero-stage .trust-item span { font-size: 12px; color: #fff; }
+  .hero-stage .hero-sound { top: 14px; bottom: auto; }
+  .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .process-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1100px) and (max-width: 1180px) {
+  .about-reel-grid { grid-template-columns: minmax(0, 1fr) auto; gap: 36px; }
+  .contact-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 36px; }
+  .footer-grid { grid-template-columns: 1.25fr .75fr 1fr 1fr; gap: 25px; }
+}
+
+/* In short landscape windows, keep the video separate so no text or action
+   obscures another. The same content, links and controls remain available. */
+@media (min-width: 1000px) and (max-width: 1180px) and (max-height: 600px) {
+  body[data-page="home"] .hero { display: flex; flex-direction: column; }
+  body[data-page="home"] .hero-stage { display: contents; }
+  .hero-stage :is(.hero-bg-video, .hero-bg-fallback) { position: relative; inset: auto; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: calc(var(--visible-viewport-height) - var(--site-header-height, 84px) - 16px); }
+  body[data-page="home"] .hero-content { position: relative; inset: auto; transform: none; width: 100%; max-width: none; padding-block: 30px; background: var(--navy); }
+  .hero-stage .trust-strip { position: relative; inset: auto; background: var(--navy); }
+}

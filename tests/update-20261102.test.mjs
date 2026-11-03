@@ -221,10 +221,22 @@ test('Both thank-you email footers use nine icon-only links in three rows of thr
   const rows=[...grid.matchAll(/<tr>([\s\S]*?)<\/tr>/g)];assert.equal(rows.length,3);
   for(const row of rows){assert.equal((row[1].match(/<td\b/g)||[]).length,3);assert.equal((row[1].match(/<a\b/g)||[]).length,3);assert.equal((row[1].match(/<img\b/g)||[]).length,3);}
   assert.equal(grid.replace(/<[^>]*>/g,'').trim(),'');
+  assert.equal((grid.match(/alt="" role="presentation"/g)||[]).length,9);
+  assert.equal((grid.match(/aria-label="Open /g)||[]).length,9);
+  assert.match(html,/data-footer-version="2026-11-03-icons-only-v4"/);
   assert.match(rows[0][1],/instagram[\s\S]*facebook[\s\S]*linkedin/);
   assert.match(rows[1][1],/youtube[\s\S]*whatsapp_channel[\s\S]*telegram/);
   assert.match(rows[2][1],/threads[\s\S]*assur_social_x[\s\S]*google/);
   g.context.html=html;const payload=g.run('aiEmailInlinePayload_(html)');assert.equal(payload.length,9);
   for(const icon of payload){const key=icon.cid.replace('assur_social_','').replaceAll('_','-');assert.equal(Buffer.from(icon.base64,'base64').compare(fs.readFileSync(new URL('../images/email-icons/'+key+'.png',import.meta.url))),0);}
+ }
+});
+test('Both deployed-template checks return only layout metadata without sending email',()=>{
+ for(const path of ['integrations/Code.gs','integrations/newsletter/Code.gs']){
+  const g=gas([path]);g.context.ContentService={MimeType:{JSON:'application/json'},createTextOutput:text=>({setMimeType:()=>({text})})};
+  const result=JSON.parse(g.run('doGet({parameter:{action:"email_footer_status"}})').text);
+  assert.equal(result.service,path.includes('newsletter/')?'assurintellec-newsletter':'assurintellec-enquiry');
+  assert.deepEqual(result.footer,{version:'2026-11-03-icons-only-v4',rows:3,columns:3,icons:9,visible_labels:false});
+  assert.equal(g.sent.length,0);assert.equal(Object.keys(g.book.sheets).length,0);
  }
 });

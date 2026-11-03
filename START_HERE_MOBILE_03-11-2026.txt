@@ -1,3 +1,5 @@
+LATEST: Read START_HERE_DOCUMENT10_03-11-2026.txt. Document 10 supersedes older layout/footer notes.
+
 LATEST: Read START_HERE_DEVICES_03-11-2026.txt for phone/tablet/orientation updates.
 
 ASSURINTELLEC — MOBILE REFINEMENT — 3 NOVEMBER 2026

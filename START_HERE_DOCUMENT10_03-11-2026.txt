@@ -1,0 +1,51 @@
+ASSURINTELLEC — WORD DOCUMENT 10 UPDATE — 3 NOVEMBER 2026
+
+Read DOCUMENT10_UPDATE_03-11-2026.md for details. This is the latest package.
+It includes the previous device, video, visitor, enquiry and newsletter changes.
+
+1. WEBSITE
+Back up your current source. Merge this package into the EXISTING website.
+Keep your existing large images/videos and current content/settings. Include
+all updated HTML/CSS/JS, all nine images/email-icons/*.png, the new
+email-footer-status.js and updated maintenance-router.js/.assetsignore.
+Redeploy the SAME main website Worker using your normal workflow, retaining
+its domain, bindings, migrations, URLs and secrets. Hard-refresh afterward.
+
+2. ENQUIRY THANK-YOU EMAIL — SEPARATE STEP REQUIRED
+Open the existing Enquiries spreadsheet > Extensions > Apps Script.
+Replace Code.gs with integrations/Code.gs from this ZIP. Keep Bridge.html,
+WhatsApp.gs, Script Properties, spreadsheet data and existing settings.
+Save. Deploy > Manage deployments > pencil/Edit > Version: New version > Deploy.
+Keep the SAME /exec URL, execute as Me and existing Anyone access.
+
+3. NEWSLETTER THANK-YOU EMAIL — SEPARATE STEP REQUIRED
+Open the existing Newsletter spreadsheet > Extensions > Apps Script.
+Replace Code.gs with integrations/newsletter/Code.gs from this ZIP.
+Keep VisitorAnalytics.gs, subscriber data, tokens, triggers and properties.
+Save. Update the SAME deployment to a New version (Me / Anyone), preserving
+its /exec URL. Do not delete rows or rerun sheet setup just for this footer.
+
+4. CHECK THAT BOTH EMAIL CHANGES ARE ACTIVE
+After deploying the website, open:
+https://www.assurintellec.in/admin/email-footer-check.html
+Confirm that all nine blue/gold images load. Click Check deployed templates.
+Both templates must report version 2026-11-03-icons-only-v4.
+If one is not updated, repeat the New version deployment for THAT Google app.
+This check is read-only and sends no email. After both are updated, send one
+controlled enquiry and signup using your own email and inspect the NEW mails.
+Emails already received in your inbox do not change.
+
+IMPORTANT
+Uploading website files alone cannot update deployed Apps Script templates.
+No new secret, WhatsApp subscription or setup trigger is needed. The separate
+SMTP mail Worker is unchanged in this revision. If earlier document 9 email
+Worker/video changes are not yet activated, follow that guide as well.
+
+DEVICE DESIGN
+Wider tablets now retain the desktop-style video/text hero and service grid.
+Phone layouts keep the same branding, content and functions with readable
+text and controls. There is no forced tiny desktop page or disabled zoom.
+
+36 automated tests pass. All 15 public pages passed 180 page/screen layout
+checks in Chrome. Safari/Firefox/Edge and Instagram apps still need actual
+device checks. No live website/account was changed and no live mail was sent.

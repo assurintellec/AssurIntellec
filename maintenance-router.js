@@ -1,6 +1,7 @@
 import { handleVisitorCounter } from './visitor-counter.js';
 import { handleAnalyticsRequest } from './visitor-analytics.js';
 import { handleNewsletterRequest } from './newsletter-proxy.js';
+import { handleEmailFooterStatus } from './email-footer-status.js';
 export { VisitorCounter } from './visitor-counter.js';
 
 export default {
@@ -17,6 +18,9 @@ export default {
       }
       if (new URL(request.url).pathname === '/api/newsletter') {
         return handleNewsletterRequest(request, env);
+      }
+      if (new URL(request.url).pathname === '/api/email-footer-status') {
+        return handleEmailFooterStatus(request, env);
       }
       if (new URL(request.url).pathname === '/api/visitor-analytics') {
         return handleAnalyticsRequest(request, env);
