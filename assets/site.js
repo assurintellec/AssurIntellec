@@ -249,7 +249,7 @@ function renderHeader(site) {
       <img class="brand-logo" src="${escapeHtml(logo)}" alt="${escapeHtml(site.company_name || 'AssurIntellec™')}" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
       <div class="brand-fallback">${escapeHtml(site.company_name || 'AssurIntellec™')}</div>
     </a>
-    <nav id="mainNav">
+    <nav id="mainNav" aria-label="Main navigation">
       <div class="nav-links">
       <a href="./index.html">${escapeHtml(n.home || 'Home')}</a>
       <a href="./about.html">${escapeHtml(n.about || 'About Us')}</a>
@@ -259,22 +259,42 @@ function renderHeader(site) {
       </div>
       ${social}
     </nav>
-    <button class="menu-toggle" id="menuToggle" type="button" aria-label="${escapeHtml(ui.menu_open_label || 'Open navigation')}" title="${escapeHtml(ui.menu_open_label || 'Open navigation')}"><i class="fas fa-bars"></i></button>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="${escapeHtml(ui.menu_open_label || 'Open navigation')}" title="${escapeHtml(ui.menu_open_label || 'Open navigation')}"><span class="menu-toggle-icon" aria-hidden="true"></span></button>
   </div></header>`;
   document.getElementById('site-header').innerHTML = html;
 
   const toggle = document.getElementById('menuToggle');
   const nav = document.getElementById('mainNav');
-  toggle?.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    const open = nav.classList.contains('active');
-    const icon = toggle.querySelector('i');
-    if (icon) icon.className = open ? 'fas fa-xmark' : 'fas fa-bars';
+  const setMenuOpen = open => {
+    nav.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? (ui.menu_close_label || 'Close navigation') : (ui.menu_open_label || 'Open navigation'));
     toggle.setAttribute('title', open ? (ui.menu_close_label || 'Close navigation') : (ui.menu_open_label || 'Open navigation'));
+  };
+  toggle?.addEventListener('click', () => setMenuOpen(!nav.classList.contains('active')));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenuOpen(false)));
+  const header = document.querySelector('#site-header > header');
+  document.addEventListener('click', event => {
+    if (nav.classList.contains('active') && !header.contains(event.target)) setMenuOpen(false);
   });
-
-  document.querySelectorAll('#mainNav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('active')));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && nav.classList.contains('active')) {
+      setMenuOpen(false);
+      toggle.focus();
+    }
+  });
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  const currentSection = currentPage.startsWith('service-') ? 'services.html' : currentPage === 'why-us-detail.html' ? 'why-us.html' : currentPage;
+  nav.querySelectorAll('.nav-links a').forEach(a => {
+    if (new URL(a.href, location.href).pathname.split('/').pop() === currentSection) a.setAttribute('aria-current', currentPage === currentSection ? 'page' : 'true');
+  });
+  const syncHeaderHeight = () => {
+    document.documentElement.style.setProperty('--site-header-height', `${Math.ceil(header.getBoundingClientRect().height)}px`);
+    if (!window.matchMedia('(max-width: 1380px)').matches) setMenuOpen(false);
+  };
+  syncHeaderHeight();
+  if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe(header);
+  window.addEventListener('resize', syncHeaderHeight, { passive: true });
 }
 
 function telephoneHref(value) {
@@ -727,6 +747,8 @@ function startServiceHeadingAnimation(site, services) {
   const text = String(hero.description || '').trim();
   if (description) description.style.display = text ? '' : 'none';
   if (!heading || hero.service_cycle_enabled === false) return;
+  // Keep the configured heading still when the visitor requests reduced motion.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const configured = Array.isArray(hero.service_cycle_titles) ? hero.service_cycle_titles : [];
   const titles = configured.map(item => typeof item === 'string' ? item : item?.title).map(x => String(x || '').trim()).filter(Boolean);
@@ -752,22 +774,32 @@ function startServiceHeadingAnimation(site, services) {
   heading.style.minHeight = `${stableHeadingHeight}px`;
   heading.dataset.baseFontSize = String(originalFontSize);
   const fitHeadingToSingleLine = word => {
+    if (window.matchMedia('(max-width: 1380px)').matches) {
+      heading.style.removeProperty('font-size');
+      heading.style.removeProperty('height');
+      heading.style.removeProperty('min-height');
+      return;
+    }
     const cs = getComputedStyle(heading);
+    const themeStyle = getComputedStyle(document.documentElement);
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const family = cs.fontFamily || 'Arial, sans-serif';
     const weight = cs.fontWeight || '700';
-    const available = Math.max(170, heading.clientWidth || heading.parentElement?.clientWidth || 700);
-    const letterSpacing = Number.parseFloat(cs.letterSpacing) || 0;
+    const available = Math.max(1, (heading.clientWidth || heading.parentElement?.clientWidth || 700) - 4);
+    const spacingRatio = (Number.parseFloat(cs.letterSpacing) || 0) / (Number.parseFloat(cs.fontSize) || originalFontSize);
     const measuredWidth = size => {
       ctx.font = `${weight} ${size}px ${family}`;
-      return ctx.measureText(word).width + Math.max(0, word.length - 1) * letterSpacing;
+      return ctx.measureText(word + ' |').width + Math.max(0, word.length + 1) * spacingRatio * size;
     };
-    const base = Number(heading.dataset.baseFontSize) || originalFontSize;
+    const base = Number(sizeRule?.font_size) || parseFloat(themeStyle.getPropertyValue('--hero-heading-size')) || originalFontSize;
     const width = measuredWidth(base);
     const fitted = width > available ? Math.max(17, base * available / width) : base;
     heading.style.fontSize = `${fitted.toFixed(2)}px`;
+    const reservedHeight = Math.ceil(base * (parseFloat(themeStyle.getPropertyValue('--hero-heading-line-height')) || 1.1));
+    heading.style.height = `${reservedHeight}px`;
+    heading.style.minHeight = `${reservedHeight}px`;
   };
   const onHeroResize = () => fitHeadingToSingleLine(cycle[wordIndex % cycle.length] || '');
   window.__fitAssurHeroHeading = onHeroResize;
@@ -1857,128 +1889,14 @@ function renderServicesPage(site) {
 // The same streamlined, CMS-editable player is used by all seven service details.
 // Only sound can be switched by visitors: no native play, pause, fullscreen,
 // timeline, picture-in-picture, or download controls are shown.
-function serviceVideoMarkup(source, description, poster = '', extraClass = '') {
-  const src = escapeHtml(playableVideoAsset(source));
-  const label = escapeHtml(description || 'Service introduction video');
-  const posterAttr = poster ? ` poster="${escapeHtml(normalizeAsset(poster))}"` : '';
-  const mime = serviceVideoMime(source);
-  const typeAttr = mime ? ` type="${mime}"` : '';
-  return `<div class="service-video-player">
-    <video class="${escapeHtml(extraClass)} service-loop-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback"${posterAttr} aria-label="${label}">
-      <source src="${src}"${typeAttr}>Your browser does not support this video format.
-    </video>
-    <button type="button" class="service-video-sound" aria-label="Unmute service video" aria-pressed="false" title="Unmute service video"></button>
-  </div>`;
+function serviceVideoMarkup(source, description, poster = '', extraClass = '', fallback = '') {
+  return window.AssurServiceVideo.markup(source, description, poster, extraClass, fallback);
 }
-
-// Opening videos are genuine inline autoplay elements, just like the homepage
-// hero. A CMS update changes their SOURCE; it must not destroy the video DOM
-// node (which would interrupt playback or undo a manual HTML override).
-function syncOpeningServiceVideo(hero, source, poster, description) {
-  const video = hero?.querySelector('.ps2-hero-frame video');
-  if (!video) return;
-  video.setAttribute('aria-label', description || 'Service opening video');
-  if (poster) video.poster = normalizeAsset(poster);
-  // Advanced manual override: editors who intentionally set data-manual-video="true"
-  // in the matching service-*.html keep the inline HTML source unchanged.
-  if (video.dataset.manualVideo === 'true') return;
-  const next = playableVideoAsset(source);
-  if (!next) return; // keep immediate-play HTML default if CMS value is empty
-  const current = video.querySelector('source')?.getAttribute('src') || video.getAttribute('src') || '';
-  try {
-    if (new URL(current, location.href).href === new URL(next, location.href).href) return;
-  } catch (_) { if (current === next) return; }
-  // Never swap the actual <video> element: replace only the media URL and load.
-  video.pause();
-  video.querySelectorAll('source').forEach(el => el.remove());
-  video.src = next;
-  video.load();
-  const attempt = video.play();
-  if (attempt?.catch) attempt.catch(() => {});
+function syncOpeningServiceVideo(hero, source, poster, description, fallback = '') {
+  window.AssurServiceVideo.sync(hero, source, poster, description, fallback);
 }
-
 function setupServiceVideoPlayers(root = document) {
-  root.querySelectorAll('.service-video-player').forEach(player => {
-    const video = player.querySelector('video');
-    if (!video || player.dataset.playerReady === 'true') return;
-    player.dataset.playerReady = 'true';
-    // The static service HTML also has a player; create its controls exactly as
-    // for the CMS-rendered player, without replacing the already-loading video.
-    let sound = player.querySelector('.service-video-sound');
-    if (!sound) {
-      sound = document.createElement('button');
-      sound.className = 'service-video-sound';
-      sound.type = 'button';
-      player.append(sound);
-    }
-    sound.setAttribute('aria-label', 'Unmute service video');
-    let feedback = player.querySelector('.service-video-feedback');
-    if (!feedback) {
-      feedback = document.createElement('div');
-      feedback.className = 'service-video-feedback';
-      feedback.hidden = true;
-      feedback.innerHTML = '<p class="service-video-feedback-text" role="status"></p><button type="button" class="service-video-retry">Play video</button>';
-      player.append(feedback);
-    }
-    const retry = feedback.querySelector('.service-video-retry');
-    const message = feedback.querySelector('.service-video-feedback-text');
-    video.controls = false;
-    video.removeAttribute('controls');
-    video.autoplay = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.setAttribute('playsinline', '');
-    video.disablePictureInPicture = true;
-    video.muted = true; // required for reliable autoplay on mobile/desktop
-    video.defaultMuted = true;
-    video.volume = 1;
-    const icon = muted => muted
-      ? '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>'
-      : '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>';
-    const updateSound = () => {
-      const muted = video.muted || video.volume === 0;
-      sound.innerHTML = icon(muted);
-      sound.setAttribute('aria-label', muted ? 'Unmute service video' : 'Mute service video');
-      sound.setAttribute('aria-pressed', String(!muted));
-      sound.title = muted ? 'Unmute service video' : 'Mute service video';
-    };
-    const showFeedback = (txt, label = 'Play video') => {
-      message.textContent = txt;
-      retry.textContent = label;
-      feedback.hidden = false;
-    };
-    const keepPlaying = () => {
-      if (!video.isConnected || document.hidden || video.error) return;
-      const attempt = video.play();
-      if (attempt?.then) attempt.then(() => { feedback.hidden = true; }).catch(err => {
-        if (err?.name === 'NotAllowedError') showFeedback('Tap Play to start the opening video.');
-        else if (err?.name !== 'AbortError') showFeedback('Playback was interrupted. Tap Play to retry.');
-      });
-    };
-    retry.addEventListener('click', () => {
-      // This call originates from the visitor gesture; supported browsers can play.
-      if (video.error) video.load();
-      const attempt = video.play();
-      if (attempt?.then) attempt.then(() => { feedback.hidden = true; }).catch(() => {
-        showFeedback('This video cannot play in your browser. Upload an H.264 MP4 in Decap Turbo.', 'Retry playback');
-      });
-    });
-    sound.addEventListener('click', () => {
-      video.muted = !video.muted;
-      video.volume = 1;
-      updateSound();
-      keepPlaying();
-    });
-    video.addEventListener('volumechange', updateSound);
-    video.addEventListener('canplay', () => { feedback.hidden = true; keepPlaying(); });
-    video.addEventListener('playing', () => { feedback.hidden = true; });
-    video.addEventListener('error', () => showFeedback('Video file unavailable or unsupported. Check its Decap upload path and use H.264 MP4.', 'Retry playback'));
-    video.addEventListener('pause', () => { if (!video.ended && !video.error) keepPlaying(); });
-    video.addEventListener('ended', () => { video.currentTime = 0; keepPlaying(); });
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) keepPlaying(); });
-    updateSound();
-    keepPlaying();
-  });
+  window.AssurServiceVideo.init(root);
 }
 
 function renderServiceDetail(site) {
@@ -2259,12 +2177,12 @@ function renderPremiumService(service, site) {
   const subject='AssurIntellec enquiry — '+text(service.page_title||service.title);
   const mailHref=`mailto:${mail}?subject=${encodeURIComponent(subject)}`;
   const heroPhoto=serviceImageSource(service,'hero_image')||serviceImageSource(service,'primary_image')||'';
-  const heroVideo=service.hero_video||''; // Opening video is independent of the legacy secondary video
+  const heroVideo=service.hero_media_type === 'image' ? '' : (service.hero_video||''); // Opening video is independent of the legacy secondary video
   // Service videos play on repeat; only the custom sound toggle is visible.
   // The video URL and its optional poster remain individually editable in Decap Turbo.
   const licensedHeroPhoto=hasUniqueImageRights(heroPhoto)?heroPhoto:'';
   const heroMedia=heroVideo?
-    serviceVideoMarkup(heroVideo,'Opening service video: '+(service.page_title||service.title||'Service'),licensedHeroPhoto,'ps2-hero-video'):
+    serviceVideoMarkup(heroVideo,'Opening service video: '+(service.page_title||service.title||'Service'),licensedHeroPhoto,'ps2-hero-video',service.hero_video_fallback||''):
     image(licensedHeroPhoto,service.page_title,'ps2-hero-image');
   if(heroVideo&&licensedHeroPhoto)usedServiceImagePaths.add(asset(licensedHeroPhoto));
   const core=arr(service.core_services),focus=arr(service.focus_areas),workflow=arr(service.workflow),deliverables=arr(service.deliverables),audiences=arr(service.audiences),advantages=arr(service.advantages),extras=arr(service.additional_information),approach=arr(service.approach_steps);
@@ -2301,7 +2219,12 @@ function renderPremiumService(service, site) {
   // lost playback, and an HTML-edited URL being overwritten unpredictably.
   const existingHero = main.querySelector(':scope > .ps2-initial-hero');
   if (existingHero) {
-    syncOpeningServiceVideo(existingHero, heroVideo, licensedHeroPhoto, 'Opening service video: ' + (service.page_title || service.title || 'Service'));
+    const existingVideo = existingHero.querySelector('.ps2-hero-frame video');
+    if (heroVideo && existingVideo) {
+      syncOpeningServiceVideo(existingHero, heroVideo, licensedHeroPhoto, 'Opening service video: ' + (service.page_title || service.title || 'Service'), service.hero_video_fallback || '');
+    } else {
+      existingHero.querySelector('.ps2-hero-frame').innerHTML = heroMedia;
+    }
     const template = document.createElement('template');
     template.innerHTML = header;
     const updatedPanel = template.content.querySelector('.ps2-hero-panel');

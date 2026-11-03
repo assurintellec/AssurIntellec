@@ -1,0 +1,6 @@
+/* Keep playback feedback readable under the site's global text colour/zoom settings. */
+body.premium-service-page main .service-video-feedback{max-width:min(420px,calc(100% - 32px));background:rgba(7,24,45,.94)!important;border:1px solid #8ca9bd;border-radius:14px;padding:16px 20px;text-align:center;color:#fff!important}
+body.premium-service-page main .service-video-feedback[hidden]{display:none!important}
+html[data-text-hover-zoom] body.premium-service-page main .service-video-feedback :is(p,button){transform:none!important;color:#fff!important;opacity:1!important;text-shadow:none!important}
+body.premium-service-page main .service-video-feedback .service-video-feedback-text{font:600 clamp(13px,1.4vw,16px)/1.5 Arial,sans-serif!important;margin:0 0 12px!important;color:#fff!important;max-width:100%;overflow-wrap:anywhere}
+body.premium-service-page main .service-video-retry:focus-visible{outline:3px solid #e1b547;outline-offset:3px}

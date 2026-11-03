@@ -1,0 +1,265 @@
+{
+  "revision": 9,
+  "date": "2026-11-03",
+  "instructions": "9.Website_Update_03-11-2026.docx",
+  "source_library_version": 2,
+  "source_sha256": "850f3f710f6cea025dc786897c5988d85a8483834ea6451019ccb02eb57b1d13",
+  "requests": [
+    "opening service video replacement",
+    "blue/gold icon-only email links in 3x3 grid"
+  ],
+  "validation": {
+    "automated_checks": 27,
+    "browser_service_replacement_pages": 7,
+    "email_desktop_and_mobile": "pass",
+    "source_preservation": "pass",
+    "live_upload_and_email_delivery": "not performed"
+  },
+  "changed_files": [
+    {
+      "path": ".assetsignore",
+      "status": "modified",
+      "sha256": "449d1e231b83d130ec152793515ee8a7ebdd7c70c17d55f864847358f84744e4"
+    },
+    {
+      "path": "START_HERE_02-11-2026.txt",
+      "status": "modified",
+      "sha256": "e5b1c67c888a2cd914bb6f5237605f9bb9eff9ea33b45ae89e583d956ab209af"
+    },
+    {
+      "path": "START_HERE_03-11-2026.txt",
+      "status": "added",
+      "sha256": "1c7c9a41e7ffbe113cc58071bbf99ac5caa7b9e1ddf88aadff5522b2eb6cf0bd"
+    },
+    {
+      "path": "WEBSITE_UPDATE_03-11-2026_REV9.md",
+      "status": "added",
+      "sha256": "82d91f0315da23711c1f5996d2ed20e7da69578bdf26663b9a37ea8eccb1eafa"
+    },
+    {
+      "path": "about.html",
+      "status": "modified",
+      "sha256": "b6f5106eb293a1d610e29bb50593778fab2e8128bc526b1fb11fb4a7f615b813"
+    },
+    {
+      "path": "admin/config.yml",
+      "status": "modified",
+      "sha256": "b0a237d3496d824782017a98da752474cc478541af0bbd5165168699b2a3cb91"
+    },
+    {
+      "path": "admin/index.html",
+      "status": "modified",
+      "sha256": "4557f33c24494e2ed4793b2613b21e9f900f2dc184db3a8715e89e7407c72b5f"
+    },
+    {
+      "path": "admin/service-video-check.html",
+      "status": "added",
+      "sha256": "c35259355c9c3c43c649eee377afb2253d8e6fc544bc9507dbf762ccf8d453cc"
+    },
+    {
+      "path": "assets/service-video.css",
+      "status": "added",
+      "sha256": "12c882739f9c2ba21ab56d59329079c732771a65958b96dc524383eaa060dc30"
+    },
+    {
+      "path": "assets/service-video.js",
+      "status": "added",
+      "sha256": "1b2bb8ef173164d5a0b4564edf799816ee192b0021fdae77389fbe9270ddead7"
+    },
+    {
+      "path": "assets/site.js",
+      "status": "modified",
+      "sha256": "0db580446f802d813d79b66fb2ffe56e70be2c0bc2192d25c89a0474676c69bd"
+    },
+    {
+      "path": "cloudflare-worker/src/index.js",
+      "status": "modified",
+      "sha256": "336b798f5233da8374f4f447e3f0df98212aa2032e97869df263b24989d85359"
+    },
+    {
+      "path": "contact.html",
+      "status": "modified",
+      "sha256": "ae6f4b59c851789eb510edc7bcbaa9f99c59c907e6fb4f002f64ab6b13c75e6e"
+    },
+    {
+      "path": "images/email-icons/LICENSE-Font-Awesome.txt",
+      "status": "modified",
+      "sha256": "66f8affa097ada2de5ebe5ea6a8e7c91974eaf82c142b059e869a118afda6398"
+    },
+    {
+      "path": "images/email-icons/facebook.png",
+      "status": "modified",
+      "sha256": "75ce1e285e8a0d9d10da91d43cdbd0850bcb2dae981ab77968905ce9bd10bb05"
+    },
+    {
+      "path": "images/email-icons/google.png",
+      "status": "modified",
+      "sha256": "b4e1af1c214f30ae500ff95e599bd23621c8860199a65b1c9b7bb6b99436fbe9"
+    },
+    {
+      "path": "images/email-icons/instagram.png",
+      "status": "modified",
+      "sha256": "f8a485469977709bac003740653522481ba93cf6a62a21accb3bc644dfec2ff7"
+    },
+    {
+      "path": "images/email-icons/linkedin.png",
+      "status": "modified",
+      "sha256": "c5f6784b144eeec505d3fd6191ccee8de07b6e76698c7d9a74d295d1924b8ce4"
+    },
+    {
+      "path": "images/email-icons/source/facebook.svg",
+      "status": "added",
+      "sha256": "ee730436e9f9a4e7e3c59a36c190d5d06d0a4fbe5f5b3fedf83c1050d2b6b2d5"
+    },
+    {
+      "path": "images/email-icons/source/google.svg",
+      "status": "added",
+      "sha256": "5b5229b7af1f753f62d23a4934f11b7c9f95ac169281b13b23bbae97e377beb3"
+    },
+    {
+      "path": "images/email-icons/source/instagram.svg",
+      "status": "added",
+      "sha256": "1886423ac2bc54c9435ae002deb7101f3b9daa092a5224f8305a8ac970a0ba82"
+    },
+    {
+      "path": "images/email-icons/source/linkedin.svg",
+      "status": "added",
+      "sha256": "5a3d7f52238dc9895843778ac560cd2ddc61f085e48ab1d25715109ae5658a01"
+    },
+    {
+      "path": "images/email-icons/source/telegram.svg",
+      "status": "added",
+      "sha256": "47e561c841b6d6f49ab19953783add5e1fdfbd4b0bbbcafc5d67f229b44fac14"
+    },
+    {
+      "path": "images/email-icons/source/threads.svg",
+      "status": "added",
+      "sha256": "027a5a04701230b168ae0627d9bba10ba5597a97644884d42eda0dbf9075bac5"
+    },
+    {
+      "path": "images/email-icons/source/whatsapp-channel.svg",
+      "status": "added",
+      "sha256": "552febb4b35d01443b23bb1e84dbfc21f48b6d6f07c24fcdf4a84e3f3566b624"
+    },
+    {
+      "path": "images/email-icons/source/x.svg",
+      "status": "added",
+      "sha256": "8712f07a6ab1412262458aa2c8892ccfee653266e2937f4fca2286f347436ab1"
+    },
+    {
+      "path": "images/email-icons/source/youtube.svg",
+      "status": "added",
+      "sha256": "96ff1ff0a18aa03f6d5da7c324d6c24bd9ff7d57b2d7c74d501c267968a5288c"
+    },
+    {
+      "path": "images/email-icons/telegram.png",
+      "status": "modified",
+      "sha256": "07722d0962f6ade280e0fbdc5765208ee6e369502a70b3bb0d7a2d3c3dbef685"
+    },
+    {
+      "path": "images/email-icons/threads.png",
+      "status": "modified",
+      "sha256": "56ad17e9083cd8e25be4187a5bb33344f414ce96a464ae20045cf93d4a9cdcea"
+    },
+    {
+      "path": "images/email-icons/whatsapp-channel.png",
+      "status": "modified",
+      "sha256": "6c2299b03fee296fd105630a928a73cc4121157a107ceba061dd8389df1b8f23"
+    },
+    {
+      "path": "images/email-icons/x.png",
+      "status": "modified",
+      "sha256": "0fef5f360495ac0f0abfdb3e479161e49730b6a31cb4db12cbd367eba9d6c4fb"
+    },
+    {
+      "path": "images/email-icons/youtube.png",
+      "status": "modified",
+      "sha256": "0f3e3742c362665a6bd5dba02e3c877b9f6e98e2dcba63b83a193c939501a1ec"
+    },
+    {
+      "path": "index.html",
+      "status": "modified",
+      "sha256": "5febc9a996942470b62afc8029006ed6001be820511f3aa9435e111d53b1ced6"
+    },
+    {
+      "path": "integrations/Code.gs",
+      "status": "modified",
+      "sha256": "27d2c7235df0ece5ed8d2a3699c1e0ccfee73947952be14ae86d489eb615be93"
+    },
+    {
+      "path": "integrations/newsletter/Code.gs",
+      "status": "modified",
+      "sha256": "5483b1c632d5806c3d3c3459191f8bd52a60b176c8c425e0159c6f8cb467ee4b"
+    },
+    {
+      "path": "scripts/build_email_icons.py",
+      "status": "added",
+      "sha256": "61112a5fb1d272d768a52c1f5c76f33127c60f2ef27db2e92418dc4a4e5b5f49"
+    },
+    {
+      "path": "service-advisory-transactions.html",
+      "status": "modified",
+      "sha256": "5400259085544df5db53288e9fcfc643625c78dfad699d067e51783ae9d69e67"
+    },
+    {
+      "path": "service-gmp-engineering.html",
+      "status": "modified",
+      "sha256": "a5efac170d7bcc58e74bf2f12a7d6eb3670ac69489cbf98045e606991e0dc397"
+    },
+    {
+      "path": "service-life-sciences-trade.html",
+      "status": "modified",
+      "sha256": "c3b385fff59c57041b86d28d778057a4e56ce272b7ed95e346ca85ac65c66909"
+    },
+    {
+      "path": "service-pharma-laboratory-technologies.html",
+      "status": "modified",
+      "sha256": "9270f88b4bcc83a76e915a383a1825309db4c1d9fad3b3cd6043f76a9289a721"
+    },
+    {
+      "path": "service-pharma-solutions-manufacturing.html",
+      "status": "modified",
+      "sha256": "4af95cb35a72ab09b3e87cc4adf9ddf479d6f8dd9c366afc14050193b1be1ca4"
+    },
+    {
+      "path": "service-research-scientific-services.html",
+      "status": "modified",
+      "sha256": "24a1d65431c5c6f6130ed71455a84a8fdb095ed6ea5f675c08726dc46d83b050"
+    },
+    {
+      "path": "service-talent-recruitment.html",
+      "status": "modified",
+      "sha256": "08a11cf152dbddf6a13e4753bb89ae2e050596f65221d7459f50b1c46d758d0d"
+    },
+    {
+      "path": "services.html",
+      "status": "modified",
+      "sha256": "1b44932430872505abaf1e19e315f854c4eac3664559803f23e7570150fb5e79"
+    },
+    {
+      "path": "tests/service-video-20261103.test.cjs",
+      "status": "added",
+      "sha256": "5fda3d664a7d6404f9cfa00868a4b9a5aacd0b57f448a3d7a4dff6823330be59"
+    },
+    {
+      "path": "tests/update-20261102.test.mjs",
+      "status": "modified",
+      "sha256": "215f84aff76d2ae748d585c18ce0a3beafef724ddc8d0eaf2e832a9574788717"
+    },
+    {
+      "path": "unsubscribe.html",
+      "status": "modified",
+      "sha256": "18a2edaa2ddf8a256440f6fb08a7ac232ae5952a34abbf5833332f616cd43e3b"
+    },
+    {
+      "path": "why-us-detail.html",
+      "status": "modified",
+      "sha256": "a5cc928eaa5eed86b70887bf15e60e8a2ec85c22ff3ba07fa510385fbdfb7694"
+    },
+    {
+      "path": "why-us.html",
+      "status": "modified",
+      "sha256": "2fbac5babca0a66f2635e90ec9fea0947c4bc2c03c0601b6b2d5d549b863276c"
+    }
+  ]
+}

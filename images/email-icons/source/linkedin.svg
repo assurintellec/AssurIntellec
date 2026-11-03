@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Adapted from Font Awesome Free 6.7.2, Fonticons Inc., CC BY 4.0. -->
+<defs><radialGradient id="blue" cx="33%" cy="17%" r="95%"><stop offset="0" stop-color="#185da1"/><stop offset=".55" stop-color="#07366e"/><stop offset="1" stop-color="#031d43"/></radialGradient>
+<linearGradient id="gold" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#ffe6a0"/><stop offset=".45" stop-color="#efc452"/><stop offset="1" stop-color="#b87d14"/></linearGradient></defs>
+<circle cx="48" cy="48" r="45.5" fill="url(#blue)" stroke="#b98520" stroke-width="3"/>
+<circle cx="48" cy="48" r="45" fill="none" stroke="url(#gold)" stroke-width="1.2"/>
+<g fill="url(#gold)" transform="translate(26.56250 23.50000) scale(0.0957031)"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></g></svg>

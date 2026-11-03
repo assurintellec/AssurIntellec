@@ -155,7 +155,7 @@ test('Old SMTP Worker gets public PNG URLs; upgraded Worker receives the matchin
     g.properties.set('EMAIL_WORKER_URL','https://mail.example/send');g.properties.set('EMAIL_WORKER_TOKEN','private-test');
     g.context.UrlFetchApp.fetch=(url,options)=>{
       assert.equal(options.headers.Authorization,'Bearer private-test');
-      if(url.endsWith('/health')){health++;return {getResponseCode:()=>200,getContentText:()=>JSON.stringify(upgraded?{ok:true,protocol:'2026-11-02-inline-v2',features:['inline-social-png']}:{ok:true})};}
+      if(url.endsWith('/health')){health++;return {getResponseCode:()=>200,getContentText:()=>JSON.stringify(upgraded?{ok:true,protocol:'2026-11-03-inline-v3',features:['inline-social-png']}:{ok:true})};}
       sends.push(JSON.parse(options.payload));return {getResponseCode:()=>200,getContentText:()=>JSON.stringify({success:true})};
     };
     g.run('sendAssurIntellecEmail({recipient:"test@example.com",subject:"Received",body:"Thanks",htmlBody:aiEmailFooterHtml_(aiEmailFallbackBranding_())})');
@@ -213,4 +213,18 @@ test('Scheduled total-counter refresh uses a read-only request and retains the l
   g.context.UrlFetchApp.fetch=(url,options)=>{assert.equal(url,'https://www.assurintellec.in/api/visitor-count');method=options.method;return {getResponseCode:()=>200,getContentText:()=>JSON.stringify({total:148200,value:40,start_value:148160})};};
   g.run('syncWebsiteCounterSnapshot()');const dash=g.book.getSheetByName('Visitor Dashboard');assert.equal(method,'get');assert.equal(dash.data[1][10],148200);
   g.context.UrlFetchApp.fetch=()=>{throw new Error('offline');};g.run('syncWebsiteCounterSnapshot()');assert.equal(dash.data[1][10],148200);assert.match(dash.data[5][10],/previous confirmed total retained/);
+});
+test('Both thank-you email footers use nine icon-only links in three rows of three',()=>{
+ for(const paths of [['integrations/Code.gs'],['integrations/newsletter/Code.gs']]){
+  const g=gas(paths);const html=g.run('aiEmailFooterHtml_(aiEmailFallbackBranding_())');
+  const grid=html.match(/<table[^>]*class="assur-social-grid"[^>]*>([\s\S]*?)<\/table>/)[1];
+  const rows=[...grid.matchAll(/<tr>([\s\S]*?)<\/tr>/g)];assert.equal(rows.length,3);
+  for(const row of rows){assert.equal((row[1].match(/<td\b/g)||[]).length,3);assert.equal((row[1].match(/<a\b/g)||[]).length,3);assert.equal((row[1].match(/<img\b/g)||[]).length,3);}
+  assert.equal(grid.replace(/<[^>]*>/g,'').trim(),'');
+  assert.match(rows[0][1],/instagram[\s\S]*facebook[\s\S]*linkedin/);
+  assert.match(rows[1][1],/youtube[\s\S]*whatsapp_channel[\s\S]*telegram/);
+  assert.match(rows[2][1],/threads[\s\S]*assur_social_x[\s\S]*google/);
+  g.context.html=html;const payload=g.run('aiEmailInlinePayload_(html)');assert.equal(payload.length,9);
+  for(const icon of payload){const key=icon.cid.replace('assur_social_','').replaceAll('_','-');assert.equal(Buffer.from(icon.base64,'base64').compare(fs.readFileSync(new URL('../images/email-icons/'+key+'.png',import.meta.url))),0);}
+ }
 });

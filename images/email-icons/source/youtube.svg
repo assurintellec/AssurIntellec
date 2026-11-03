@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Adapted from Font Awesome Free 6.7.2, Fonticons Inc., CC BY 4.0. -->
+<defs><radialGradient id="blue" cx="33%" cy="17%" r="95%"><stop offset="0" stop-color="#185da1"/><stop offset=".55" stop-color="#07366e"/><stop offset="1" stop-color="#031d43"/></radialGradient>
+<linearGradient id="gold" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#ffe6a0"/><stop offset=".45" stop-color="#efc452"/><stop offset="1" stop-color="#b87d14"/></linearGradient></defs>
+<circle cx="48" cy="48" r="45.5" fill="url(#blue)" stroke="#b98520" stroke-width="3"/>
+<circle cx="48" cy="48" r="45" fill="none" stroke="url(#gold)" stroke-width="1.2"/>
+<g fill="url(#gold)" transform="translate(23.50000 26.22222) scale(0.0850694)"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></g></svg>

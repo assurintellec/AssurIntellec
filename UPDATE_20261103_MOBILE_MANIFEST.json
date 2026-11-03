@@ -1,0 +1,44 @@
+{
+  "revision": 10,
+  "date": "2026-11-03",
+  "baseline": "Word document 9 update / Library version 3",
+  "files": {
+    "about.html": "eefb3537ec30d08e886f18b71c13b09d1be0a9a6ee99b97926e36ed8f9b5330e",
+    "why-us-detail.html": "10ed98c92acd681f26b088271843bcaecc41f92a05523ce6670c9b24d6999274",
+    "service-advisory-transactions.html": "bb74fe212a63a8f32a935201d37c838940fe4558d132526f1e21c9ab090418f5",
+    "index.html": "dd78788664939e5a9020d67e4abaeb3e75e061f9716e042d716a27731ed78ce1",
+    "service-pharma-laboratory-technologies.html": "26438afacce4287816179bd77614d317ab967daa645a25771e68a5cf240ce508",
+    "contact.html": "5beaef7cf840001ee2db9552fcf614c85be9b208a160612803ce3dd9739f7285",
+    "unsubscribe.html": "b64e39e4e50d0504b481039bab17f95d53b820735978b2631d425aab48c54c35",
+    "service-life-sciences-trade.html": "4e53507732c215acc4180b28592fcff2ebeea7fd081bc1367c90c2258bf6d9b1",
+    "service-gmp-engineering.html": "036483f2b82d62b2f7fd179532338cdbbd4b41d212e811b57576a185e952b278",
+    "services.html": "4857ef07782b1604e1a907b569fbcd497e80a98a4527f451ce85074b135c851c",
+    "service-talent-recruitment.html": "9f9b73096f3c1fe78f4e8495ca6fa93f5efbc99db1493d2081279fdd0bbe25db",
+    "service-pharma-solutions-manufacturing.html": "676e9f8e6f4024d5942c7741ad1e57df25cf8ce6d3699afafd1d45130e4f9e8b",
+    "why-us.html": "17ae76d70f8f15ea012b3818338e020553523c06b8ec1ff74bb302f7a0c02f84",
+    "service-research-scientific-services.html": "4af4393cf696414fa168f2dd67d79669e3ba59bca5f4ed003cd1df40a726a93d",
+    "assets/site.js": "3ac01bd0db5a46e0fc829e615e02e0e4926c9a6c376b36e8ab9dfcf0b125ad0c",
+    "assets/mobile-refinement.css": "d7b16e6a5e40cfd23c0080804f176fda2bfb5ae6050183112a8ffb8efa18e151",
+    "START_HERE_MOBILE_03-11-2026.txt": "2b0cd2af9f209fca139d02eb9f36912c0aae7ff153ee822a70174453e1a1ad9d",
+    "MOBILE_UPDATE_03-11-2026.md": "879b9c559e6f5e96ead56e79f948dd8bf46f7bf0173c822bbd8d56f74474d769"
+  },
+  "unchanged": [
+    "content",
+    "images",
+    "admin",
+    "integrations",
+    "cloudflare-worker",
+    "visitor-counter.js",
+    "visitor-analytics.js",
+    "newsletter-proxy.js",
+    "maintenance-router.js",
+    "wrangler.toml",
+    "assets/service-video.js",
+    "assets/service-video.css"
+  ],
+  "validation": {
+    "responsive_layouts": 62,
+    "regression_tests_passed": 27
+  },
+  "deployment": "Existing main website only; preserve current media and settings."
+}

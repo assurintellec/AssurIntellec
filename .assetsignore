@@ -4,6 +4,7 @@
 /wrangler.toml
 /cloudflare-worker/**
 /tests/**
+/scripts/**
 **/.git
 
 /visitor-analytics.js

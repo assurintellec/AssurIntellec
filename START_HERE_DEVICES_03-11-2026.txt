@@ -1,0 +1,37 @@
+ASSURINTELLEC — PHONE / TABLET / BROWSER REFINEMENT — 3 NOVEMBER 2026
+
+This is the latest update. It includes the earlier document 9 and mobile changes.
+Read DEVICE_BROWSER_UPDATE_03-11-2026.md for the full change and test record.
+
+AFTER DOWNLOADING
+1. Extract this ZIP and back up your current website source.
+2. Merge the 15 public HTML files and these assets into the EXISTING website:
+   - assets/site.js
+   - assets/mobile-refinement.css
+   - NEW assets/responsive-layout.js
+   Keep your existing large images/videos, current content and private settings.
+   If you made other HTML/JS edits after the previous download, merge them.
+3. Redeploy the SAME main website through your normal hosting workflow. Keep
+   the domain, Worker names, URLs, bindings, migrations and secrets.
+4. Hard-refresh on desktop. Close the old phone tab and reopen the website;
+   clear only the site's cached files if you still see the previous layout.
+5. Test portrait and landscape on your own phone/tablet, including menu,
+   search, video sound button, enquiry, newsletter, popup and thank-you message.
+6. Keep/use https://www.assurintellec.in/ as your Instagram bio website link.
+   After deployment, tap it from the Instagram app on iPhone and Android.
+   Check navigation and a controlled test enquiry. No Instagram account
+   setting was changed while preparing this package.
+
+TARGET BROWSERS
+Current Chrome, Firefox, Microsoft Edge and Safari, including embedded mobile
+web views. Browser layout checks here ran in Chrome; actual Safari/Firefox/Edge
+applications and Instagram's iOS/Android browser still need device checks.
+
+WHAT THIS UPDATE DOES NOT REQUIRE
+No new WhatsApp subscription, Apps Script deployment, email Worker deployment,
+Decap configuration or secret is introduced by this responsive update. If the
+previous Word document 9 email/video changes are not yet activated, follow
+WEBSITE_UPDATE_03-11-2026_REV9.md separately.
+
+This remains a lightweight source ZIP. Your existing large media files are not
+duplicated here. No live site, account, enquiry or subscription was changed.

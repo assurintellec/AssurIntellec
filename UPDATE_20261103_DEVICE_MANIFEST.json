@@ -1,0 +1,52 @@
+{
+  "revision": 11,
+  "date": "2026-11-03",
+  "baseline_library_version": 4,
+  "files": {
+    "DEVICE_BROWSER_UPDATE_03-11-2026.md": "aa6f9c79720452f9c3b2d4d2be56a78dea1b078310cc01a6d511b526e58f3ff5",
+    "START_HERE_03-11-2026.txt": "a19a74586a2c1a31b4f96dfe273e4b10beb4c5ab99f681194db7b487a0495247",
+    "START_HERE_DEVICES_03-11-2026.txt": "afaaabb5d602e1c30efa18ba7c433140d94991ca97c8a2b23074be704c0a18b5",
+    "START_HERE_MOBILE_03-11-2026.txt": "9f6b5616c514316641b9a8d244d71f9684cd4fd6e892c42e6185ff05fb842412",
+    "about.html": "66a61997a41d2b77e79e72cb17ca8a657aa9b392f24e5f838e322a1742558c62",
+    "assets/mobile-refinement.css": "5ca00cb99be9a87a05f8d2fc020e5c8bd5e423d6da65e0b9c7a97a2385414834",
+    "assets/responsive-layout.js": "ea292a19d3051b72ce839fb68c8e8063169d6290f59d713611512666d23e5497",
+    "assets/site.js": "db35dff8a4f0e1a5d1d5da9890f0a5777adcb92c9775249d134917c0baaa9140",
+    "contact.html": "8de7b6500f49ce551b147dab21c7879779293c357f9b3938495e20f1f61e6123",
+    "index.html": "1ba7b23df6fab6aa8935613eb0775c92fc6fa2bba400d2997dcf4aa40fb1ac60",
+    "service-advisory-transactions.html": "296206457ff3e0b7d65ae6226a90e576381406631bca0b7835a6adfd8340086d",
+    "service-gmp-engineering.html": "98a4d6625c0833809b663654deb97021d692fe95a5b8ceff1a4646facd8d902f",
+    "service-life-sciences-trade.html": "4639216eaaf76ef7edb23f84092efd3e3044285e72a018a4f6bff10641f584cc",
+    "service-pharma-laboratory-technologies.html": "5d6c0471faef7983042df3bc70f7daecfbd903c3f72ade90263ac970e735918f",
+    "service-pharma-solutions-manufacturing.html": "ac882ab84c07d98e1e40c6d90ba3ce20624cf7e782991472aaa2c669451f1ae4",
+    "service-research-scientific-services.html": "47def8c40b996a44fd8d16d109798cb6a3983385486526b003b465f15e11fe51",
+    "service-talent-recruitment.html": "eb59241964b94dcf3b4120a1d79748167b63f07f092880244b8fd6add4000244",
+    "services.html": "c928411f67654e9cf5712e34f89354b55f408ac2e76060b8add70a851aa96c06",
+    "tests/responsive-layout-20261103.test.cjs": "2f3525c3abaf818b98c78b382592948fde514dc655f271a624cd7eeda1b7a2a4",
+    "unsubscribe.html": "cb186b9f2706068d6109b008e9170ed6bde30b8fc4ca5cad9c8806fb439c83d2",
+    "why-us-detail.html": "f6a8df1ba8f2158155f0162e54b083776ccb074f4b4ad4f3e08dbd877ab6e210",
+    "why-us.html": "7053559173a4c32751d395622923e2c0ee8eda108fde2032f680a77a64f3cf7f"
+  },
+  "validation": {
+    "browser_engine": "Chrome",
+    "public_pages": 15,
+    "screen_configurations": 12,
+    "page_screen_checks": 180,
+    "overflow_cases": 0,
+    "clipped_main_text_cases": 0,
+    "automated_tests_passed": 31,
+    "additional_checks": [
+      "landscape menu bounds/scroll",
+      "rotation retains enquiry text",
+      "short popup/confirmation/chat",
+      "asymmetric side gutters",
+      "service film decode/contain"
+    ],
+    "not_completed": [
+      "actual Safari/Firefox/Edge apps",
+      "Instagram iOS/Android app",
+      "actual virtual keyboards",
+      "live delivery/deployment"
+    ]
+  },
+  "deployment": "Existing main website only; keep media and settings."
+}

@@ -1,0 +1,34 @@
+LATEST: Read START_HERE_DEVICES_03-11-2026.txt for phone/tablet/orientation updates.
+
+LATEST: Read START_HERE_MOBILE_03-11-2026.txt for the added mobile refinements.
+The earlier Word document 9 activation steps below still apply if not done.
+
+ASSURINTELLEC — WORD DOCUMENT 9 UPDATE — 3 NOVEMBER 2026
+
+Read WEBSITE_UPDATE_03-11-2026_REV9.md first.
+
+UPDATED
+1. Opening service video replacement: explicit root upload paths, current CMS
+   source loading, same-file legacy-path recovery and optional compatible MP4.
+2. Enquiry + newsletter emails: blue/gold icon-only links in THREE ROWS OF THREE.
+   Each icon opens its own existing social link. Other content is preserved.
+
+MANUAL ACTIVATION
+A. Merge/deploy website files through the existing main Worker. KEEP ALL existing
+   large images/videos. Include new service-video JS/CSS and updated service pages.
+B. Reload Decap admin with Ctrl+F5. Use OPENING VIDEO (FIRST ON SERVICE PAGE),
+   Save/Publish, and wait for the deployment. For broad support use H.264/AAC MP4.
+   Check published paths/playback at /admin/service-video-check.html.
+C. Upload the nine updated images/email-icons/*.png files.
+D. ENQUIRY Apps Script: replace Code.gs from integrations/Code.gs; keep Bridge,
+   free WhatsApp file and all email properties. Deploy a New version of SAME app.
+E. NEWSLETTER Apps Script: replace Code.gs from integrations/newsletter/Code.gs;
+   keep VisitorAnalytics.gs, data, properties and triggers. Deploy a New version
+   of the SAME app. Execute both Web apps as Me; access Anyone; preserve URLs.
+F. Update the separate mail Worker from cloudflare-worker/src/index.js, preserving
+   its URL and SMTP/bridge secrets. No new secrets are needed for this revision.
+
+27 automated checks pass. All seven service video selections/replacements were
+checked in the browser with local H.264 test clips. Email icons/layout/links were
+checked on desktop/mobile. Live Decap upload, actual user codecs and email
+inbox rendering still need testing after deployment. No external system changed.

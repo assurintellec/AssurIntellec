@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Adapted from Font Awesome Free 6.7.2, Fonticons Inc., CC BY 4.0. -->
+<defs><radialGradient id="blue" cx="33%" cy="17%" r="95%"><stop offset="0" stop-color="#185da1"/><stop offset=".55" stop-color="#07366e"/><stop offset="1" stop-color="#031d43"/></radialGradient>
+<linearGradient id="gold" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#ffe6a0"/><stop offset=".45" stop-color="#efc452"/><stop offset="1" stop-color="#b87d14"/></linearGradient></defs>
+<circle cx="48" cy="48" r="45.5" fill="url(#blue)" stroke="#b98520" stroke-width="3"/>
+<circle cx="48" cy="48" r="45" fill="none" stroke="url(#gold)" stroke-width="1.2"/>
+<g fill="url(#gold)" transform="translate(32.68750 23.50000) scale(0.0957031)"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></g></svg>

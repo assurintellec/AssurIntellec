@@ -1,0 +1,30 @@
+LATEST: Read START_HERE_DEVICES_03-11-2026.txt for phone/tablet/orientation updates.
+
+ASSURINTELLEC — MOBILE REFINEMENT — 3 NOVEMBER 2026
+
+This is the latest package, including the earlier Word document 9 updates.
+Read MOBILE_UPDATE_03-11-2026.md for the mobile changes.
+
+MANUAL UPDATE
+1. Back up your current website source.
+2. Merge the 14 updated public HTML pages, assets/site.js and the NEW
+   assets/mobile-refinement.css into your existing source. Keep all your
+   existing videos, uploaded images, content files and private settings.
+3. Deploy the EXISTING main website using your normal workflow. Do not create
+   a new Worker, change the domain, reset bindings or replace secrets.
+4. Hard-refresh the website (Ctrl+F5 on desktop). On a phone, close the old tab
+   and open the website again; clear the site's cached files if necessary.
+5. Check the menu, search, long service titles, enquiry form, newsletter,
+   popup, thank-you confirmation and footer on your own phone.
+
+The MOBILE changes require no Apps Script, mail Worker, WhatsApp subscription
+or Decap configuration update. If the earlier Word document 9 changes have
+not yet been activated, follow START_HERE_03-11-2026.txt and
+WEBSITE_UPDATE_03-11-2026_REV9.md as well.
+
+Checked: 62 browser layouts across phone, tablet and desktop widths; 27
+existing automated video/integration regression tests pass. No live forms
+were submitted and no live website or external system was changed.
+
+This remains a lightweight source ZIP. Keep your original large media files
+from the existing website; they are not duplicated in this download.
